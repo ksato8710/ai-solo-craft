@@ -36,12 +36,12 @@ export default function Home() {
            style={{ backgroundColor: '#1e293b' }}>
         <div className="flex items-center gap-2">
           <span className="text-emerald-400 text-sm font-semibold">📡 LIVE</span>
-          <span className="text-slate-400 text-sm">毎日3回配信中</span>
+          <span className="text-slate-400 text-sm">朝刊・夕刊 毎日配信中</span>
         </div>
         <div className="flex items-center gap-6 text-xs text-slate-400">
           <span>🌅 朝刊 8:00</span>
           <span>🛠️ ツール 12:00</span>
-          <span>🔬 深掘り 19:00</span>
+          <span>🌆 夕刊 18:00</span>
         </div>
         <div className="text-xs text-slate-500">
           ニュース: {allPosts.length}本 / ツール: {allTools.length}本
