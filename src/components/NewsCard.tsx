@@ -44,7 +44,7 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
             <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors leading-tight">
               {post.title}
             </h2>
-            <p className="mt-3 text-sm text-slate-400 line-clamp-2">
+            <p className="mt-3 text-sm text-slate-400 line-clamp-1">
               {post.description}
             </p>
           </div>
@@ -77,7 +77,7 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
           <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-2 flex-1">
             {post.title}
           </h3>
-          <p className="mt-2 text-xs text-slate-400 line-clamp-2">
+          <p className="mt-2 text-xs text-slate-400 line-clamp-1">
             {post.description}
           </p>
           <div className="mt-3 text-[10px] text-slate-500">

@@ -3,9 +3,7 @@ title: AIソロビルダー朝刊 — 2026年2月2日（日）バイブコーデ
 slug: morning-news-2026-02-02-vibe-coding
 date: '2026-02-02'
 category: morning-news
-description: >-
-  おはようございます。AI Solo Builder 編集部です。 今週のAIソロ開発界隈は「バイブコーディング」一色。Scientific
-  Americanがついに特集を組み、オープンソースの発見プラットフォームが5万件
+description: "バイブコーディングが誰でもできる時代に。Scientific American特集ほか。"
 image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&h=420&fit=crop"
 ---
 ## 📚 Vybe Guide — バイブコーダー向けオープンソース発見プラットフォームが登場

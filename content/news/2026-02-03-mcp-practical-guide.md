@@ -3,7 +3,7 @@ title: "MCP（Model Context Protocol）実践ガイド — AIソロビルダー�
 slug: "mcp-practical-guide"
 date: "2026-02-03"
 category: "dev"
-description: "AnthropicのMCPをソロ開発に活用する実践ガイド。環境構築、主要MCPサーバー、Claude Desktop/Code連携まで解説。"
+description: "MCPの導入手順から主要サーバー、Claude連携まで実践解説。"
 readTime: 15
 featured: true
 image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=420&fit=crop"

@@ -3,7 +3,7 @@ title: Pieter Levelsの事例 — 従業員ゼロ・AIだけで年収3億円を�
 slug: pieter-levels-solo-founder-strategy
 date: '2026-02-02'
 category: case-study
-description: "AIソロビルダーを語るうえで、Pieter Levels（ピーター・レベルス）を避けて通ることはできない。オランダ出身のこの38歳のプログラマーは、従業員ゼロ、VC資金ゼロ、オフィスなしで年間300万ドル（約4.5億円）以上を稼ぎ出している。"
+description: "従業員ゼロで年商4.5億円。Pieter Levelsのソロ戦略を徹底分析。"
 image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=420&fit=crop"
 ---
 
