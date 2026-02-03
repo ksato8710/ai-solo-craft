@@ -3,6 +3,7 @@ import path from 'path';
 
 const researchDirectory = path.join(process.cwd(), 'research');
 const contentDirectory = path.join(process.cwd(), 'content/news');
+const toolsContentDirectory = path.join(process.cwd(), 'content/tools');
 
 export interface NewsValueScore {
   slug: string;

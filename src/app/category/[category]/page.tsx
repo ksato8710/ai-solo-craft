@@ -1,4 +1,4 @@
-import { getAllPosts, getPostsByCategory, CATEGORIES } from '@/lib/posts';
+import { getPostsByCategory, CATEGORIES } from '@/lib/posts';
 import NewsCard from '@/components/NewsCard';
 import { notFound } from 'next/navigation';
 

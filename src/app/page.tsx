@@ -1,9 +1,11 @@
-import { getAllPosts, getFeaturedPosts, getPostsByCategory, CATEGORIES } from '@/lib/posts';
+import { getAllPosts, getAllTools, getAllContent, getFeaturedPosts, getPostsByCategory, CATEGORIES } from '@/lib/posts';
 import NewsCard from '@/components/NewsCard';
 import CategorySection from '@/components/CategorySection';
 
 export default function Home() {
+  const allContent = getAllContent();
   const allPosts = getAllPosts();
+  const allTools = getAllTools();
   const featured = getFeaturedPosts();
   const mainFeatured = featured[0];
   const sideFeatured = featured.slice(1, 3);
@@ -42,7 +44,7 @@ export default function Home() {
           <span>🔬 深掘り 19:00</span>
         </div>
         <div className="text-xs text-slate-500">
-          記事数: {allPosts.length}本
+          ニュース: {allPosts.length}本 / ツール: {allTools.length}本
         </div>
       </div>
 
@@ -56,7 +58,7 @@ export default function Home() {
       ))}
 
       {/* Empty State */}
-      {allPosts.length === 0 && (
+      {allContent.length === 0 && (
         <div className="text-center py-20">
           <p className="text-4xl mb-4">🚀</p>
           <h2 className="text-xl font-bold text-white mb-2">準備中です</h2>

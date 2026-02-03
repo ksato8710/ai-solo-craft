@@ -13,9 +13,11 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
     return `${d.getMonth() + 1}月${d.getDate()}日`;
   };
 
+  const postUrl = post.url || `/news/${post.slug}`;
+
   if (size === 'large') {
     return (
-      <a href={`/news/${post.slug}`} className="group block">
+      <a href={postUrl} className="group block">
         <div className="rounded-2xl overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-white/10" 
              style={{ backgroundColor: '#1e293b' }}>
           <div className="aspect-video bg-gradient-to-br from-slate-700 to-slate-800 relative overflow-hidden">
@@ -52,7 +54,7 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
   }
 
   return (
-    <a href={`/news/${post.slug}`} className="group block">
+    <a href={postUrl} className="group block">
       <div className="rounded-xl overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-white/10 h-full flex flex-col"
            style={{ backgroundColor: '#1e293b' }}>
         <div className="aspect-[16/9] bg-gradient-to-br from-slate-700 to-slate-800 relative flex-shrink-0 overflow-hidden">
