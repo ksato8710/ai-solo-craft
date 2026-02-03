@@ -148,3 +148,23 @@ ChatGPT Plus（$20/月）から始められる手軽さと、オープンソー�
 **公式サイト:** [openai.com/codex](https://openai.com/codex/)
 **GitHub:** [github.com/openai/codex](https://github.com/openai/codex)
 **デスクトップアプリ ウェイトリスト:** [openai.com/form/codex-app](https://openai.com/form/codex-app)
+
+---
+
+## 📊 ニュースバリュー評価
+
+| 評価軸 | スコア |
+|--------|--------|
+| SNS反応量 | 12/20 |
+| メディアカバレッジ | 18/20 |
+| コミュニティ反応 | 14/20 |
+| 技術的インパクト | 17/20 |
+| ソロビルダー関連度 | 19/20 |
+| **合計** | **80/100 (Tier A)** |
+
+**所見:** GitHub 58,572 stars（Apache-2.0）のOSSプロジェクト。TechCrunch、Reuters、CNBC、Ars Technica、Fortune等がリリースを全面カバー。マルチエージェント並列実行・Skills・Automationsは開発パラダイムのシフト。ソロビルダーにとって最も重要なツールの1つ。
+
+🗣 **生の声**
+- 「Cursorキラー？ 一部ではCodexアプリをCursor等の競合IDEの直接的なライバルと見ている」— Reddit r/vibecoding
+- 「Cursorの強みはIDE中心の体験だ。Codexアプリはエージェントの監視とレビューゲートに焦点を当てている。使い分けが重要」— Reddit r/vibecoding
+- 「期間限定で無料プラン・Goプランにも含まれる。Plus/Proのレート制限も倍増。今が試すチャンス」— Reddit r/OpenAI
