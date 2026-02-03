@@ -1,0 +1,20 @@
+{
+  "agents": {
+    "news-scout": {
+      "model": "sonnet",
+      "skills": ["news-curation", "research-sources", "nva-process"]
+    },
+    "article-writer": {
+      "model": "sonnet",
+      "skills": ["article-template", "brand-voice", "editorial-standards", "nva-process"]
+    },
+    "quality-checker": {
+      "model": "haiku",
+      "skills": ["editorial-standards", "brand-voice"]
+    },
+    "publisher": {
+      "model": "haiku",
+      "skills": ["site-config"]
+    }
+  }
+}

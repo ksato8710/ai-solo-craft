@@ -6,6 +6,50 @@
 - **ホスティング:** Vercel（無料枠）
 - **ドメイン:** ai.essential-navigator.com
 
+## 事業設計文書（docs/）
+
+記事作成・サイト改善・戦略判断時は必ず参照:
+
+| ドキュメント | 内容 | パス |
+|------------|------|------|
+| コンセプトシート | ビジョン・ターゲット・差別化・進化パス | `docs/CONCEPT.md` |
+| リーンキャンバス | 事業全体の設計図 | `docs/LEAN-CANVAS.md` |
+| ブランドアイデンティティ | トーン・文体・ビジュアル | `docs/BRAND-IDENTITY.md` |
+| コンテンツ戦略 | カテゴリ設計・品質基準・配信計画 | `docs/CONTENT-STRATEGY.md` |
+| リサーチソース | 巡回先リスト・リサーチ手順 | `docs/RESEARCH-SOURCES.md` |
+| サイト構成 | ディレクトリ構造・デプロイ手順 | `docs/SITE-ARCHITECTURE.md` |
+
+## サブエージェント体制（.claude/agents/）
+
+| エージェント | モデル | 役割 |
+|-------------|--------|------|
+| news-scout | sonnet | ニュース収集・スクリーニング・NVA一次評価 |
+| article-writer | sonnet | 記事作成・NVA評価セクション作成 |
+| quality-checker | haiku | 品質チェック（EDITORIAL.md・ブランド準拠） |
+| publisher | haiku | git push・デプロイ確認 |
+
+## スキル（.claude/skills/）
+
+| スキル | 内容 |
+|--------|------|
+| news-curation | ニュースキュレーション手順 |
+| article-template | カテゴリ別記事テンプレート |
+| brand-voice | ブランドトーン・文体ルール |
+| editorial-standards | 編集基準・チェックリスト |
+| nva-process | ニュースバリュー評価手順 |
+| site-config | 技術仕様・デプロイ手順 |
+| research-sources | 巡回先クイックリファレンス |
+
+## 記事作成ワークフロー
+
+```
+1. [news-scout] 情報収集 — X/Reddit/HN/PHを巡回、NVA一次スクリーニング
+2. [article-writer] 記事作成 — テンプレート選択、定量データ付きMarkdown作成
+3. [quality-checker] 品質チェック — EDITORIAL.md準拠、ブランドトーン確認
+4. [publisher] 公開 — git push → Vercel自動デプロイ → 表示確認
+5. [nemo→stevens] 報告 — 30分定期報告で進捗共有
+```
+
 ## デザイン仕様（TLDR.tech準拠）
 
 ### カラーパレット
