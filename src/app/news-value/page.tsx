@@ -151,8 +151,8 @@ export default function NewsValuePage() {
                     {tierBadge(a.tier)}
                   </td>
                   <td className="px-3 py-3 hidden sm:table-cell">{scoreBar(a.snsScore)}</td>
-                  <td className="px-3 py-3 hidden sm:table-cell">{scoreBar(a.mediaSCore)}</td>
-                  <td className="px-3 py-3 hidden sm:table-cell">{scoreBar(a.communitySCore)}</td>
+                  <td className="px-3 py-3 hidden sm:table-cell">{scoreBar(a.mediaScore)}</td>
+                  <td className="px-3 py-3 hidden sm:table-cell">{scoreBar(a.communityScore)}</td>
                   <td className="px-3 py-3 hidden sm:table-cell">{scoreBar(a.techImpactScore)}</td>
                   <td className="px-3 py-3 hidden sm:table-cell">{scoreBar(a.soloBuilderScore)}</td>
                 </tr>
