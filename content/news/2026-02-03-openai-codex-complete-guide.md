@@ -16,32 +16,16 @@ OpenAI Codex（2025年5月CLI公開、2026年2月デスクトップアプリ公�
 **OpenAI Codex**は、OpenAIが提供するAIコーディングエージェントだ。自然言語の指示をコードに変換し、ファイルの編集、コマンドの実行、テストの実行までを自律的に行う。
 ### 基本データ
 
-項目
-詳細
-
-開始時期
-2025年5月（CLI公開）/ 2026年2月2日（デスクトップアプリ公開）
-
-開発元
-OpenAI（2015年設立、累計調達額$300億以上）
-
-利用者規模
-月間100万人以上の開発者が利用（2026年1月時点、Sam Altman発言）
-
-成長率
-2025年8月から利用量20倍以上に成長。GPT-5.2-Codex（2025年12月公開）以降、利用量がほぼ倍増
-
-対応モデル
-GPT-5.2-Codex（最速で採用が広がったモデル — Altman談）
-
-オープンソース
-CLI版はApache-2.0ライセンスでGitHubに公開（github.com/openai/codex）
-
-対応OS
-macOS / Linux / Windows（デスクトップアプリはmacOSのみ、Windows版は開発中）
-
-主要顧客
-Cisco、Ramp、Virgin Atlantic、Vanta、Duolingo、Gap
+| 項目 | 詳細 |
+|------|------|
+| 開始時期 | 2025年5月（CLI公開）/ 2026年2月2日（デスクトップアプリ公開） |
+| 開発元 | OpenAI（2015年設立、累計調達額$300億以上） |
+| 利用者規模 | 月間100万人以上の開発者が利用（2026年1月時点、Sam Altman発言） |
+| 成長率 | 2025年8月から利用量20倍以上に成長。GPT-5.2-Codex（2025年12月公開）以降、利用量がほぼ倍増 |
+| 対応モデル | GPT-5.2-Codex（最速で採用が広がったモデル — Altman談） |
+| オープンソース | CLI版はApache-2.0ライセンスでGitHubに公開（github.com/openai/codex） |
+| 対応OS | macOS / Linux / Windows（デスクトップアプリはmacOSのみ、Windows版は開発中） |
+| 主要顧客 | Cisco、Ramp、Virgin Atlantic、Vanta、Duolingo、Gap |
 
 ## Codex CLIのインストール・セットアップ
 Codex CLIは3つの方法でインストールできる。
@@ -103,103 +87,31 @@ OpenAIチーム自身が以下の用途で使っている：
 
 ## 料金プラン
 
-プラン
-月額
-Codexアクセス
-備考
-
-ChatGPT Free / Go
-無料 / $6
-期間限定で利用可能
-基本的なレート制限
-
-ChatGPT Plus
-$20
-フルアクセス（CLI・Web・IDE・アプリ）
-レート制限2倍（期間限定）
-
-ChatGPT Pro
-$200
-フルアクセス + 高レート制限
-パワーユーザー向け
-
-Business / Enterprise
-$25~/ユーザー
-フルアクセス + チーム管理
-管理コンソール付き
-
-Edu
-割引あり
-フルアクセス
-教育機関向け
+| プラン | 月額 | Codexアクセス | 備考 |
+|--------|------|--------------|------|
+| ChatGPT Free / Go | 無料 / $6 | 期間限定で利用可能 | 基本的なレート制限 |
+| ChatGPT Plus | $20 | フルアクセス（CLI・Web・IDE・アプリ） | レート制限2倍（期間限定） |
+| ChatGPT Pro | $200 | フルアクセス + 高レート制限 | パワーユーザー向け |
+| Business / Enterprise | $25~/ユーザー | フルアクセス + チーム管理 | 管理コンソール付き |
+| Edu | 割引あり | フルアクセス | 教育機関向け |
 
 **注目:** Codex CLIはオープンソースで無料。ただし、使用するにはOpenAIのAPIキーまたはChatGPTの有料プランが必要だ。最もコスパが良いのはChatGPT Plus（$20/月）で始めること。
 ## 競合比較: Codex CLI vs Claude Code vs Gemini CLI
 
-項目
-OpenAI Codex
-Claude Code
-Gemini CLI
-
-開発元
-OpenAI
-Anthropic
-Google
-
-開始時期
-2025年5月（CLI）
-2025年2月
-2025年6月
-
-利用者数
-月間100万人以上
-非公開
-非公開
-
-基盤モデル
-GPT-5.2-Codex
-Claude Opus 4.5 / Sonnet 4
-Gemini 3
-
-実行環境
-ローカル + クラウド
-ローカル
-ローカル
-
-デスクトップアプリ
-✅（2026年2月〜）
-✅（Cowork）
-❌
-
-マルチエージェント
-✅（並列実行）
-一部対応
-❌
-
-オープンソース
-✅（Apache-2.0）
-❌
-✅
-
-IDE連携
-VS Code, Cursor, Windsurf, JetBrains
-VS Code, JetBrains
-VS Code
-
-GitHub連携
-✅（@codex メンション対応）
-✅
-✅
-
-最低料金
-$20/月（Plus）
-$17/月（Pro年払い）
-$5.99/月（AI Premium Lite）
-
-コンテキスト長
-非公開
-200Kトークン
-1Mトークン
+| 項目 | OpenAI Codex | Claude Code | Gemini CLI |
+|------|-------------|-------------|------------|
+| 開発元 | OpenAI | Anthropic | Google |
+| 開始時期 | 2025年5月（CLI） | 2025年2月 | 2025年6月 |
+| 利用者数 | 月間100万人以上 | 非公開 | 非公開 |
+| 基盤モデル | GPT-5.2-Codex | Claude Opus 4.5 / Sonnet 4 | Gemini 3 |
+| 実行環境 | ローカル + クラウド | ローカル | ローカル |
+| デスクトップアプリ | ✅（2026年2月〜） | ✅（Cowork） | ❌ |
+| マルチエージェント | ✅（並列実行） | 一部対応 | ❌ |
+| オープンソース | ✅（Apache-2.0） | ❌ | ✅ |
+| IDE連携 | VS Code, Cursor, Windsurf, JetBrains | VS Code, JetBrains | VS Code |
+| GitHub連携 | ✅（@codex メンション対応） | ✅ | ✅ |
+| 最低料金 | $20/月（Plus） | $17/月（Pro年払い） | $5.99/月（AI Premium Lite） |
+| コンテキスト長 | 非公開 | 200Kトークン | 1Mトークン |
 
 ### 使い分けガイド
 

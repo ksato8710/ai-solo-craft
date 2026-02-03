@@ -8,11 +8,12 @@ image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=420
 ---
 
 **Windsurf**（旧Codeium）は、AIをコア機能として組み込んだネイティブなコーディングIDEだ。VS Codeベースの馴染みやすいインターフェースに、独自のAIエージェント「Cascade」を搭載。コードベース全体を理解した上で、マルチファイル編集やリファクタリングを自律的に行える。GitHub Copilotの強力な競合として急成長中。
-> **基本データ**
-> - **開始時期:** 2021年設立（旧Codeium/Exafunction）、Windsurf IDEは2024年リリース
-> - **利用者規模:** 非公開
-> - **調達額/収益:** 総調達額$243M（Series C $150M、2024年9月、評価額$1.3B）。ARR推定$82M（2025年7月時点）。2025年にCognition社が買収
-> - **その他定量指標:** VS Code互換のAIネイティブIDE。Cascade（マルチファイル編集AI）搭載
+| 項目 | 詳細 |
+|------|------|
+| 開始時期 | 2021年設立（旧Codeium/Exafunction）、Windsurf IDEは2024年リリース |
+| 利用者規模 | 非公開 |
+| 調達額/収益 | 総調達額$243M（Series C $150M、2024年9月、評価額$1.3B）。ARR推定$82M（2025年7月時点）。2025年にCognition社が買収 |
+| その他定量指標 | VS Code互換のAIネイティブIDE。Cascade（マルチファイル編集AI）搭載 |
 
 ## Windsurfとは？
 
