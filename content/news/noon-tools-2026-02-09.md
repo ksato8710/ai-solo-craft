@@ -2,7 +2,7 @@
 title: "Vouch — AI時代のオープンソースを守る信頼管理システム"
 slug: "noon-tools-2026-02-09"
 date: "2026-02-09"
-category: "dev"
+category: "news"
 description: "AI生成コードの氾濫に立ち向かう、HashiCorpのMitchell Hashimotoが作った革新的なコミュニティ信頼管理ツールを深掘り"
 readTime: 6
 image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=420&fit=crop"

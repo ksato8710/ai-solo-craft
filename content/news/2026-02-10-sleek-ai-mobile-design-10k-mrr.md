@@ -2,7 +2,7 @@
 title: "Sleek.design — 3週間で構築、6週間で$10k MRR達成したAIモバイルデザインツール"
 slug: "noon-tools-2026-02-10"
 date: "2026-02-10"
-category: "featured-tools"
+category: "news"
 description: "アイデアから完成デザインまで2分以内。マーケティング費用$0でバイラル成長を実現したソロビルダーの成功戦略とは？"
 readTime: 6
 image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=420&fit=crop"
@@ -16,6 +16,8 @@ featured: false
 イタリアのソロ開発者Mattia Pomelliが手がけたAIモバイルデザインツール「Sleek.design」は、2026年1月の成功事例としてIndieHackers界隈で大きな話題となっている。
 
 → [Sleek.design 公式サイト](https://sleek.design)
+
+前提となるプロダクト情報: [/products/sleek-design](/products/sleek-design)
 
 ---
 
