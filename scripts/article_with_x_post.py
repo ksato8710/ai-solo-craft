@@ -38,14 +38,14 @@ def simulate_article_creation():
     sample_articles = [
         {
             "title": "Claude 3.5 Sonnetの新機能徹底解説",
-            "category": "deep-dive",
+            "category": "dev-knowledge",
             "url": "https://ai.essential-navigator.com/claude-3-5-sonnet-new-features",
             "description": "Anthropic の最新モデル Claude 3.5 Sonnet の新機能を詳細に解析。従来版との性能比較と実用的な活用方法を紹介します。",
             "created_at": datetime.now().isoformat()
         },
         {
             "title": "新しいAI画像生成ツール「ImageForge」レビュー",
-            "category": "tools",
+            "category": "news",
             "url": "https://ai.essential-navigator.com/imageforge-review",
             "description": "商用利用可能な新しいAI画像生成サービス ImageForge を実際に使用してレビュー。料金プランと競合サービスとの比較分析。",
             "created_at": datetime.now().isoformat()
@@ -72,7 +72,7 @@ def get_existing_article(article_id):
     return {
         "id": article_id,
         "title": f"記事ID {article_id} のタイトル",
-        "category": "tools",
+        "category": "news",
         "url": f"https://ai.essential-navigator.com/article-{article_id}",
         "description": f"記事ID {article_id} の説明文です。",
         "created_at": datetime.now().isoformat()

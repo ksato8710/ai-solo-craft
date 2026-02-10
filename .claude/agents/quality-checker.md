@@ -22,7 +22,7 @@
 - [ ] frontmatter が正しい（title, slug, date, category, description, readTime）
 - [ ] 海外記事の場合: 全文翻訳ではなく要点紹介+独自分析形式
 - [ ] ブランドトーンに沿っている（データドリブン、熱量あり、ソロビルダー視点）
-- [ ] NVA評価セクションがある（featured-tools, morning-news主要記事）
+- [ ] NVA評価セクションがある（DigestのTop 3、個別ニュース）
 
 ## 出力
 - OK → publisher へ

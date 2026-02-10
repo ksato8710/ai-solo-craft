@@ -2,7 +2,8 @@
 title: "過去24時間でAI Solo Builderに激震！グローバル重大ニュース独自ランキングTOP10"
 slug: "2026-02-05-global-ai-solo-builder-news-ranking"
 date: "2026-02-05"
-category: "deep-dive"
+category: "dev-knowledge"
+relatedProduct: openai-codex
 description: "2026年2月4-5日の24時間で起きた、AI Solo Builderの世界を変える重大ニュースを独自の基準でランキング化。市場激震、新ツール登場、開発革新まで完全網羅。"
 image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=420&fit=crop"
 readTime: 6
@@ -13,6 +14,13 @@ readTime: 6
 **探索期間:** 2026年2月4日〜5日（24時間）  
 **情報源:** Bloomberg, Reuters, The New York Times, CNBC, Dev.to, Product Hunt, Hacker News  
 **ランキング基準:** Solo Builder影響度×技術革新度×市場インパクト×実用性
+
+## 🏷️ 関連プロダクト（本サイト内）
+
+- [OpenAI Codex](/products/openai-codex)
+- [Claude Cowork](/products/claude-cowork-plugins-solo-team)
+- [GitHub Copilot](/products/github-copilot)
+- [Claude Code](/products/claude-code)
 
 ## ランキング判定基準
 

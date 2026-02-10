@@ -2,7 +2,8 @@
 title: "AI開発者向け注目ツール3選 — CodexアプリからZed IDEまで最新動向"
 slug: "noon-tools-2026-02-07-ai-dev-breakthrough"
 date: "2026-02-07"
-category: "featured-tools"
+category: "dev-knowledge"
+relatedProduct: openai-codex
 description: "OpenAI CodexのmacOSアプリリリース、オープンソースZed IDE、Bifrost LLMゲートウェイなど、AI開発を加速する最新ツールを紹介"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fit=crop"
 readTime: 4
@@ -83,5 +84,12 @@ AIコーディングアシスタントが一般化する中、「エディタそ
 それぞれ異なるアプローチながら、いずれも「人間とAIの新しい働き方」を模索している点が共通している。まずは興味のあるツールから試してみることをお勧めする。
 
 ---
+
+## 🏷️ 関連プロダクト
+
+- [OpenAI Codex](/products/openai-codex)
+- [Zed](/products/zed)
+- [Bifrost](/products/bifrost)
+- [Claude Code](/products/claude-code)
 
 *本記事の情報は2026年2月7日時点のものです。各ツールの詳細は公式サイトでご確認ください。*

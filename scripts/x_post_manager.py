@@ -27,6 +27,32 @@ PENDING_FILE = os.path.join(BASE_DIR, "X_PENDING_POSTS.md")
 COMPLETED_FILE = os.path.join(BASE_DIR, "X_COMPLETED_POSTS.md")
 FAILED_FILE = os.path.join(BASE_DIR, "X_FAILED_POSTS.md")
 
+# カテゴリ正規化（レガシー互換）
+LEGACY_CATEGORY_MAP = {
+    # canonical
+    'morning-summary': 'morning-summary',
+    'evening-summary': 'evening-summary',
+    'news': 'news',
+    'dev-knowledge': 'dev-knowledge',
+    'case-study': 'case-study',
+    'products': 'products',
+    # legacy -> canonical
+    'morning-news': 'morning-summary',
+    'evening-news': 'evening-summary',
+    'product-news': 'news',
+    'tools': 'news',
+    'tool-review': 'news',
+    'knowledge': 'dev-knowledge',
+    'dev': 'dev-knowledge',
+    'deep-dive': 'dev-knowledge',
+    'featured-tools': 'dev-knowledge',
+    'technical': 'dev-knowledge',
+    'comparison': 'dev-knowledge',
+}
+
+def normalize_category(category: str) -> str:
+    return LEGACY_CATEGORY_MAP.get(category, category)
+
 # トーン改善パターン（痛々しい表現の除去）
 TONE_FIXES = [
     (r'([！!]){2,}', '。'),
@@ -52,7 +78,7 @@ def generate_post_from_article(article_data):
     """記事データからX投稿内容を自動生成"""
     
     title = article_data.get('title', '')
-    category = article_data.get('category', 'unknown')
+    category = normalize_category(article_data.get('category', 'unknown'))
     url = article_data.get('url', '')
     description = article_data.get('description', '')
     
@@ -63,19 +89,7 @@ def generate_post_from_article(article_data):
         url_display = f"ai.essential-navigator.com/{url}"
     
     # カテゴリ別投稿テンプレート
-    if category in ['tools', 'tool-review']:
-        # 新ツール紹介
-        post_content = f"""【発見】{title}
-
-詳細記事で解説📝
-
-{description[:50]}...
-
-{url_display}
-
-#AIツール #新ツール"""
-    
-    elif category in ['deep-dive', 'technical']:
+    if category in ['dev-knowledge']:
         # 技術解説
         post_content = f"""🔬【技術解析】{title}
 
@@ -87,7 +101,7 @@ def generate_post_from_article(article_data):
 
 #AIツール #技術解説"""
     
-    elif category in ['morning-news', 'evening-news', 'news']:
+    elif category in ['morning-summary', 'evening-summary', 'news']:
         # ニュース
         post_content = f"""📰【AI速報】{title}
 
@@ -99,7 +113,7 @@ def generate_post_from_article(article_data):
 
 #AI最新情報"""
     
-    elif category in ['case-study', 'comparison']:
+    elif category in ['case-study']:
         # 事例・比較
         post_content = f"""📊【分析】{title}
 
@@ -110,6 +124,16 @@ def generate_post_from_article(article_data):
 {url_display}
 
 #AIツール #事例分析"""
+    
+    elif category in ['products']:
+        # プロダクト辞書（原則はX投稿しない想定。必要なら手動で調整）
+        post_content = f"""🏷️【プロダクト更新】{title}
+
+概要を更新しました📝
+
+{description[:50]}...
+
+{url_display}"""
     
     else:
         # デフォルト
@@ -211,33 +235,27 @@ def add_to_pending_tasks(article_data, post_content, reason="unknown"):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
     title = article_data.get('title', '無題')
     url = article_data.get('url', '')
-    category = article_data.get('category', 'unknown')
+    category = normalize_category(article_data.get('category', 'unknown'))
     
     # 優先度設定
     priority_map = {
-        'tools': '高（新ツール系）',
-        'tool-review': '高（新ツール系）',
-        'morning-news': '高（速報性）',
-        'evening-news': '高（速報性）',
+        'morning-summary': '高（速報性）',
+        'evening-summary': '高（速報性）',
         'news': '高（速報性）',
-        'deep-dive': '中（解説系）',
-        'technical': '中（解説系）',
+        'dev-knowledge': '中（解説系）',
         'case-study': '低（事例系）',
-        'comparison': '中（比較系）'
+        'products': '低（辞書）',
     }
     priority = priority_map.get(category, '中')
     
     # 期限設定
     deadline_map = {
-        'tools': '当日中',
-        'tool-review': '当日中',
-        'morning-news': '6時間以内',
-        'evening-news': '6時間以内',
+        'morning-summary': '6時間以内',
+        'evening-summary': '6時間以内',
         'news': '6時間以内',
-        'deep-dive': '2日以内',
-        'technical': '2日以内',
+        'dev-knowledge': '2日以内',
         'case-study': '1週間以内',
-        'comparison': '2日以内'
+        'products': '1週間以内',
     }
     deadline = deadline_map.get(category, '2日以内')
     

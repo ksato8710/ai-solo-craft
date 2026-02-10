@@ -6,7 +6,7 @@ interface NewsCardProps {
 }
 
 export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
-  const cat = CATEGORIES[post.category] || CATEGORIES['morning-news'];
+  const cat = CATEGORIES[post.category] || CATEGORIES['morning-summary'];
   
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);

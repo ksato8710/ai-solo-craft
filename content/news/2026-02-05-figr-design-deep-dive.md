@@ -2,10 +2,11 @@
 title: "Figr: プロダクトを理解するAIデザインエージェント — $2.25M調達の次世代UX設計ツール詳細レビュー"
 slug: "figr-design-ai-agent-review-2026"
 date: "2026-02-05"
-category: "deep-dive"
+category: "dev-knowledge"
+relatedProduct: figr-design
 description: "Figr.designは既存プロダクトのコンテキストを理解し、データドリブンなUX改善提案を行うAIデザインエージェント。インド発スタートアップが2024年に$2.25M調達、500+チームが導入済み。表面的なデザイン生成ではなく、プロダクトの本質を理解した設計支援が特徴。"
 image: "https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=800&h=420&fit=crop"
-readTime: "8分"
+readTime: 8
 ---
 
 # Figr: プロダクトを理解するAIデザインエージェント — $2.25M調達の次世代UX設計ツール詳細レビュー
@@ -19,6 +20,8 @@ readTime: "8分"
 - **データドリブン設計:** コンバージョン率・ドロップオフポイントを分析した改善案
 - **エンタープライズ導入:** 500+チーム導入、SOC2認証済み
 - **調達実績:** 2024年10月に$2.25Mシード調達（Kalaari Capital主導）
+
+→ [Figrのプロダクト詳細](/products/figr-design)
 
 ---
 

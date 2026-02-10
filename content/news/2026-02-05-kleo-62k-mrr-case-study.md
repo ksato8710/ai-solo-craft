@@ -3,6 +3,7 @@ title: "AIソロビルダーの現実：26歳エンジニアが3ヶ月で月収6
 slug: "kleo-62k-mrr-case-study"
 date: "2026-02-05"
 category: "case-study"
+relatedProduct: kleo
 description: "Cameron Trewが高年収のSE職を辞めて実家に戻り、3ヶ月で月額定期収益$62,000（約620万円）を達成したKleoの詳細な事例分析。技術スタック選択からマーケティング戦略まで"
 image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=420&fit=crop"
 readTime: 8
@@ -12,7 +13,7 @@ featured: true
 ## 事例サマリー
 
 **創業者：** Cameron Trew（26歳、元シニアエンジニア）  
-**プロダクト：** [Kleo](https://kleo.so/)（LinkedInコンテンツ作成AI）  
+**プロダクト：** [Kleo](/products/kleo)（LinkedInコンテンツ作成AI）  
 **収益実績：** $0 → $62,000 MRR（月額定期収益）を3ヶ月で達成  
 **開始時期：** 2025年9月頃  
 **利用者規模：** 約1,000名のベータユーザー（$99/月の定期購読）  
@@ -216,5 +217,10 @@ Cameronの成功は運よりも**戦略的思考と実行力**の結果だ。特
 - [Indie Hackers - From $0 to $62k MRR in three months](https://www.indiehackers.com/post/tech/from-0-to-62k-mrr-in-three-months-mUPVSYOlJAC2iogGK7d4)
 - [Kleo 公式サイト](https://kleo.so/)
 - [Mentions 公式サイト](https://mentions.so/)
+
+## 🏷️ 関連プロダクト
+
+- [Kleoのプロダクト詳細](/products/kleo)
+- [Mentionsのプロダクト詳細](/products/mentions)
 
 *本記事は原文の分析・解説記事です。詳細な技術情報は原文（英語）をご参照ください。*

@@ -2,9 +2,10 @@
 title: AIソロビルダー朝刊 — 2026年2月2日（日）バイブコーディングが「誰でもできる」時代に突入
 slug: morning-news-2026-02-02-vibe-coding
 date: '2026-02-02'
-category: morning-news
+category: "morning-summary"
 description: "バイブコーディングが誰でもできる時代に。Scientific American特集ほか。"
 image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&h=420&fit=crop"
+readTime: 8
 ---
 ## 📚 Vybe Guide — バイブコーダー向けオープンソース発見プラットフォームが登場
 1月30日にローンチした**Vybe Guide**は、50,760件以上のオープンソースプロジェクトをインデックス化した、バイブコーダー専用の発見プラットフォーム。AIを使ったコーディングで「どのライブラリを使えばいいか」という永遠の課題に答えます。

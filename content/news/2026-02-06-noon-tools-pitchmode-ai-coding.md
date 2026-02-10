@@ -2,7 +2,8 @@
 title: "PitchMode — 開発者向けピッチ練習AIが話題、コーディングアシスタント最新動向も"
 slug: "noon-tools-2026-02-06"
 date: "2026-02-06"
-category: "featured-tools"
+category: "dev-knowledge"
+relatedProduct: pitchmode
 description: "Show HNで注目のPitchMode、技術者が投資家へのプレゼンを60秒で練習・改善。AIコーディングアシスタント2026年版比較も紹介。"
 readTime: 4
 image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=420&fit=crop"
@@ -92,7 +93,7 @@ PitchModeのようなニッチツールと、汎用的なコーディングア�
 
 ## 次にチェックすべきツール
 
-- **PitchMode** → [pitchmode.org](https://pitchmode.org)  
+- **PitchMode** → [PitchModeのプロダクト詳細](/products/pitchmode) / [pitchmode.org](https://pitchmode.org)  
 - **Continue IDE** → オープンソースカスタマイズ重視派
 - **Amazon Q Developer** → AWSエコシステム活用派
 - **Gemini Code Assist** → コスト最適化派（個人開発者無料）

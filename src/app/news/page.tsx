@@ -9,7 +9,7 @@ export default function NewsPage() {
   const sideFeatured = featuredPosts.slice(1, 3);
 
   // News-specific categories (exclude products)
-  const newsCategories = ['morning-news', 'evening-news', 'product-news', 'deep-dive', 'case-study'];
+  const newsCategories = ['morning-summary', 'evening-summary', 'news', 'dev-knowledge', 'case-study'];
 
   return (
     <div>
