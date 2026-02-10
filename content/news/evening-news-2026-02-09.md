@@ -2,7 +2,7 @@
 title: "AIソロビルダー夕刊 — 2026年2月9日（月曜日）信頼システムの革命とAI開発ツールの現実"
 slug: "evening-news-2026-02-09"
 date: "2026-02-09"
-category: "evening-news"
+category: "evening-summary"
 description: "Mitchell HashimotoのVouchで変わるOSS信頼管理、Claude製Cコンパイラの詳細分析結果、そしてAI時代のSaaS Apocalypse — AIソロ開発者にとって今日最も重要な3つのトレンドを深掘り"
 readTime: 8
 image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=420&fit=crop"

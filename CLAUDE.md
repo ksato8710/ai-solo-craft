@@ -65,10 +65,12 @@
 
 ### カテゴリとカラー
 各カテゴリに固有のアクセントカラーを割り当て:
-- 🌅 朝のAIニュース (Morning News): #3B82F6 (blue)
-- 🛠️ 注目ツール (Featured Tools): #8B5CF6 (violet)
-- 🔬 深掘り・ハウツー (Deep Dive): #10b981 (emerald)
-- 📊 事例分析 (Case Study): #f59e0b (amber)
+- 🗞️ 朝のまとめ (morning-summary): #3B82F6 (blue)
+- 🗞️ 夕のまとめ (evening-summary): #F97316 (orange)
+- 📰 ニュース（個別） (news): #6366F1 (indigo)
+- 🏷️ プロダクト（辞書） (products): #8B5CF6 (violet)
+- 🧠 AI開発ナレッジ (dev-knowledge): #10b981 (emerald)
+- 📊 ソロビルダー事例紹介 (case-study): #f59e0b (amber)
 
 ### レイアウト（TLDR.tech準拠）
 1. **ヘッダー:** ロゴ + ナビ（カテゴリリンク）+ 「ニュースレター登録」ボタン（将来用）
@@ -92,31 +94,31 @@
 ### ディレクトリ
 ```
 /content/
-  /news/
-    2026-02-02-morning-vibe-coding.mdx
-    2026-02-02-noon-tools.mdx
-    2026-02-02-evening-pieter-levels.mdx
-  /tools/     (将来: ツールディレクトリ)
+  /news/        # Digest/ニュース/ナレッジ/事例
+  /products/    # プロダクト辞書（恒久ページ）
 ```
 
 ### Frontmatter
 ```yaml
 ---
-title: "バイブコーディングが「誰でもできる」時代に突入"
-slug: "morning-news-2026-02-02-vibe-coding-mainstream"
-date: "2026-02-02"
-category: "morning-news"
-description: "Scientific AmericanのClaude Code特集..."
-readTime: 5
-featured: true
-image: "/images/default-morning.jpg"
----
+	title: "バイブコーディングが「誰でもできる」時代に突入"
+	slug: "morning-news-2026-02-02-vibe-coding-mainstream"
+	date: "2026-02-02"
+	category: "morning-summary"
+	relatedProduct: "cursor" # 任意: 関連プロダクト（/products/[slug]）
+	description: "Scientific AmericanのClaude Code特集..."
+	readTime: 5
+	featured: true
+	image: "/images/default-morning.jpg"
+	---
 ```
 
 ## ページ構成
 - `/` — トップページ（ヒーロー + カテゴリ別グリッド）
 - `/news/[slug]` — 記事詳細ページ
+- `/products/[slug]` — プロダクト詳細ページ
 - `/category/[category]` — カテゴリ一覧ページ
+- `/news-value` — ニュースバリュー評価一覧ページ
 
 ## 海外記事の紹介方針（2026-02-03 けいた様承認・確定）
 

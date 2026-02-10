@@ -40,7 +40,6 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-6 text-xs text-slate-400">
           <span>🌅 朝刊 8:00</span>
-          <span>🏷️ プロダクト 12:00</span>
           <span>🌆 夕刊 18:00</span>
         </div>
         <div className="text-xs text-slate-500">

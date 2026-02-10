@@ -2,7 +2,8 @@
 title: "超最新！HNで話題のAI開発ツール3選 — Crew、Misatay、PitchMode"
 slug: "noon-tools-2026-02-08"
 date: "2026-02-08"
-category: "featured-tools"
+category: "dev-knowledge"
+relatedProduct: misatay
 description: "Hacker Newsで5時間前に発表されたばかりの開発ツールを厳選紹介"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fit=crop"
 readTime: 4
@@ -102,3 +103,10 @@ Claude CodeのTeam Agent機能成功を受け、マルチエージェント開�
 - [Misatay HN投稿](https://news.ycombinator.com/item?id=46928648)
 - [Crew GitHub](https://github.com/garnetliu/crew)  
 - [PitchMode HN投稿](https://news.ycombinator.com/item?id=46896915)
+
+## 🏷️ 関連プロダクト
+
+- [Misatay](/products/misatay)
+- [Crew](/products/crew)
+- [PitchMode](/products/pitchmode)
+- [Claude Code](/products/claude-code)

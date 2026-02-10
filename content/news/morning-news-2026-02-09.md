@@ -2,7 +2,7 @@
 title: "AIソロビルダー朝刊 — 2026年2月9日（月）SaaS代替革命の夜明け"
 slug: "morning-news-2026-02-09"
 date: "2026-02-09"
-category: "morning-news"
+category: "morning-summary"
 description: "AI開発者が一人でSaaS製品を内製化し、企業が数百万ドル節約へ"
 readTime: 8
 image: "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=800&h=420&fit=crop"

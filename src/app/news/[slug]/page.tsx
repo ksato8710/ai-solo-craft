@@ -21,7 +21,7 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const cat = CATEGORIES[post.category] || CATEGORIES['morning-news'];
+  const cat = CATEGORIES[post.category] || CATEGORIES['morning-summary'];
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
     return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;

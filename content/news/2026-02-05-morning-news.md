@@ -2,7 +2,7 @@
 title: "AIソロビルダー朝刊 — 2026年2月5日（水）Claude Coworkが市場を震撼、ソロ創業者が305%成長を実現"
 slug: "morning-news-2026-02-05"
 date: "2026-02-05"
-category: "morning-news"
+category: "morning-summary"
 description: "AnthropicのClaude Coworkが$285億の株価急落を引き起こし、一方でAIを活用するソロ創業者は驚異的な成長を達成。「Vibe coding」が6週間で6アプリ開発の新記録を樹立。"
 readTime: 4
 featured: true

@@ -2,7 +2,8 @@
 title: "MCP（Model Context Protocol）実践ガイド — AIソロビルダーのための環境構築からユースケースまで"
 slug: "mcp-practical-guide"
 date: "2026-02-03"
-category: "dev"
+category: "dev-knowledge"
+relatedProduct: claude-code
 description: "MCPの導入手順から主要サーバー、Claude連携まで実践解説。"
 readTime: 15
 featured: true
@@ -12,6 +13,12 @@ image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=420&fi
 ## MCP（Model Context Protocol）とは何か
 
 **MCP（Model Context Protocol）** は、Anthropicが **2024年11月** にオープンソースとして公開した、AIアプリケーションと外部システムを接続するための標準プロトコルだ。公式サイトでは「AIのUSB-C」と表現されている — USB-Cがあらゆるデバイスを標準的に接続するように、MCPはあらゆるAIモデルとツールを標準的に接続する。
+
+## 🏷️ 関連プロダクト
+
+- [Claude Code](/products/claude-code)
+- [Cursor](/products/cursor)
+- [GitHub Copilot](/products/github-copilot)
 
 ### なぜMCPが必要なのか
 

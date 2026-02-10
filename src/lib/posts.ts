@@ -25,13 +25,13 @@ export interface Post {
 }
 
 export const CATEGORIES: Record<string, { label: string; color: string; emoji: string }> = {
-  'morning-news': { label: '朝のAIニュース', color: '#3B82F6', emoji: '🌅' },
-  'evening-news': { label: '夕刊AIニュース', color: '#F97316', emoji: '🌆' },
-  'product-news': { label: 'プロダクトニュース', color: '#6366F1', emoji: '📰' },
-  'products': { label: 'プロダクトディレクトリ', color: '#8B5CF6', emoji: '🏷️' },
-  'dev': { label: '開発・実践', color: '#06b6d4', emoji: '🛠️' },
-  'deep-dive': { label: '深掘り・ハウツー', color: '#10b981', emoji: '🔬' },
-  'case-study': { label: '事例分析', color: '#f59e0b', emoji: '📊' },
+  // Key order is used by pages that enumerate categories.
+  'morning-summary': { label: '朝のまとめ', color: '#3B82F6', emoji: '🗞️' },
+  'evening-summary': { label: '夕のまとめ', color: '#F97316', emoji: '🗞️' },
+  'news': { label: 'ニュース', color: '#6366F1', emoji: '📰' },
+  'dev-knowledge': { label: 'AI開発ナレッジ', color: '#10b981', emoji: '🧠' },
+  'case-study': { label: 'ソロビルダー事例', color: '#f59e0b', emoji: '📊' },
+  'products': { label: 'プロダクト', color: '#8B5CF6', emoji: '🏷️' },
 };
 
 function readPostsFromDirectory(directory: string, type: 'news' | 'product'): Post[] {
@@ -49,7 +49,7 @@ function readPostsFromDirectory(directory: string, type: 'news' | 'product'): Po
       slug,
       title: data.title || '',
       date: data.date || '',
-      category: data.category || (type === 'product' ? 'products' : 'morning-news'),
+      category: data.category || (type === 'product' ? 'products' : 'news'),
       description: data.description || '',
       readTime: data.readTime || 5,
       featured: data.featured || false,
@@ -111,7 +111,7 @@ async function findPostInDirectory(directory: string, slug: string, type: 'news'
         slug: postSlug,
         title: data.title || '',
         date: data.date || '',
-        category: data.category || (type === 'product' ? 'products' : 'morning-news'),
+        category: data.category || (type === 'product' ? 'products' : 'news'),
         description: data.description || '',
         readTime: data.readTime || 5,
         featured: data.featured || false,

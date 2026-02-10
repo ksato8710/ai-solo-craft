@@ -2,7 +2,8 @@
 title: "Claude Codeで稼ぐ15のビジネスアイデア｜海外記事が提案する月3〜50万円の収益モデルを日本向けに解説"
 slug: "claude-code-business-ideas-2026"
 date: "2026-02-03"
-category: "dev"
+category: "dev-knowledge"
+relatedProduct: claude-code
 description: "Claude Codeで月3〜50万円稼ぐ15のビジネスモデルを日本向けに解説。"
 readTime: 15
 featured: true
@@ -16,6 +17,8 @@ image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=420
 本記事では、その15のアイデアを日本語で紹介しつつ、**日本のAIソロビルダーが実際に取り組む場合の実現可能性と注意点**を独自に分析する。
 
 > 💡 本記事は翻訳ではなく、原文の紹介・解説記事です。詳細は[原文（英語）](https://entrepreneurloop.com/15-best-claude-code-business-ideas-for-developers-in-2026/)をご覧ください。
+
+→ [Claude Codeのプロダクト詳細](/products/claude-code)
 
 ---
 

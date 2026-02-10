@@ -18,7 +18,7 @@ news-scout が選定したネタから、ブランドガイドラインに沿っ
 
 ## 入力
 - 記事テーマ + ソースURL + NVA評価データ
-- カテゴリ指定（morning-news / featured-tools / deep-dive / case-study）
+- カテゴリ指定（morning-summary / evening-summary / news / dev-knowledge / case-study）
 
 ## 出力
 - content/news/YYYY-MM-DD-slug.md（完成記事）

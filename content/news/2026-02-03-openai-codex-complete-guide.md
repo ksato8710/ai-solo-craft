@@ -2,7 +2,8 @@
 title: "【2026年最新】OpenAI Codex完全ガイド｜CLI・デスクトップアプリの使い方から料金・競合比較まで"
 slug: "openai-codex-complete-guide"
 date: "2026-02-03"
-category: "dev"
+category: "dev-knowledge"
+relatedProduct: openai-codex
 description: "月間100万ユーザーのCodex CLI＋デスクトップアプリを徹底解説。"
 readTime: 12
 featured: true
@@ -12,6 +13,8 @@ image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fi
 ## この記事でわかること
 OpenAI Codex（2025年5月CLI公開、2026年2月デスクトップアプリ公開）は、月間100万人以上の開発者が利用するAIコーディングエージェントだ。ターミナルから自然言語でコード生成・編集・デバッグができ、2026年2月2日にはmacOSデスクトップアプリもリリースされた。
 この記事では、Codex CLIのインストールから、新登場のデスクトップアプリの使い方、マルチエージェント機能、料金プラン、競合（Claude Code・Gemini CLI）との比較まで、実践的に解説する。
+
+→ [OpenAI Codexのプロダクト詳細](/products/openai-codex)
 ## OpenAI Codexとは？
 **OpenAI Codex**は、OpenAIが提供するAIコーディングエージェントだ。自然言語の指示をコードに変換し、ファイルの編集、コマンドの実行、テストの実行までを自律的に行う。
 ### 基本データ

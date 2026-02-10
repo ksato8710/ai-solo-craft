@@ -7,7 +7,7 @@ interface CategorySectionProps {
 }
 
 export default function CategorySection({ category, posts }: CategorySectionProps) {
-  const cat = CATEGORIES[category] || CATEGORIES['morning-news'];
+  const cat = CATEGORIES[category] || CATEGORIES['morning-summary'];
   
   if (posts.length === 0) return null;
 
