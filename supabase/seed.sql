@@ -1,0 +1,2 @@
+-- Seed data for local development only.
+-- Keep empty by default; use dedicated migrations for production baseline data.

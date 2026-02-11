@@ -1,109 +1,112 @@
-# Content Policy Spec
+# Content Policy Spec (V2)
 
 ## Goal
-Define the service's core content policy and enforce a single, unambiguous taxonomy:
+Define the service's canonical content policy with a DB-ready model.
 
-- "News" and "Products" are distinct.
-- "Case Study" and "Knowledge" are separate from News/Products.
-- "Morning/Evening Digest" are distinct and have a fixed format.
-- Content should link to a stable Product dictionary page (`/products/[slug]`) whenever a Product is involved.
+Core decisions:
+- Top-level content classification is **3 types**:
+  1. `news`
+  2. `product`
+  3. `digest`
+- Digest has an edition axis: `morning` / `evening`.
+- `dev-knowledge`, `case-study`, `product-update` are managed as **news tags**, not top-level categories.
+- Any content involving a product must link to a stable product dictionary page (`/products/[slug]`).
 
-This spec exists to satisfy SDD First (AGENTS.md): implementations must be traceable to a spec.
+This spec is the policy layer. Database entities and file/DB sync details are defined in:
+- `specs/content-model-db/spec.md`
 
-## Content Types (5)
-The service has 5 conceptual content types:
+## Canonical Content Model
 
-1. Digest (Morning)
-2. Digest (Evening)
-3. News (single topic)
-4. Case Study
-5. Knowledge
+### 1) Top-level classification
+- `contentType: news | product | digest`
 
-Products are handled as a separate dictionary section (not counted as a "content type" above; they are a reference layer used by all content).
+### 2) Digest edition
+- `digestEdition: morning | evening` (required only when `contentType: digest`)
 
-## Storage
-- News/Digest/CaseStudy/Knowledge: `content/news/*.md`
-- Product dictionary: `content/products/*.md`
+### 3) News tag model
+Recommended tags for `contentType: news`:
+- `dev-knowledge`
+- `case-study`
+- `product-update`
 
-## Frontmatter Contract
-All markdown content must include YAML frontmatter with at least:
+Additional tags can be added later, but must remain additive and backward compatible.
 
+## Storage Policy
+- Authoring files:
+  - News + Digest: `content/news/*.md`
+  - Product dictionary: `content/products/*.md`
+- Serving/query layer (web + mobile): PostgreSQL (see DB spec)
+
+During migration, Markdown remains an authoring source while DB is introduced as query source.
+
+## Frontmatter Contract (Authoring Files)
+
+### Canonical v2 fields (target)
+Required for all content:
 - `title: string`
 - `slug: string`
 - `date: YYYY-MM-DD string`
-- `category: string` (restricted; see below)
+- `contentType: news | product | digest`
 - `description: string`
 - `readTime: number`
 
-Optional but recommended:
-- `relatedProduct: string` (a product slug; must correspond to an existing `content/products/*.md` slug)
+Conditional:
+- `digestEdition: morning | evening` (required for `contentType: digest`)
+- `tags: string[]` (recommended for `contentType: news`)
+- `relatedProducts: string[]` (recommended when product context exists)
 
-## Category Taxonomy (canonical)
-We use a small set of **canonical** categories to represent the policy.
+Optional compatibility:
+- `relatedProduct: string` (legacy single-value field; to be migrated into `relatedProducts`)
 
-- `morning-summary`: Morning Digest
-- `evening-summary`: Evening Digest
-- `news`: single-topic News
-- `dev-knowledge`: AI development knowledge
-- `case-study`: solo builder case study
-- `products`: product dictionary pages
+### Legacy compatibility (current implementation)
+Current runtime still uses `category`. Until full migration, map as follows:
+- `morning-summary` -> `contentType: digest`, `digestEdition: morning`
+- `evening-summary` -> `contentType: digest`, `digestEdition: evening`
+- `news` -> `contentType: news`
+- `dev-knowledge` -> `contentType: news`, `tags += ["dev-knowledge"]`
+- `case-study` -> `contentType: news`, `tags += ["case-study"]`
+- `products` -> `contentType: product`
 
-### Migration mapping (legacy -> canonical)
-These legacy categories must be treated as deprecated and migrated:
-
-- `morning-news` -> `morning-summary`
-- `evening-news` -> `evening-summary`
-- `knowledge` -> `dev-knowledge`
-- `product-news` -> `news`
-- `tools` -> `news`
-- `featured-tools` -> `dev-knowledge`
-- `dev` -> `dev-knowledge`
-- `deep-dive` -> `dev-knowledge`
-
-## Digest Format (Morning/Evening)
+## Digest Format (Policy)
 Digest posts must include:
-
-1. A section titled `## 🏁 重要ニュースランキング（NVA）`
-2. A table listing **Top 10 (max)** items (rank + NVA + title)
-3. A section titled `## 🔥 Top 3 ピックアップ`
-4. For each of the Top 3 items: an NVA table with 5 axes (0-20 each) and total (0-100) and Tier.
+1. `## 🏁 重要ニュースランキング（NVA）`
+2. Top 10 (max) ranking table
+3. `## 🔥 Top 3 ピックアップ`
+4. NVA breakdown for each Top 3 item
 
 ### Ranking page operation (`/news-value`)
-- Each time a Digest (morning/evening) is published, the ranking at `/news-value` is updated for that digest window.
-- The ranking page shows **Top 10** for the window.
-- Only the **Top 3** are expanded and written as individual News articles (`category: news`) and are linked from the ranking.
+- Publishing each digest (morning/evening) updates ranking for that digest window.
+- Ranking page displays Top 10 for morning and Top 10 for evening.
+- Top 3 items are expected to have individual news articles and links.
 
 ## Product Linking Policy
-When a piece of content is **about** a Product (or requires product context to understand):
-
-- It must link to `/products/[slug]` in the body, and
-- It should set `relatedProduct: [slug]` in frontmatter.
-
-If the product page does not exist at that time:
-- Create it in `content/products/*.md` first (or in the same change), then link to it.
-
-## Acceptance Criteria
-1. All `content/news/*.md` have `category` in:
-   - `morning-summary`, `evening-summary`, `news`, `dev-knowledge`, `case-study`
-2. All `content/products/*.md` have `category: products`
-3. Every Digest post (category `morning-summary` or `evening-summary`) includes the Digest Format requirements.
-4. Any `/products/[slug]` link in `content/news/*.md` resolves to an existing product page slug.
-5. App-side category definitions (UI) must include the canonical categories.
-6. Header navigation must expose Digest entry as a single menu item (`朝夕のまとめ`) instead of separate `朝刊` and `夕刊` items.
-7. Home page must render Digest content in one section (`朝夕のまとめ`) that contains both Morning and Evening Digest entries.
-
-## Implementation Notes (traceability)
-This spec is implemented by:
-- Category taxonomy and UI mapping: `src/lib/posts.ts`, `src/app/layout.tsx`, `src/app/news/page.tsx`, `src/app/page.tsx`
-- Content migration: `content/news/*.md` frontmatter `category` normalization
-- Digest format: Digest posts in `content/news/*.md` (category `morning-summary` or `evening-summary`)
-- Ranking page (`/news-value`): `src/app/news-value/page.tsx`, `src/lib/digest.ts`
-- Product dictionary pages: `content/products/*.md`
+When content needs product context:
+- Include links to `/products/[slug]` in body.
+- Set `relatedProducts` (or legacy `relatedProduct`) in frontmatter.
+- If product page does not exist, create/update it first (or in the same change).
 
 ## Information Architecture Notes
-- Header menu IA:
-  - Digest is a unified entry labeled `朝夕のまとめ`.
-  - Morning and Evening remain separate categories in content taxonomy, but are grouped in navigation.
-- Home IA:
-  - A single section labeled `朝夕のまとめ` presents both `morning-summary` and `evening-summary` cards.
-  - Existing category sections should not render separate `朝のまとめ` / `夕のまとめ` blocks on Home.
+- Header navigation exposes digest as one entry: `朝夕のまとめ`.
+- Home page has one digest section: `朝夕のまとめ` containing both morning and evening cards.
+- Morning/evening remain distinct digest editions in the data model.
+
+## Acceptance Criteria
+1. Policy-level top classification is `news | product | digest`.
+2. Digest is represented via `contentType: digest` + `digestEdition`.
+3. `dev-knowledge` and `case-study` are treated as news tags in canonical model.
+4. Product context is linked to `/products/[slug]` and resolved.
+5. Digest format and `/news-value` operation remain enforced.
+6. File/DB dual operation is documented and traceable to DB spec.
+
+## Implementation Notes (Traceability)
+- Current runtime (legacy category-based):
+  - `src/lib/posts.ts`
+  - `scripts/validate-content.mjs`
+  - `src/app/news/page.tsx`
+  - `src/app/layout.tsx`
+  - `src/app/page.tsx`
+- Digest ranking parser:
+  - `src/lib/digest.ts`
+  - `src/app/news-value/page.tsx`
+- DB-ready target model:
+  - `specs/content-model-db/spec.md`

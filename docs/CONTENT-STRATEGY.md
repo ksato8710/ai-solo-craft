@@ -1,6 +1,10 @@
 # AI Solo Builder — コンテンツ戦略
 
 *作成日: 2026-02-03*
+*更新日: 2026-02-11（DB移行前提のデータモデル更新）*
+
+> 最新の正本（canonical）は `specs/content-policy/spec.md` と `specs/content-model-db/spec.md` を参照。
+> 本ドキュメント内の旧 `category` ベース記述は、移行完了までの運用互換として扱う。
 
 ---
 
@@ -11,6 +15,15 @@
 ---
 
 ## コンテンツ種類別設計（5種類）
+
+### 2026-02-11時点の分類方針（canonical）
+
+- トップ分類は **3種類**:
+  - `news`
+  - `product`
+  - `digest`
+- `digest` は `morning` / `evening` を edition として管理
+- `dev-knowledge` / `case-study` / `product-update` はニュースのタグとして管理
 
 ### 🗞️ 朝夕のまとめ（Digest: morning / evening）
 

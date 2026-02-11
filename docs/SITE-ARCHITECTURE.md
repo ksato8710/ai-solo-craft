@@ -1,6 +1,10 @@
 # AI Solo Builder — サイト構成
 
 *作成日: 2026-02-03*
+*更新日: 2026-02-11（DBエンティティ設計追記）*
+
+> 最新のデータモデル正本は `specs/content-policy/spec.md` と `specs/content-model-db/spec.md` を参照。
+> このドキュメントの旧 `category` 記述は、現行実装互換の説明を含みます。
 
 ---
 
@@ -13,7 +17,7 @@
 | スタイリング | Tailwind CSS |
 | ビルド | SSG（Static Site Generation） |
 | ホスティング | Vercel（無料枠） |
-| コンテンツ | Markdown（frontmatter + body） |
+| コンテンツ | Markdown（authoring） + PostgreSQL（serving/query） |
 | デプロイ | git push → Vercel自動デプロイ |
 | リポジトリ | （このリポジトリ） |
 | ドメイン | ai.essential-navigator.com |
