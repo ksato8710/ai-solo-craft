@@ -163,6 +163,19 @@ List<ContentSummary> _toSummaryList(dynamic value) {
       .toList(growable: false);
 }
 
+/// Map raw tag slugs to Japanese display labels.
+const tagDisplayLabels = <String, String>{
+  'dev-knowledge': 'AI開発ナレッジ',
+  'product-update': 'プロダクトアップデート',
+  'case-study': '事例紹介',
+  'tool-introduction': 'プロダクトアップデート',
+  'ツール紹介': 'プロダクトアップデート',
+  'other': 'その他',
+};
+
+/// Returns the Japanese display label for a tag.
+String localizeTag(String tag) => tagDisplayLabels[tag] ?? tag;
+
 List<String> _toStringList(dynamic value) {
   if (value is! List) {
     return const [];

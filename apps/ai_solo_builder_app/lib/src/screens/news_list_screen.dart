@@ -296,7 +296,7 @@ class _NewsListScreenState extends State<NewsListScreen>
           ),
           ...sortedTags.map(
             (entry) => _FilterChip(
-              label: entry.key,
+              label: localizeTag(entry.key),
               count: entry.value,
               isSelected: _selectedTag == entry.key,
               onTap: () => _selectTag(entry.key),

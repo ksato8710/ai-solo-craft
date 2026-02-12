@@ -13,6 +13,10 @@ class ContentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Pick the first tag (localized) for display
+    final displayTag =
+        item.tags.isNotEmpty ? localizeTag(item.tags.first) : null;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Material(
@@ -84,7 +88,7 @@ class ContentCard extends StatelessWidget {
                           ),
                         ),
                       const SizedBox(height: 8),
-                      // Bottom row: date + readTime + tags
+                      // Bottom row: date + readTime + tag
                       Row(
                         children: [
                           Text(
@@ -103,13 +107,24 @@ class ContentCard extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
-                          if (item.tags.isNotEmpty)
-                            Flexible(
-                              child: Wrap(
-                                spacing: 4,
-                                runSpacing: 4,
-                                alignment: WrapAlignment.end,
-                                children: item.tags.map((tag) => _TagChip(tag: tag)).toList(),
+                          if (displayTag != null)
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 3),
+                              decoration: BoxDecoration(
+                                color:
+                                    AppColors.brandBlue.withValues(alpha: 0.15),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                displayTag,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  color: AppColors.brandBlue,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             )
                           else
@@ -125,31 +140,6 @@ class ContentCard extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _TagChip extends StatelessWidget {
-  const _TagChip({required this.tag});
-
-  final String tag;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration: BoxDecoration(
-        color: AppColors.brandBlue.withValues(alpha: 0.15),
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        tag,
-        style: const TextStyle(
-          color: AppColors.brandBlue,
-          fontSize: 11,
-          fontWeight: FontWeight.w500,
         ),
       ),
     );
