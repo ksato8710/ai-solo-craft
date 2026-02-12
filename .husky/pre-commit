@@ -1,0 +1,3 @@
+#!/bin/sh
+npm run validate:content
+npm run check:images

@@ -8,13 +8,15 @@
     "start": "next start",
     "lint": "eslint",
     "validate:content": "node scripts/validate-content.mjs",
+    "check:images": "node scripts/check-images.mjs",
     "db:push": "supabase db push --linked",
     "db:lint": "supabase db lint --linked",
     "db:migrations:list": "supabase migration list --linked",
     "db:types": "supabase gen types typescript --linked --schema public > src/types/database.ts",
     "sync:content:db": "node scripts/sync-content-to-supabase.mjs",
     "sync:content:db:dry": "node scripts/sync-content-to-supabase.mjs --dry-run",
-    "publish:gate": "bash scripts/publish-gate.sh"
+    "publish:gate": "bash scripts/publish-gate.sh",
+    "prepare": "husky"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.95.3",
@@ -33,6 +35,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "husky": "^9.1.7",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
