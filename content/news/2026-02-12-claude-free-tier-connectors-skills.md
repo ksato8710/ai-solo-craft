@@ -9,7 +9,7 @@ image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=420
 contentType: "news"
 readTime: 5
 featured: false
-tags: ["Claude", "Anthropic", "無料プラン", "Connectors"]
+tags: ["ツール紹介"]
 relatedProducts: ["claude"]
 ---
 

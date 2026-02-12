@@ -9,7 +9,7 @@ image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=420
 contentType: "news"
 readTime: 4
 featured: false
-tags: ["M&A", "AIエージェント", "検索", "インフラ"]
+tags: ["other"]
 relatedProducts: []
 ---
 

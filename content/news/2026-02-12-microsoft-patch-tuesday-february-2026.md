@@ -9,7 +9,7 @@ image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&h=420
 contentType: "news"
 readTime: 4
 featured: false
-tags: ["セキュリティ", "Microsoft", "Windows", "パッチ"]
+tags: ["other"]
 relatedProducts: []
 ---
 
