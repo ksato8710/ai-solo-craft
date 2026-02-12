@@ -2,7 +2,7 @@
 title: "Perplexity — AI回答エンジン型の次世代検索サービス"
 slug: perplexity-ai-search-engine
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Perplexity AIは、複数のWeb情報源を統合し引用付きのレポートとして回答を生成するAI検索エンジン。AIブラウザ「Comet」も提供し、検索の枠を超えた知識プラットフォームへと進化している。"
 image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=420&fit=crop"

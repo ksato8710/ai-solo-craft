@@ -2,7 +2,7 @@
 title: "Claude Code — AnthropicのCLI/エージェント型コーディング支援"
 slug: claude-code
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Claude Codeは、ターミナル中心でコード生成・編集・リファクタ・調査を支援するAnthropicのコーディング支援ツール。ソロ開発の速度を上げる「相棒」として使う。"
 readTime: 6

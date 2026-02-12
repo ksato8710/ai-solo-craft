@@ -1,12 +1,15 @@
 ---
-title: Anton Osikaの事例 — 週末プロトタイプから8ヶ月で年商150億円のAIソフトウェアビルダーを構築
-slug: lovable-anton-osika-case-study
-date: '2026-02-04'
-category: case-study
-relatedProduct: lovable-ai-web-app-builder
+title: "Anton Osikaの事例 — 週末プロトタイプから8ヶ月で年商150億円のAIソフトウェアビルダーを構築"
+slug: "lovable-anton-osika-case-study"
+date: "2026-02-04"
+contentType: "news"
 description: "スウェーデンの物理学者が作ったGPT-Engineerが、Lovableとして8ヶ月でARR $100Mに到達。チーム40人で230万ユーザーを獲得した全戦略を分析。"
+readTime: "8"
+tags:
+  - "case-study"
+relatedProducts:
+  - "lovable-ai-web-app-builder"
 image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=420&fit=crop"
-readTime: 8
 ---
 
 物理学の研究者からエンジニア、そしてソロビルダーへ。Anton Osikaの軌跡は、AIソロビルダーの可能性を極限まで押し広げた稀有な事例である。

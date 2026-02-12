@@ -2,11 +2,14 @@
 title: "【2026年最新】OpenAI Codex完全ガイド｜CLI・デスクトップアプリの使い方から料金・競合比較まで"
 slug: "openai-codex-complete-guide"
 date: "2026-02-03"
-category: "dev-knowledge"
-relatedProduct: openai-codex
+contentType: "news"
 description: "月間100万ユーザーのCodex CLI＋デスクトップアプリを徹底解説。"
-readTime: 12
-featured: true
+readTime: "12"
+tags:
+  - "dev-knowledge"
+relatedProducts:
+  - "openai-codex"
+featured: "true"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fit=crop"
 ---
 

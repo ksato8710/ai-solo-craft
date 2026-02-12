@@ -2,12 +2,13 @@
 title: "Claude Code、プロジェクトメモリ機能を追加 — 仕様をMarkdownで固定してブレを減らす"
 slug: "claude-code-project-memory"
 date: "2026-02-10"
-category: "news"
-relatedProduct: "claude-code"
+contentType: "news"
 description: "Claude Code運用で最大の敵は“コンテキストのブレ”。プロジェクトメモリで、仕様・設計・禁止事項をリポジトリ内Markdownに固定し、毎回同じ前提で走らせる運用が現実的になった。"
-readTime: 6
+readTime: "6"
+relatedProducts:
+  - "claude-code"
 image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=420&fit=crop"
-featured: false
+featured: "false"
 ---
 
 ## TL;DR

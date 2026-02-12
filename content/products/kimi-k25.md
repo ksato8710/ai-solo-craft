@@ -2,7 +2,7 @@
 title: "Kimi K2.5 — 大規模OSSモデル（記事内で言及）"
 slug: kimi-k25
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Kimi K2.5は、記事内で言及されている大規模オープンソースモデル（詳細は必要に応じて追記）。"
 readTime: 3

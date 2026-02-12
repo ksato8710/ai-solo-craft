@@ -2,7 +2,7 @@
 title: "Bifrost — 複数LLMを切り替える統一ゲートウェイ"
 slug: bifrost
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Bifrostは、複数のLLMプロバイダーを1つのエンドポイントにまとめるゲートウェイ/ルーター。コスト最適化やフェイルオーバーを狙う。"
 readTime: 4

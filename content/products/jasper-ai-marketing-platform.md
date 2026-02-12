@@ -2,7 +2,7 @@
 title: "Jasper — 企業向けAIマーケティングコンテンツ生成プラットフォーム"
 slug: jasper-ai-marketing-platform
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Jasperは、マーケティングチーム向けに特化したAIコンテンツ生成プラットフォーム。ブランドボイスの統一、50以上のテンプレート、チーム協業機能でマーケティングワークフローを効率化する。"
 image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=420&fit=crop"

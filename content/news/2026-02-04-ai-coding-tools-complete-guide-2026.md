@@ -1,12 +1,15 @@
 ---
-title: 【2026年決定版】AIコーディングツール完全比較ガイド — 日本のソロビルダー向け実践的選び方と使い分け戦略
-slug: ai-coding-tools-complete-guide-2026
-date: '2026-02-04'
-category: "dev-knowledge"
-relatedProduct: cursor
+title: "【2026年決定版】AIコーディングツール完全比較ガイド — 日本のソロビルダー向け実践的選び方と使い分け戦略"
+slug: "ai-coding-tools-complete-guide-2026"
+date: "2026-02-04"
+contentType: "news"
 description: "2026年最新のAIコーディングツール14製品を徹底比較。Cursor・Claude Code・Clineなど人気ツールの特徴、料金、使い分け戦略を日本のソロビルダー向けに解説。"
+readTime: "12"
+tags:
+  - "dev-knowledge"
+relatedProducts:
+  - "cursor"
 image: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&h=420&fit=crop"
-readTime: 12
 ---
 
 2026年現在、開発者の85%がAIコーディングツールを日常的に使用している。しかし、選択肢は爆発的に増え、どのツールを選ぶべきか迷う開発者も多い。

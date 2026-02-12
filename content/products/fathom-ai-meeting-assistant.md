@@ -2,7 +2,7 @@
 title: "Fathom — 会議の録音・要約・アクション抽出を自動化するAIアシスタント"
 slug: fathom-ai-meeting-assistant
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Fathomは、オンラインミーティングを自動で録画・文字起こし・要約するAIミーティングアシスタント。無料プランでも録画・文字起こし・AI要約が無制限に使える驚異的なコストパフォーマンスが特徴。"
 image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=420&fit=crop"

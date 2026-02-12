@@ -2,12 +2,15 @@
 title: "Cline：VS Codeで動く自律型AIコーディングエージェントの衝撃"
 slug: "cline-autonomous-coding-agent-vscode"
 date: "2026-02-04"
-category: "dev-knowledge"
-relatedProduct: cline
+contentType: "news"
 description: "オープンソースの自律型コーディングエージェント「Cline」が、VS Code上でファイル操作・ターミナル実行・ブラウザテストを自動化。Claude Sonnetの推論力を活用し、ソロビルダーの開発速度を革命的に向上させる無料ツール。"
-readTime: 8
+readTime: "8"
+tags:
+  - "dev-knowledge"
+relatedProducts:
+  - "cline"
 image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=420&fit=crop"
-featured: false
+featured: "false"
 ---
 
 AI開発ツールの進化が止まらない。もはや単なる補完機能やチャットアシスタントの時代は終わり、完全に自律的なワークフローを実行するエージェントが登場した。

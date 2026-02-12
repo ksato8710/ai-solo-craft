@@ -2,7 +2,7 @@
 title: "GitHub Copilot — コード補完・生成の定番"
 slug: github-copilot
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "GitHub Copilotは、エディタ上でコード補完や生成を支援する定番ツール。小さな実装の反復を高速化する。"
 readTime: 5

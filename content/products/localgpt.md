@@ -2,7 +2,7 @@
 title: "LocalGPT — ローカル完結のAIアシスタント（Rust）"
 slug: localgpt
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "LocalGPTは、ローカル実行・永続メモリを掲げるRust製のAIアシスタントプロジェクト。プライバシー重視の開発環境で注目されている。"
 readTime: 4

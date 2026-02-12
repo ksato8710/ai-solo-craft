@@ -2,7 +2,7 @@
 title: "Voxtral Mini"
 slug: "voxtral-mini"
 date: "2026-02-10"
-category: "products"
+contentType: "product"
 description: "音声認識（ASR）をローカルで動かすための軽量モデル/実装。ブラウザ（WASM）でのリアルタイム運用が注目。"
 readTime: 4
 image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=420&fit=crop"

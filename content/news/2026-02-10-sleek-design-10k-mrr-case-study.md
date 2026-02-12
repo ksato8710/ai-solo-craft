@@ -2,12 +2,15 @@
 title: "Mattia Pomelli、Sleek.designで6週間$10k MRR — デザイン自動化×高速検証の勝ち筋"
 slug: "sleek-design-10k-mrr-case-study"
 date: "2026-02-10"
-category: "case-study"
-relatedProduct: "sleek-design"
+contentType: "news"
 description: "非デザイナーでも“検証速度”で勝てる。3週間で開発、6週間で月$10k到達というSleek.designの事例から、ソロが再現できる戦い方を分解する。"
-readTime: 9
+readTime: "9"
+tags:
+  - "case-study"
+relatedProducts:
+  - "sleek-design"
 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=420&fit=crop"
-featured: false
+featured: "false"
 ---
 
 ## プロフィール

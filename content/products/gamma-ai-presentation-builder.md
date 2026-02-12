@@ -2,7 +2,7 @@
 title: "Gamma — AIでプレゼン・ドキュメントを自動作成するツール"
 slug: gamma-ai-presentation-builder
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Gammaは、AIを活用してプレゼンテーション・文書・Webページを数分で作成できるプラットフォーム。プロンプト入力だけでデザインされたスライドが自動生成される次世代プレゼンツール。"
 image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=420&fit=crop"

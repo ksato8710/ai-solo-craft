@@ -2,7 +2,7 @@
 title: "Julius AI — チャットでデータ分析・可視化ができるAIツール"
 slug: julius-ai-data-analysis
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Julius AIは、自然言語でデータ分析ができるAIプラットフォーム。CSVやExcelファイルをアップロードし、チャットで指示するだけで統計分析・可視化・インサイト抽出を自動実行する。"
 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=420&fit=crop"

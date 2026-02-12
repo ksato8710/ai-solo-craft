@@ -2,11 +2,13 @@
 title: "Rowboat — ローカルファーストAIが作る「生きた記憶」がゲームチェンジャーに"
 slug: "noon-tools-2026-02-11"
 date: "2026-02-11"
-category: "featured-tools"
+contentType: "news"
 description: "情報を忘れないAI助手。メール・会議から知識グラフを自動構築し、文脈を「記憶」してプロジェクトを加速させる。"
-readTime: 6
+readTime: "6"
+tags:
+  - "featured-tools"
 image: "https://images.unsplash.com/photo-1558618047-3c8c90b4d3a4?w=800&h=420&fit=crop"
-featured: false
+featured: "false"
 ---
 
 ## なぜRowboatがHacker Newsで117ポイントを獲得したのか

@@ -2,7 +2,7 @@
 title: "Sleek.design — AIでUI/UXプロトタイプを作るデザイン支援"
 slug: sleek-design
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Sleek.designは、チャット形式でモバイルアプリのUI/UX案を生成するAIデザイン支援ツール。プロトタイピングの初速を上げる用途で使う。"
 readTime: 5

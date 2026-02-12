@@ -2,7 +2,7 @@
 title: "Suno — テキストから楽曲を自動生成するAI音楽プラットフォーム"
 slug: suno-ai-music-generation
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Sunoは、テキストプロンプトからボーカル・楽器・歌詞を含むフル楽曲を生成するAI音楽プラットフォーム。音楽理論の知識もDAWの操作スキルも不要で、誰でも数十秒で楽曲を作成できる。"
 image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=420&fit=crop"

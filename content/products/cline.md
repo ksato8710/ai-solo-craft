@@ -2,7 +2,7 @@
 title: "Cline — VS Codeで動く自律型コーディングエージェント"
 slug: cline
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Clineは、VS Code上でファイル操作・ターミナル実行・ブラウザ検証まで行える自律型コーディングエージェント。反復作業をまとめて委譲する用途に向く。"
 readTime: 6

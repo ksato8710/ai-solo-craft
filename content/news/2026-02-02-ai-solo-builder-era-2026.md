@@ -1,11 +1,12 @@
 ---
-title: AIソロビルダーの時代が来た — 一人で1億円ビジネスを作る新しいルール【2026年2月】
-slug: ai-solo-builder-era-2026
-date: '2026-02-02'
-category: "morning-summary"
+title: "AIソロビルダーの時代が来た — 一人で1億円ビジネスを作る新しいルール【2026年2月】"
+slug: "ai-solo-builder-era-2026"
+date: "2026-02-02"
+contentType: "digest"
+digestEdition: "morning"
 description: "AIツール進化で一人1億円ビジネスが現実に。2026年の新ルールを解説。"
-readTime: 4
-featured: false
+readTime: "4"
+featured: "false"
 image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=420&fit=crop"
 ---
 

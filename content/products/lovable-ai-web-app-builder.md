@@ -2,7 +2,7 @@
 title: "Lovable — プロンプトだけでWebアプリを作れるAI開発プラットフォーム"
 slug: lovable-ai-web-app-builder
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Lovableは、自然言語のプロンプトでWebアプリケーションを構築できるAI搭載の開発プラットフォーム。コーディング不要で、数分でモダンなUI・機能を備えたアプリを作成できる。"
 image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=420&fit=crop"

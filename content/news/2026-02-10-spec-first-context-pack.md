@@ -2,12 +2,15 @@
 title: "Spec-first Context Pack — AIコーディングエージェントがブレない最小セット"
 slug: "spec-first-context-pack"
 date: "2026-02-10"
-category: "dev-knowledge"
-relatedProduct: "claude-code"
+contentType: "news"
 description: "AIコーディングの品質はモデルより“前提”で決まる。仕様・禁止・レビュー観点をMarkdownで固定するための最小Context Pack（4ファイル）と、毎日回る運用ループをまとめた。"
-readTime: 9
+readTime: "9"
+tags:
+  - "dev-knowledge"
+relatedProducts:
+  - "claude-code"
 image: "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=800&h=420&fit=crop"
-featured: false
+featured: "false"
 ---
 
 ## この記事で分かること

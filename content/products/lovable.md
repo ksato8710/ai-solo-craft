@@ -2,7 +2,7 @@
 title: "Lovable — AI駆動フルスタック開発プラットフォーム"
 slug: lovable
 date: "2026-02-12"
-category: products
+contentType: "product"
 type: product
 description: "チャット対話でフルスタックWebアプリを生成するvibe codingプラットフォーム。GitHub同期とワンクリックデプロイで、プロトタイプから本格運用まで一気通貫。"
 readTime: 5

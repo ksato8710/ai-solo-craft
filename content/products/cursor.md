@@ -2,7 +2,7 @@
 title: "Cursor — AI統合コードエディタ"
 slug: cursor
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Cursorは、AIを開発フローに統合したコードエディタ。インライン編集やコードベース理解を前提に、実装速度を上げる用途で使われる。"
 readTime: 6

@@ -2,12 +2,15 @@
 title: "AIソロビルダーの現実：26歳エンジニアが3ヶ月で月収620万円を達成した戦略とは"
 slug: "kleo-62k-mrr-case-study"
 date: "2026-02-05"
-category: "case-study"
-relatedProduct: kleo
+contentType: "news"
 description: "Cameron Trewが高年収のSE職を辞めて実家に戻り、3ヶ月で月額定期収益$62,000（約620万円）を達成したKleoの詳細な事例分析。技術スタック選択からマーケティング戦略まで"
+readTime: "8"
+tags:
+  - "case-study"
+relatedProducts:
+  - "kleo"
 image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=420&fit=crop"
-readTime: 8
-featured: true
+featured: "true"
 ---
 
 ## 事例サマリー

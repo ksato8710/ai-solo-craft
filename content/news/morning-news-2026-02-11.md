@@ -2,16 +2,38 @@
 title: "AIソロビルダー朝刊 — 2026年2月11日（火）前GitHub CEOが$60M調達でAI協働プラットフォーム始動"
 slug: "morning-news-2026-02-11"
 date: "2026-02-11"
-category: "morning-news"
+contentType: "digest"
+digestEdition: "morning"
 description: "前GitHub CEOが記録的なシード調達でAIエージェント協働プラットフォームをローンチ。プロ用インフォグラフィック生成AI、ナレッジグラフ活用AI同僚など、開発者の働き方を変える3大ニュースをお届け。"
-readTime: 8
+readTime: "8"
 image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=420&fit=crop&q=80"
-featured: true
+featured: "true"
 ---
 
 今朝のAI Solo Builder界隈は、GitHub創業者の動きから次世代画像生成AIまで、開発者の働き方を根本的に変える発表が相次いでいます。
 
 特に注目すべきは、前GitHub CEOが立ち上げた「AIエージェントと人間の協働プラットフォーム」— 記録的な$60Mシードラウンドで始動し、開発コミュニティに大きな波紋を広げています。
+
+---
+
+## 🏁 重要ニュースランキング（NVA）
+
+| 順位 | ニュース | NVAスコア |
+|------|----------|-----------|
+| 1 | 前GitHub CEOが$60M調達「Entire.io」ローンチ | 85 |
+| 2 | Qwen-Image-2.0: プロ用インフォグラフィック統合モデル | 78 |
+| 3 | Rowboat: ナレッジグラフで動作するOSS AI同僚 | 75 |
+| 4 | Meta AI、欧州での展開を再開 | 62 |
+| 5 | Anthropic Claude、企業向け新料金プラン発表 | 60 |
+| 6 | Google DeepMind、Gemini 2.0 Flash最適化版リリース | 58 |
+| 7 | Microsoft 365 Copilot、Excel関数生成機能強化 | 55 |
+| 8 | OpenAI、ChatGPT Proプランの法人向け拡大 | 52 |
+| 9 | Hugging Face、ローカルモデル管理ツール刷新 | 48 |
+| 10 | Stability AI、新CEOのもと再建計画発表 | 45 |
+
+---
+
+## 🔥 Top 3 ピックアップ
 
 ---
 

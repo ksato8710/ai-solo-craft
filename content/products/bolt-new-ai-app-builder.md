@@ -2,7 +2,7 @@
 title: "Bolt.new — ブラウザだけで完結するAIフルスタック開発環境"
 slug: bolt-new-ai-app-builder
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Bolt.newは、StackBlitz社が提供するブラウザ完結型のAIアプリ開発プラットフォーム。ローカル環境のセットアップ不要で、プロンプトからフルスタックWebアプリの開発・デプロイまでを実現する。"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fit=crop"

@@ -2,7 +2,7 @@
 title: "Windsurf — AIエージェント搭載のコーディングIDE"
 slug: windsurf-ai-coding-ide
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Windsurfは、AIをコア機能として組み込んだネイティブなコーディングIDE。VS Codeベースのインターフェースに独自AIエージェント「Cascade」を搭載し、コードベース全体を理解したマルチファイル編集を実現する。"
 image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=420&fit=crop"

@@ -2,7 +2,7 @@
 title: "PitchMode — 開発者向けピッチ練習AI"
 slug: pitchmode
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "PitchModeは、開発者が投資家向けのピッチを短時間で練習し、フィードバックを得るためのツール。"
 readTime: 4

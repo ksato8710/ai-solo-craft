@@ -2,7 +2,7 @@
 title: "Runway — AIによる動画生成・編集プラットフォーム"
 slug: runway-ai-video-generation
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Runwayは、テキストや画像から高品質な動画を生成するAIクリエイティブプラットフォーム。Gen-3 Alpha / Gen-4モデルを搭載し、プロの映像制作ワークフローにも対応する。"
 image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=420&fit=crop"

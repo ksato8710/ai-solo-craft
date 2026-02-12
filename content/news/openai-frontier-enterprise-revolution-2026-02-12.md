@@ -1,11 +1,16 @@
 ---
 title: "OpenAI Frontier完全解説 — エンタープライズAI革命の決定版プラットフォーム"
-date: "2026-02-12"
-category: "news"
-tags: ["openai", "enterprise", "ai-agents", "platform", "business"]
-readTime: 12
 slug: "openai-frontier-enterprise-revolution-2026-02-12"
+date: "2026-02-12"
+contentType: "news"
 description: "OpenAI Frontierがエンタープライズ市場に本格参戦。AIエージェントを「デジタル従業員」として既存システムと統合し、人間と同様の管理手法を適用。HP、Oracle、State Farm、Uberが導入済み。AI Solo Builderが押さえるべき企業AI導入の新標準。"
+readTime: "12"
+tags:
+  - "openai"
+  - "enterprise"
+  - "ai-agents"
+  - "platform"
+  - "business"
 excerpt: "OpenAI Frontierがエンタープライズ市場に本格参戦。AIエージェントを「デジタル従業員」として既存システムと統合し、人間と同様の管理手法を適用。HP、Oracle、State Farm、Uberが導入済み。AI Solo Builderが押さえるべき企業AI導入の新標準。"
 ---
 

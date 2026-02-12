@@ -2,7 +2,7 @@
 title: "Misatay — VS Code拡張の協働型AI開発支援"
 slug: misatay
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Misatayは、AIエージェントとの協働（計画→実行→レビュー）を重視するVS Code拡張。トークン消費を抑える設計が特徴。"
 readTime: 4

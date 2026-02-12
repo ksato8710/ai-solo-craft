@@ -2,7 +2,7 @@
 title: "Kleo — LinkedIn向けコンテンツ作成支援"
 slug: kleo
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Kleoは、LinkedIn向けのコンテンツ作成を支援するツール。投稿の作成・改善・運用を効率化する用途で使われる。"
 readTime: 5

@@ -2,7 +2,7 @@
 title: "Continue.dev — OSSのAIコーディングアシスタント（IDE拡張）"
 slug: continue-dev
 date: "2026-02-10"
-category: products
+contentType: "product"
 type: product
 description: "Continue.devは、VS Code / JetBrainsで使えるオープンソースのAIコーディングアシスタント。モデルを切り替えながら、補完・チャット・リファクタ支援を統合できる。"
 readTime: 6

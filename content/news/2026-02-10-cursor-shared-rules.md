@@ -2,12 +2,13 @@
 title: "Cursor、Shared Rulesを公開 — リポジトリに“AIのルール”を同梱"
 slug: "cursor-shared-rules"
 date: "2026-02-10"
-category: "news"
-relatedProduct: "cursor"
+contentType: "news"
 description: "Cursor運用での再現性を上げる鍵は、ツールではなくルール。Shared Rulesで、設計方針・禁止事項・PR粒度などをリポジトリに同梱し、提案のブレを抑える流れが加速。"
-readTime: 6
+readTime: "6"
+relatedProducts:
+  - "cursor"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fit=crop"
-featured: false
+featured: "false"
 ---
 
 ## TL;DR

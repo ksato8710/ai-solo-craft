@@ -2,7 +2,7 @@
 title: "Zed — Rust製の高速エディタ（AI機能あり）"
 slug: zed
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Zedは、Rust製の高速エディタ。協働編集やAI支援など、開発フローの統合を志向する。"
 readTime: 4

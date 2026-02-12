@@ -2,7 +2,7 @@
 title: "Crew — マルチエージェント開発のためのツール"
 slug: crew
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Crewは、複数のAIエージェント（Writer/Reviewer/QAなど）を役割分担させて開発を進めるためのOSSツール。"
 readTime: 4

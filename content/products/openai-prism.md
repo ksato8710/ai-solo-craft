@@ -2,7 +2,7 @@
 title: "OpenAI Prism — 科学者向けLaTeXエディタ（記事内で言及）"
 slug: openai-prism
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "OpenAI Prismは、科学者向けのLaTeX編集体験を支援するツールとして言及されているプロダクト（詳細は必要に応じて追記）。"
 readTime: 3

@@ -2,7 +2,7 @@
 title: "Mentions — 監視/通知系の運用支援（ケーススタディで登場）"
 slug: mentions
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Mentionsは、ケーススタディで言及されている運用支援系プロダクト（詳細は後日追記）。"
 readTime: 3

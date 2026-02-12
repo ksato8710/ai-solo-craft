@@ -2,7 +2,7 @@
 title: "Claude — Anthropicの対話型AI"
 slug: claude
 date: "2026-02-12"
-category: products
+contentType: "product"
 type: product
 description: "Anthropic開発の大規模言語モデル。高度な推論力と安全性を重視した設計で、コード生成、分析、創作支援に強み。無料版でもfiles、connectors、skillsが利用可能。"
 readTime: 7

@@ -2,7 +2,7 @@
 title: "OpenAI Codex — コーディング支援モデル/エージェント"
 slug: openai-codex
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "OpenAI Codexは、コード生成・修正・レビューなどを支援するコーディング向けモデル/エージェント。CLIやデスクトップアプリなどの形で利用される。"
 readTime: 6

@@ -2,7 +2,7 @@
 title: "Manus — 自律的にタスクを遂行する汎用AIエージェント"
 slug: manus-autonomous-ai-agent
 date: '2026-02-03'
-category: products
+contentType: "product"
 type: product
 description: "Manusは、人間の継続的な指示なしに複雑なタスクを独立して計画・実行・完了できる完全自律型AIエージェント。リサーチ、コード作成、データ分析など幅広い作業を自律的に処理する。"
 image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=420&fit=crop"

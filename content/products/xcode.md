@@ -2,7 +2,7 @@
 title: "Xcode — Apple公式iOS開発環境"
 slug: xcode
 date: "2026-02-12"
-category: products
+contentType: "product"
 type: product
 description: "Appleの統合開発環境。iOS、macOS、watchOS、tvOSアプリの開発に必須。2026年にClaude Agent SDK統合により、AI支援開発が公式サポート。"
 readTime: 6

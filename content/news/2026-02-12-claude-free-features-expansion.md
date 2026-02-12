@@ -2,11 +2,11 @@
 title: "Claude無料機能拡充でソロビルダー革命 — ChatGPT広告化に対抗"
 slug: "claude-free-features-expansion"
 date: "2026-02-12"
-category: "news"
+contentType: "news"
 description: "Anthropic Claude が無料ユーザーに元有料機能を全面開放。Files作成・編集、Connectors、Skillsが利用可能に。ChatGPT広告導入への戦略的対抗策。"
+readTime: "6"
 image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=420&fit=crop"
-readTime: 6
-featured: true
+featured: "true"
 ---
 
 2026年2月11日、AI業界に激震が走りました。Anthropicが[Claude](/products/claude)無料ユーザーに対し、**元有料機能を全面開放**したのです。この発表は、OpenAIがChatGPTに広告導入を発表したわずか2日後のタイミング。明確な競争戦略として業界の注目を集めています。

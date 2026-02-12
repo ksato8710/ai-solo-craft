@@ -5,7 +5,6 @@ description: "効果的なプロンプト設計の原則と、ソロ開発で成
 date: "2026-02-13"
 readTime: 5
 tags: ["dev-knowledge"]
-category: "news"
 contentType: "news"
 relatedProducts: ["claude-cowork-plugins-solo-team"]
 ---

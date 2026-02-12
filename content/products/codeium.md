@@ -2,7 +2,7 @@
 title: "Codeium — 無料枠が強いAIコード助手"
 slug: codeium
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Codeiumは、無料でも使えるAIコード補完/生成ツール。まず試して効果を体感しやすい。"
 readTime: 5

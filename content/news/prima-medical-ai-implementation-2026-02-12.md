@@ -1,11 +1,17 @@
 ---
 title: "Prima脳MRI AI実装手法 — 97.5%精度で数秒診断、医療AI実用化の成功モデル"
-date: "2026-02-12"
-category: "news"
-tags: ["medical-ai", "prima", "mri", "healthcare", "implementation", "university-michigan"]
-readTime: 13
 slug: "prima-medical-ai-implementation-2026-02-12"
+date: "2026-02-12"
+contentType: "news"
 description: "ミシガン大学開発のPrima AIが脳MRI診断を数秒で97.5%精度実現。30万件超のデータで訓練、50種類の神経疾患を識別し緊急度判定も可能。「医療画像のChatGPT」として他分野への展開も期待。AI Solo Builderが学ぶべき実装成功要因。"
+readTime: "13"
+tags:
+  - "medical-ai"
+  - "prima"
+  - "mri"
+  - "healthcare"
+  - "implementation"
+  - "university-michigan"
 excerpt: "ミシガン大学開発のPrima AIが脳MRI診断を数秒で97.5%精度実現。30万件超のデータで訓練、50種類の神経疾患を識別し緊急度判定も可能。「医療画像のChatGPT」として他分野への展開も期待。AI Solo Builderが学ぶべき実装成功要因。"
 ---
 

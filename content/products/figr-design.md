@@ -2,7 +2,7 @@
 title: "Figr.design — プロダクト文脈を理解するAIデザインエージェント"
 slug: figr-design
 date: "2026-02-09"
-category: products
+contentType: "product"
 type: product
 description: "Figr.designは、スクリーンショットやプロダクト資料を取り込み、文脈理解とUX改善提案まで行うAIデザインエージェント。"
 readTime: 6

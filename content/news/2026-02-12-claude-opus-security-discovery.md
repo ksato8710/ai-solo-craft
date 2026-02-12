@@ -2,11 +2,11 @@
 title: "Claude Opus 4.6が500+脆弱性を発見 — AI防御革命の幕開け"
 slug: "claude-opus-security-discovery"
 date: "2026-02-12"
-category: "news"
+contentType: "news"
 description: "Anthropic Claude Opus 4.6が専用ツールなしで500以上の未知高深刻度脆弱性を発見。人間の研究者レベルの推論力で、ソロビルダーの防御力を大企業レベルまで引き上げ。"
+readTime: "7"
 image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=420&fit=crop"
-readTime: 7
-featured: true
+featured: "true"
 ---
 
 2026年2月6日、セキュリティ業界に革命が起きました。Anthropicの[Claude](/products/claude) Opus 4.6が、**500以上の未知高深刻度脆弱性**をGhostscript、OpenSC、CGIFなどの主要オープンソースライブラリで発見したのです。驚くべきは、これが**専用ツールや特別なプロンプト不要**で実現されたこと。人間の研究者と同等の推論力による純粋な分析結果です。
