@@ -1,9 +1,22 @@
 # Claude Code ルーティン運用手順（朝刊/夕刊 + Top3）
 
-このドキュメントは、ClaudeCode（openClaw）に日次で記事を作らせるための運用手順です。
+このドキュメントは、AI Solo Builder の日次記事作成ワークフローの概要を示す。
 
-運営体制・優先度・ロードマップは次を正本とする:
-- `docs/OPERATIONS-PLAN-2026-02-12.md`
+**関連ドキュメント:**
+- ワークフロー全体設計: `docs/WORKFLOW-ARCHITECTURE.md`（包括ドキュメント）
+- 品質チェック: `docs/CHECKLIST.md`
+- 運営計画: `docs/OPERATIONS-PLAN-2026-02-12.md`
+
+## ワークフロー概要（4 Phase）
+
+各Phaseには対応するスキルがある。詳細手順はスキルを参照。
+
+| Phase | スキル | 概要 |
+|-------|--------|------|
+| 1. 調査 | `news-research` | ニュース収集・一次ソース確認・DB保存 |
+| 2. 評価 | `news-evaluation` | 期間フィルタ・NVA・Top10選定 |
+| 3. 記事作成 | `digest-writer` | Digest + Top3記事作成 |
+| 4. 公開 | `publish-gate` | チェックリスト照合・デプロイ・報告 |
 
 ## 生成するもの（毎日）
 - 朝刊（Digest）: `category: morning-summary`
@@ -48,32 +61,34 @@ SUPABASE_SECRET_KEY=<secret-key>
 
 ## 手順（朝刊/夕刊 共通）
 
-### 1) 候補ニュース収集
-- `docs/RESEARCH-SOURCES.md` の巡回先から、直近ウィンドウ内の候補を 8〜15 本集める
-- 各候補について、一次ソースURL（公式/原文）を必ず控える
+**各Phaseの詳細手順はスキルを参照。**
 
-### 2) NVAスコアリング（Top 10作成）
-- NVAの5軸でスコアリングし、合計点で並べ替える（最大Top 10）
-- Top 10はDigestのランキング表に入れる
-- Top 3は **必ず** 個別ニュース記事（`category: news`）を作る
+### Phase 1: 調査（→ `news-research` スキル）
 
-### 3) プロダクト辞書の整備
-- 記事に出てくるプロダクトは、本文で `/products/[slug]` にリンクする
-- プロダクトページが無い場合は `content/products/[slug].md` を先に作る（または同時に作る）
+- ソース巡回（RSS/検索）
+- 一次ソース特定・日付確認
+- `news_candidates` テーブルに保存
 
-### 4) Digest執筆（テンプレ厳守）
-- Digestには必ず以下を含める:
-  - `## 🏁 重要ニュースランキング（NVA）` + 表（最大Top 10）
-  - `## 🔥 Top 3 ピックアップ`（Top 3の深掘り）
-- ランキング表のTop 3行は、個別ニュース記事へのリンク `(/news/slug)` を必ず入れる
+**完了条件:** 8〜15件の候補がDB保存済み、全件に一次ソースURL・発表日あり
 
-### 5) 個別ニュース執筆（Top 3）
-- `EDITORIAL.md` のタイトル原則（何が起きたか）を守る
-- 定量データを最低1つ入れる
-- 最後にNVA表（5軸 + 合計 + Tier）を入れる
-- 関連プロダクトを `/products/[slug]` にリンクする
+### Phase 2: 評価（→ `news-evaluation` スキル）
 
-### 6) ローカル検証 → 公開
+- 期間適切性フィルタ（朝刊: 前夕刊〜今朝刊、夕刊: 前朝刊〜今夕刊）
+- 事実確認（誇張・歪曲チェック）
+- NVAスコアリング → Top10/Top3選定
+
+**完了条件:** Top10が `status=selected`、Top3が確定
+
+### Phase 3: 記事作成（→ `digest-writer` スキル）
+
+- Digest記事作成（テンプレート厳守）
+- Top3個別記事作成
+- プロダクトリンク整備
+
+**完了条件:** Digest 1本 + Top3個別記事 3本作成済み
+
+### Phase 4: 公開（→ `publish-gate` スキル）
+
 ```bash
 npm run publish:gate
 git add -A
@@ -81,17 +96,18 @@ git commit -m "publish: YYYY-MM-DD morning/evening"
 git push
 ```
 
-`npm run publish:gate` は以下を順番に実行する:
-- `npm run validate:content`
-- `npm run sync:content:db`
-- `npm run build`
+**完了条件:** デプロイ完了、Slack報告済み
 
-どれか1つでも失敗した場合は公開を中止する（`git push` しない）。
+---
 
-公開後の確認:
-- `/news/[digest-slug]`
-- `/news-value`（朝/夕の最新ランキングが出ているか）
-- `/category/morning-summary` と `/category/evening-summary`
+## 簡易フロー図
+
+```
+news-research → news-evaluation → digest-writer → publish-gate
+    │                │                  │               │
+    ▼                ▼                  ▼               ▼
+  DB保存          Top10確定         記事作成        公開・報告
+```
 
 ## モデルケース（本日のサンプル）
 - 朝刊: `content/news/2026-02-10-morning-news-2026-02-10.md`

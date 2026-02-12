@@ -6,6 +6,11 @@ import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import html from 'remark-html';
 import type { Database } from '@/types/database';
+import { CATEGORIES, NEWS_SUBCATEGORIES } from './types';
+import type { ContentType, DigestEdition, Post } from './types';
+
+export { CATEGORIES, NEWS_SUBCATEGORIES } from './types';
+export type { Post } from './types';
 
 const newsDirectory = path.join(process.cwd(), 'content/news');
 const productsDirectory = path.join(process.cwd(), 'content/products');
@@ -14,34 +19,11 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABAS
 const SUPABASE_SECRET_KEY = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 const CONTENT_READ_SOURCE = process.env.CONTENT_READ_SOURCE || 'db-first';
 
-type ContentType = 'news' | 'product' | 'digest';
-type DigestEdition = 'morning' | 'evening' | null;
-
 interface CanonicalModel {
   contentType: ContentType;
   digestEdition: DigestEdition;
   tags: string[];
   relatedProducts: string[];
-}
-
-export interface Post {
-  slug: string;
-  title: string;
-  date: string;
-  category: string;
-  description: string;
-  readTime: number;
-  featured: boolean;
-  image?: string;
-  content?: string;
-  htmlContent?: string;
-  type: 'news' | 'product';
-  url: string;
-  relatedProduct?: string;
-  relatedProducts?: string[];
-  tags?: string[];
-  contentType?: ContentType;
-  digestEdition?: DigestEdition;
 }
 
 interface PreparedData {
@@ -51,14 +33,7 @@ interface PreparedData {
   bySlug: Map<string, Post>;
 }
 
-export const CATEGORIES: Record<string, { label: string; color: string; emoji: string }> = {
-  'morning-summary': { label: '朝のまとめ', color: '#3B82F6', emoji: '🗞️' },
-  'evening-summary': { label: '夕のまとめ', color: '#F97316', emoji: '🗞️' },
-  news: { label: 'ニュース', color: '#6366F1', emoji: '📰' },
-  'dev-knowledge': { label: 'AI開発ナレッジ', color: '#10b981', emoji: '🧠' },
-  'case-study': { label: 'ソロビルダー事例', color: '#f59e0b', emoji: '📊' },
-  products: { label: 'プロダクト', color: '#8B5CF6', emoji: '🏷️' },
-};
+const NEWS_CATEGORY_KEYS = Object.keys(NEWS_SUBCATEGORIES);
 
 let dbPreparedDataPromise: Promise<PreparedData | null> | null = null;
 
@@ -386,6 +361,11 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
 export async function getFeaturedPosts(): Promise<Post[]> {
   const content = await getAllContent();
   return content.filter((p) => p.featured);
+}
+
+export async function getAllNewsPosts(): Promise<Post[]> {
+  const posts = await getAllPosts();
+  return posts.filter((p) => NEWS_CATEGORY_KEYS.includes(p.category));
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {

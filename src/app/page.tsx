@@ -1,4 +1,4 @@
-import { getAllPosts, getAllProducts, getAllContent, getFeaturedPosts, getPostsByCategory, CATEGORIES } from '@/lib/posts';
+import { getAllPosts, getAllProducts, getAllContent, getFeaturedPosts, getPostsByCategory } from '@/lib/posts';
 import NewsCard from '@/components/NewsCard';
 import CategorySection from '@/components/CategorySection';
 
@@ -9,15 +9,16 @@ export default async function Home() {
   const featured = await getFeaturedPosts();
   const morningSummaryPosts = await getPostsByCategory('morning-summary');
   const eveningSummaryPosts = await getPostsByCategory('evening-summary');
-  const nonDigestCategories = Object.keys(CATEGORIES).filter(
-    (category) => category !== 'morning-summary' && category !== 'evening-summary'
-  );
-  const nonDigestSections = await Promise.all(
-    nonDigestCategories.map(async (category) => ({
-      category,
-      posts: await getPostsByCategory(category),
-    }))
-  );
+
+  // 統合ニュースセクション用のデータ取得
+  const newsCategories = ['news', 'dev-knowledge', 'case-study'];
+  const allNewsPosts = (await Promise.all(
+    newsCategories.map(cat => getPostsByCategory(cat))
+  )).flat().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  // プロダクトセクション
+  const productPosts = await getPostsByCategory('products');
+
   const mainFeatured = featured[0];
   const sideFeatured = featured.slice(1, 3);
 
@@ -113,14 +114,30 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Category Sections */}
-      {nonDigestSections.map(({ category, posts }) => (
-        <CategorySection
-          key={category}
-          category={category}
-          posts={posts}
-        />
-      ))}
+      {/* 統合ニュースセクション */}
+      {allNewsPosts.length > 0 && (
+        <section className="mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1 h-6 rounded-full" style={{ backgroundColor: '#6366F1' }} />
+            <h2 className="text-lg font-bold text-white">📰 最新ニュース</h2>
+            <a href="/news"
+               className="ml-auto text-xs font-medium hover:underline"
+               style={{ color: '#6366F1' }}>
+              すべて見る →
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {allNewsPosts.slice(0, 8).map((post) => (
+              <NewsCard key={post.slug} post={post} size="small" />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* プロダクトセクション */}
+      {productPosts.length > 0 && (
+        <CategorySection category="products" posts={productPosts} />
+      )}
 
       {/* Empty State */}
       {allContent.length === 0 && (

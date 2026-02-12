@@ -1,4 +1,5 @@
-import { Post, CATEGORIES } from '@/lib/posts';
+import type { Post } from '@/lib/types';
+import { CATEGORIES } from '@/lib/types';
 
 interface NewsCardProps {
   post: Post;

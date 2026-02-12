@@ -6,7 +6,7 @@ contentType: "news"
 description: "情報を忘れないAI助手。メール・会議から知識グラフを自動構築し、文脈を「記憶」してプロジェクトを加速させる。"
 readTime: "6"
 tags:
-  - "featured-tools"
+  - "ツール紹介"
 image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=420&fit=crop"
 featured: "false"
 ---

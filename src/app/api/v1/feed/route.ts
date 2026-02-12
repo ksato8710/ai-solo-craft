@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllPosts, getAllProducts, getPostsByCategory } from '@/lib/posts';
+import { getAllPosts, getAllProducts, getAllNewsPosts, getPostsByCategory } from '@/lib/posts';
 import { toApiSummary } from '@/lib/content-api';
 
 export const revalidate = 300;
@@ -16,14 +16,12 @@ export async function GET(request: Request) {
     const url = new URL(request.url);
     const limit = parseLimit(url.searchParams.get('limit'), 8);
 
-    const [allNews, allProducts, morning, evening] = await Promise.all([
-      getAllPosts(),
+    const [allNewsPosts, allProducts, morning, evening] = await Promise.all([
+      getAllNewsPosts(),
       getAllProducts(),
       getPostsByCategory('morning-summary'),
       getPostsByCategory('evening-summary'),
     ]);
-
-    const nonDigestNews = allNews.filter((post) => post.contentType !== 'digest');
 
     return NextResponse.json(
       {
@@ -31,16 +29,11 @@ export async function GET(request: Request) {
         sections: {
           morningSummary: morning.slice(0, limit).map(toApiSummary),
           eveningSummary: evening.slice(0, limit).map(toApiSummary),
-          latestNews: nonDigestNews.slice(0, limit).map(toApiSummary),
+          allNews: allNewsPosts.slice(0, limit).map(toApiSummary),
+          latestNews: allNewsPosts.filter((p) => p.category === 'news').slice(0, limit).map(toApiSummary),
           products: allProducts.slice(0, limit).map(toApiSummary),
-          devKnowledge: nonDigestNews
-            .filter((post) => (post.tags || []).includes('dev-knowledge'))
-            .slice(0, limit)
-            .map(toApiSummary),
-          caseStudies: nonDigestNews
-            .filter((post) => (post.tags || []).includes('case-study'))
-            .slice(0, limit)
-            .map(toApiSummary),
+          devKnowledge: allNewsPosts.filter((p) => p.category === 'dev-knowledge').slice(0, limit).map(toApiSummary),
+          caseStudies: allNewsPosts.filter((p) => p.category === 'case-study').slice(0, limit).map(toApiSummary),
         },
       },
       {

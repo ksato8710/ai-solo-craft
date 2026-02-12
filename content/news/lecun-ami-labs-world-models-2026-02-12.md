@@ -7,12 +7,7 @@ description: "チューリング賞受賞者LeCunがMeta退社後、50億ドル�
 readTime: "15"
 image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=420&fit=crop"
 tags:
-  - "yann-lecun"
-  - "world-models"
-  - "ami-labs"
-  - "llm"
-  - "paris"
-  - "funding"
+  - "other"
 excerpt: "チューリング賞受賞者LeCunがMeta退社後、50億ドル評価でAMI Labs設立。「LLMは5年で廃れる」として世界モデルに賭ける。医療AIで実証し、パリをLLM後時代の中心に。AI Solo Builderが押さえるべき技術パラダイムシフト。"
 ---
 
