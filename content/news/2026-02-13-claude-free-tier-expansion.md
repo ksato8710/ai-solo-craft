@@ -5,7 +5,7 @@ date: "2026-02-13"
 description: "Anthropic、ChatGPTの広告導入に対抗してClaude無料版を大幅強化。Excel・PowerPoint作成、Slack・Notion等のConnectors、Skills機能を無料開放し「No ads in sight」を宣言。"
 publishedAt: "2026-02-13T08:00:00+09:00"
 summary: "Anthropic、ChatGPTの広告導入に対抗してClaude無料版を大幅強化。Excel・PowerPoint作成、Slack・Notion等のConnectors、Skills機能を無料開放し「No ads in sight」を宣言。"
-image: "https://images.unsplash.com/photo-1486312338219-ce68e2c6f44d?w=800&h=420&fit=crop"
+image: "https://images.unsplash.com/photo-1580894908361-967195033215?w=800&h=420&fit=crop"
 contentType: "news"
 readTime: 5
 featured: false
