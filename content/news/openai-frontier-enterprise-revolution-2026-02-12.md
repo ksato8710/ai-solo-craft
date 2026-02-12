@@ -5,6 +5,7 @@ date: "2026-02-12"
 contentType: "news"
 description: "OpenAI Frontierがエンタープライズ市場に本格参戦。AIエージェントを「デジタル従業員」として既存システムと統合し、人間と同様の管理手法を適用。HP、Oracle、State Farm、Uberが導入済み。AI Solo Builderが押さえるべき企業AI導入の新標準。"
 readTime: "12"
+image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=420&fit=crop"
 tags:
   - "openai"
   - "enterprise"

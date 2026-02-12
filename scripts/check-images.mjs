@@ -33,10 +33,10 @@ function checkImages() {
 
     const { image, contentType } = frontmatter;
 
-    // Check 1: image field exists for news/digest
+    // Check 1: image field exists for news/digest (both required for homepage display)
     if (!image) {
-      if (contentType === 'digest') {
-        errors.push(`❌ ${file}: Digest記事にimageフィールドがありません`);
+      if (contentType === 'digest' || contentType === 'news') {
+        errors.push(`❌ ${file}: ${contentType}記事にimageフィールドがありません（ホーム表示に必須）`);
       } else {
         warnings.push(`⚠ ${file}: imageフィールドがありません（推奨）`);
       }
@@ -49,10 +49,10 @@ function checkImages() {
     }
   }
 
-  // Check 2: No duplicate images (warning for now, will be error after cleanup)
+  // Check 2: No duplicate images (error - each article should have unique image)
   for (const [url, usedIn] of imageUrls) {
     if (usedIn.length > 1) {
-      warnings.push(`⚠ 画像重複: ${url}\n   使用ファイル: ${usedIn.join(', ')}`);
+      errors.push(`❌ 画像重複: ${url}\n   使用ファイル: ${usedIn.join(', ')}`);
     }
   }
 

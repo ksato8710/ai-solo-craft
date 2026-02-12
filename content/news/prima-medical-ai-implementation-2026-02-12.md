@@ -5,6 +5,7 @@ date: "2026-02-12"
 contentType: "news"
 description: "ミシガン大学開発のPrima AIが脳MRI診断を数秒で97.5%精度実現。30万件超のデータで訓練、50種類の神経疾患を識別し緊急度判定も可能。「医療画像のChatGPT」として他分野への展開も期待。AI Solo Builderが学ぶべき実装成功要因。"
 readTime: "13"
+image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=420&fit=crop"
 tags:
   - "medical-ai"
   - "prima"

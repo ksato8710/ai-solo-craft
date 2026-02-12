@@ -7,7 +7,7 @@ description: "AIにコードを書かせる時代のボトルネックは“レ�
 readTime: "6"
 relatedProducts:
   - "openai-codex"
-image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=420&fit=crop"
+image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=420&fit=crop"
 featured: "false"
 ---
 

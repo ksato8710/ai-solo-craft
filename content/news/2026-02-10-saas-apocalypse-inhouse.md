@@ -5,7 +5,7 @@ date: "2026-02-10"
 contentType: "news"
 description: "高額SaaSを“買う”から“作る”へ。AI支援で、ソロでも社内ツール領域の内製化が現実的になってきた。"
 readTime: "7"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fit=crop"
+image: "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&h=420&fit=crop"
 featured: "false"
 ---
 

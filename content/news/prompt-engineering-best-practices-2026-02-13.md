@@ -4,6 +4,7 @@ slug: "prompt-engineering-best-practices-2026-02-13"
 description: "効果的なプロンプト設計の原則と、ソロ開発で成果を最大化するための具体的なテクニックを詳しく解説"
 date: "2026-02-13"
 readTime: 5
+image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=420&fit=crop"
 tags: ["dev-knowledge"]
 contentType: "news"
 relatedProducts: ["claude-cowork-plugins-solo-team"]

@@ -7,7 +7,7 @@ description: "Cursor運用での再現性を上げる鍵は、ツールではな
 readTime: "6"
 relatedProducts:
   - "cursor"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=420&fit=crop"
+image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=420&fit=crop"
 featured: "false"
 ---
 
