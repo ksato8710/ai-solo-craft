@@ -31,6 +31,13 @@ export async function GET(request: NextRequest) {
 
     const limit = parseInteger(searchParams.get('limit'), 20, { min: 1, max: 100 });
     const offset = parseInteger(searchParams.get('offset'), 0, { min: 0 });
+    
+    // Source filtering parameters
+    const sourceTypeRaw = searchParams.get('source_type');
+    const sourceType = ['primary', 'secondary', 'tertiary', 'official', 'media', 'community', 'social', 'other'].includes(sourceTypeRaw || '') 
+      ? sourceTypeRaw as any : undefined;
+    const minCredibility = parseInteger(searchParams.get('min_credibility'), 0, { min: 1, max: 10 });
+    const maxCredibility = parseInteger(searchParams.get('max_credibility'), 10, { min: 1, max: 10 });
 
     const query: ContentListQuery = {
       contentType,
@@ -39,6 +46,9 @@ export async function GET(request: NextRequest) {
       tags: parseTags(searchParams.get('tags')),
       featured: parseBoolean(searchParams.get('featured')),
       q: searchParams.get('q') || undefined,
+      source_type: sourceType,
+      min_credibility: searchParams.get('min_credibility') ? minCredibility : undefined,
+      max_credibility: searchParams.get('max_credibility') ? maxCredibility : undefined,
       limit,
       offset,
     };

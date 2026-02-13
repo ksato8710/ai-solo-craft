@@ -15,6 +15,13 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
     return `${d.getMonth() + 1}月${d.getDate()}日`;
   };
 
+  const getSourceBadgeColor = (credibilityScore?: number) => {
+    if (!credibilityScore) return '#64748b'; // gray
+    if (credibilityScore >= 9) return '#10b981'; // green (primary)
+    if (credibilityScore >= 7) return '#f59e0b'; // amber (secondary)
+    return '#6b7280'; // gray (tertiary)
+  };
+
   const postUrl = post.url || `/news/${post.slug}`;
 
   if (size === 'large') {
@@ -30,11 +37,27 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
                 {cat.emoji}
               </div>
             )}
-            <div className="absolute top-4 left-4">
+            <div className="absolute top-4 left-4 flex flex-col gap-2">
               <span className="text-xs font-semibold px-3 py-1 rounded-full"
                     style={{ backgroundColor: badge.color + '22', color: badge.color }}>
                 {badge.label}
               </span>
+              {post.source && (
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium px-2 py-1 rounded-md bg-black/40 text-white">
+                    {post.source.type === 'primary' && '🥇'}
+                    {post.source.type === 'secondary' && '🥈'}
+                    {post.source.type === 'tertiary' && '🥉'}
+                    {post.source.name}
+                  </span>
+                  {post.source.credibility_score && (
+                    <span className="text-xs font-bold px-2 py-1 rounded-md text-white"
+                          style={{ backgroundColor: getSourceBadgeColor(post.source.credibility_score) }}>
+                      {post.source.credibility_score}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
           <div className="p-6">
@@ -69,11 +92,23 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
           )}
         </div>
         <div className="p-4 flex flex-col flex-1">
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
             <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                   style={{ backgroundColor: badge.color + '22', color: badge.color }}>
               {badge.label}
             </span>
+            {post.source && (
+              <span className="text-[9px] font-medium px-1.5 py-0.5 rounded-md"
+                    style={{ 
+                      backgroundColor: getSourceBadgeColor(post.source.credibility_score) + '22', 
+                      color: getSourceBadgeColor(post.source.credibility_score) 
+                    }}>
+                {post.source.type === 'primary' && '🥇'}
+                {post.source.type === 'secondary' && '🥈'}
+                {post.source.type === 'tertiary' && '🥉'}
+                {post.source.name}
+              </span>
+            )}
             <span className="text-[10px] text-slate-500">{formatDate(post.date)}</span>
           </div>
           <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-2 flex-1">

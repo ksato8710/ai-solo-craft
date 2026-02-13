@@ -6,6 +6,8 @@ export const dynamic = 'force-dynamic';
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const [skillContent, setSkillContent] = useState<string>('');
 
   const tabs = [
     { id: 'overview', label: '🏠 概要', icon: '🏠' },
@@ -14,6 +16,23 @@ export default function AdminPage() {
     { id: 'content', label: '📄 コンテンツ分類', icon: '📄' },
     { id: 'architecture', label: '🏗️ アーキテクチャ', icon: '🏗️' },
   ];
+
+  const loadSkillContent = async (skillName: string) => {
+    try {
+      const response = await fetch(`/api/admin/skills/${skillName}`);
+      if (response.ok) {
+        const content = await response.text();
+        setSkillContent(content);
+        setSelectedSkill(skillName);
+      } else {
+        setSkillContent('スキルファイルの読み込みに失敗しました。');
+        setSelectedSkill(skillName);
+      }
+    } catch (error) {
+      setSkillContent('スキルファイルの読み込み中にエラーが発生しました。');
+      setSelectedSkill(skillName);
+    }
+  };
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
@@ -39,7 +58,17 @@ export default function AdminPage() {
       {/* Tab Content */}
       {activeTab === 'overview' && <OverviewTab />}
       {activeTab === 'workflow' && <WorkflowTab />}
-      {activeTab === 'skills' && <SkillsTab />}
+      {activeTab === 'skills' && (
+        selectedSkill ? (
+          <SkillDetailTab 
+            skillName={selectedSkill} 
+            content={skillContent}
+            onBack={() => setSelectedSkill(null)} 
+          />
+        ) : (
+          <SkillsTab onSkillSelect={loadSkillContent} />
+        )
+      )}
       {activeTab === 'content' && <ContentTab />}
       {activeTab === 'architecture' && <ArchitectureTab />}
     </div>
@@ -160,6 +189,89 @@ function WorkflowTab() {
         </div>
       </div>
 
+      {/* 個別記事ワークフロー詳細 */}
+      <div className="p-6 bg-slate-800/50 border border-slate-600 rounded-lg">
+        <h2 className="text-xl font-semibold mb-4 text-slate-200">📝 個別記事ワークフロー詳細</h2>
+        
+        <div className="mb-6">
+          <h3 className="font-semibold text-blue-400 mb-3">3つの記事タイプ</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-slate-700/30 rounded-lg border border-green-500/30">
+              <h4 className="font-semibold text-green-400 mb-2">1. キュレーション型（★推奨）</h4>
+              <p className="text-xs text-slate-300 mb-2">既存リソースを評価・比較し、最適な学習パスを案内</p>
+              <ul className="text-xs text-slate-400 space-y-1">
+                <li>• 一次ソースへの敬意</li>
+                <li>• 独自の評価軸で整理</li>
+                <li>• 「どれを読むべきか」を提示</li>
+              </ul>
+            </div>
+            
+            <div className="p-4 bg-slate-700/30 rounded-lg border border-amber-500/30">
+              <h4 className="font-semibold text-amber-400 mb-2">2. 事例分析型</h4>
+              <p className="text-xs text-slate-300 mb-2">成功/失敗事例を深掘り分析し、再現可能な教訓を抽出</p>
+              <ul className="text-xs text-slate-400 space-y-1">
+                <li>• 具体的な数字（売上、ユーザー数）</li>
+                <li>• 時系列での軌跡</li>
+                <li>• 成功/失敗要因の分析</li>
+              </ul>
+            </div>
+            
+            <div className="p-4 bg-slate-700/30 rounded-lg border border-violet-500/30">
+              <h4 className="font-semibold text-violet-400 mb-2">3. 実践ガイド型</h4>
+              <p className="text-xs text-slate-300 mb-2">手を動かして学べる実践的なチュートリアル</p>
+              <ul className="text-xs text-slate-400 space-y-1">
+                <li>• ステップバイステップ手順</li>
+                <li>• 実際のコード例</li>
+                <li>• トラブルシューティング</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mb-6">
+          <h3 className="font-semibold text-emerald-400 mb-3">作成プロセス</h3>
+          <div className="space-y-3">
+            {[
+              { step: 'Step 1', title: 'テーマ選定', desc: 'トレンド分析・読者ニーズ・専門性のバランス', color: 'bg-red-500' },
+              { step: 'Step 2', title: 'リサーチ', desc: '一次ソース収集・既存記事調査・専門家意見', color: 'bg-amber-500' },
+              { step: 'Step 3', title: '構造設計', desc: '記事構成・読者の学習パス・独自価値の設定', color: 'bg-green-500' },
+              { step: 'Step 4', title: '執筆', desc: '8,000-20,000字での詳細記述・実例・図表', color: 'bg-blue-500' },
+              { step: 'Step 5', title: 'レビュー', desc: '事実確認・リンク検証・読みやすさ調整', color: 'bg-violet-500' },
+            ].map((item, index) => (
+              <div key={index} className="flex items-center gap-4 p-3 bg-slate-700/20 rounded-lg">
+                <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-semibold text-slate-200 text-sm">{item.step}: {item.title}</span>
+                  </div>
+                  <p className="text-xs text-slate-400">{item.desc}</p>
+                </div>
+                {index < 4 && <span className="text-slate-500 text-sm">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div>
+          <h3 className="font-semibold text-blue-400 mb-3">スケジュール（平日12:30編集枠）</h3>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 text-sm">
+            {[
+              { day: '月', focus: 'dev-knowledge', desc: '開発技術・ツール解説' },
+              { day: '火', focus: 'case-study', desc: '成功事例・失敗分析' },
+              { day: '水', focus: 'product辞書更新', desc: 'プロダクト情報整備' },
+              { day: '木', focus: 'dev-knowledge', desc: 'フレームワーク・手法' },
+              { day: '金', focus: 'case-study', desc: 'ビジネス事例・戦略' },
+            ].map((item, index) => (
+              <div key={index} className="p-3 bg-slate-700/40 rounded border border-slate-600">
+                <div className="font-semibold text-slate-200 mb-1">{item.day}曜日</div>
+                <div className="text-xs text-blue-400 mb-1">{item.focus}</div>
+                <div className="text-xs text-slate-400">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="p-6 bg-slate-800/50 border border-slate-600 rounded-lg">
         <h2 className="text-xl font-semibold mb-4 text-slate-200">📊 5 Phase Pipeline</h2>
         <div className="space-y-4">
@@ -214,7 +326,7 @@ function WorkflowTab() {
   );
 }
 
-function SkillsTab() {
+function SkillsTab({ onSkillSelect }: { onSkillSelect: (skillName: string) => void }) {
   const skills = [
     {
       name: 'news-research',
@@ -276,13 +388,19 @@ function SkillsTab() {
     <div className="space-y-6">
       <div className="p-6 bg-slate-800/50 border border-slate-600 rounded-lg">
         <h2 className="text-xl font-semibold mb-4 text-slate-200">🛠️ スキル一覧</h2>
+        <p className="text-sm text-slate-400 mb-4">スキル名をクリックすると詳細（SKILL.md）を確認できます。</p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {skills.map((skill, index) => (
-            <div key={index} className="p-4 bg-slate-700/40 rounded-lg border border-slate-600">
+            <div 
+              key={index} 
+              className="p-4 bg-slate-700/40 rounded-lg border border-slate-600 cursor-pointer hover:bg-slate-700/60 transition-colors"
+              onClick={() => onSkillSelect(skill.name)}
+            >
               <div className="flex items-center gap-3 mb-3">
                 <div className={`w-3 h-3 rounded-full ${skill.color}`}></div>
-                <h3 className="font-mono font-semibold text-slate-200">{skill.name}</h3>
+                <h3 className="font-mono font-semibold text-slate-200 hover:text-blue-300">{skill.name}</h3>
                 <span className="text-xs bg-slate-600 px-2 py-1 rounded text-slate-300">{skill.phase}</span>
+                <span className="text-xs text-blue-400 ml-auto">詳細 →</span>
               </div>
               <p className="text-sm text-slate-400 mb-3">{skill.description}</p>
               <div className="space-y-2">
@@ -437,6 +555,44 @@ function ContentTab() {
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function SkillDetailTab({ skillName, content, onBack }: { skillName: string, content: string, onBack: () => void }) {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center gap-4 mb-6">
+        <button 
+          onClick={onBack}
+          className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition-colors flex items-center gap-2"
+        >
+          ← スキル一覧に戻る
+        </button>
+        <h1 className="text-2xl font-bold text-slate-100">📄 {skillName}</h1>
+      </div>
+      
+      <div className="p-6 bg-slate-800/50 border border-slate-600 rounded-lg">
+        <h2 className="text-xl font-semibold mb-4 text-slate-200 flex items-center gap-2">
+          📋 SKILL.md 内容
+        </h2>
+        <div className="bg-slate-900/50 rounded-lg p-4 max-h-96 overflow-y-auto">
+          <pre className="text-sm text-slate-300 whitespace-pre-wrap font-mono leading-relaxed">
+            {content || 'ローディング中...'}
+          </pre>
+        </div>
+      </div>
+      
+      <div className="p-4 bg-blue-500/10 border border-blue-400/20 rounded-lg">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-blue-400">💡</span>
+          <h4 className="text-sm font-medium text-blue-300">スキルファイルについて</h4>
+        </div>
+        <p className="text-sm text-blue-200/80">
+          このスキルファイルは <code className="bg-slate-700 px-2 py-1 rounded">~/.clawdbot/skills/{skillName}/SKILL.md</code> から読み込まれています。
+          実際の実行手順、使用方法、設定例などが記載されています。
+        </p>
       </div>
     </div>
   );

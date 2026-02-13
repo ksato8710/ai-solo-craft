@@ -1,0 +1,329 @@
+{
+  "processed": 93,
+  "matched": 46,
+  "sources_available": 8,
+  "updates": [
+    {
+      "article_id": "bf9fa828-5576-460d-9e33-89d70ef12b09",
+      "article_title": "Cline：VS Codeで動く自律型AIコーディングエージェントの衝撃",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 12)"
+    },
+    {
+      "article_id": "f51a1ade-4368-4f0d-8a7a-445168291e65",
+      "article_title": "Kimi K2.5 & OpenAI Prism — オープンソースの巨人と科学者のためのAIエディタ",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 27)"
+    },
+    {
+      "article_id": "7d12bc10-0547-4072-a78e-cdf62cb546b7",
+      "article_title": "AIソロビルダー朝刊 — 2026年2月11日（火）前GitHub CEOが$60M調達でAI協働プラットフォーム始動",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 16)"
+    },
+    {
+      "article_id": "e6e12756-dae1-4462-8c71-f3f8899a7707",
+      "article_title": "ソロビルダー3つ星ツール — プロフィール画像・SEO・バックエンド生成",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "d90a98a3-72c8-4a80-8414-d2b0be5f31c4",
+      "article_title": "MCP Server開発で始める次世代AI Agent構築",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "40979485-0fb5-4f47-a668-59f9a216da9e",
+      "article_title": "3週間で$10k MRR達成のAI設計ツールSleek — ソロビルダー必携の開発加速ツール3選",
+      "source_name": "Indie Hackers",
+      "credibility_score": 4,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "778f9ce6-cf9e-40ac-bcc3-f74b9f1dfba8",
+      "article_title": "PitchMode — 開発者向けピッチ練習AIが話題、コーディングアシスタント最新動向も",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "011462a1-2853-4d22-93ba-4c2d867b2528",
+      "article_title": "AI開発者向け注目ツール3選 — CodexアプリからZed IDEまで最新動向",
+      "source_name": "TechCrunch",
+      "credibility_score": 7,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "c740d05b-30c7-422d-9ae1-29d623d34f1c",
+      "article_title": "超最新！HNで話題のAI開発ツール3選 — Crew、Misatay、PitchMode",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 37)"
+    },
+    {
+      "article_id": "ace579ef-873c-44ae-827b-e84e4f62e499",
+      "article_title": "GitHub元CEO、AI開発ツールで60M$調達",
+      "source_name": "TechCrunch",
+      "credibility_score": 7,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "a38f995c-79f4-4f1a-b0cf-85af045d00fd",
+      "article_title": "Lovable — AI駆動フルスタック開発プラットフォーム",
+      "source_name": "Product Hunt",
+      "credibility_score": 3,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "eac7af7a-b434-4425-9469-4d04e1bc68c9",
+      "article_title": "Vouch — AI時代のオープンソースを守る信頼管理システム",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 40)"
+    },
+    {
+      "article_id": "f181b184-da77-4ec6-b94f-7b9844308d41",
+      "article_title": "Claude Cowork — Anthropicのプラグイン対応AIワークスペース",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "66178f6b-eced-4833-a9ea-2b908dea5aea",
+      "article_title": "Prima脳MRI AI実装手法 — 97.5%精度で数秒診断、医療AI実用化の成功モデル",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 4)"
+    },
+    {
+      "article_id": "da1322a6-afaf-44d8-99fd-dbf7fcfe061d",
+      "article_title": "Rowboat — ローカルファーストAIが作る「生きた記憶」がゲームチェンジャーに",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 36)"
+    },
+    {
+      "article_id": "0f9fd886-2820-42a8-8ead-cb2985bc0e71",
+      "article_title": "2026年2月12日 夕刊AIダイジェスト",
+      "source_name": "TechCrunch",
+      "credibility_score": 7,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "856ea5e4-f495-43a5-9334-73af95d77178",
+      "article_title": "Voxtral Mini 4B、ブラウザでリアルタイム音声認識 — ローカルASRが実用圏へ",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "bef28f30-e4eb-419e-878c-72f722ac62e4",
+      "article_title": "Anton Osikaの事例 — 週末プロトタイプから8ヶ月で年商150億円のAIソフトウェアビルダーを構築",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "251fe022-44dd-4974-9dcd-89f80317724e",
+      "article_title": "Claude無料機能拡充でソロビルダー革命 — ChatGPT広告化に対抗",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "bb632f98-bd4f-49a7-814c-c4851766457d",
+      "article_title": "Claude Opus 4.6が500+脆弱性を発見 — AI防御革命の幕開け",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 12)"
+    },
+    {
+      "article_id": "53effeaa-8208-43fb-9f9d-4c8e3dec81e8",
+      "article_title": "OpenAI Frontier完全解説 — エンタープライズAI革命の決定版プラットフォーム",
+      "source_name": "TechCrunch",
+      "credibility_score": 7,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "1beb2eec-0e5f-4a36-abab-93b647d6f56c",
+      "article_title": "LeCun AMI Labs詳細分析 — 50億ドルでLLM支配に挑戦する世界モデル革命",
+      "source_name": "TechCrunch",
+      "credibility_score": 7,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "db23eb78-1335-4b1c-9b32-07ea2878d72d",
+      "article_title": "Cline — VS Codeで動く自律型コーディングエージェント",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "817a6995-5d80-4f96-86f2-ab5ae2a318f1",
+      "article_title": "Bolt.new — ブラウザだけで完結するAIフルスタック開発環境",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "df3083bd-cdfd-46c2-928f-636fa6771b9f",
+      "article_title": "Continue.dev — OSSのAIコーディングアシスタント（IDE拡張）",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 24)"
+    },
+    {
+      "article_id": "a34e3098-4d85-4a8d-ab55-c0bb4a1ca1d8",
+      "article_title": "AIソロビルダー朝刊 — 2026年2月10日（火）「Spec-first」がAI開発の勝ち筋になる",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "f79c42ce-5750-4d08-ba90-9a30a751f8a0",
+      "article_title": "【2026年決定版】AIコーディングツール完全比較ガイド — 日本のソロビルダー向け実践的選び方と使い分け戦略",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 4)"
+    },
+    {
+      "article_id": "7d031c8c-0ecb-436c-9252-2189dff83fe3",
+      "article_title": "Mattia Pomelli、Sleek.designで6週間$10k MRR — デザイン自動化×高速検証の勝ち筋",
+      "source_name": "Indie Hackers",
+      "credibility_score": 4,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "faa05e3c-10c4-40eb-8274-8c6d26f358fc",
+      "article_title": "Runway — AIによる動画生成・編集プラットフォーム",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "c79a2b29-75c5-4b71-b81a-d52250eb2454",
+      "article_title": "Bifrost — 複数LLMを切り替える統一ゲートウェイ",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "1a47a2e9-a3ee-4fa5-9f0c-6ce9dbcebf21",
+      "article_title": "Shannon",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "70f94c41-671c-4b0d-b07b-20d72e054a43",
+      "article_title": "Pieter Levelsの事例 — 従業員ゼロ・AIだけで年収3億円を稼ぐソロファウンダーの全戦略",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "e473ea98-8891-4319-a71b-1f6c23ccb1ff",
+      "article_title": "Voxtral Mini",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "fe11d60b-2ba6-45c3-a361-ff97709a6907",
+      "article_title": "MCP（Model Context Protocol）実践ガイド — AIソロビルダーのための環境構築からユースケースまで",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 20)"
+    },
+    {
+      "article_id": "d02b5722-cff9-49b4-9e09-0de575455ff7",
+      "article_title": "GitHub Copilot — コード補完・生成の定番",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "7cd0d526-2cd0-4a27-83b4-e6a7c257d029",
+      "article_title": "過去24時間でAI Solo Builderに激震！グローバル重大ニュース独自ランキングTOP10",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "bcd027b1-42b6-4d4e-9eb3-8843c7540979",
+      "article_title": "AIソロビルダーの現実：26歳エンジニアが3ヶ月で月収620万円を達成した戦略とは",
+      "source_name": "Indie Hackers",
+      "credibility_score": 4,
+      "verification_note": "Auto-detected (confidence: 13)"
+    },
+    {
+      "article_id": "af87483a-95a2-49c5-a26e-f7e13634aba8",
+      "article_title": "【2026年最新】OpenAI Codex完全ガイド｜CLI・デスクトップアプリの使い方から料金・競合比較まで",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 20)"
+    },
+    {
+      "article_id": "5229d3ef-d49d-4ef9-8365-b3068bfb931f",
+      "article_title": "Shannon、AI脆弱性発見で96.15%成功率 — “継続監査”が個人でも可能に",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "f9761bcb-5c0b-4576-b71a-1023fbc3d5b2",
+      "article_title": "Lovable — プロンプトだけでWebアプリを作れるAI開発プラットフォーム",
+      "source_name": "TechCrunch",
+      "credibility_score": 7,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "67053c60-64a5-4acd-b335-217465aec242",
+      "article_title": "n8n — オープンソースのAIワークフロー自動化プラットフォーム",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "343cd814-4406-47d5-a352-a7c82dc97b7e",
+      "article_title": "Vouch",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "01f57032-f733-439b-8ca2-e6023575516e",
+      "article_title": "Windsurf — AIエージェント搭載のコーディングIDE",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "499eb3b9-2489-43fd-b554-a2fcd1af2dde",
+      "article_title": "LocalGPT — ローカル完結のAIアシスタント（Rust）",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 8)"
+    },
+    {
+      "article_id": "d2b09bd8-b93a-4db4-88c2-8ed31e1800e3",
+      "article_title": "Suno — テキストから楽曲を自動生成するAI音楽プラットフォーム",
+      "source_name": "Hacker News",
+      "credibility_score": 6,
+      "verification_note": "Auto-detected (confidence: 5)"
+    },
+    {
+      "article_id": "d6a20ce9-dd3e-4b3b-bf8a-f87fefcf80a9",
+      "article_title": "AIソロビルダー夕刊 — 2026年2月10日（火）“AIのルールをコードに同梱”が当たり前になる夜",
+      "source_name": "GitHub Trending",
+      "credibility_score": 8,
+      "verification_note": "Auto-detected (confidence: 48)"
+    }
+  ]
+}

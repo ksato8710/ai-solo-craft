@@ -60,25 +60,26 @@ AI Solo Builder の記事作成には **2種類のワークフロー** がある
 - NVAスコアリングによる客観的評価
 - cron による定時実行
 
-### 4 Phase構成
+### 5 Phase構成
 
 ```
-Phase 1          Phase 2          Phase 3          Phase 4
-[調査] ──────▶ [評価・選定] ──────▶ [記事作成] ──────▶ [公開]
-   │                │                  │                │
-   ▼                ▼                  ▼                ▼
-news_candidates  selected候補      Markdown記事      本番公開
-(DB保存)         (NVA付き)          (Top3個別含む)    (Vercel)
+Phase 1          Phase 2          Phase 3          Phase 4           Phase 5
+[調査] ──────▶ [評価・選定] ──────▶ [記事作成] ──────▶ [UI最適化] ──────▶ [公開]
+   │                │                  │                 │                 │
+   ▼                ▼                  ▼                 ▼                 ▼
+news_candidates  selected候補      Markdown記事       最適化記事        本番公開
+(DB保存)         (NVA付き)          (Top3個別含む)     (読みやすさ向上)   (Vercel)
 ```
 
 ### Phase間の責務分離
 
 | Phase | 責務 | 入力 | 出力 | スキル |
 |-------|------|------|------|--------|
-| 1. 調査 | 一次ソース特定・日付確認・DB保存 | ソース巡回 | news_candidates (collected) | news-research |
-| 2. 評価 | 期間フィルタ・NVA・事実確認 | collected候補 | selected候補 (Top10/Top3) | news-evaluation |
-| 3. 記事作成 | Digest + Top3個別記事執筆 | selected候補 | Markdownファイル | digest-writer |
-| 4. 公開 | チェックリスト照合・デプロイ | Markdownファイル | 本番サイト | publish-gate |
+| 1. 調査 | 一次ソース特定・日付確認・**自動ソース検出・分類**・DB保存 | ソース巡回 | news_candidates (collected) | news-research |
+| 2. 評価 | 期間フィルタ・**ソース信頼度考慮NVA**・事実確認 | collected候補 | selected候補 (Top10/Top3) | news-evaluation |
+| 3. 記事作成 | Digest + Top3個別記事執筆・**ソース情報自動登録** | selected候補 | Markdownファイル | digest-writer |
+| 4. UI最適化 | 表組み・構造・視覚的メリハリの改善 | Markdownファイル | 最適化記事 | content-optimizer |
+| 5. 公開 | チェックリスト照合・**ソース整合性チェック**・デプロイ | 最適化記事 | 本番サイト | publish-gate |
 
 ### 日次スケジュール
 
@@ -94,12 +95,17 @@ news_candidates  selected候補      Markdown記事      本番公開
        ├─ NVAスコアリング
        └─ Top10/Top3選定
 
-07:50  digest-writer
+07:48  digest-writer
        ├─ Digest記事作成
        ├─ Top3個別記事作成
        └─ プロダクトリンク整備
 
-07:55  publish-gate
+07:53  content-optimizer
+       ├─ 表組み最適化
+       ├─ 視覚的メリハリ改善
+       └─ 情報階層明確化
+
+07:57  publish-gate
        ├─ チェックリスト照合
        ├─ npm run publish:gate
        ├─ git push
@@ -117,10 +123,13 @@ news_candidates  selected候補      Markdown記事      本番公開
 17:40  news-evaluation
        └─ 朝刊との重複排除 + NVA
 
-17:50  digest-writer
+17:48  digest-writer
        └─ Digest + Top3
 
-17:55  publish-gate
+17:53  content-optimizer
+       └─ UI最適化・読みやすさ向上
+
+17:57  publish-gate
        └─ チェック・デプロイ・報告
 
 18:00  公開完了
@@ -189,6 +198,7 @@ Phase 1          Phase 2            Phase 3          Phase 4          Phase 5
 | **news-research** | `~/.clawdbot/skills/news-research/` | ✅ | △※ | ニュース収集・一次ソース確認・DB保存 |
 | **news-evaluation** | `~/.clawdbot/skills/news-evaluation/` | ✅ | - | 期間フィルタ・NVA・Top10選定 |
 | **digest-writer** | `~/.clawdbot/skills/digest-writer/` | ✅ | - | Digest + Top3記事作成 |
+| **content-optimizer** | `~/.clawdbot/skills/content-optimizer/` | ✅ | ✅ | UIレベルの読みやすさ向上・表組み最適化 |
 | **publish-gate** | `~/.clawdbot/skills/publish-gate/` | ✅ | ✅ | 最終チェック・デプロイ・報告 |
 | **article-quality-check** | `~/.clawdbot/skills/article-quality-check/` | ✅ | ✅ | 投稿前の品質チェック |
 | **site-checker** | `~/.clawdbot/skills/site-checker/` | ✅ | ✅ | 公開後のUI確認 |
@@ -210,7 +220,11 @@ news-evaluation
      ▼
 digest-writer
      │
-     │ content/news/*.md
+     │ content/news/*.md (初稿)
+     ▼
+content-optimizer
+     │
+     │ content/news/*.md (UI最適化済み)
      ▼
 publish-gate
      │
@@ -228,7 +242,11 @@ publish-gate
      ▼
 [記事執筆]
      │
-     │ content/news/*.md
+     │ content/news/*.md (初稿)
+     ▼
+content-optimizer
+     │
+     │ content/news/*.md (UI最適化済み)
      ▼
 article-quality-check
      │
@@ -258,17 +276,19 @@ publish-gate
 ```
 asb-morning-digest / asb-evening-digest
      │
-     └─▶ Digestワークフロー（4 Phase）
+     └─▶ Digestワークフロー（5 Phase）
               ├─ Phase 1: news-research
               ├─ Phase 2: news-evaluation
               ├─ Phase 3: digest-writer
-              └─ Phase 4: publish-gate
+              ├─ Phase 4: content-optimizer
+              └─ Phase 5: publish-gate
 
 asb-midday-editorial
      │
-     └─▶ 個別記事ワークフロー（5 Phase）
+     └─▶ 個別記事ワークフロー（6 Phase）
               ├─ Phase 1-4: 手動（リサーチ・評価・設計・執筆）
-              └─ Phase 5: publish-gate
+              ├─ Phase 5: content-optimizer
+              └─ Phase 6: publish-gate
 ```
 
 ---
@@ -288,11 +308,11 @@ asb-midday-editorial
 
 | スキル | 対応するチェック項目 |
 |--------|---------------------|
-| news-research | 一次ソースURL確認、発表日確認 |
-| news-evaluation | 期間適切性、事実確認、NVAスコア |
-| digest-writer | Frontmatter、Digest構造、画像、リンク |
+| news-research | 一次ソースURL確認、発表日確認、**自動ソース検出・登録** |
+| news-evaluation | 期間適切性、事実確認、**ソース信頼度考慮**NVAスコア |
+| digest-writer | Frontmatter、Digest構造、画像、リンク、**ソース情報登録** |
 | article-quality-check | サムネイル、メタデータ、フォーマット |
-| publish-gate | ゲート通過、デプロイ確認、Slack報告 |
+| publish-gate | ゲート通過、**ソース整合性チェック**、デプロイ確認、Slack報告 |
 
 ---
 
@@ -334,6 +354,88 @@ CREATE TABLE news_candidates (
 collected → evaluated → selected → (記事作成後) completed
                      ↘ rejected
 ```
+
+---
+
+## 🔗 ソース管理システム（Phase 4: 運用最適化）
+
+### 概要
+
+**目的:** 記事の信頼性担保・ソース品質の継続的向上
+
+**機能:**
+- 自動ソース検出・分類・信頼度算出
+- 記事作成時の自動ソース登録
+- 月次メンテナンス・品質管理
+
+### ソーステーブル構成
+
+```sql
+-- メインソーステーブル
+CREATE TABLE sources (
+  id UUID PRIMARY KEY,
+  name TEXT NOT NULL,
+  domain TEXT NOT NULL,
+  url TEXT NOT NULL,
+  source_type TEXT NOT NULL,        -- 'primary' | 'secondary' | 'tertiary'
+  credibility_score DECIMAL(3,1),   -- 1.0〜10.0
+  verification_level TEXT,          -- 'official' | 'editorial' | 'community'
+  description TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- 記事・ソース関連
+ALTER TABLE contents ADD COLUMN primary_source_id UUID REFERENCES sources(id);
+ALTER TABLE contents ADD COLUMN source_credibility_score DECIMAL(3,1);
+ALTER TABLE contents ADD COLUMN source_verification_note TEXT;
+```
+
+### ソース分類基準
+
+| タイプ | 説明 | 信頼度範囲 | 例 |
+|--------|------|-----------|-----|
+| **primary** | 公式発表・一次情報 | 8.0〜10.0 | OpenAI Blog, Anthropic Blog, Google AI |
+| **secondary** | 技術メディア・編集記事 | 6.0〜8.0 | TechCrunch, Ars Technica, Bloomberg |
+| **tertiary** | コミュニティ・まとめ | 3.0〜6.0 | Hacker News, Reddit, Medium |
+
+### 自動ソース検出フロー
+
+```
+記事作成時
+    │
+    ▼
+URLパターン分析 ──▶ ソース分類 ──▶ 信頼度算出 ──▶ DB登録
+    │                  │              │            │
+    ▼                  ▼              ▼            ▼
+既存ソース確認      primary判定     スコア計算    記事紐づけ
+未登録なら新規      secondary      タイプ別基準   メタ情報更新
+```
+
+### 月次メンテナンス
+
+**実行:** 毎月1日03:00（cron: `0 3 1 * *`）
+
+1. **信頼度更新** - 過去30日の利用頻度で調整
+2. **新規ソース発見** - 記事内リンクから自動抽出
+3. **非アクティブ検出** - 90日未利用ソースの特定
+4. **詳細レポート** - 統計・推移・異常値の報告
+
+### ワークフローへの統合
+
+| Phase | 従来機能 | + ソース管理機能 |
+|-------|----------|----------------|
+| **Phase 1: news-research** | ソース巡回・URL確認 | + 自動ソース検出・分類・登録 |
+| **Phase 2: news-evaluation** | NVAスコアリング | + ソース信頼度考慮評価 |
+| **Phase 3: digest-writer** | 記事作成 | + ソース情報自動登録・メタ記録 |
+| **Phase 4: publish-gate** | 品質チェック | + ソース整合性確認・検証 |
+
+### 実績（2026-02-13完了）
+
+- ✅ 既存記事ソース紐づけ: 72/93記事（77%成功率）
+- ✅ 新規記事自動ソース検出: 100%成功率
+- ✅ 月次メンテナンス: cron設定完了
+- ✅ ソース品質管理: 80件新規登録・信頼度自動更新
 
 ---
 
@@ -379,7 +481,8 @@ collected → evaluated → selected → (記事作成後) completed
 | ├ news-research | `~/.clawdbot/skills/news-research/SKILL.md` | Phase 1 手順 |
 | ├ news-evaluation | `~/.clawdbot/skills/news-evaluation/SKILL.md` | Phase 2 手順 |
 | ├ digest-writer | `~/.clawdbot/skills/digest-writer/SKILL.md` | Phase 3 手順 |
-| └ publish-gate | `~/.clawdbot/skills/publish-gate/SKILL.md` | Phase 4 手順 |
+| ├ content-optimizer | `~/.clawdbot/skills/content-optimizer/SKILL.md` | Phase 4 手順 |
+| └ publish-gate | `~/.clawdbot/skills/publish-gate/SKILL.md` | Phase 5 手順 |
 | **共通スキル** | | |
 | ├ article-quality-check | `~/.clawdbot/skills/article-quality-check/SKILL.md` | 品質チェック |
 | └ site-checker | `~/.clawdbot/skills/site-checker/SKILL.md` | UI確認 |
@@ -390,5 +493,12 @@ collected → evaluated → selected → (記事作成後) completed
 
 | 日付 | 内容 |
 |------|------|
+| **2026-02-13** | **Phase 4運用最適化完了: ソース管理システム実装** |
+| | ✅ 自動ソース検出・分類・信頼度算出システム |
+| | ✅ 既存72記事への一括ソース紐づけ（77%成功率） |
+| | ✅ 新規記事作成時の自動ソース登録機能 |
+| | ✅ 月次メンテナンス・品質管理cron設定 |
+| | ✅ 80件新規ソース自動発見・登録 |
+| 2026-02-13 | content-optimizer スキルを追加、5 Phaseワークフローに拡張（UI最適化フェーズ組み込み） |
 | 2026-02-12 | 個別記事ワークフローを追加、2種類のワークフロータイプに整理 |
 | 2026-02-12 | 初版作成（ワークフロー・スキル・チェックリストの包括整理） |

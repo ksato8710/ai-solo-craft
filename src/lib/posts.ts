@@ -207,11 +207,20 @@ async function fetchDbPreparedData(): Promise<PreparedData> {
   const supabase = getSupabaseClient();
   if (!supabase) throw new Error('DB client unavailable');
 
-  const { data: contents, error: contentsError } = await supabase
+  // Temporary workaround for type definitions
+  const query: any = supabase
     .from('contents')
-    .select('id, slug, title, description, date, read_time, featured, hero_image_url, body_markdown, content_type, status')
+    .select(`
+      id, slug, title, description, date, read_time, featured, hero_image_url, body_markdown, content_type, status,
+      primary_source_id,
+      sources:primary_source_id (
+        id, name, domain, source_type, credibility_score, verification_level, description
+      )
+    `)
     .eq('status', 'published')
     .order('date', { ascending: false });
+
+  const { data: contents, error: contentsError } = await query;
 
   if (contentsError) throw contentsError;
 
@@ -219,7 +228,7 @@ async function fetchDbPreparedData(): Promise<PreparedData> {
     return { allContent: [], allPosts: [], allProducts: [], bySlug: new Map() };
   }
 
-  const contentIds = contents.map((c) => c.id);
+  const contentIds = contents.map((c: any) => c.id);
 
   const { data: digestRows, error: digestError } = await supabase
     .from('digest_details')
@@ -259,7 +268,7 @@ async function fetchDbPreparedData(): Promise<PreparedData> {
     tagsByContentId.set(row.content_id, existing);
   }
 
-  const contentSlugById = new Map(contents.map((c) => [c.id, c.slug]));
+  const contentSlugById = new Map(contents.map((c: any) => [c.id, c.slug]));
 
   const relatedProductsByContentId = new Map<string, { productSlug: string; relationType: string }[]>();
   for (const row of productLinkRows || []) {
@@ -267,11 +276,11 @@ async function fetchDbPreparedData(): Promise<PreparedData> {
     if (!productSlug) continue;
 
     const existing = relatedProductsByContentId.get(row.content_id) || [];
-    existing.push({ productSlug, relationType: row.relation_type });
+    existing.push({ productSlug: String(productSlug), relationType: row.relation_type });
     relatedProductsByContentId.set(row.content_id, existing);
   }
 
-  const allContent: Post[] = contents.map((row) => {
+  const allContent: Post[] = contents.map((row: any) => {
     const contentType = row.content_type as ContentType;
     const digestEdition = (digestEditionByContentId.get(row.id) || null) as DigestEdition;
     const tags = unique(tagsByContentId.get(row.id) || []);
@@ -288,6 +297,17 @@ async function fetchDbPreparedData(): Promise<PreparedData> {
 
     const category = mapCategoryFromCanonical(contentType, digestEdition, tags);
     const type = contentType === 'product' ? 'product' : 'news';
+
+    // Extract source information
+    const sourceData = (row as any).sources;
+    const source = sourceData ? {
+      id: sourceData.id,
+      name: sourceData.name,
+      domain: sourceData.domain,
+      type: sourceData.source_type,
+      credibility_score: sourceData.credibility_score,
+      verification_level: sourceData.verification_level,
+    } : undefined;
 
     return {
       slug: row.slug,
@@ -306,6 +326,7 @@ async function fetchDbPreparedData(): Promise<PreparedData> {
       tags,
       contentType,
       digestEdition,
+      source,
     };
   });
 

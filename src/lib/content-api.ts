@@ -11,6 +11,19 @@ export interface ContentListQuery {
   limit: number;
   offset: number;
   q?: string;
+  source_type?: 'primary' | 'secondary' | 'tertiary' | 'official' | 'media' | 'community' | 'social' | 'other';
+  min_credibility?: number;
+  max_credibility?: number;
+}
+
+export interface ApiSourceInfo {
+  id?: string;
+  name?: string;
+  domain?: string;
+  type?: 'primary' | 'secondary' | 'tertiary' | 'official' | 'media' | 'community' | 'social' | 'other';
+  credibility_score?: number;
+  verification_level?: 'official' | 'editorial' | 'community';
+  badge?: string;
 }
 
 export interface ApiContentSummary {
@@ -28,6 +41,7 @@ export interface ApiContentSummary {
   digestEdition: 'morning' | 'evening' | null;
   tags: string[];
   relatedProducts: string[];
+  source?: ApiSourceInfo;
 }
 
 export interface ApiContentDetail extends ApiContentSummary {
@@ -65,7 +79,27 @@ export function parseTags(value: string | null): string[] {
     .filter(Boolean);
 }
 
+function generateSourceBadge(source?: { type?: string; credibility_score?: number; verification_level?: string }): string | undefined {
+  if (!source?.type) return undefined;
+  
+  switch (source.type) {
+    case 'primary': return '🥇 Official';
+    case 'secondary': return '🥈 Editorial';
+    case 'tertiary': return '🥉 Community';
+    case 'official': return '🥇 Official';
+    case 'media': return '🥈 Editorial';
+    case 'community': return '🥉 Community';
+    case 'social': return '🥉 Community';
+    default: return '📰 Other';
+  }
+}
+
 export function toApiSummary(post: Post): ApiContentSummary {
+  const source = post.source ? {
+    ...post.source,
+    badge: generateSourceBadge(post.source)
+  } : undefined;
+
   return {
     slug: post.slug,
     title: post.title,
@@ -81,6 +115,7 @@ export function toApiSummary(post: Post): ApiContentSummary {
     digestEdition: post.digestEdition ?? null,
     tags: post.tags || [],
     relatedProducts: post.relatedProducts || [],
+    source,
   };
 }
 
@@ -126,6 +161,25 @@ export function matchesQuery(post: Post, query: Omit<ContentListQuery, 'limit' |
     const needle = query.q.toLowerCase();
     const haystack = `${post.title}\n${post.description}`.toLowerCase();
     if (!haystack.includes(needle)) {
+      return false;
+    }
+  }
+
+  // Source filtering
+  if (query.source_type) {
+    if (!post.source?.type || post.source.type !== query.source_type) {
+      return false;
+    }
+  }
+
+  if (query.min_credibility !== undefined) {
+    if (!post.source?.credibility_score || post.source.credibility_score < query.min_credibility) {
+      return false;
+    }
+  }
+
+  if (query.max_credibility !== undefined) {
+    if (!post.source?.credibility_score || post.source.credibility_score > query.max_credibility) {
       return false;
     }
   }

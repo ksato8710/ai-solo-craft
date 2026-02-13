@@ -1,6 +1,15 @@
 export type ContentType = 'news' | 'product' | 'digest';
 export type DigestEdition = 'morning' | 'evening' | null;
 
+export interface SourceInfo {
+  id?: string;
+  name?: string;
+  domain?: string;
+  type?: 'primary' | 'secondary' | 'tertiary' | 'official' | 'media' | 'community' | 'social' | 'other';
+  credibility_score?: number;
+  verification_level?: 'official' | 'editorial' | 'community';
+}
+
 export interface Post {
   slug: string;
   title: string;
@@ -19,6 +28,7 @@ export interface Post {
   tags?: string[];
   contentType?: ContentType;
   digestEdition?: DigestEdition;
+  source?: SourceInfo;
 }
 
 export const CATEGORIES: Record<string, { label: string; color: string; emoji: string }> = {
