@@ -16,6 +16,8 @@
     "db:types": "supabase gen types typescript --linked --schema public > src/types/database.ts",
     "sync:content:db": "node scripts/sync-content-to-supabase.mjs",
     "sync:content:db:dry": "node scripts/sync-content-to-supabase.mjs --dry-run",
+    "admin:setup": "node scripts/setup-admin-database.mjs",
+    "admin:check": "node scripts/check-content-sources-table.mjs",
     "publish:gate": "bash scripts/publish-gate.sh",
     "prepare": "husky"
   },
