@@ -6,6 +6,7 @@ export default function AdminPage() {
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">管理画面</h1>
+      {/* Admin interface for AI Solo Builder content management */}
       <div className="space-y-4">
         <div className="p-4 border rounded-lg">
           <h2 className="text-xl font-semibold mb-2">利用可能な管理機能</h2>
