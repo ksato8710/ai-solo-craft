@@ -1,24 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+// Check if running in build environment
+const isBuild = process.env.NODE_ENV === 'production' && !process.env.VERCEL;
 
-// Supabase client creation with environment check
-function createSupabaseClient() {
-  if (!supabaseUrl || !supabaseServiceKey) {
-    console.warn('Supabase credentials not available');
-    return null;
+// Only create Supabase client if not in build environment
+let supabase: any = null;
+
+if (!isBuild) {
+  try {
+    const { createClient } = require('@supabase/supabase-js');
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    
+    if (supabaseUrl && supabaseServiceKey) {
+      supabase = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: { persistSession: false, autoRefreshToken: false },
+      });
+    }
+  } catch (error) {
+    console.warn('Supabase client creation failed:', error);
   }
-  
-  return createClient(supabaseUrl, supabaseServiceKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
 }
 
-const supabase = createSupabaseClient();
-
-// 初期データ
+// Initial sources data
 const INITIAL_SOURCES = [
   {
     name: 'Hacker News',
@@ -48,7 +52,7 @@ const INITIAL_SOURCES = [
     accessibility_rating: 4,
     is_free: true,
     is_active: true,
-    description: '独立開発者・ソロ起業家のコミュニティ。収益化事例・運営ノウハウ'
+    description: '独立開発者・ソロ起業家のコミュニティ'
   },
   {
     name: 'Y Combinator News',
@@ -106,10 +110,11 @@ const INITIAL_SOURCES = [
 export async function GET(request: NextRequest) {
   try {
     if (!supabase) {
+      // Fallback to mock data when database not available
       return NextResponse.json({ 
-        error: 'Database connection not available',
-        sources: [] 
-      }, { status: 503 });
+        sources: INITIAL_SOURCES,
+        note: 'Using fallback data - database not available'
+      });
     }
 
     const { searchParams } = new URL(request.url);
@@ -135,14 +140,20 @@ export async function GET(request: NextRequest) {
 
     if (error) {
       console.error('Error fetching sources:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ 
+        sources: INITIAL_SOURCES,
+        note: 'Fallback data due to database error'
+      });
     }
 
     return NextResponse.json({ sources: data });
 
   } catch (error) {
     console.error('Unexpected error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ 
+      sources: INITIAL_SOURCES,
+      note: 'Fallback data due to unexpected error'
+    });
   }
 }
 
@@ -151,7 +162,8 @@ export async function POST(request: NextRequest) {
   try {
     if (!supabase) {
       return NextResponse.json({ 
-        error: 'Database connection not available' 
+        error: 'Database connection not available',
+        message: 'Admin functions require database access'
       }, { status: 503 });
     }
 
