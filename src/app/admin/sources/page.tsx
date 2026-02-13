@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 interface ContentSource {
   id: string;
   name: string;
