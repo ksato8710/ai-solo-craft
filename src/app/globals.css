@@ -72,6 +72,46 @@ body {
   font-style: italic;
 }
 
+/* Key Points / Callout Box */
+.article-content .key-points,
+.article-content blockquote.callout {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.08) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-left: 4px solid var(--accent-violet);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: normal;
+  color: #e2e8f0;
+}
+
+.article-content .key-points strong,
+.article-content blockquote.callout strong {
+  color: var(--accent-violet);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.article-content .key-points ul,
+.article-content blockquote.callout ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.article-content .key-points li,
+.article-content blockquote.callout li {
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.article-content .key-points li::marker,
+.article-content blockquote.callout li::marker {
+  color: var(--accent-emerald);
+}
+
 .article-content table {
   width: 100%;
   border-collapse: collapse;
