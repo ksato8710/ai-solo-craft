@@ -85,9 +85,3 @@ Claude Codeは**ターミナルでの自律的な作業**に強みがあり、�
 - [Anthropic公式ドキュメント](https://docs.anthropic.com/en/docs/claude-code)
 - [GitHubリポジトリ](https://github.com/anthropics/claude-code)
 
-## 関連記事
-
-- **[Claude Code 完全ガイド 2026年版 — インストールから上級テクニックまで徹底解説](/news/claude-code-complete-guide-2026)** ⭐ NEW
-- [Claude Code入門ガイド — インストールから最初のプロジェクトまで](/news/claude-code-getting-started)
-- [Claude Codeでソロ開発を加速する5つのワークフロー](/news/claude-code-solo-dev-workflows)
-- [知っておくべきClaude Codeの便利機能10選](/news/claude-code-hidden-features)
