@@ -138,11 +138,35 @@ body {
   color: var(--accent-emerald);
 }
 
+/* ===========================================
+   Responsive Table - Desktop & Mobile
+   =========================================== */
+
+/* Wrapper for horizontal scroll on smaller screens */
 .article-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-content thead,
+.article-content tbody,
+.article-content tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.article-content thead {
+  display: table-header-group;
+}
+
+.article-content tbody {
+  display: table-row-group;
 }
 
 .article-content th,
@@ -151,6 +175,7 @@ body {
   padding: 0.75rem 1rem;
   text-align: left;
   color: var(--text-secondary);
+  word-wrap: break-word;
 }
 
 .article-content th {
@@ -169,4 +194,72 @@ body {
 
 .article-content tr:hover {
   background-color: var(--bg-card-hover);
+}
+
+/* ===========================================
+   Mobile: Convert table to card layout
+   =========================================== */
+@media (max-width: 640px) {
+  .article-content table {
+    display: block;
+    overflow-x: visible;
+  }
+
+  .article-content thead {
+    display: none; /* Hide header row on mobile */
+  }
+
+  .article-content tbody {
+    display: block;
+  }
+
+  .article-content tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.75rem;
+    background-color: var(--bg-card);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .article-content tr:hover {
+    background-color: var(--bg-card-hover);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
+
+  .article-content td {
+    display: block;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    position: relative;
+  }
+
+  /* First cell styling - acts as card title */
+  .article-content td:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Visual separator between cells */
+  .article-content td:not(:first-child):not(:last-child) {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.625rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .light .article-content td:not(:first-child):not(:last-child) {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+  }
+
+  /* Remove alternating row color on mobile (each row is a card) */
+  .article-content tr:nth-child(even) {
+    background-color: var(--bg-card);
+  }
 }
