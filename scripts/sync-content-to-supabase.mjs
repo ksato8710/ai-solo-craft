@@ -493,7 +493,8 @@ async function main() {
 
   for (const record of records) {
     const sourceContent = contentBySlug.get(record.slug);
-    if (!sourceContent || record.relatedProducts.length === 0) continue;
+    // product -> product links are not supported in DB, only news/digest -> product
+    if (!sourceContent || record.relatedProducts.length === 0 || record.contentType === 'product') continue;
 
     record.relatedProducts.forEach((productSlug, index) => {
       const productId = productIdBySlug.get(productSlug);
