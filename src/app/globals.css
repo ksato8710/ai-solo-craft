@@ -155,22 +155,12 @@ body {
    - 極端な幅を防ぐ min/max-width のみ指定
    =========================================== */
 
-/* Wrapper for horizontal scroll on smaller screens */
+/* テーブル基本スタイル */
 .article-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.95rem;
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.article-content thead,
-.article-content tbody,
-.article-content tr {
-  display: table;
-  width: 100%;
   table-layout: auto; /* コンテンツに応じた自動幅 */
 }
 
@@ -196,21 +186,12 @@ body {
   word-wrap: break-word;
 }
 
-.article-content thead {
-  display: table-header-group;
-}
-
-.article-content tbody {
-  display: table-row-group;
-}
-
 .article-content th,
 .article-content td {
   border: 1px solid var(--border-color);
   padding: 0.75rem 1rem;
   text-align: left;
   color: var(--text-secondary);
-  word-wrap: break-word;
 }
 
 .article-content th {
