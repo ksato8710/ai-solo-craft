@@ -10,20 +10,46 @@ tags: ["developer-tools"]
 image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=420&fit=crop"
 ---
 
-# .NET
 
-マイクロソフトが開発するオープンソースの統合開発プラットフォーム。Windows、macOS、Linuxで動作し、多様なアプリケーション開発に対応しています。
+> 最終情報更新: 2026-02-16
 
-## 主要特徴
+| 項目 | 詳細 |
+|------|------|
+| 種別 | 開発フレームワーク |
+| 開発元 | Microsoft / 米国 |
+| 料金 | 無料（オープンソース） |
 
-- **クロスプラットフォーム**: Windows・Mac・Linux対応
-- **高性能**: ネイティブレベルの実行速度
-- **豊富なライブラリ**: NuGetパッケージエコシステム
-- **統合開発環境**: Visual Studio完全対応
+## .NETとは？
 
-## ソロ開発者向け活用
+Windows/macOS/Linuxで動作。ML.NET、Semantic Kernelでai機能追加。高速な実行速度。
 
-- Webアプリケーション（ASP.NET Core）
-- モバイルアプリ（.NET MAUI）
-- デスクトップアプリ（WinUI、MAUI）
-- クラウドアプリケーション（Azure連携）
+## 主要機能
+
+### クロスプラットフォーム
+Windows/macOS/Linuxで動作。
+
+### AI統合
+ML.NET、Semantic Kernelでai機能追加。
+
+### パフォーマンス
+高速な実行速度。
+
+## 料金
+
+無料（オープンソース）
+
+## ソロビルダー向けの使いどころ
+
+- プロダクト開発の効率化
+- 反復作業の自動化
+- 品質向上と時間短縮
+
+## 注意点・制限
+
+- 学習曲線がある
+- エコシステムがMicrosoft寄り
+- AI特化ではない汎用フレームワーク
+
+## 公式リンク
+
+- 公式サイト: https://dotnet.microsoft.com/

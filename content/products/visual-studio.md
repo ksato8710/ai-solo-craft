@@ -10,29 +10,46 @@ image: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=800&h=420&fi
 tags: ["IDE", "Microsoft", ".NET", "開発環境"]
 ---
 
-# Visual Studio
 
-Microsoft社製の統合開発環境（IDE）。Windows、macOS、Linuxで利用可能で、.NET、C++、Python等の多言語開発をサポート。
+> 最終情報更新: 2026-02-16
 
-## 概要
+| 項目 | 詳細 |
+|------|------|
+| 種別 | 統合開発環境 |
+| 開発元 | Microsoft / 米国 |
+| 料金 | Community無料 / Pro $45/月 |
 
-Visual Studioは企業・個人開発者向けの包括的IDE。2026年現在のv18.3では、GitHub Copilot Testing for .NETなど、AI支援機能が大幅に強化されている。
+## Visual Studioとは？
 
-## 主な機能
+.NET/C++/Python等の開発環境。AIコード補完（Copilot連携も）。強力なデバッグ・プロファイリング。
 
-- **IntelliSense**: コード補完・エラー検知
-- **デバッガー**: 高度なデバッグ・プロファイリング
-- **GitHub統合**: Git操作・CI/CD連携
-- **拡張機能**: 豊富なプラグインエコシステム
+## 主要機能
 
-## プラン
+### フル機能IDE
+.NET/C++/Python等の開発環境。
 
-- **Community**: 個人・小規模チーム向け無料版
-- **Professional**: 中小企業向け有料版
-- **Enterprise**: 大企業向け高機能版
+### IntelliCode
+AIコード補完（Copilot連携も）。
 
-## AI機能（2026年）
+### デバッガ
+強力なデバッグ・プロファイリング。
 
-- GitHub Copilot Integration
-- Copilot Testing for .NET (v18.3〜)
-- IntelliCode推奨機能
+## 料金
+
+Community無料 / Pro $45/月
+
+## ソロビルダー向けの使いどころ
+
+- プロダクト開発の効率化
+- 反復作業の自動化
+- 品質向上と時間短縮
+
+## 注意点・制限
+
+- Windows中心（Mac版は機能限定）
+- 重量級で起動が遅い
+- VS Codeの台頭で存在感低下
+
+## 公式リンク
+
+- 公式サイト: https://visualstudio.microsoft.com/
