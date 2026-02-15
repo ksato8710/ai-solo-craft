@@ -1,6 +1,8 @@
 import { getAllProducts, getProductBySlug, getPostsByRelatedProduct, CATEGORIES } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import RelatedArticleCard from '@/components/RelatedArticleCard';
+import RelatedProductCard from '@/components/RelatedProductCard';
+import Carousel from '@/components/Carousel';
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -24,6 +26,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   const cat = CATEGORIES['products'];
   const relatedArticles = await getPostsByRelatedProduct(slug);
+  
+  // 関連プロダクトを取得
+  const allProducts = await getAllProducts();
+  const relatedProductSlugs = product.relatedProducts || [];
+  const relatedProducts = relatedProductSlugs
+    .map(s => allProducts.find(p => p.slug === s))
+    .filter((p): p is NonNullable<typeof p> => p !== undefined);
   
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
@@ -66,19 +75,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       {/* Content */}
       <div className="article-content" dangerouslySetInnerHTML={{ __html: product.htmlContent || '' }} />
 
-      {/* Related Articles */}
+      {/* Related Articles Carousel */}
       {relatedArticles.length > 0 && (
-        <section className="mt-12 pt-8 border-t border-[var(--border-color)]">
-          <h2 className="text-lg font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-            <span className="text-[var(--accent-blue)]">📰</span>
-            関連記事
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {relatedArticles.map((article) => (
-              <RelatedArticleCard key={article.slug} post={article} />
-            ))}
-          </div>
-        </section>
+        <Carousel title="関連ニュース" icon="📰">
+          {relatedArticles.map((article) => (
+            <div key={article.slug} className="flex-shrink-0 w-[280px] snap-start">
+              <RelatedArticleCard post={article} />
+            </div>
+          ))}
+        </Carousel>
+      )}
+
+      {/* Related Products Carousel */}
+      {relatedProducts.length > 0 && (
+        <Carousel title="関連プロダクト" icon="🔗">
+          {relatedProducts.map((p) => (
+            <RelatedProductCard key={p.slug} product={p} />
+          ))}
+        </Carousel>
       )}
 
       {/* Back link */}

@@ -16,7 +16,7 @@ export default function RelatedArticleCard({ post }: RelatedArticleCardProps) {
   return (
     <a 
       href={`/news/${post.slug}`}
-      className="group block rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 hover:border-[var(--accent-blue)]/30 overflow-hidden"
+      className="group block h-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 hover:border-[var(--accent-blue)]/30 overflow-hidden"
     >
       {/* サムネイル */}
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--bg-secondary)]">

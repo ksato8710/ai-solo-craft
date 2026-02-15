@@ -8,6 +8,7 @@ description: "チャット対話でフルスタックWebアプリを生成する
 readTime: 12
 tags: ["no-code", "ai-coding"]
 image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=420&fit=crop"
+relatedProducts: ["bolt-new-ai-app-builder", "cursor", "v0", "claude", "replit-ai"]
 ---
 
 > 最終情報更新: 2026-02-16
@@ -179,18 +180,3 @@ LPとアプリを一体化したSaaSプロダクトを構築。認証、決済�
 - ドキュメント: https://docs.lovable.dev/
 - Discord: https://discord.gg/lovable
 - Twitter/X: https://twitter.com/lovaborately
-
----
-
-## 📰 関連ニュース
-
-- [Vibe Coding ツール比較 2026](/news/vibe-coding-tools-comparison-2026)
-- [AI開発ツールの選び方](/news/ai-development-tools-guide)
-
-## 関連プロダクト
-
-- [Bolt.new](/products/bolt-new-ai-app-builder) - 競合のAIアプリビルダー
-- [Cursor](/products/cursor) - コード編集特化AI
-- [v0](/products/v0) - UI生成特化
-- [Supabase](/products/supabase) - バックエンド（未作成）
-- [Claude](/products/claude) - 対話型AI開発支援
