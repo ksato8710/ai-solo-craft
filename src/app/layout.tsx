@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "AI Solo Builder — AIソロ開発者のための日本語ニュース",
@@ -23,51 +25,56 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
-      <body>
-        {/* Header */}
-        <header className="sticky top-0 z-50 border-b border-white/5" style={{ backgroundColor: 'rgba(15, 23, 42, 0.95)', backdropFilter: 'blur(12px)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-14">
-              <a href="/" className="flex items-center gap-2">
-                <span className="text-xl font-extrabold bg-gradient-to-r from-blue-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent">
-                  AI Solo Builder
-                </span>
-              </a>
-              <nav className="hidden sm:flex items-center gap-6 text-sm">
-                <a href="/#digest-summary" className="text-slate-400 hover:text-blue-400 transition-colors">🗞️ 朝夕のまとめ</a>
-                <a href="/news" className="text-slate-400 hover:text-indigo-400 transition-colors">📰 ニュース</a>
-                <a href="/category/products" className="text-slate-400 hover:text-violet-400 transition-colors">🏷️ プロダクト</a>
-              </nav>
-              {/* Mobile nav */}
-              <div className="sm:hidden flex items-center gap-3 text-xs">
-                <a href="/#digest-summary" className="text-slate-400">🗞️</a>
-                <a href="/news" className="text-slate-400">📰</a>
-                <a href="/category/products" className="text-slate-400">🏷️</a>
-              </div>
-              <div className="hidden sm:block text-xs text-slate-500">
-                ひとりで作る。AIと一緒に。
+      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-200">
+        <ThemeProvider>
+          {/* Header */}
+          <header className="sticky top-0 z-50 border-b border-[var(--border-color)] bg-[var(--header-bg)] backdrop-blur-xl">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between h-14">
+                <a href="/" className="flex items-center gap-2">
+                  <span className="text-xl font-extrabold bg-gradient-to-r from-blue-500 via-violet-500 to-emerald-500 bg-clip-text text-transparent">
+                    AI Solo Builder
+                  </span>
+                </a>
+                <nav className="hidden sm:flex items-center gap-6 text-sm">
+                  <a href="/#digest-summary" className="text-[var(--text-secondary)] hover:text-[var(--accent-blue)] transition-colors">🗞️ 朝夕のまとめ</a>
+                  <a href="/news" className="text-[var(--text-secondary)] hover:text-[var(--accent-violet)] transition-colors">📰 ニュース</a>
+                  <a href="/category/products" className="text-[var(--text-secondary)] hover:text-[var(--accent-emerald)] transition-colors">🏷️ プロダクト</a>
+                </nav>
+                <div className="flex items-center gap-3">
+                  {/* Mobile nav */}
+                  <div className="sm:hidden flex items-center gap-3 text-xs">
+                    <a href="/#digest-summary" className="text-[var(--text-secondary)]">🗞️</a>
+                    <a href="/news" className="text-[var(--text-secondary)]">📰</a>
+                    <a href="/category/products" className="text-[var(--text-secondary)]">🏷️</a>
+                  </div>
+                  <div className="hidden sm:block text-xs text-[var(--text-muted)] mr-2">
+                    ひとりで作る。AIと一緒に。
+                  </div>
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
-          </div>
-        </header>
+          </header>
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {children}
-        </main>
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {children}
+          </main>
 
-        {/* Footer */}
-        <footer className="border-t border-white/5 mt-16 py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-            <p>AI Solo Builder — AIソロ開発者のための日本語ニュースキュレーション</p>
-            <p className="mt-1">毎日配信: 🗞️ 朝刊 8:00 ・ 🗞️ 夕刊 18:00（プロダクトは随時更新）</p>
-          </div>
-        </footer>
+          {/* Footer */}
+          <footer className="border-t border-[var(--border-color)] mt-16 py-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-[var(--text-muted)]">
+              <p>AI Solo Builder — AIソロ開発者のための日本語ニュースキュレーション</p>
+              <p className="mt-1">毎日配信: 🗞️ 朝刊 8:00 ・ 🗞️ 夕刊 18:00（プロダクトは随時更新）</p>
+            </div>
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );

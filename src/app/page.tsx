@@ -44,17 +44,16 @@ export default async function Home() {
       )}
 
       {/* Today's Stats Bar */}
-      <div className="rounded-xl px-6 py-4 mb-12 flex items-center justify-between flex-wrap gap-4"
-           style={{ backgroundColor: '#1e293b' }}>
+      <div className="rounded-xl px-6 py-4 mb-12 flex items-center justify-between flex-wrap gap-4 bg-[var(--bg-card)]">
         <div className="flex items-center gap-2">
-          <span className="text-emerald-400 text-sm font-semibold">📡 LIVE</span>
-          <span className="text-slate-400 text-sm">朝夕のまとめ 毎日配信中</span>
+          <span className="text-[var(--accent-emerald)] text-sm font-semibold">📡 LIVE</span>
+          <span className="text-[var(--text-secondary)] text-sm">朝夕のまとめ 毎日配信中</span>
         </div>
-        <div className="flex items-center gap-6 text-xs text-slate-400">
+        <div className="flex items-center gap-6 text-xs text-[var(--text-secondary)]">
           <span>🌅 朝刊 8:00</span>
           <span>🌆 夕刊 18:00</span>
         </div>
-        <div className="text-xs text-slate-500">
+        <div className="text-xs text-[var(--text-muted)]">
           ニュース: {allPosts.length}本 / プロダクト: {allProducts.length}本
         </div>
       </div>
@@ -62,11 +61,10 @@ export default async function Home() {
       {/* Digest Summary Section */}
       <section id="digest-summary" className="mb-12">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-1 h-6 rounded-full" style={{ backgroundColor: '#3B82F6' }} />
-          <h2 className="text-lg font-bold text-white">🗞️ 朝夕のまとめ</h2>
+          <div className="w-1 h-6 rounded-full bg-[var(--accent-blue)]" />
+          <h2 className="text-lg font-bold text-[var(--text-primary)]">🗞️ 朝夕のまとめ</h2>
           <a href="/news-value"
-             className="ml-auto text-xs font-medium hover:underline"
-             style={{ color: '#F97316' }}>
+             className="ml-auto text-xs font-medium hover:underline text-[var(--accent-amber)]">
             評価を見る →
           </a>
         </div>
@@ -74,8 +72,8 @@ export default async function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold text-blue-300">🌅 朝刊</h3>
-              <a href="/category/morning-summary" className="text-xs text-blue-400 hover:underline">
+              <h3 className="text-sm font-semibold text-[var(--accent-blue)]">🌅 朝刊</h3>
+              <a href="/category/morning-summary" className="text-xs text-[var(--accent-blue)] hover:underline">
                 一覧 →
               </a>
             </div>
@@ -84,8 +82,7 @@ export default async function Home() {
                 <NewsCard key={post.slug} post={post} size="small" />
               ))}
               {morningSummaryPosts.length === 0 && (
-                <div className="rounded-xl px-4 py-6 text-sm text-slate-400"
-                     style={{ backgroundColor: '#1e293b' }}>
+                <div className="rounded-xl px-4 py-6 text-sm text-[var(--text-secondary)] bg-[var(--bg-card)]">
                   朝刊コンテンツの準備中です。
                 </div>
               )}
@@ -94,8 +91,8 @@ export default async function Home() {
 
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold text-orange-300">🌆 夕刊</h3>
-              <a href="/category/evening-summary" className="text-xs text-orange-400 hover:underline">
+              <h3 className="text-sm font-semibold text-[var(--accent-amber)]">🌆 夕刊</h3>
+              <a href="/category/evening-summary" className="text-xs text-[var(--accent-amber)] hover:underline">
                 一覧 →
               </a>
             </div>
@@ -104,8 +101,7 @@ export default async function Home() {
                 <NewsCard key={post.slug} post={post} size="small" />
               ))}
               {eveningSummaryPosts.length === 0 && (
-                <div className="rounded-xl px-4 py-6 text-sm text-slate-400"
-                     style={{ backgroundColor: '#1e293b' }}>
+                <div className="rounded-xl px-4 py-6 text-sm text-[var(--text-secondary)] bg-[var(--bg-card)]">
                   夕刊コンテンツの準備中です。
                 </div>
               )}
@@ -118,11 +114,10 @@ export default async function Home() {
       {allNewsPosts.length > 0 && (
         <section className="mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-6 rounded-full" style={{ backgroundColor: '#6366F1' }} />
-            <h2 className="text-lg font-bold text-white">📰 最新ニュース</h2>
+            <div className="w-1 h-6 rounded-full bg-[var(--accent-violet)]" />
+            <h2 className="text-lg font-bold text-[var(--text-primary)]">📰 最新ニュース</h2>
             <a href="/news"
-               className="ml-auto text-xs font-medium hover:underline"
-               style={{ color: '#6366F1' }}>
+               className="ml-auto text-xs font-medium hover:underline text-[var(--accent-violet)]">
               すべて見る →
             </a>
           </div>
@@ -143,8 +138,8 @@ export default async function Home() {
       {allContent.length === 0 && (
         <div className="text-center py-20">
           <p className="text-4xl mb-4">🚀</p>
-          <h2 className="text-xl font-bold text-white mb-2">準備中です</h2>
-          <p className="text-slate-400">まもなくコンテンツが配信されます。</p>
+          <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">準備中です</h2>
+          <p className="text-[var(--text-secondary)]">まもなくコンテンツが配信されます。</p>
         </div>
       )}
     </div>

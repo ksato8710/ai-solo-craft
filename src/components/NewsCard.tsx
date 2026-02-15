@@ -27,8 +27,7 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
   if (size === 'large') {
     return (
       <a href={postUrl} className="group block">
-        <div className="rounded-2xl overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-white/10" 
-             style={{ backgroundColor: '#1e293b' }}>
+        <div className="rounded-2xl overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-[var(--border-color)] bg-[var(--bg-card)]">
           <div className="aspect-video bg-gradient-to-br from-slate-700 to-slate-800 relative overflow-hidden">
             {post.image ? (
               <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
@@ -61,15 +60,15 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
             </div>
           </div>
           <div className="p-6">
-            <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
+            <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)] mb-3">
               <span>{formatDate(post.date)}</span>
               <span>・</span>
               <span>{post.readTime}分で読める</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors leading-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-blue)] transition-colors leading-tight">
               {post.title}
             </h2>
-            <p className="mt-3 text-sm text-slate-400 line-clamp-1">
+            <p className="mt-3 text-sm text-[var(--text-secondary)] line-clamp-1">
               {post.description}
             </p>
           </div>
@@ -80,8 +79,7 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
 
   return (
     <a href={postUrl} className="group block">
-      <div className="rounded-xl overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-white/10 h-full flex flex-col"
-           style={{ backgroundColor: '#1e293b' }}>
+      <div className="rounded-xl overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-[var(--border-color)] h-full flex flex-col bg-[var(--bg-card)]">
         <div className="aspect-[16/9] bg-gradient-to-br from-slate-700 to-slate-800 relative flex-shrink-0 overflow-hidden">
           {post.image ? (
             <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
@@ -109,15 +107,15 @@ export default function NewsCard({ post, size = 'medium' }: NewsCardProps) {
                 {post.source.name}
               </span>
             )}
-            <span className="text-[10px] text-slate-500">{formatDate(post.date)}</span>
+            <span className="text-[10px] text-[var(--text-muted)]">{formatDate(post.date)}</span>
           </div>
-          <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-2 flex-1">
+          <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-blue)] transition-colors leading-snug line-clamp-2 flex-1">
             {post.title}
           </h3>
-          <p className="mt-2 text-xs text-slate-400 line-clamp-1">
+          <p className="mt-2 text-xs text-[var(--text-secondary)] line-clamp-1">
             {post.description}
           </p>
-          <div className="mt-3 text-[10px] text-slate-500">
+          <div className="mt-3 text-[10px] text-[var(--text-muted)]">
             {post.readTime}分で読める
           </div>
         </div>

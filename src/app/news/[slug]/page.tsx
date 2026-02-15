@@ -30,10 +30,10 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
   return (
     <article className="max-w-3xl mx-auto">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-slate-500 mb-6">
-        <a href="/" className="hover:text-slate-300 transition-colors">ホーム</a>
+      <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-6">
+        <a href="/" className="hover:text-[var(--text-secondary)] transition-colors">ホーム</a>
         <span>/</span>
-        <a href={`/category/${post.category}`} className="hover:text-slate-300 transition-colors"
+        <a href={`/category/${post.category}`} className="hover:opacity-80 transition-colors"
            style={{ color: cat.color }}>
           {cat.label}
         </a>
@@ -46,26 +46,26 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
                 style={{ backgroundColor: cat.color + '22', color: cat.color }}>
             {cat.emoji} {cat.label}
           </span>
-          <span className="text-xs text-slate-500">{formatDate(post.date)}</span>
-          <span className="text-xs text-slate-500">・{post.readTime}分で読める</span>
+          <span className="text-xs text-[var(--text-muted)]">{formatDate(post.date)}</span>
+          <span className="text-xs text-[var(--text-muted)]">・{post.readTime}分で読める</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] leading-tight">
           {post.title}
         </h1>
-        <p className="mt-4 text-lg text-slate-400 leading-relaxed">
+        <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
           {post.description}
         </p>
       </header>
 
       {/* Divider */}
-      <div className="border-t border-white/10 my-8" />
+      <div className="border-t border-[var(--border-color)] my-8" />
 
       {/* Content */}
       <div className="article-content" dangerouslySetInnerHTML={{ __html: post.htmlContent || '' }} />
 
       {/* Back link */}
-      <div className="mt-12 pt-8 border-t border-white/10">
-        <a href="/" className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors">
+      <div className="mt-12 pt-8 border-t border-[var(--border-color)]">
+        <a href="/" className="inline-flex items-center gap-2 text-sm text-[var(--accent-blue)] hover:opacity-80 transition-colors">
           ← トップページに戻る
         </a>
       </div>

@@ -44,16 +44,11 @@ export default function NewsFilterChips({ posts }: NewsFilterChipsProps) {
           {/* "All" chip */}
           <button
             onClick={() => setActiveTag(ALL_KEY)}
-            className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
-            style={activeTag === ALL_KEY ? {
-              backgroundColor: '#6366F133',
-              color: '#e2e8f0',
-              border: '1px solid #6366F166',
-            } : {
-              backgroundColor: '#1e293b',
-              color: '#94a3b8',
-              border: '1px solid transparent',
-            }}
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              activeTag === ALL_KEY 
+                ? 'bg-[var(--accent-violet)]/20 text-[var(--text-primary)] border border-[var(--accent-violet)]/40'
+                : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border border-transparent'
+            }`}
           >
             すべて
             <span className="ml-1.5 opacity-60">{posts.length}</span>
@@ -67,16 +62,14 @@ export default function NewsFilterChips({ posts }: NewsFilterChipsProps) {
               <button
                 key={tag}
                 onClick={() => setActiveTag(isActive ? ALL_KEY : tag)}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                  !isActive ? 'bg-[var(--bg-card)] text-[var(--text-secondary)] border border-transparent' : ''
+                }`}
                 style={isActive ? {
                   backgroundColor: color + '33',
                   color,
                   border: `1px solid ${color}66`,
-                } : {
-                  backgroundColor: '#1e293b',
-                  color: '#94a3b8',
-                  border: '1px solid transparent',
-                }}
+                } : undefined}
               >
                 {chipLabel(tag)}
                 <span className="ml-1.5 opacity-60">{count}</span>
@@ -96,8 +89,8 @@ export default function NewsFilterChips({ posts }: NewsFilterChipsProps) {
       ) : (
         <div className="text-center py-20">
           <p className="text-6xl mb-4 opacity-20">📰</p>
-          <h3 className="text-xl font-bold text-white mb-2">記事がありません</h3>
-          <p className="text-slate-400 text-sm">このタグにはまだ記事がありません。</p>
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">記事がありません</h3>
+          <p className="text-[var(--text-secondary)] text-sm">このタグにはまだ記事がありません。</p>
         </div>
       )}
     </div>

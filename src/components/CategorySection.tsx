@@ -15,7 +15,7 @@ export default function CategorySection({ category, posts }: CategorySectionProp
     <section className="mb-12">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-1 h-6 rounded-full" style={{ backgroundColor: cat.color }} />
-        <h2 className="text-lg font-bold text-white">{cat.emoji} {cat.label}</h2>
+        <h2 className="text-lg font-bold text-[var(--text-primary)]">{cat.emoji} {cat.label}</h2>
         <a href={`/category/${category}`} 
            className="ml-auto text-xs font-medium hover:underline"
            style={{ color: cat.color }}>
