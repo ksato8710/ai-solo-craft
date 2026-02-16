@@ -41,7 +41,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   };
 
   return (
-    <article className="max-w-3xl mx-auto">
+    <article className="max-w-[680px] mx-auto">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-6">
         <a href="/" className="hover:text-[var(--text-secondary)] transition-colors">ホーム</a>
