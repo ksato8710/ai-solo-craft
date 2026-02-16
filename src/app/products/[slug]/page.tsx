@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import RelatedArticleCard from '@/components/RelatedArticleCard';
 import RelatedProductCard from '@/components/RelatedProductCard';
 import Carousel from '@/components/Carousel';
+import ShareButton from '@/components/ShareButton';
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -53,13 +54,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {/* Header */}
       <header className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-xs font-semibold px-3 py-1 rounded-full"
-                style={{ backgroundColor: cat.color + '22', color: cat.color }}>
-            {cat.emoji} {cat.label}
-          </span>
-          <span className="text-xs text-[var(--text-muted)]">情報更新: {formatDate(product.date)}</span>
-          <span className="text-xs text-[var(--text-muted)]">・{product.readTime}分で読める</span>
+        <div className="flex items-center justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-xs font-semibold px-3 py-1 rounded-full"
+                  style={{ backgroundColor: cat.color + '22', color: cat.color }}>
+              {cat.emoji} {cat.label}
+            </span>
+            <span className="text-xs text-[var(--text-muted)]">情報更新: {formatDate(product.date)}</span>
+            <span className="text-xs text-[var(--text-muted)]">・{product.readTime}分で読める</span>
+          </div>
+          <ShareButton title={product.title} text={product.description} />
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] leading-tight">
           {product.title}

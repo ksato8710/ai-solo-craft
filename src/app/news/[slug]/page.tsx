@@ -1,5 +1,6 @@
 import { getAllPosts, getPostBySlug, CATEGORIES } from '@/lib/posts';
 import { notFound } from 'next/navigation';
+import ShareButton from '@/components/ShareButton';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -41,13 +42,16 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
 
       {/* Header */}
       <header className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-xs font-semibold px-3 py-1 rounded-full"
-                style={{ backgroundColor: cat.color + '22', color: cat.color }}>
-            {cat.emoji} {cat.label}
-          </span>
-          <span className="text-xs text-[var(--text-muted)]">{formatDate(post.date)}</span>
-          <span className="text-xs text-[var(--text-muted)]">・{post.readTime}分で読める</span>
+        <div className="flex items-center justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-xs font-semibold px-3 py-1 rounded-full"
+                  style={{ backgroundColor: cat.color + '22', color: cat.color }}>
+              {cat.emoji} {cat.label}
+            </span>
+            <span className="text-xs text-[var(--text-muted)]">{formatDate(post.date)}</span>
+            <span className="text-xs text-[var(--text-muted)]">・{post.readTime}分で読める</span>
+          </div>
+          <ShareButton title={post.title} text={post.description} />
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] leading-tight">
           {post.title}
