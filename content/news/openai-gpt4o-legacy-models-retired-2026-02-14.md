@@ -1,16 +1,25 @@
 ---
-title: "OpenAI、GPT-4oを含むレガシーモデル5種を本日廃止—80万ユーザーへの影響と移行ガイド"
-slug: "openai-gpt4o-legacy-models-retired-2026-02-14"
-date: "2026-02-14"
-description: "OpenAIは2月14日、GPT-4o、GPT-5、GPT-4.1などレガシーモデル5種へのアクセスを終了。「過度な同調性」で物議を醸したGPT-4oには80万人の利用者がいたが、安全性向上のため廃止を決定。"
-publishedAt: "2026-02-14T08:00:00+09:00"
-summary: "OpenAIは2月14日、GPT-4o、GPT-5、GPT-4.1などレガシーモデル5種へのアクセスを終了。「過度な同調性」で物議を醸したGPT-4oには80万人の利用者がいたが、安全性向上のため廃止を決定。"
-image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop"
-contentType: "news"
+title: OpenAI、GPT-4oを含むレガシーモデル5種を本日廃止—80万ユーザーへの影響と移行ガイド
+slug: openai-gpt4o-legacy-models-retired-2026-02-14
+date: '2026-02-14'
+description: >-
+  OpenAIは2月14日、GPT-4o、GPT-5、GPT-4.1などレガシーモデル5種へのアクセスを終了。「過度な同調性」で物議を醸したGPT-4oには80万人の利用者がいたが、安全性向上のため廃止を決定。
+publishedAt: '2026-02-14T08:00:00+09:00'
+summary: >-
+  OpenAIは2月14日、GPT-4o、GPT-5、GPT-4.1などレガシーモデル5種へのアクセスを終了。「過度な同調性」で物議を醸したGPT-4oには80万人の利用者がいたが、安全性向上のため廃止を決定。
+image: >-
+  https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["OpenAI", "ChatGPT", "モデル廃止", "AI安全性"]
-relatedProducts: ["chatgpt"]
+tags:
+  - dev-knowledge
+  - OpenAI
+  - ChatGPT
+  - モデル廃止
+  - AI安全性
+relatedProducts:
+  - chatgpt
 ---
 
 ## 概要

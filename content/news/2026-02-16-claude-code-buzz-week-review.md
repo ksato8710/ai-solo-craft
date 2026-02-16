@@ -1,14 +1,18 @@
 ---
-title: "今週のClaude Codeバズ投稿から見えた「ソロ開発革命」の実態"
-slug: "claude-code-buzz-week-review-2026-02-16"
-date: "2026-02-16"
-contentType: "news"
-description: "X（Twitter）でいいね1000以上を獲得したClaude Code関連投稿を分析。年間300万円のSaaS相当を6時間で構築、炎上PJを定時で鎮火——実践者たちの声から見える開発の新常識。"
-readTime: "8"
+title: 今週のClaude Codeバズ投稿から見えた「ソロ開発革命」の実態
+slug: claude-code-buzz-week-review-2026-02-16
+date: '2026-02-16'
+contentType: news
+description: >-
+  X（Twitter）でいいね1000以上を獲得したClaude
+  Code関連投稿を分析。年間300万円のSaaS相当を6時間で構築、炎上PJを定時で鎮火——実践者たちの声から見える開発の新常識。
+readTime: '8'
 relatedProducts:
-  - "claude-code"
-image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=420&fit=crop"
-featured: "true"
+  - claude-code
+image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=420&fit=crop'
+featured: 'true'
+tags:
+  - product-update
 ---
 
 ## TL;DR

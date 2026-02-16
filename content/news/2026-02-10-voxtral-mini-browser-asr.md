@@ -1,14 +1,17 @@
 ---
-title: "Voxtral Mini 4B、ブラウザでリアルタイム音声認識 — ローカルASRが実用圏へ"
-slug: "voxtral-mini-browser-asr"
-date: "2026-02-10"
-contentType: "news"
-description: "音声をクラウドに送らず、ブラウザでリアルタイム認識。音声I/Oの組み込みコストが下がり、個人開発でも扱いやすくなる。"
-readTime: "6"
+title: Voxtral Mini 4B、ブラウザでリアルタイム音声認識 — ローカルASRが実用圏へ
+slug: voxtral-mini-browser-asr
+date: '2026-02-10'
+contentType: news
+description: 音声をクラウドに送らず、ブラウザでリアルタイム認識。音声I/Oの組み込みコストが下がり、個人開発でも扱いやすくなる。
+readTime: '6'
 relatedProducts:
-  - "voxtral-mini"
-image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=420&fit=crop"
-featured: "false"
+  - voxtral-mini
+image: >-
+  https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=420&fit=crop
+featured: 'false'
+tags:
+  - product-update
 ---
 
 ## 何が起きたか

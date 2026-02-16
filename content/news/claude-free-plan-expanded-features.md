@@ -1,16 +1,27 @@
 ---
-title: "Claude無料プランに Connectors・Skills・ファイル機能を追加 - OpenAI広告戦略への対抗策"
-slug: "claude-free-plan-expanded-features"
-date: "2026-02-13"
-publishedAt: "2026-02-13T18:00:00+09:00"
-description: "AnthropicがClaude無料プランに有料限定だったConnectors、Skills、ファイル作成機能を開放。OpenAIのChatGPT広告導入と対照的な戦略で、無料でエンタープライズ級AIワークフローの構築が可能に。"
-summary: "AnthropicがClaude無料プランに有料限定だったConnectors、Skills、ファイル作成機能を開放。OpenAIのChatGPT広告導入と対照的な戦略で、無料でエンタープライズ級AIワークフローの構築が可能に。"
-image: "https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=800&h=420&fit=crop"
-contentType: "news"
+title: Claude無料プランに Connectors・Skills・ファイル機能を追加 - OpenAI広告戦略への対抗策
+slug: claude-free-plan-expanded-features
+date: '2026-02-13'
+publishedAt: '2026-02-13T18:00:00+09:00'
+description: >-
+  AnthropicがClaude無料プランに有料限定だったConnectors、Skills、ファイル作成機能を開放。OpenAIのChatGPT広告導入と対照的な戦略で、無料でエンタープライズ級AIワークフローの構築が可能に。
+summary: >-
+  AnthropicがClaude無料プランに有料限定だったConnectors、Skills、ファイル作成機能を開放。OpenAIのChatGPT広告導入と対照的な戦略で、無料でエンタープライズ級AIワークフローの構築が可能に。
+image: >-
+  https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=800&h=420&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["Claude", "Anthropic", "無料プラン", "Connectors", "AIワークフロー"]
-relatedProducts: ["claude", "chatgpt"]
+tags:
+  - product-update
+  - Claude
+  - Anthropic
+  - 無料プラン
+  - Connectors
+  - AIワークフロー
+relatedProducts:
+  - claude
+  - chatgpt
 ---
 
 ## 概要

@@ -1,16 +1,26 @@
 ---
-title: "Anthropic、30億ドル資金調達で企業価値380億ドルに - Claude開発加速"
-slug: "anthropic-funding-2026-02-13"
-date: "2026-02-13"
-description: "Claude開発のAnthropic PBCが30億ドルの資金調達を完了。企業価値は前回9月の183億ドルから380億ドルへ倍増。シンガポールGICとCoatue Management主導"
-publishedAt: "2026-02-13T18:00:00+09:00"
-summary: "Claude開発のAnthropic PBCが30億ドルの資金調達を完了。企業価値は前回9月の183億ドルから380億ドルへ倍増。シンガポールGICとCoatue Management主導"
-image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=420&fit=crop"
-contentType: "news"
+title: Anthropic、30億ドル資金調達で企業価値380億ドルに - Claude開発加速
+slug: anthropic-funding-2026-02-13
+date: '2026-02-13'
+description: >-
+  Claude開発のAnthropic
+  PBCが30億ドルの資金調達を完了。企業価値は前回9月の183億ドルから380億ドルへ倍増。シンガポールGICとCoatue Management主導
+publishedAt: '2026-02-13T18:00:00+09:00'
+summary: >-
+  Claude開発のAnthropic
+  PBCが30億ドルの資金調達を完了。企業価値は前回9月の183億ドルから380億ドルへ倍増。シンガポールGICとCoatue Management主導
+image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=420&fit=crop'
+contentType: news
 readTime: 6
 featured: false
-tags: ["Anthropic", "資金調達", "Claude", "AI スタートアップ"]
-relatedProducts: ["claude"]
+tags:
+  - product-update
+  - Anthropic
+  - 資金調達
+  - Claude
+  - AI スタートアップ
+relatedProducts:
+  - claude
 ---
 
 ## 概要

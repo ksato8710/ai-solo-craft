@@ -1,16 +1,27 @@
 ---
-title: "ChatGPTに広告導入開始—無料/Goユーザー向け、Anthropicは「広告なし」を宣言"
-slug: "chatgpt-ads-us-rollout-2026-02-14"
-date: "2026-02-14"
-description: "OpenAIがChatGPTの無料版とGo版で広告テストを開始。会話内容に合わせた広告を表示するが、Plus以上の有料プランは広告なし。一方Anthropicは「Claudeに広告は入れない」とスーパーボウルCMで宣言。"
-publishedAt: "2026-02-14T08:00:00+09:00"
-summary: "OpenAIがChatGPTの無料版とGo版で広告テストを開始。会話内容に合わせた広告を表示するが、Plus以上の有料プランは広告なし。一方Anthropicは「Claudeに広告は入れない」とスーパーボウルCMで宣言。"
-image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=630&fit=crop"
-contentType: "news"
+title: ChatGPTに広告導入開始—無料/Goユーザー向け、Anthropicは「広告なし」を宣言
+slug: chatgpt-ads-us-rollout-2026-02-14
+date: '2026-02-14'
+description: >-
+  OpenAIがChatGPTの無料版とGo版で広告テストを開始。会話内容に合わせた広告を表示するが、Plus以上の有料プランは広告なし。一方Anthropicは「Claudeに広告は入れない」とスーパーボウルCMで宣言。
+publishedAt: '2026-02-14T08:00:00+09:00'
+summary: >-
+  OpenAIがChatGPTの無料版とGo版で広告テストを開始。会話内容に合わせた広告を表示するが、Plus以上の有料プランは広告なし。一方Anthropicは「Claudeに広告は入れない」とスーパーボウルCMで宣言。
+image: >-
+  https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["OpenAI", "ChatGPT", "広告", "Anthropic", "ビジネスモデル"]
-relatedProducts: ["chatgpt", "claude"]
+tags:
+  - case-study
+  - OpenAI
+  - ChatGPT
+  - 広告
+  - Anthropic
+  - ビジネスモデル
+relatedProducts:
+  - chatgpt
+  - claude
 ---
 
 ## 概要

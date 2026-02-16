@@ -1,16 +1,27 @@
 ---
-title: "OpenAI、GPT-4oなど旧モデルを完全廃止 — GPT-5.2時代へ本格移行"
-slug: "openai-gpt4o-model-retirement-2026-02-16"
-date: "2026-02-16"
-description: "OpenAIがChatGPTからGPT-4o、GPT-4.1、GPT-4.1 mini、o4-miniを削除。利用率0.1%への低下を受け、GPT-5.2以降への完全移行を推進。Enterprise契約は2/19まで猶予。"
-publishedAt: "2026-02-16T08:00:00+09:00"
-summary: "OpenAIがChatGPTからGPT-4o、GPT-4.1、GPT-4.1 mini、o4-miniを削除。利用率0.1%への低下を受け、GPT-5.2以降への完全移行を推進。Enterprise契約は2/19まで猶予。"
-image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=630&fit=crop"
-contentType: "news"
+title: OpenAI、GPT-4oなど旧モデルを完全廃止 — GPT-5.2時代へ本格移行
+slug: openai-gpt4o-model-retirement-2026-02-16
+date: '2026-02-16'
+description: >-
+  OpenAIがChatGPTからGPT-4o、GPT-4.1、GPT-4.1
+  mini、o4-miniを削除。利用率0.1%への低下を受け、GPT-5.2以降への完全移行を推進。Enterprise契約は2/19まで猶予。
+publishedAt: '2026-02-16T08:00:00+09:00'
+summary: >-
+  OpenAIがChatGPTからGPT-4o、GPT-4.1、GPT-4.1
+  mini、o4-miniを削除。利用率0.1%への低下を受け、GPT-5.2以降への完全移行を推進。Enterprise契約は2/19まで猶予。
+image: >-
+  https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["OpenAI", "ChatGPT", "GPT-4o", "モデル移行"]
-relatedProducts: ["chatgpt"]
+tags:
+  - product-update
+  - OpenAI
+  - ChatGPT
+  - GPT-4o
+  - モデル移行
+relatedProducts:
+  - chatgpt
 ---
 
 ## 概要

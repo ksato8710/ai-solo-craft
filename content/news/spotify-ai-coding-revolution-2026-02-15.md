@@ -1,16 +1,28 @@
 ---
-title: "Spotifyエンジニア「12月からコード書いていない」— AI革命の実態"
-slug: "spotify-ai-coding-revolution-2026-02-15"
-date: "2026-02-15"
-publishedAt: "2026-02-15T18:00:00+09:00"
-description: "Spotify共同CEOが決算発表で明かした衝撃事実。トップエンジニアはClaude Codeを活用し、12月以降一行もコードを書いていない。一方でバーンアウトへの警告も。"
-summary: "Spotify共同CEOが決算発表で明かした衝撃事実。トップエンジニアはClaude Codeを活用し、12月以降一行もコードを書いていない。一方でバーンアウトへの警告も。"
-image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=1200&h=630&fit=crop"
-contentType: "news"
+title: Spotifyエンジニア「12月からコード書いていない」— AI革命の実態
+slug: spotify-ai-coding-revolution-2026-02-15
+date: '2026-02-15'
+publishedAt: '2026-02-15T18:00:00+09:00'
+description: >-
+  Spotify共同CEOが決算発表で明かした衝撃事実。トップエンジニアはClaude
+  Codeを活用し、12月以降一行もコードを書いていない。一方でバーンアウトへの警告も。
+summary: >-
+  Spotify共同CEOが決算発表で明かした衝撃事実。トップエンジニアはClaude
+  Codeを活用し、12月以降一行もコードを書いていない。一方でバーンアウトへの警告も。
+image: >-
+  https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["AIコーディング", "Claude Code", "開発ワークフロー", "Spotify"]
-relatedProducts: ["claude-code", "openai-codex"]
+tags:
+  - product-update
+  - AIコーディング
+  - Claude Code
+  - 開発ワークフロー
+  - Spotify
+relatedProducts:
+  - claude-code
+  - openai-codex
 ---
 
 ## 概要

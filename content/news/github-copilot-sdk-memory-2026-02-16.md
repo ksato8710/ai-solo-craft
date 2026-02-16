@@ -1,16 +1,27 @@
 ---
-title: "GitHub Copilot SDK/メモリ機能公開 — アシスタントからプラットフォームへ"
-slug: "github-copilot-sdk-memory-2026-02-16"
-date: "2026-02-16"
-description: "GitHub Copilot SDKがTechnical Previewで公開、Node.js/Python/Go/.NETに対応。Copilot Memoryもパブリックプレビューで、リポジトリの文脈を28日間保持する学習機能を実装。"
-publishedAt: "2026-02-16T08:00:00+09:00"
-summary: "GitHub Copilot SDKがTechnical Previewで公開、Node.js/Python/Go/.NETに対応。Copilot Memoryもパブリックプレビューで、リポジトリの文脈を28日間保持する学習機能を実装。"
-image: "https://images.unsplash.com/photo-1603969072881-b0fc7f3d77d7?w=1200&h=630&fit=crop"
-contentType: "news"
+title: GitHub Copilot SDK/メモリ機能公開 — アシスタントからプラットフォームへ
+slug: github-copilot-sdk-memory-2026-02-16
+date: '2026-02-16'
+description: >-
+  GitHub Copilot SDKがTechnical Previewで公開、Node.js/Python/Go/.NETに対応。Copilot
+  Memoryもパブリックプレビューで、リポジトリの文脈を28日間保持する学習機能を実装。
+publishedAt: '2026-02-16T08:00:00+09:00'
+summary: >-
+  GitHub Copilot SDKがTechnical Previewで公開、Node.js/Python/Go/.NETに対応。Copilot
+  Memoryもパブリックプレビューで、リポジトリの文脈を28日間保持する学習機能を実装。
+image: >-
+  https://images.unsplash.com/photo-1603969072881-b0fc7f3d77d7?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["GitHub Copilot", "SDK", "開発ツール", "プラットフォーム"]
-relatedProducts: ["github-copilot"]
+tags:
+  - product-update
+  - GitHub Copilot
+  - SDK
+  - 開発ツール
+  - プラットフォーム
+relatedProducts:
+  - github-copilot
 ---
 
 ## 概要

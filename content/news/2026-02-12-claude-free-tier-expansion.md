@@ -1,16 +1,21 @@
 ---
-title: "Claude無料版が大幅機能拡充"
-slug: "claude-free-tier-expansion"
-date: "2026-02-12"
-description: "Anthropicが有料プラン限定だったファイル作成、コネクタ、スキル機能を無料版に開放。OpenAI広告導入への直接対抗策"
-publishedAt: "2026-02-12T18:00:00+09:00"
-summary: "Anthropicが有料プラン限定だったファイル作成、コネクタ、スキル機能を無料版に開放。OpenAI広告導入への直接対抗策"
-image: "https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&h=420&fit=crop"
-contentType: "news"
+title: Claude無料版が大幅機能拡充
+slug: claude-free-tier-expansion
+date: '2026-02-12'
+description: Anthropicが有料プラン限定だったファイル作成、コネクタ、スキル機能を無料版に開放。OpenAI広告導入への直接対抗策
+publishedAt: '2026-02-12T18:00:00+09:00'
+summary: Anthropicが有料プラン限定だったファイル作成、コネクタ、スキル機能を無料版に開放。OpenAI広告導入への直接対抗策
+image: 'https://images.unsplash.com/photo-1562813733-b31f71025d54?w=800&h=420&fit=crop'
+contentType: news
 readTime: 5
 featured: false
-tags: ["Claude", "無料化", "Anthropic"]
-relatedProducts: ["claude"]
+tags:
+  - product-update
+  - Claude
+  - 無料化
+  - Anthropic
+relatedProducts:
+  - claude
 ---
 
 ## 概要

@@ -1,16 +1,27 @@
 ---
-title: "Seedance 2.0がハリウッドと全面対立 — 著作権問題の新局面"
-slug: "seedance-2-hollywood-copyright-2026-02-15"
-date: "2026-02-15"
-publishedAt: "2026-02-15T18:00:00+09:00"
-description: "ByteDanceのAI動画生成ツール「Seedance 2.0」がハリウッドとの著作権紛争に発展。ディズニーは法的対応開始、業界団体は「著作権侵害を即停止せよ」と声明。"
-summary: "ByteDanceのAI動画生成ツール「Seedance 2.0」がハリウッドとの著作権紛争に発展。ディズニーは法的対応開始、業界団体は「著作権侵害を即停止せよ」と声明。"
-image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&h=630&fit=crop"
-contentType: "news"
+title: Seedance 2.0がハリウッドと全面対立 — 著作権問題の新局面
+slug: seedance-2-hollywood-copyright-2026-02-15
+date: '2026-02-15'
+publishedAt: '2026-02-15T18:00:00+09:00'
+description: >-
+  ByteDanceのAI動画生成ツール「Seedance
+  2.0」がハリウッドとの著作権紛争に発展。ディズニーは法的対応開始、業界団体は「著作権侵害を即停止せよ」と声明。
+summary: >-
+  ByteDanceのAI動画生成ツール「Seedance
+  2.0」がハリウッドとの著作権紛争に発展。ディズニーは法的対応開始、業界団体は「著作権侵害を即停止せよ」と声明。
+image: >-
+  https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["動画生成AI", "著作権", "ByteDance", "ハリウッド"]
-relatedProducts: ["runway-ai-video-generation"]
+tags:
+  - product-update
+  - 動画生成AI
+  - 著作権
+  - ByteDance
+  - ハリウッド
+relatedProducts:
+  - runway-ai-video-generation
 ---
 
 ## 概要

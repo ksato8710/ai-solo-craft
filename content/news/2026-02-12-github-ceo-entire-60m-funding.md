@@ -1,16 +1,22 @@
 ---
-title: "GitHub元CEO、AI開発ツールで60M$調達"
-slug: "github-ceo-entire-60m-funding"
-date: "2026-02-12"
-description: "前GitHub CEOのThomas DohmkeがEntireで記録的な60Mドルシード調達を完了。AI生成コード向けインフラで評価額300Mドル"
-publishedAt: "2026-02-12T18:00:00+09:00"
-summary: "前GitHub CEOのThomas DohmkeがEntireで記録的な60Mドルシード調達を完了。AI生成コード向けインフラで評価額300Mドル"
-image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=420&fit=crop"
-contentType: "news"
+title: GitHub元CEO、AI開発ツールで60M$調達
+slug: github-ceo-entire-60m-funding
+date: '2026-02-12'
+description: 前GitHub CEOのThomas DohmkeがEntireで記録的な60Mドルシード調達を完了。AI生成コード向けインフラで評価額300Mドル
+publishedAt: '2026-02-12T18:00:00+09:00'
+summary: 前GitHub CEOのThomas DohmkeがEntireで記録的な60Mドルシード調達を完了。AI生成コード向けインフラで評価額300Mドル
+image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=420&fit=crop'
+contentType: news
 readTime: 5
 featured: false
-tags: ["資金調達", "GitHub", "AI開発ツール"]
-relatedProducts: ["claude-code", "cursor"]
+tags:
+  - product-update
+  - 資金調達
+  - GitHub
+  - AI開発ツール
+relatedProducts:
+  - claude-code
+  - cursor
 ---
 
 ## 概要

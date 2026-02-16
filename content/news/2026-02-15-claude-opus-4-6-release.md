@@ -1,16 +1,28 @@
 ---
-title: "Claude Opus 4.6リリース: 推論・文脈保持が大幅強化"
-slug: "claude-opus-4-6-release"
-date: "2026-02-15"
-publishedAt: "2026-02-15T08:00:00+09:00"
-description: "AnthropicがClaude Opus 4.6をリリース。推論能力と文脈保持が強化され、同社は$14B ARRを達成して史上最速成長のソフトウェア企業に。"
-summary: "AnthropicがClaude Opus 4.6をリリース。推論能力と文脈保持が強化され、同社は$14B ARRを達成して史上最速成長のソフトウェア企業に。"
-image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=1200&h=630&fit=crop"
-contentType: "news"
+title: 'Claude Opus 4.6リリース: 推論・文脈保持が大幅強化'
+slug: claude-opus-4-6-release
+date: '2026-02-15'
+publishedAt: '2026-02-15T08:00:00+09:00'
+description: >-
+  AnthropicがClaude Opus 4.6をリリース。推論能力と文脈保持が強化され、同社は$14B
+  ARRを達成して史上最速成長のソフトウェア企業に。
+summary: >-
+  AnthropicがClaude Opus 4.6をリリース。推論能力と文脈保持が強化され、同社は$14B
+  ARRを達成して史上最速成長のソフトウェア企業に。
+image: >-
+  https://images.unsplash.com/photo-1676299081847-824916de030a?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["Anthropic", "Claude", "LLM", "企業動向"]
-relatedProducts: ["claude", "claude-code"]
+tags:
+  - product-update
+  - Anthropic
+  - Claude
+  - LLM
+  - 企業動向
+relatedProducts:
+  - claude
+  - claude-code
 ---
 
 ## 概要

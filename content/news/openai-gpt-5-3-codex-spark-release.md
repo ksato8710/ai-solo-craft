@@ -1,16 +1,28 @@
 ---
-title: "OpenAI GPT-5.3 Codex Spark リリース - リアルタイムコーディング支援で開発体験を革新"
-slug: "openai-gpt-5-3-codex-spark-release"
-date: "2026-02-13"
-publishedAt: "2026-02-13T18:00:00+09:00"
-description: "OpenAIが新コーディングモデルGPT-5.3 Codex Sparkを発表。リアルタイム推論、改良されたコンテキスト理解、ハルシネーション削減により、AIコーディング支援が静的補完から対話的協働パートナーへ進化。"
-summary: "OpenAIが新コーディングモデルGPT-5.3 Codex Sparkを発表。リアルタイム推論、改良されたコンテキスト理解、ハルシネーション削減により、AIコーディング支援が静的補完から対話的協働パートナーへ進化。"
-image: "https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=800&h=420&fit=crop"
-contentType: "news"
+title: OpenAI GPT-5.3 Codex Spark リリース - リアルタイムコーディング支援で開発体験を革新
+slug: openai-gpt-5-3-codex-spark-release
+date: '2026-02-13'
+publishedAt: '2026-02-13T18:00:00+09:00'
+description: >-
+  OpenAIが新コーディングモデルGPT-5.3 Codex
+  Sparkを発表。リアルタイム推論、改良されたコンテキスト理解、ハルシネーション削減により、AIコーディング支援が静的補完から対話的協働パートナーへ進化。
+summary: >-
+  OpenAIが新コーディングモデルGPT-5.3 Codex
+  Sparkを発表。リアルタイム推論、改良されたコンテキスト理解、ハルシネーション削減により、AIコーディング支援が静的補完から対話的協働パートナーへ進化。
+image: 'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=800&h=420&fit=crop'
+contentType: news
 readTime: 5
 featured: false
-tags: ["OpenAI", "GPT", "コーディング支援", "AI開発ツール", "機械学習"]
-relatedProducts: ["chatgpt", "github-copilot"]
+tags:
+  - product-update
+  - OpenAI
+  - GPT
+  - コーディング支援
+  - AI開発ツール
+  - 機械学習
+relatedProducts:
+  - chatgpt
+  - github-copilot
 ---
 
 ## 概要

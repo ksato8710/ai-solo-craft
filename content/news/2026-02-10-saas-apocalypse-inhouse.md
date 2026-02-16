@@ -1,12 +1,15 @@
 ---
-title: "SaaS Apocalypse — AIで社内SaaSを内製する潮流が加速"
-slug: "saas-apocalypse-inhouse"
-date: "2026-02-10"
-contentType: "news"
-description: "高額SaaSを“買う”から“作る”へ。AI支援で、ソロでも社内ツール領域の内製化が現実的になってきた。"
-readTime: "7"
-image: "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&h=420&fit=crop"
-featured: "false"
+title: SaaS Apocalypse — AIで社内SaaSを内製する潮流が加速
+slug: saas-apocalypse-inhouse
+date: '2026-02-10'
+contentType: news
+description: 高額SaaSを“買う”から“作る”へ。AI支援で、ソロでも社内ツール領域の内製化が現実的になってきた。
+readTime: '7'
+image: >-
+  https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&h=420&fit=crop
+featured: 'false'
+tags:
+  - dev-knowledge
 ---
 
 ## 何が起きたか

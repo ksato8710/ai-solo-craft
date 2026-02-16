@@ -1,16 +1,22 @@
 ---
-title: "OpenAI GPT-5.3 Codex Spark発表 - リアルタイムコーディング支援の新時代"
-slug: "openai-gpt-5-3-codex-spark-2026-02-13"
-date: "2026-02-13"
-description: "OpenAIが開発者向けGPT-5.3 Codex Sparkを発表。従来の補完から対話的開発支援へ進化し、高速推論とコンテキスト理解で開発効率を大幅向上"
-publishedAt: "2026-02-13T18:00:00+09:00"
-summary: "OpenAIが開発者向けGPT-5.3 Codex Sparkを発表。従来の補完から対話的開発支援へ進化し、高速推論とコンテキスト理解で開発効率を大幅向上"
-image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=420&fit=crop"
-contentType: "news"
+title: OpenAI GPT-5.3 Codex Spark発表 - リアルタイムコーディング支援の新時代
+slug: openai-gpt-5-3-codex-spark-2026-02-13
+date: '2026-02-13'
+description: OpenAIが開発者向けGPT-5.3 Codex Sparkを発表。従来の補完から対話的開発支援へ進化し、高速推論とコンテキスト理解で開発効率を大幅向上
+publishedAt: '2026-02-13T18:00:00+09:00'
+summary: OpenAIが開発者向けGPT-5.3 Codex Sparkを発表。従来の補完から対話的開発支援へ進化し、高速推論とコンテキスト理解で開発効率を大幅向上
+image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=420&fit=crop'
+contentType: news
 readTime: 6
 featured: false
-tags: ["OpenAI", "コーディング", "開発ツール"]
-relatedProducts: ["cursor", "github-copilot"]
+tags:
+  - product-update
+  - OpenAI
+  - コーディング
+  - 開発ツール
+relatedProducts:
+  - cursor
+  - github-copilot
 ---
 
 ## 概要

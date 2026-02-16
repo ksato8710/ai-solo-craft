@@ -1,15 +1,26 @@
 ---
-title: "ByteDance Seedance 2.0、ディズニーから著作権侵害で停止警告"
-slug: "bytedance-seedance-disney-copyright-2026-02-14"
-date: "2026-02-14"
-description: "ByteDanceの新AIビデオ生成モデル「Seedance 2.0」に対し、ディズニーが停止警告を送付。マーベル、スターウォーズなどのキャラクターを無断使用していると批判。"
-publishedAt: "2026-02-14T18:00:00+09:00"
-summary: "ByteDanceの新AIビデオ生成モデル「Seedance 2.0」に対し、ディズニーが停止警告を送付。マーベル、スターウォーズなどのキャラクターを無断使用していると批判。"
-image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=630&fit=crop"
-contentType: "news"
+title: ByteDance Seedance 2.0、ディズニーから著作権侵害で停止警告
+slug: bytedance-seedance-disney-copyright-2026-02-14
+date: '2026-02-14'
+description: >-
+  ByteDanceの新AIビデオ生成モデル「Seedance
+  2.0」に対し、ディズニーが停止警告を送付。マーベル、スターウォーズなどのキャラクターを無断使用していると批判。
+publishedAt: '2026-02-14T18:00:00+09:00'
+summary: >-
+  ByteDanceの新AIビデオ生成モデル「Seedance
+  2.0」に対し、ディズニーが停止警告を送付。マーベル、スターウォーズなどのキャラクターを無断使用していると批判。
+image: >-
+  https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["ByteDance", "Seedance", "著作権", "ディズニー", "AIビデオ生成"]
+tags:
+  - other
+  - ByteDance
+  - Seedance
+  - 著作権
+  - ディズニー
+  - AIビデオ生成
 relatedProducts: []
 ---
 

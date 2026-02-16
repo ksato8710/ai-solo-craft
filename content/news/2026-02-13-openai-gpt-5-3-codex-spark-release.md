@@ -1,16 +1,27 @@
 ---
-title: "OpenAI GPT-5.3 Codex Spark リリース - リアルタイムコーディング支援で開発生産性が飛躍的向上"
-description: "OpenAIが新コーディング専用モデル「GPT-5.3 Codex Spark」を発表。リアルタイム推論、コンテキスト理解、ハルシネーション削減を大幅改善。ソロ開発者の生産性向上に革命的インパクト。"
-slug: "openai-gpt-5-3-codex-spark-release"
-category: "news"
-date: "2026-02-13"
-author: "tifa"
-tags: ["openai", "coding-tools", "ai-models", "productivity"]
-image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&h=630&fit=crop"
+title: OpenAI GPT-5.3 Codex Spark リリース - リアルタイムコーディング支援で開発生産性が飛躍的向上
+description: >-
+  OpenAIが新コーディング専用モデル「GPT-5.3 Codex
+  Spark」を発表。リアルタイム推論、コンテキスト理解、ハルシネーション削減を大幅改善。ソロ開発者の生産性向上に革命的インパクト。
+slug: openai-gpt-5-3-codex-spark-release
+category: news
+date: '2026-02-13'
+author: tifa
+tags:
+  - product-update
+  - openai
+  - coding-tools
+  - ai-models
+  - productivity
+image: >-
+  https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&h=630&fit=crop
 readTime: 5
 featured: false
-relatedProducts: ["openai", "cursor", "claude-code"]
-source: "https://startupnews.fyi/2026/02/13/openai-gpt-5-3-codex-spark/"
+relatedProducts:
+  - openai
+  - cursor
+  - claude-code
+source: 'https://startupnews.fyi/2026/02/13/openai-gpt-5-3-codex-spark/'
 ---
 
 OpenAIが新しいコーディング専用モデル「GPT-5.3 Codex Spark」をリリースしました。従来モデルを大幅に上回るリアルタイム推論能力とコンテキスト理解により、AIコーディング支援の新時代を切り開く注目の発表です。

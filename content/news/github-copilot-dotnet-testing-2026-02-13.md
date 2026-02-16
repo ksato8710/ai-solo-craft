@@ -1,16 +1,28 @@
 ---
-title: "GitHub Copilot .NET テスト機能が Visual Studio 2026で一般提供開始"
-slug: "github-copilot-dotnet-testing-2026-02-13"
-date: "2026-02-13"
-description: "Microsoft Visual Studio 2026 v18.3でGitHub Copilot Testing for .NETが一般提供開始。AIによるユニットテスト生成・実行・修正の完全自動化で開発者の生産性が大幅向上"
-publishedAt: "2026-02-13T18:00:00+09:00"
-summary: "Microsoft Visual Studio 2026 v18.3でGitHub Copilot Testing for .NETが一般提供開始。AIによるユニットテスト生成・実行・修正の完全自動化で開発者の生産性が大幅向上"
-image: "https://images.unsplash.com/photo-1623479322729-28b25c16b011?w=800&h=420&fit=crop"
-contentType: "news"
+title: GitHub Copilot .NET テスト機能が Visual Studio 2026で一般提供開始
+slug: github-copilot-dotnet-testing-2026-02-13
+date: '2026-02-13'
+description: >-
+  Microsoft Visual Studio 2026 v18.3でGitHub Copilot Testing for
+  .NETが一般提供開始。AIによるユニットテスト生成・実行・修正の完全自動化で開発者の生産性が大幅向上
+publishedAt: '2026-02-13T18:00:00+09:00'
+summary: >-
+  Microsoft Visual Studio 2026 v18.3でGitHub Copilot Testing for
+  .NETが一般提供開始。AIによるユニットテスト生成・実行・修正の完全自動化で開発者の生産性が大幅向上
+image: >-
+  https://images.unsplash.com/photo-1623479322729-28b25c16b011?w=800&h=420&fit=crop
+contentType: news
 readTime: 7
 featured: false
-tags: ["GitHub Copilot", ".NET", "テスト自動化", "Visual Studio"]
-relatedProducts: ["github-copilot", "dotnet"]
+tags:
+  - product-update
+  - GitHub Copilot
+  - .NET
+  - テスト自動化
+  - Visual Studio
+relatedProducts:
+  - github-copilot
+  - dotnet
 ---
 
 ## 概要

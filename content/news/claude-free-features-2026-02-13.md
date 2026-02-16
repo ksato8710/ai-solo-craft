@@ -1,16 +1,23 @@
 ---
-title: "Claude無料プランに大幅機能追加 - コネクタ・スキル・ファイル機能が利用可能に"
-slug: "claude-free-features-2026-02-13"
-date: "2026-02-13"
-description: "AnthropicがClaude無料プランにコネクタ、スキル、ファイル処理機能を追加。従来有料限定だった外部サービス連携と文書作業が無料で利用可能に"
-publishedAt: "2026-02-13T18:00:00+09:00"
-summary: "AnthropicがClaude無料プランにコネクタ、スキル、ファイル処理機能を追加。従来有料限定だった外部サービス連携と文書作業が無料で利用可能に"
-image: "https://images.unsplash.com/photo-1522252234503-e356532cafd5?w=800&h=420&fit=crop"
-contentType: "news"
+title: Claude無料プランに大幅機能追加 - コネクタ・スキル・ファイル機能が利用可能に
+slug: claude-free-features-2026-02-13
+date: '2026-02-13'
+description: AnthropicがClaude無料プランにコネクタ、スキル、ファイル処理機能を追加。従来有料限定だった外部サービス連携と文書作業が無料で利用可能に
+publishedAt: '2026-02-13T18:00:00+09:00'
+summary: AnthropicがClaude無料プランにコネクタ、スキル、ファイル処理機能を追加。従来有料限定だった外部サービス連携と文書作業が無料で利用可能に
+image: >-
+  https://images.unsplash.com/photo-1522252234503-e356532cafd5?w=800&h=420&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["Claude", "無料プラン", "AI アシスタント", "生産性ツール"]
-relatedProducts: ["claude"]
+tags:
+  - product-update
+  - Claude
+  - 無料プラン
+  - AI アシスタント
+  - 生産性ツール
+relatedProducts:
+  - claude
 ---
 
 ## 概要

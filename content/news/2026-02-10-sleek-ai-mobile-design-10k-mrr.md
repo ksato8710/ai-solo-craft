@@ -1,12 +1,14 @@
 ---
-title: "Sleek.design — 3週間で構築、6週間で$10k MRR達成したAIモバイルデザインツール"
-slug: "noon-tools-2026-02-10"
-date: "2026-02-10"
-contentType: "news"
-description: "アイデアから完成デザインまで2分以内。マーケティング費用$0でバイラル成長を実現したソロビルダーの成功戦略とは？"
-readTime: "6"
-image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=420&fit=crop"
-featured: "false"
+title: Sleek.design — 3週間で構築、6週間で$10k MRR達成したAIモバイルデザインツール
+slug: noon-tools-2026-02-10
+date: '2026-02-10'
+contentType: news
+description: アイデアから完成デザインまで2分以内。マーケティング費用$0でバイラル成長を実現したソロビルダーの成功戦略とは？
+readTime: '6'
+image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=420&fit=crop'
+featured: 'false'
+tags:
+  - case-study
 ---
 
 ## なぜSleek.designが爆速で$10k MRRを達成したのか

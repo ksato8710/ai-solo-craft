@@ -1,16 +1,28 @@
 ---
-title: "Google Gemini 3 Deep Think: ARC-AGI-2で84.6%達成"
-slug: "google-gemini-3-deep-think"
-date: "2026-02-15"
-publishedAt: "2026-02-15T08:00:00+09:00"
-description: "Googleが科学・研究向け推論モード「Gemini 3 Deep Think」を大幅アップデート。ARC-AGI-2で84.6%、Codeforces Legendary Grandmaster相当を達成。"
-summary: "Googleが科学・研究向け推論モード「Gemini 3 Deep Think」を大幅アップデート。ARC-AGI-2で84.6%、Codeforces Legendary Grandmaster相当を達成。"
-image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=630&fit=crop"
-contentType: "news"
+title: 'Google Gemini 3 Deep Think: ARC-AGI-2で84.6%達成'
+slug: google-gemini-3-deep-think
+date: '2026-02-15'
+publishedAt: '2026-02-15T08:00:00+09:00'
+description: >-
+  Googleが科学・研究向け推論モード「Gemini 3 Deep Think」を大幅アップデート。ARC-AGI-2で84.6%、Codeforces
+  Legendary Grandmaster相当を達成。
+summary: >-
+  Googleが科学・研究向け推論モード「Gemini 3 Deep Think」を大幅アップデート。ARC-AGI-2で84.6%、Codeforces
+  Legendary Grandmaster相当を達成。
+image: >-
+  https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["Google", "Gemini", "推論", "ベンチマーク"]
-relatedProducts: ["gemini", "google-ai-studio"]
+tags:
+  - product-update
+  - Google
+  - Gemini
+  - 推論
+  - ベンチマーク
+relatedProducts:
+  - gemini
+  - google-ai-studio
 ---
 
 ## 概要

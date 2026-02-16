@@ -1,16 +1,28 @@
 ---
-title: "Google Chrome、WebMCPの早期プレビューを開始—AIエージェントがWebサイトを直接操作可能に"
-slug: "google-chrome-webmcp-early-preview-2026-02-14"
-date: "2026-02-14"
-description: "GoogleとMicrosoftが共同開発したWebMCP（Web Model Context Protocol）がChrome 146 Canaryで利用可能に。Webサイトが構造化ツールをAIエージェントに公開でき、従来比67%の計算オーバーヘッド削減を実現。"
-publishedAt: "2026-02-14T08:00:00+09:00"
-summary: "GoogleとMicrosoftが共同開発したWebMCP（Web Model Context Protocol）がChrome 146 Canaryで利用可能に。Webサイトが構造化ツールをAIエージェントに公開でき、従来比67%の計算オーバーヘッド削減を実現。"
-image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop"
-contentType: "news"
+title: Google Chrome、WebMCPの早期プレビューを開始—AIエージェントがWebサイトを直接操作可能に
+slug: google-chrome-webmcp-early-preview-2026-02-14
+date: '2026-02-14'
+description: >-
+  GoogleとMicrosoftが共同開発したWebMCP（Web Model Context Protocol）がChrome 146
+  Canaryで利用可能に。Webサイトが構造化ツールをAIエージェントに公開でき、従来比67%の計算オーバーヘッド削減を実現。
+publishedAt: '2026-02-14T08:00:00+09:00'
+summary: >-
+  GoogleとMicrosoftが共同開発したWebMCP（Web Model Context Protocol）がChrome 146
+  Canaryで利用可能に。Webサイトが構造化ツールをAIエージェントに公開でき、従来比67%の計算オーバーヘッド削減を実現。
+image: >-
+  https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop
+contentType: news
 readTime: 6
 featured: false
-tags: ["Google", "MCP", "AIエージェント", "Web標準", "Chrome"]
-relatedProducts: ["claude"]
+tags:
+  - product-update
+  - Google
+  - MCP
+  - AIエージェント
+  - Web標準
+  - Chrome
+relatedProducts:
+  - claude
 ---
 
 ## 概要

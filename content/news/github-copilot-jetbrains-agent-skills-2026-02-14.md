@@ -1,16 +1,28 @@
 ---
-title: "GitHub Copilot JetBrains、Agent Skills対応でワークフローカスタマイズが可能に"
-slug: "github-copilot-jetbrains-agent-skills-2026-02-14"
-date: "2026-02-14"
-description: "JetBrains IDEのGitHub CopilotがAgent Skillsに対応。プロジェクト固有のスキルを作成・共有でき、開発ワークフローに合わせたAI支援が実現する。"
-publishedAt: "2026-02-14T18:00:00+09:00"
-summary: "JetBrains IDEのGitHub CopilotがAgent Skillsに対応。プロジェクト固有のスキルを作成・共有でき、開発ワークフローに合わせたAI支援が実現する。"
-image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop"
-contentType: "news"
+title: GitHub Copilot JetBrains、Agent Skills対応でワークフローカスタマイズが可能に
+slug: github-copilot-jetbrains-agent-skills-2026-02-14
+date: '2026-02-14'
+description: >-
+  JetBrains IDEのGitHub CopilotがAgent
+  Skillsに対応。プロジェクト固有のスキルを作成・共有でき、開発ワークフローに合わせたAI支援が実現する。
+publishedAt: '2026-02-14T18:00:00+09:00'
+summary: >-
+  JetBrains IDEのGitHub CopilotがAgent
+  Skillsに対応。プロジェクト固有のスキルを作成・共有でき、開発ワークフローに合わせたAI支援が実現する。
+image: >-
+  https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["GitHub Copilot", "JetBrains", "開発ツール", "Agent Skills"]
-relatedProducts: ["github-copilot", "cursor"]
+tags:
+  - product-update
+  - GitHub Copilot
+  - JetBrains
+  - 開発ツール
+  - Agent Skills
+relatedProducts:
+  - github-copilot
+  - cursor
 ---
 
 ## 概要

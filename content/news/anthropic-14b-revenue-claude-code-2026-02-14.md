@@ -1,16 +1,29 @@
 ---
-title: "Anthropic、年間売上$14Bで史上最速成長—Claude Codeが急成長の原動力"
-slug: "anthropic-14b-revenue-claude-code-2026-02-14"
-date: "2026-02-14"
-description: "Anthropicが年間売上ラン率$14B（約2.1兆円）を達成。Claude Codeは$2.5B超で6週間で倍増。ソフトウェア企業として史上最速の成長を記録。"
-publishedAt: "2026-02-14T18:00:00+09:00"
-summary: "Anthropicが年間売上ラン率$14B（約2.1兆円）を達成。Claude Codeは$2.5B超で6週間で倍増。ソフトウェア企業として史上最速の成長を記録。"
-image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop"
-contentType: "news"
+title: Anthropic、年間売上$14Bで史上最速成長—Claude Codeが急成長の原動力
+slug: anthropic-14b-revenue-claude-code-2026-02-14
+date: '2026-02-14'
+description: >-
+  Anthropicが年間売上ラン率$14B（約2.1兆円）を達成。Claude
+  Codeは$2.5B超で6週間で倍増。ソフトウェア企業として史上最速の成長を記録。
+publishedAt: '2026-02-14T18:00:00+09:00'
+summary: >-
+  Anthropicが年間売上ラン率$14B（約2.1兆円）を達成。Claude
+  Codeは$2.5B超で6週間で倍増。ソフトウェア企業として史上最速の成長を記録。
+image: >-
+  https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["Anthropic", "Claude", "Claude Code", "AI売上", "成長"]
-relatedProducts: ["claude", "cursor"]
+tags:
+  - product-update
+  - Anthropic
+  - Claude
+  - Claude Code
+  - AI売上
+  - 成長
+relatedProducts:
+  - claude
+  - cursor
 ---
 
 ## 概要

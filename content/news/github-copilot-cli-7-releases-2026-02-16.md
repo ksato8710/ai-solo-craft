@@ -1,16 +1,27 @@
 ---
-title: "GitHub Copilot CLI、10日で7リリースの怒涛アップデート — ターミナルAI本格化"
-slug: "github-copilot-cli-7-releases-2026-02-16"
-date: "2026-02-16"
-description: "GitHub Copilot CLIがv0.0.404〜v0.0.410まで10日間で7回のリリースを実施。Alt-Screen Buffer Mode、VS Code統合、メモリ最適化など、ターミナル中心の開発者向けに大幅強化。"
-publishedAt: "2026-02-16T08:00:00+09:00"
-summary: "GitHub Copilot CLIがv0.0.404〜v0.0.410まで10日間で7回のリリースを実施。Alt-Screen Buffer Mode、VS Code統合、メモリ最適化など、ターミナル中心の開発者向けに大幅強化。"
-image: "https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=1200&h=630&fit=crop"
-contentType: "news"
+title: GitHub Copilot CLI、10日で7リリースの怒涛アップデート — ターミナルAI本格化
+slug: github-copilot-cli-7-releases-2026-02-16
+date: '2026-02-16'
+description: >-
+  GitHub Copilot CLIがv0.0.404〜v0.0.410まで10日間で7回のリリースを実施。Alt-Screen Buffer
+  Mode、VS Code統合、メモリ最適化など、ターミナル中心の開発者向けに大幅強化。
+publishedAt: '2026-02-16T08:00:00+09:00'
+summary: >-
+  GitHub Copilot CLIがv0.0.404〜v0.0.410まで10日間で7回のリリースを実施。Alt-Screen Buffer
+  Mode、VS Code統合、メモリ最適化など、ターミナル中心の開発者向けに大幅強化。
+image: >-
+  https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["GitHub Copilot", "CLI", "開発ツール", "ターミナル"]
-relatedProducts: ["github-copilot"]
+tags:
+  - product-update
+  - GitHub Copilot
+  - CLI
+  - 開発ツール
+  - ターミナル
+relatedProducts:
+  - github-copilot
 ---
 
 ## 概要

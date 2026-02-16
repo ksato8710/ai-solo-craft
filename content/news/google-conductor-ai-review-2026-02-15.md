@@ -1,16 +1,28 @@
 ---
-title: "Google Conductor AIに自動コードレビュー機能追加"
-slug: "google-conductor-ai-review-2026-02-15"
-date: "2026-02-15"
-publishedAt: "2026-02-15T18:00:00+09:00"
-description: "GoogleのGemini CLI拡張「Conductor」に自動レビュー機能が追加。セキュリティ脆弱性検出、計画との整合性チェック、ガイドライン準拠を自動化。"
-summary: "GoogleのGemini CLI拡張「Conductor」に自動レビュー機能が追加。セキュリティ脆弱性検出、計画との整合性チェック、ガイドライン準拠を自動化。"
-image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1200&h=630&fit=crop"
-contentType: "news"
+title: Google Conductor AIに自動コードレビュー機能追加
+slug: google-conductor-ai-review-2026-02-15
+date: '2026-02-15'
+publishedAt: '2026-02-15T18:00:00+09:00'
+description: >-
+  GoogleのGemini
+  CLI拡張「Conductor」に自動レビュー機能が追加。セキュリティ脆弱性検出、計画との整合性チェック、ガイドライン準拠を自動化。
+summary: >-
+  GoogleのGemini
+  CLI拡張「Conductor」に自動レビュー機能が追加。セキュリティ脆弱性検出、計画との整合性チェック、ガイドライン準拠を自動化。
+image: >-
+  https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1200&h=630&fit=crop
+contentType: news
 readTime: 4
 featured: false
-tags: ["Google", "Gemini CLI", "コードレビュー", "セキュリティ"]
-relatedProducts: ["cursor", "claude-code"]
+tags:
+  - dev-knowledge
+  - Google
+  - Gemini CLI
+  - コードレビュー
+  - セキュリティ
+relatedProducts:
+  - cursor
+  - claude-code
 ---
 
 ## 概要

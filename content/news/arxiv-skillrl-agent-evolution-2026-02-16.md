@@ -1,22 +1,26 @@
 ---
-title: "【arXiv速報】SkillRL — LLMエージェントが「スキル」を自動発見・進化させるフレームワーク"
-slug: "arxiv-skillrl-agent-evolution-2026-02-16"
-date: "2026-02-16"
-contentType: "news"
-category: "dev-knowledge"
-description: "UC Santa Cruz等の研究チームが発表したSkillRL。エージェントが過去の経験からスキルを自動抽出し、階層的なスキルライブラリを構築。従来手法を15.3%上回る性能を達成。ソロビルダーのエージェント設計に直接応用可能。"
-readTime: "6"
+title: 【arXiv速報】SkillRL — LLMエージェントが「スキル」を自動発見・進化させるフレームワーク
+slug: arxiv-skillrl-agent-evolution-2026-02-16
+date: '2026-02-16'
+contentType: news
+category: dev-knowledge
+description: >-
+  UC Santa
+  Cruz等の研究チームが発表したSkillRL。エージェントが過去の経験からスキルを自動抽出し、階層的なスキルライブラリを構築。従来手法を15.3%上回る性能を達成。ソロビルダーのエージェント設計に直接応用可能。
+readTime: '6'
 tags:
-  - "arXiv論文"
-  - "LLMエージェント"
-  - "強化学習"
-  - "スキル学習"
-  - "自動化"
-image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=420&fit=crop"
-featured: "false"
-arxivId: "2602.08234"
-source: "arXiv"
-sourceUrl: "https://arxiv.org/abs/2602.08234"
+  - dev-knowledge
+  - arXiv論文
+  - LLMエージェント
+  - 強化学習
+  - スキル学習
+  - 自動化
+image: >-
+  https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=420&fit=crop
+featured: 'false'
+arxivId: '2602.08234'
+source: arXiv
+sourceUrl: 'https://arxiv.org/abs/2602.08234'
 ---
 
 ## 論文概要

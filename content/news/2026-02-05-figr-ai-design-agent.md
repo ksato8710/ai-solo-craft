@@ -1,13 +1,17 @@
 ---
-title: "Figr.design：$225万シード調達のAIデザインエージェントがプロダクト設計を革新する"
-slug: "figr-ai-design-agent-225m-funding"
-date: "2026-02-05"
-contentType: "news"
-description: "Antler Residency発、3ヶ月で500+チーム導入。プロダクト文脈を理解し、UX決定を30%高速化するAIデザインエージェント「Figr」の詳細分析"
-readTime: "8"
+title: Figr.design：$225万シード調達のAIデザインエージェントがプロダクト設計を革新する
+slug: figr-ai-design-agent-225m-funding
+date: '2026-02-05'
+contentType: news
+description: >-
+  Antler
+  Residency発、3ヶ月で500+チーム導入。プロダクト文脈を理解し、UX決定を30%高速化するAIデザインエージェント「Figr」の詳細分析
+readTime: '8'
 relatedProducts:
-  - "figr-design"
-image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=420&fit=crop"
+  - figr-design
+image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=420&fit=crop'
+tags:
+  - product-update
 ---
 
 # AIがプロダクト設計プロセスを再定義：Figr.design完全解説

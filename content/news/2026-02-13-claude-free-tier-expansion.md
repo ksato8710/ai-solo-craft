@@ -1,16 +1,27 @@
 ---
-title: "Claude無料プランに Connectors・Skills・ファイル機能を追加 - Anthropicの戦略的差別化でAIアシスタント競争激化"
-description: "Anthropicが有料限定だったConnectors、Skills、ファイル作成機能を無料ユーザーに開放。OpenAIの広告導入と対照的な戦略で、ソロ開発者のAI活用コストを大幅削減。"
-slug: "claude-free-tier-expansion"
-category: "news"
-date: "2026-02-13"
-author: "tifa"
-tags: ["claude", "anthropic", "ai-assistants", "free-tier", "productivity"]
-image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&h=630&fit=crop"
+title: Claude無料プランに Connectors・Skills・ファイル機能を追加 - Anthropicの戦略的差別化でAIアシスタント競争激化
+description: >-
+  Anthropicが有料限定だったConnectors、Skills、ファイル作成機能を無料ユーザーに開放。OpenAIの広告導入と対照的な戦略で、ソロ開発者のAI活用コストを大幅削減。
+slug: claude-free-tier-expansion
+category: news
+date: '2026-02-13'
+author: tifa
+tags:
+  - product-update
+  - claude
+  - anthropic
+  - ai-assistants
+  - free-tier
+  - productivity
+image: >-
+  https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&h=630&fit=crop
 readTime: 5
 featured: false
-relatedProducts: ["claude", "openai", "cursor"]
-source: "https://www.macrumors.com/2026/02/11/anthropic-claude-more-free-features/"
+relatedProducts:
+  - claude
+  - openai
+  - cursor
+source: 'https://www.macrumors.com/2026/02/11/anthropic-claude-more-free-features/'
 ---
 
 Anthropicが、有料プラン限定だったConnectors、Skills、ファイル作成機能を無料ユーザーに開放すると発表しました。OpenAIが広告導入に向かう中、競合差別化として真逆の戦略を採用。AIアシスタント市場の競争激化により、ソロ開発者の選択肢が大幅に拡大します。

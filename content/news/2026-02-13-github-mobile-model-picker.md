@@ -1,16 +1,31 @@
 ---
-title: "GitHub Mobile Model Picker登場：外出先でClaude・GPT-5をタスク別に選択可能"
-slug: "github-mobile-model-picker"
-date: "2026-02-13"
-description: "GitHub MobileでCopilot Pro/Pro+ユーザーがモデル選択可能に。Claude Opus 4.5/4.6、GPT-5.1/5.2から用途別選択、Auto設定で速度・性能の自動最適化も対応。"
-publishedAt: "2026-02-13T08:00:00+09:00"
-summary: "GitHub MobileでCopilot Pro/Pro+ユーザーがモデル選択可能に。Claude Opus 4.5/4.6、GPT-5.1/5.2から用途別選択、Auto設定で速度・性能の自動最適化も対応。"
-image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=420&fit=crop"
-contentType: "news"
+title: GitHub Mobile Model Picker登場：外出先でClaude・GPT-5をタスク別に選択可能
+slug: github-mobile-model-picker
+date: '2026-02-13'
+description: >-
+  GitHub MobileでCopilot Pro/Pro+ユーザーがモデル選択可能に。Claude Opus
+  4.5/4.6、GPT-5.1/5.2から用途別選択、Auto設定で速度・性能の自動最適化も対応。
+publishedAt: '2026-02-13T08:00:00+09:00'
+summary: >-
+  GitHub MobileでCopilot Pro/Pro+ユーザーがモデル選択可能に。Claude Opus
+  4.5/4.6、GPT-5.1/5.2から用途別選択、Auto設定で速度・性能の自動最適化も対応。
+image: >-
+  https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=420&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["GitHub Mobile", "Copilot", "モデル選択", "Claude", "GPT", "モバイル開発"]
-relatedProducts: ["github-copilot", "claude", "chatgpt"]
+tags:
+  - product-update
+  - GitHub Mobile
+  - Copilot
+  - モデル選択
+  - Claude
+  - GPT
+  - モバイル開発
+relatedProducts:
+  - github-copilot
+  - claude
+  - chatgpt
 ---
 
 ## 概要

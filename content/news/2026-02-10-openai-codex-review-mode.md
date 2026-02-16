@@ -1,14 +1,19 @@
 ---
-title: "OpenAI Codex、Review Modeを追加 — PR差分レビューと修正案の往復を短縮"
-slug: "openai-codex-review-mode"
-date: "2026-02-10"
-contentType: "news"
-description: "AIにコードを書かせる時代のボトルネックは“レビュー”。CodexのReview Modeで、差分の意図説明と修正案の提示をセットにし、PR往復回数を減らす運用がしやすくなる。"
-readTime: "6"
+title: OpenAI Codex、Review Modeを追加 — PR差分レビューと修正案の往復を短縮
+slug: openai-codex-review-mode
+date: '2026-02-10'
+contentType: news
+description: >-
+  AIにコードを書かせる時代のボトルネックは“レビュー”。CodexのReview
+  Modeで、差分の意図説明と修正案の提示をセットにし、PR往復回数を減らす運用がしやすくなる。
+readTime: '6'
 relatedProducts:
-  - "openai-codex"
-image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=420&fit=crop"
-featured: "false"
+  - openai-codex
+image: >-
+  https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=420&fit=crop
+featured: 'false'
+tags:
+  - product-update
 ---
 
 ## TL;DR

@@ -1,15 +1,24 @@
 ---
-title: "【arXiv速報】少ないデータで多エポック学習が効果的 — 常識を覆すSFT研究"
-slug: "arxiv-sft-repetition-breakthrough-2026-02-15"
-date: "2026-02-15"
-publishedAt: "2026-02-15T20:30:00+09:00"
-description: "arXiv最新論文より。Supervised Fine-Tuning（SFT）において、大量のデータを1エポックで学習するより、少ないデータを繰り返し学習する方が12-26%ポイント高い性能を達成。推論タスクでの常識を覆す発見。"
-summary: "arXiv最新論文より。SFTでは少ないデータの繰り返し学習が大量データの1エポック学習を12-26%上回る。推論モデルの学習効率に革新をもたらす可能性。"
-image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop"
-contentType: "news"
+title: 【arXiv速報】少ないデータで多エポック学習が効果的 — 常識を覆すSFT研究
+slug: arxiv-sft-repetition-breakthrough-2026-02-15
+date: '2026-02-15'
+publishedAt: '2026-02-15T20:30:00+09:00'
+description: >-
+  arXiv最新論文より。Supervised
+  Fine-Tuning（SFT）において、大量のデータを1エポックで学習するより、少ないデータを繰り返し学習する方が12-26%ポイント高い性能を達成。推論タスクでの常識を覆す発見。
+summary: arXiv最新論文より。SFTでは少ないデータの繰り返し学習が大量データの1エポック学習を12-26%上回る。推論モデルの学習効率に革新をもたらす可能性。
+image: >-
+  https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["arXiv論文", "機械学習", "ファインチューニング", "SFT", "推論モデル"]
+tags:
+  - dev-knowledge
+  - arXiv論文
+  - 機械学習
+  - ファインチューニング
+  - SFT
+  - 推論モデル
 relatedProducts: []
 ---
 

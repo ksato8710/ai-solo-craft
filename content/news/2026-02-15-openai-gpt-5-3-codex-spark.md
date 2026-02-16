@@ -1,16 +1,25 @@
 ---
-title: "OpenAI GPT-5.3-Codex-Spark: Cerebras連携で1000tok/s達成"
-slug: "openai-gpt-5-3-codex-spark"
-date: "2026-02-15"
-publishedAt: "2026-02-15T08:00:00+09:00"
-description: "OpenAIとCerebrasが共同開発したリアルタイムコーディングモデル。1,000トークン/秒以上の超高速推論で、待ち時間のないコーディング体験を実現。"
-summary: "OpenAIとCerebrasが共同開発したリアルタイムコーディングモデル。1,000トークン/秒以上の超高速推論で、待ち時間のないコーディング体験を実現。"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=630&fit=crop"
-contentType: "news"
+title: 'OpenAI GPT-5.3-Codex-Spark: Cerebras連携で1000tok/s達成'
+slug: openai-gpt-5-3-codex-spark
+date: '2026-02-15'
+publishedAt: '2026-02-15T08:00:00+09:00'
+description: 'OpenAIとCerebrasが共同開発したリアルタイムコーディングモデル。1,000トークン/秒以上の超高速推論で、待ち時間のないコーディング体験を実現。'
+summary: 'OpenAIとCerebrasが共同開発したリアルタイムコーディングモデル。1,000トークン/秒以上の超高速推論で、待ち時間のないコーディング体験を実現。'
+image: >-
+  https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=630&fit=crop
+contentType: news
 readTime: 5
 featured: false
-tags: ["OpenAI", "コーディング", "Cerebras", "高速推論"]
-relatedProducts: ["openai-codex", "cursor", "github-copilot"]
+tags:
+  - product-update
+  - OpenAI
+  - コーディング
+  - Cerebras
+  - 高速推論
+relatedProducts:
+  - openai-codex
+  - cursor
+  - github-copilot
 ---
 
 ## 概要

@@ -1,14 +1,24 @@
 ---
-title: "Claude Code 完全ガイド 2026年版 — インストールから上級テクニックまで徹底解説"
-slug: "claude-code-complete-guide-2026"
-date: "2026-02-15"
-contentType: "news"
-category: "dev-knowledge"
-tags: ["claude-code", "coding-agent", "ai-development", "anthropic", "tutorial"]
-description: "Claude Codeのすべてを網羅する決定版ガイド。基本操作から3つのチャットモード、CLAUDE.md設定、サブエージェント、MCP連携、プラグイン、Hooksまで。ソロ開発者が今すぐ使える実践テクニックを完全解説。"
+title: Claude Code 完全ガイド 2026年版 — インストールから上級テクニックまで徹底解説
+slug: claude-code-complete-guide-2026
+date: '2026-02-15'
+contentType: news
+category: dev-knowledge
+tags:
+  - dev-knowledge
+  - claude-code
+  - coding-agent
+  - ai-development
+  - anthropic
+  - tutorial
+description: >-
+  Claude
+  Codeのすべてを網羅する決定版ガイド。基本操作から3つのチャットモード、CLAUDE.md設定、サブエージェント、MCP連携、プラグイン、Hooksまで。ソロ開発者が今すぐ使える実践テクニックを完全解説。
 readTime: 35
-image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=420&fit=crop"
-relatedProducts: ["claude-code"]
+image: >-
+  https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=420&fit=crop
+relatedProducts:
+  - claude-code
 ---
 
 # Claude Code 完全ガイド 2026年版
