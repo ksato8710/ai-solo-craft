@@ -74,4 +74,6 @@ research/YYYY-MM-DD-slug/
 - スコア表 + 所見 + 🗣 生の声（**日本語で**紹介、英語原文はsources.mdに保存）
 
 ## 参照ドキュメント
-- clawd-stevens/skills/news-value-assessment/SKILL.md — Clawdbot版NVAスキル（詳細版）
+- `docs/operations/WORKFLOW-DIGEST.md` — Digest ワークフロー（NVA は Phase 2 で使用）
+- `docs/operations/WORKFLOW-INDIVIDUAL.md` — 個別記事ワークフロー
+- `docs/operations/CHECKLIST.md` — NVA 関連チェック項目

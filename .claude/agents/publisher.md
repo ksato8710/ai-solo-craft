@@ -11,8 +11,8 @@
 2. content/news/ に記事ファイルを配置
 3. 必要なら content/products/ にプロダクト辞書ページを追加/更新（/productsリンク切れ防止）
 4. 構造チェック:
-   - Digest（morning-summary/evening-summary）に「重要ニュースランキング（NVA）」表と「Top 3 ピックアップ」がある
-   - Top 3は個別ニュース記事（category: news）へのリンクがある
+   - Digest（contentType: digest, digestEdition: morning/evening）に「重要ニュースランキング（NVA）」表と「Top 3 ピックアップ」がある
+   - Top 3は個別ニュース記事（contentType: news）へのリンクがある
 5. 公開前ゲート（必須）:
    - `npm run publish:gate` を実行
    - 内部で `validate:content -> sync:content:db -> build` を順に実行

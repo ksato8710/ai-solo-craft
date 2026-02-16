@@ -22,10 +22,11 @@ AI Solo Builder の技術仕様・デプロイ手順・運用ルール。
 - フォーマット: Markdown + YAML frontmatter
 - 読み取り: `src/lib/posts.ts`（gray-matter + remark）
 
-### 正式データモデル（運用）
-- ルート分類: `news | product | digest`
-- Digest軸: `morning | evening`
-- ニュースタグ: `dev-knowledge` / `case-study` / `product-update`
+### 正式データモデル（canonical V2）
+- `contentType`: `news | product | digest`
+- `digestEdition`: `morning | evening`（digest時のみ）
+- `tags`: `dev-knowledge` / `case-study` / `product-update`（news時に分類タグとして使用）
+- 正規定義: `specs/content-policy/spec.md`
 
 ### DB登録（必須）
 - 記事公開前に `npm run publish:gate` を必ず実行
@@ -39,7 +40,7 @@ AI Solo Builder の技術仕様・デプロイ手順・運用ルール。
 
 ### NVA評価データ
 - `/news-value`（ランキング）:
-  - 参照元: 最新のDigest記事（`morning-summary` / `evening-summary`）にある「重要ニュースランキング（NVA）」の表
+  - 参照元: 最新のDigest記事（`contentType: digest`）にある「重要ニュースランキング（NVA）」の表
   - 読み取り: `src/lib/digest.ts`
 - `research/`（中間資料）:
   - パス: `research/YYYY-MM-DD-slug/`（assessment.md + sources.md）
@@ -68,10 +69,13 @@ git push
 ```
 
 ## 注意事項
-- URL共有前に必ずブラウザで表示確認（TOOLS.md参照）
+- URL共有前に必ずブラウザで表示確認
 - ビルドエラー時は `npm run build` でローカル確認
 - 画像がない記事はカテゴリ別デフォルト画像を使用
 
 ## 参照ドキュメント
 - CLAUDE.md — プロジェクト全体の技術仕様
-- docs/SITE-ARCHITECTURE.md — サイト構成詳細
+- `specs/content-policy/spec.md` — コンテンツ分類の正規定義
+- `docs/technical/ARCHITECTURE.md` — サイト構成詳細
+- `docs/operations/WORKFLOW-OVERVIEW.md` — ワークフロー全体像
+- `docs/operations/CHECKLIST.md` — 品質チェックリスト

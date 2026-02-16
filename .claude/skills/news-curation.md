@@ -43,5 +43,7 @@
 - URL・数値・引用原文を保存（将来のリファレンス資産）
 
 ## 参照ドキュメント
-- docs/RESEARCH-SOURCES.md — 巡回先の詳細リスト
-- docs/CONTENT-STRATEGY.md — カテゴリ別の選定基準
+- `docs/operations/RESEARCH-SOURCES.md` — 巡回先の詳細リスト
+- `specs/content-policy/spec.md` — コンテンツ分類の正規定義
+- `docs/operations/WORKFLOW-DIGEST.md` — Digest ワークフロー（Phase 1-2 で本スキルを使用）
+- `docs/operations/CONTENT-STRATEGY.md` — SEO・内部リンク戦略

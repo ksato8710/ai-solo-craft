@@ -5,17 +5,17 @@
 
 ## Frontmatter（全記事共通）
 
+> **正規定義:** `specs/content-policy/spec.md`
+
 ```yaml
 ---
 title: "記事タイトル"
 slug: "url-friendly-slug"
 date: "YYYY-MM-DD"
-category: "morning-summary" # 互換運用: morning-summary | evening-summary | news | dev-knowledge | case-study | products
-contentType: "digest" # news | product | digest
-digestEdition: "morning" # digest時のみ: morning | evening
-tags: ["dev-knowledge"] # news時に使用（例: dev-knowledge / case-study / product-update）
-relatedProducts: ["product-slug"] # 任意: 関連プロダクト（/products/[slug]）
-relatedProduct: "product-slug" # 互換運用（単数）
+contentType: "digest"            # news | product | digest（必須）
+digestEdition: "morning"         # morning | evening（digest時のみ必須）
+tags: ["dev-knowledge"]          # news時に分類タグを先頭に（dev-knowledge / case-study / product-update）
+relatedProducts: ["product-slug"] # 関連プロダクト（/products/[slug]）
 description: "記事の要約（120文字以内）"
 readTime: 5
 featured: false
@@ -24,12 +24,13 @@ image: "/images/xxx.jpg"
 ```
 
 補足:
-- canonical項目（`contentType` / `digestEdition` / `tags` / `relatedProducts`）を優先して埋める
+- `contentType` / `digestEdition` / `tags` / `relatedProducts` が canonical V2 フィールド
+- レガシー互換: `category`, `relatedProduct`（単数）は既存記事に残存するが、新規記事では使用しない
 - 記事内で登場するプロダクトは必ず `/products/[slug]` にリンクする
 
 ## 種類別テンプレート
 
-### 🗞️ 朝夕のまとめ（Digest: morning-summary / evening-summary）
+### 🗞️ 朝夕のまとめ（contentType: digest, digestEdition: morning / evening）
 
 ```markdown
 # AIソロビルダー[朝刊/夕刊] — YYYY年M月D日（曜）[メインテーマ]
@@ -83,7 +84,7 @@ image: "/images/xxx.jpg"
 - 3つ目
 ```
 
-### 📰 ニュース（個別: news）
+### 📰 ニュース（contentType: news）
 
 ```markdown
 # [主語]、[何が起きたか] — [一言の文脈・意味]
@@ -123,7 +124,7 @@ image: "/images/xxx.jpg"
 **出典:** [リンク]
 ```
 
-### 🏷️ プロダクト（辞書: products）
+### 🏷️ プロダクト（contentType: product）
 
 ```markdown
 # [プロダクト名] — [一言で定義]
@@ -158,7 +159,7 @@ image: "/images/xxx.jpg"
 - ドキュメント: ...
 ```
 
-### 🧠 AI開発ナレッジ（Knowledge: dev-knowledge）
+### 🧠 AI開発ナレッジ（contentType: news, tags: [dev-knowledge]）
 
 ```markdown
 # [タイトル — 読者が何を得るか]
@@ -186,7 +187,7 @@ image: "/images/xxx.jpg"
 **参考リンク:** [出典一覧]
 ```
 
-### 📊 ソロビルダー事例紹介（Case Study: case-study）
+### 📊 ソロビルダー事例紹介（contentType: news, tags: [case-study]）
 
 ```markdown
 # [ビルダー名/プロダクト名] — [成果の要約]
@@ -220,10 +221,11 @@ image: "/images/xxx.jpg"
 ```
 
 ## 参照ドキュメント
-- `/Users/satokeita/Dev/ai-navigator/EDITORIAL.md` — タイトルルール
-- `/Users/satokeita/Dev/ai-navigator/docs/BRAND-IDENTITY.md` — トーン・文体
-- `/Users/satokeita/Dev/ai-navigator/docs/CONTENT-STRATEGY.md` — 品質基準
-- `/Users/satokeita/Dev/ai-navigator/docs/CONCEPT.md` — 最重要ポリシー
+- `specs/content-policy/spec.md` — frontmatter・taxonomy の正規定義
+- `docs/operations/EDITORIAL.md` — タイトルルール
+- `docs/business/BRAND-IDENTITY.md` — トーン・文体
+- `docs/operations/CONTENT-STRATEGY.md` — SEO・内部リンク戦略
+- `docs/business/CONCEPT.md` — 最重要ポリシー
 
 ## 公開前ゲート（必須）
 

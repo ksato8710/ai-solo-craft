@@ -159,7 +159,7 @@ P3:
 
 ## 11. 参照ドキュメント
 
-- `docs/CONTENT-API-ARCHITECTURE.md`
-- `docs/OPERATIONS-PLAN-2026-02-12.md`
-- `docs/SUPABASE-SETUP.md`
+- `docs/technical/API.md`
+- `docs/archive/OPERATIONS-PLAN-2026-02-12.md`
+- `docs/technical/DATABASE.md`
 - `README.md`

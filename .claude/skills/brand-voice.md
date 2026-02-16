@@ -50,5 +50,5 @@ Cursor は2023年3月にローンチされ、現在MAU 200万を突破。
 - 口コミ・コメント: 日本語で紹介（英語原文は sources.md に保存）
 
 ## 参照ドキュメント
-- docs/BRAND-IDENTITY.md — ブランドアイデンティティ全体
-- EDITORIAL.md — タイトルルール
+- docs/business/BRAND-IDENTITY.md — ブランドアイデンティティ全体
+- docs/operations/EDITORIAL.md — タイトルルール

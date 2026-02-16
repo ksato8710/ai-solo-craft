@@ -16,7 +16,7 @@
 5. プロダクト関連ニュースは `/products/[slug]` の候補も同時に提示する
 
 ## 入力
-- 巡回先リスト（docs/RESEARCH-SOURCES.md）
+- 巡回先リスト（docs/operations/RESEARCH-SOURCES.md）
 - 前回の巡回結果（重複排除用）
 
 ## 出力
@@ -26,5 +26,5 @@
 
 ## 判断基準
 - NVA Tier A/B（55点以上）を優先
-- 直近24h以内のニュースを対象（morning-summary）
+- 直近24h以内のニュースを対象（Digest用）
 - ソロビルダーとの関連度を重視

@@ -53,5 +53,7 @@
 - ❌ 全文翻訳の転載
 
 ## 参照ドキュメント
-- EDITORIAL.md — タイトルルール詳細
-- docs/CONTENT-STRATEGY.md — カテゴリ別品質基準
+- `docs/operations/EDITORIAL.md` — タイトルルール詳細
+- `specs/content-policy/spec.md` — frontmatter・taxonomy の正規定義
+- `docs/operations/CHECKLIST.md` — 品質チェックリスト（自動化状況含む）
+- `docs/operations/CONTENT-STRATEGY.md` — SEO・内部リンク戦略

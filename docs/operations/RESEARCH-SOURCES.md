@@ -112,11 +112,11 @@
 DigestのランキングとTop 3選定のためにNVAを実施する。
 Top 3と個別ニュースは **必ず** NVAを確定し、research/ に中間資料を保存する。
 
-- **スキル:** `clawd-stevens/skills/news-value-assessment/SKILL.md`
+- **スキル:** `.claude/skills/nva-process.md`
 - **5軸:** SNS反応量 / メディアカバレッジ / コミュニティ反応 / 技術的インパクト / ソロビルダー関連度
 - **各20点 = 100点満点**
 - **Tier:** A(80-100) / B(55-79) / C(30-54) / D(1-29)
-- **中間資料:** `ai-solo-builder/research/YYYY-MM-DD-slug/` に保存
+- **中間資料:** `research/YYYY-MM-DD-slug/` に保存
 
 ---
 

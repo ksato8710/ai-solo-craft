@@ -35,4 +35,4 @@ AI関連ニュースの情報ソースと巡回手順のクイックリファレ
 5. ニュースメディア（裏取り・補足）
 
 ## 詳細
-- docs/RESEARCH-SOURCES.md — 巡回手順の完全版
+- docs/operations/RESEARCH-SOURCES.md — 巡回手順の完全版

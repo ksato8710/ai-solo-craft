@@ -26,7 +26,7 @@ npm run validate:content
 
 ## Supabase (Database)
 
-Detailed setup: `docs/SUPABASE-SETUP.md`
+Detailed setup: `docs/technical/DATABASE.md`
 
 Set environment variables:
 - `NEXT_PUBLIC_SUPABASE_URL`
@@ -63,7 +63,7 @@ Web と Flutter 共通の配信用 API を `src/app/api/v1` で提供してい�
 - `GET /api/v1/contents`
 - `GET /api/v1/contents/[slug]`
 
-詳細: `docs/CONTENT-API-ARCHITECTURE.md`
+詳細: `docs/technical/API.md`
 
 ## Flutter App
 

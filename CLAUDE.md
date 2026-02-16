@@ -6,49 +6,93 @@
 - **ホスティング:** Vercel（無料枠）
 - **ドメイン:** ai.essential-navigator.com
 
-## 事業設計文書（docs/）
+## ドキュメント体系（docs/）
+
+> **構造・運用ルールの詳細:** `docs/DOCUMENTATION-GUIDE.md`
 
 記事作成・サイト改善・戦略判断時は必ず参照:
 
+### business/ — 事業設計
+
 | ドキュメント | 内容 | パス |
 |------------|------|------|
-| コンセプトシート | ビジョン・ターゲット・差別化・進化パス | `docs/CONCEPT.md` |
-| リーンキャンバス | 事業全体の設計図 | `docs/LEAN-CANVAS.md` |
-| ブランドアイデンティティ | トーン・文体・ビジュアル | `docs/BRAND-IDENTITY.md` |
-| コンテンツ戦略 | カテゴリ設計・品質基準・配信計画 | `docs/CONTENT-STRATEGY.md` |
-| リサーチソース | 巡回先リスト・リサーチ手順 | `docs/RESEARCH-SOURCES.md` |
-| サイト構成 | ディレクトリ構造・デプロイ手順 | `docs/SITE-ARCHITECTURE.md` |
+| コンセプトシート | ビジョン・ターゲット・差別化・進化パス | `docs/business/CONCEPT.md` |
+| リーンキャンバス | 事業全体の設計図 | `docs/business/LEAN-CANVAS.md` |
+| ブランドアイデンティティ | トーン・文体・ビジュアル | `docs/business/BRAND-IDENTITY.md` |
+
+### operations/ — 運用
+
+| ドキュメント | 内容 | パス |
+|------------|------|------|
+| ワークフロー全体像 | スキル体系・cron・スケジュール | `docs/operations/WORKFLOW-OVERVIEW.md` |
+| Digestワークフロー | 朝刊/夕刊の5Phase手順 | `docs/operations/WORKFLOW-DIGEST.md` |
+| 個別記事ワークフロー | 深掘り記事の5Phase手順 | `docs/operations/WORKFLOW-INDIVIDUAL.md` |
+| 品質チェックリスト | 公開前・コミット前チェック | `docs/operations/CHECKLIST.md` |
+| 編集ガイドライン | 文体・トーン・表記ルール | `docs/operations/EDITORIAL.md` |
+| コンテンツ戦略 | SEO・内部リンク・カテゴリ統合 | `docs/operations/CONTENT-STRATEGY.md` |
+| リサーチソース | 巡回先リスト・リサーチ手順 | `docs/operations/RESEARCH-SOURCES.md` |
+
+### technical/ — 技術
+
+| ドキュメント | 内容 | パス |
+|------------|------|------|
+| サイト構成 | ディレクトリ構造・デプロイ手順 | `docs/technical/ARCHITECTURE.md` |
+| API設計 | Content API仕様 | `docs/technical/API.md` |
+| データベース | Supabase設定・スキーマ | `docs/technical/DATABASE.md` |
+| 管理ガイド | 運用管理手順 | `docs/technical/ADMIN.md` |
+
+### specs/ — 正規仕様
+
+| ドキュメント | 内容 | パス |
+|------------|------|------|
+| コンテンツポリシー | 3型分類・frontmatter契約 | `specs/content-policy/spec.md` |
+| DBスキーマ | エンティティ設計 | `specs/content-model-db/spec.md` |
 
 ## サブエージェント体制（.claude/agents/）
 
-| エージェント | モデル | 役割 |
-|-------------|--------|------|
-| news-scout | sonnet | ニュース収集・スクリーニング・NVA一次評価 |
-| article-writer | sonnet | 記事作成・NVA評価セクション作成 |
-| quality-checker | haiku | 品質チェック（EDITORIAL.md・ブランド準拠） |
-| publisher | haiku | git push・デプロイ確認 |
+| エージェント | モデル | 役割 | 使用スキル |
+|-------------|--------|------|-----------|
+| news-scout | sonnet | ニュース収集・スクリーニング・NVA一次評価 | news-curation, research-sources, nva-process |
+| article-writer | sonnet | 記事作成・NVA評価セクション作成 | article-template, brand-voice, editorial-standards, nva-process |
+| quality-checker | haiku | 品質チェック（EDITORIAL.md・ブランド準拠） | editorial-standards, brand-voice |
+| publisher | haiku | git push・デプロイ確認 | site-config |
 
 ## スキル（.claude/skills/）
 
-| スキル | 内容 |
-|--------|------|
-| news-curation | ニュースキュレーション手順 |
-| article-template | カテゴリ別記事テンプレート |
-| brand-voice | ブランドトーン・文体ルール |
-| editorial-standards | 編集基準・チェックリスト |
-| nva-process | ニュースバリュー評価手順 |
-| site-config | 技術仕様・デプロイ手順 |
-| research-sources | 巡回先クイックリファレンス |
+| スキル | 内容 | 主な参照先 |
+|--------|------|-----------|
+| news-curation | ニュースキュレーション手順 | RESEARCH-SOURCES, WORKFLOW-DIGEST |
+| article-template | 記事種別テンプレート + frontmatter | specs/content-policy/spec.md |
+| brand-voice | ブランドトーン・文体ルール | BRAND-IDENTITY |
+| editorial-standards | 編集基準・チェックリスト | EDITORIAL, CHECKLIST |
+| nva-process | ニュースバリュー評価手順 | WORKFLOW-DIGEST, WORKFLOW-INDIVIDUAL |
+| site-config | 技術仕様・デプロイ手順 | ARCHITECTURE, CHECKLIST |
+| research-sources | 巡回先クイックリファレンス | RESEARCH-SOURCES |
 
 ## 記事作成ワークフロー
 
+### Digest（朝刊/夕刊 5 Phase）
+
+詳細は `docs/operations/WORKFLOW-DIGEST.md` を参照。
+
 ```
-1. [news-scout] 情報収集 — X/Reddit/HN/PHを巡回、NVA一次スクリーニング
-2. [article-writer] 記事作成 — テンプレート選択、定量データ付きMarkdown作成
-3. [quality-checker] 品質チェック — EDITORIAL.md準拠、ブランドトーン確認
-4. [publisher] 公開前ゲート — npm run publish:gate（validate + DB sync + build）
-5. [publisher] 公開 — git push → Vercel自動デプロイ → 表示確認
-6. [nemo→stevens] 報告 — 30分定期報告で進捗共有
+1. [news-scout]     Phase 1: 調査 — X/Reddit/HN/PHを巡回、一次ソース確認、DB保存
+2. [news-scout]     Phase 2: 評価 — 期間フィルタ・NVAスコアリング・Top10/Top3選定
+3. [article-writer] Phase 3: 記事作成 — Digest + Top3個別記事作成（テンプレート厳守）
+4. [article-writer] Phase 4: UI最適化 — テーブルレイアウト・ビジュアル階層・可読性向上
+5. [publisher]      Phase 5: 公開 — publish:gate → git push → Vercel確認
+```
+
+### 個別記事（dev-knowledge / case-study）
+
+詳細は `docs/operations/WORKFLOW-INDIVIDUAL.md` を参照。
+
+```
+1. Phase 1: テーマ選定（30分）
+2. Phase 2: 一次ソースリサーチ（1〜2時間）
+3. Phase 3: 既存リソース評価（1時間）
+4. Phase 4: 独自価値の設計（30分）
+5. Phase 5: 執筆・品質チェック・公開（2〜4時間）
 ```
 
 ## DB登録必須ルール（運用）
@@ -70,14 +114,14 @@
   - バイオレット: #8B5CF6
   - エメラルド: #10b981
 
-### カテゴリとカラー
-各カテゴリに固有のアクセントカラーを割り当て:
-- 🗞️ 朝のまとめ (morning-summary): #3B82F6 (blue)
-- 🗞️ 夕のまとめ (evening-summary): #F97316 (orange)
-- 📰 ニュース（個別） (news): #6366F1 (indigo)
-- 🏷️ プロダクト（辞書） (products): #8B5CF6 (violet)
-- 🧠 AI開発ナレッジ (dev-knowledge): #10b981 (emerald)
-- 📊 ソロビルダー事例紹介 (case-study): #f59e0b (amber)
+### カテゴリとカラー（canonical contentType + 表示用カテゴリ）
+各コンテンツ種別に固有のアクセントカラーを割り当て:
+- 🗞️ 朝刊Digest (contentType: digest, digestEdition: morning): #3B82F6 (blue)
+- 🗞️ 夕刊Digest (contentType: digest, digestEdition: evening): #F97316 (orange)
+- 📰 ニュース（個別） (contentType: news): #6366F1 (indigo)
+- 🏷️ プロダクト（辞書） (contentType: product): #8B5CF6 (violet)
+- 🧠 AI開発ナレッジ (contentType: news, tags: [dev-knowledge]): #10b981 (emerald)
+- 📊 ソロビルダー事例紹介 (contentType: news, tags: [case-study]): #f59e0b (amber)
 
 ### レイアウト（TLDR.tech準拠）
 1. **ヘッダー:** ロゴ + ナビ（カテゴリリンク）+ 「ニュースレター登録」ボタン（将来用）
@@ -105,19 +149,21 @@
   /products/    # プロダクト辞書（恒久ページ）
 ```
 
-### Frontmatter
+### Frontmatter（canonical V2 — 正規定義は `specs/content-policy/spec.md`）
 ```yaml
 ---
-	title: "バイブコーディングが「誰でもできる」時代に突入"
-	slug: "morning-news-2026-02-02-vibe-coding-mainstream"
-	date: "2026-02-02"
-	category: "morning-summary"
-	relatedProduct: "cursor" # 任意: 関連プロダクト（/products/[slug]）
-	description: "Scientific AmericanのClaude Code特集..."
-	readTime: 5
-	featured: true
-	image: "/images/default-morning.jpg"
-	---
+title: "バイブコーディングが「誰でもできる」時代に突入"
+slug: "morning-news-2026-02-02-vibe-coding-mainstream"
+date: "2026-02-02"
+contentType: "digest"           # news | product | digest
+digestEdition: "morning"        # morning | evening（digestの場合のみ）
+tags: ["vibe-coding", "cursor"] # ニュース分類タグ
+relatedProducts: ["cursor"]     # 関連プロダクト（配列）
+description: "Scientific AmericanのClaude Code特集..."
+readTime: 5
+featured: true
+image: "/images/default-morning.jpg"
+---
 ```
 
 ## ページ構成

@@ -19,8 +19,9 @@
 - [ ] サービス紹介時に開始時期が明記
 - [ ] 出典リンクが明記
 - [ ] 「なぜ今盛り上がっているか」の文脈がある
-- [ ] frontmatter が正しい（title, slug, date, category, description, readTime）
-- [ ] canonical項目が妥当（contentType / digestEdition / tags / relatedProducts）
+- [ ] frontmatter が正しい（title, slug, date, contentType, description, readTime）
+- [ ] digest の場合: digestEdition が正しい（morning / evening）
+- [ ] tags / relatedProducts が適切に設定されている
 - [ ] 海外記事の場合: 全文翻訳ではなく要点紹介+独自分析形式
 - [ ] ブランドトーンに沿っている（データドリブン、熱量あり、ソロビルダー視点）
 - [ ] NVA評価セクションがある（DigestのTop 3、個別ニュース）

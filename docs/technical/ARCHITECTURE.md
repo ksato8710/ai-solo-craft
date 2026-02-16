@@ -57,11 +57,15 @@ ai-navigator/
 │   └── YYYY-MM-DD-slug/
 │       ├── assessment.md     # NVA評価結果
 │       └── sources.md        # ソースデータ
-├── docs/                     # 事業設計文書
+├── docs/
+│   ├── business/             # 事業設計（CONCEPT, LEAN-CANVAS, BRAND-IDENTITY）
+│   ├── operations/           # 運用（ワークフロー, チェックリスト, 編集ガイドライン）
+│   ├── technical/            # 技術（サイト構成, API, DB）
+│   └── archive/              # アーカイブ（設計アーティファクト）
+├── specs/                    # 正規仕様（content-policy, content-model-db）
 ├── public/
 │   └── images/               # 静的画像
 ├── CLAUDE.md                 # プロジェクト設定
-├── EDITORIAL.md              # 編集ガイドライン
 └── README.md
 ```
 
@@ -89,36 +93,38 @@ ai-navigator/
 
 ## コンテンツ（Markdown）仕様
 
-### Frontmatter
+### Frontmatter（canonical V2）
+
+> 正規定義: `specs/content-policy/spec.md`
 
 ```yaml
 ---
 title: "記事タイトル"
 slug: "url-friendly-slug"
 date: "YYYY-MM-DD"
-category: "morning-summary"  # morning-summary | evening-summary | news | dev-knowledge | case-study | products
-relatedProduct: "product-slug"  # 任意: 関連するプロダクトslug（/products/[slug]）
+contentType: "digest"            # news | product | digest
+digestEdition: "morning"         # morning | evening（digest時のみ）
+tags: ["dev-knowledge"]          # news時の分類タグ
+relatedProducts: ["product-slug"] # 関連プロダクト（/products/[slug]）
 description: "記事の要約（120文字以内）"
-readTime: 5               # 読了時間（分）
-featured: false            # トップページのヒーロー表示
-image: "/images/xxx.jpg"   # OGP画像（オプション）
+readTime: 5
+featured: false
+image: "/images/xxx.jpg"
 ---
 ```
 
-### カテゴリ（方針）
+### コンテンツ種別とカラー
 
-| slug | 名称 | カラー |
-|------|------|--------|
-| morning-summary | 🗞️ 朝のまとめ（Digest） | #3B82F6 |
-| evening-summary | 🗞️ 夕のまとめ（Digest） | #F97316 |
-| news | 📰 ニュース（個別） | #6366F1 |
-| dev-knowledge | 🧠 AI開発ナレッジ | #10b981 |
-| case-study | 📊 ソロビルダー事例紹介 | #f59e0b |
-| products | 🏷️ プロダクト（辞書） | #8B5CF6 |
+| contentType | 条件 | 名称 | カラー |
+|-------------|------|------|--------|
+| digest | digestEdition: morning | 🗞️ 朝刊Digest | #3B82F6 |
+| digest | digestEdition: evening | 🗞️ 夕刊Digest | #F97316 |
+| news | — | 📰 ニュース（個別） | #6366F1 |
+| news | tags: [dev-knowledge] | 🧠 AI開発ナレッジ | #10b981 |
+| news | tags: [case-study] | 📊 ソロビルダー事例紹介 | #f59e0b |
+| product | — | 🏷️ プロダクト（辞書） | #8B5CF6 |
 
-#### 補足（現行実装の互換カテゴリ）
-- 現在のコンテンツ/実装には `morning-news`/`evening-news`, `product-news`（ニュース）, `knowledge`/`dev`/`deep-dive`（ナレッジ）, `featured-tools`, `tools` 等が混在している可能性がある
-- 方針としては上記6slugに統合する（詳細は `docs/CONCEPT.md` と `docs/CONTENT-STRATEGY.md`）
+レガシーカテゴリからの移行マップは `docs/operations/CONTENT-STRATEGY.md` を参照。
 
 ---
 
@@ -136,7 +142,7 @@ image: "/images/xxx.jpg"   # OGP画像（オプション）
 
 ```bash
 # /news-value への反映
-1. Digest記事（morning-summary / evening-summary）に「重要ニュースランキング（NVA）」の表を作成/更新
+1. Digest記事（contentType: digest）に「重要ニュースランキング（NVA）」の表を作成/更新
 2. Top 3を深掘りし、必要なら個別ニュース記事も作成してリンク
 3. 研究メモとして research/YYYY-MM-DD-slug/ にassessment.md + sources.md を保存（任意だが推奨）
 4. git push でデプロイ
