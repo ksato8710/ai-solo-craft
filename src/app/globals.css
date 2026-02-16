@@ -165,66 +165,34 @@ article {
 
 /* ===========================================
    Responsive Table - Desktop, Tablet & Mobile
-   
-   ベストプラクティス:
-   - Desktop/Tablet: 固定レイアウト、列幅を明示的に設定
-   - Mobile: カード形式に変換
    =========================================== */
 
-/* テーブル基本スタイル - Desktop & Tablet */
+/* テーブル基本スタイル */
 .article-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.9rem;
-  table-layout: fixed; /* 予測可能なレイアウト */
+  table-layout: auto;
 }
 
-/* 列幅を明示的に設定 */
-.article-content th:nth-child(1),
-.article-content td:nth-child(1) {
-  width: 8%; /* 順位 */
-  text-align: center;
-}
-
-.article-content th:nth-child(2),
-.article-content td:nth-child(2) {
-  width: auto; /* ニュース - 残りのスペースを使用 */
-}
-
+/* 短い列（順位、NVA、Tier）は最小幅に縮める */
+.article-content th:first-child,
+.article-content td:first-child,
 .article-content th:nth-child(3),
-.article-content td:nth-child(3) {
-  width: 12%; /* NVA */
-  text-align: center;
-}
-
+.article-content td:nth-child(3),
 .article-content th:nth-child(4),
 .article-content td:nth-child(4) {
-  width: 10%; /* Tier */
+  width: 1%;
+  white-space: nowrap;
   text-align: center;
 }
 
-/* セル基本スタイル */
-.article-content th,
-.article-content td {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ニュース列は折り返しを許可 */
+/* ニュース列は残りのスペースを使用 */
 .article-content th:nth-child(2),
 .article-content td:nth-child(2) {
+  width: auto;
   white-space: normal;
-  word-wrap: break-word;
-}
-
-/* 最後の列: 残りのスペースを全て取る（説明/理由列用） */
-.article-content th:last-child,
-.article-content td:last-child {
-  width: 100%;         /* 残りの幅を全て取る */
-  white-space: normal; /* 改行を許可 */
-  word-wrap: break-word;
 }
 
 .article-content th,
@@ -264,22 +232,6 @@ article {
   .article-content th,
   .article-content td {
     padding: 0.625rem 0.75rem;
-  }
-  
-  /* タブレットでは列幅を調整 */
-  .article-content th:nth-child(1),
-  .article-content td:nth-child(1) {
-    width: 10%;
-  }
-  
-  .article-content th:nth-child(3),
-  .article-content td:nth-child(3) {
-    width: 14%;
-  }
-  
-  .article-content th:nth-child(4),
-  .article-content td:nth-child(4) {
-    width: 12%;
   }
 }
 
