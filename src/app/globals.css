@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Article max-width for readability (note-like) */
+.article-container {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Dark Theme (default) */
 :root {
   --bg-primary: #0f172a;

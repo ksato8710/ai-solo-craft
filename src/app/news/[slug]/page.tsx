@@ -29,7 +29,7 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
   };
 
   return (
-    <article className="max-w-[680px] mx-auto">
+    <article className="article-container">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-6">
         <a href="/" className="hover:text-[var(--text-secondary)] transition-colors">ホーム</a>
