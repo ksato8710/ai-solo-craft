@@ -77,7 +77,7 @@ export default async function Home() {
                 一覧 →
               </a>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
               {morningSummaryPosts.slice(0, 2).map((post) => (
                 <NewsCard key={post.slug} post={post} size="small" />
               ))}
@@ -96,7 +96,7 @@ export default async function Home() {
                 一覧 →
               </a>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
               {eveningSummaryPosts.slice(0, 2).map((post) => (
                 <NewsCard key={post.slug} post={post} size="small" />
               ))}
@@ -121,7 +121,7 @@ export default async function Home() {
               すべて見る →
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
             {allNewsPosts.slice(0, 8).map((post) => (
               <NewsCard key={post.slug} post={post} size="small" />
             ))}
