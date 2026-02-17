@@ -7,8 +7,6 @@ export default async function Home() {
   const allPosts = await getAllPosts();
   const allProducts = await getAllProducts();
   const featured = await getFeaturedPosts();
-  const morningSummaryPosts = await getPostsByCategory('morning-summary');
-  const eveningSummaryPosts = await getPostsByCategory('evening-summary');
 
   // 統合ニュースセクション用のデータ取得
   const newsCategories = ['news', 'dev-knowledge', 'case-study'];
@@ -57,58 +55,6 @@ export default async function Home() {
           ニュース: {allPosts.length}本 / プロダクト: {allProducts.length}本
         </div>
       </div>
-
-      {/* Digest Summary Section */}
-      <section id="digest-summary" className="mb-12">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-1 h-6 rounded-full bg-[var(--accent-blue)]" />
-          <h2 className="text-lg font-bold text-[var(--text-primary)]">🗞️ 朝夕のまとめ</h2>
-          <a href="/news-value"
-             className="ml-auto text-xs font-medium hover:underline text-[var(--accent-amber)]">
-            評価を見る →
-          </a>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold text-[var(--accent-blue)]">🌅 朝刊</h3>
-              <a href="/category/morning-summary" className="text-xs text-[var(--accent-blue)] hover:underline">
-                一覧 →
-              </a>
-            </div>
-            <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
-              {morningSummaryPosts.slice(0, 2).map((post) => (
-                <NewsCard key={post.slug} post={post} size="small" />
-              ))}
-              {morningSummaryPosts.length === 0 && (
-                <div className="rounded-xl px-4 py-6 text-sm text-[var(--text-secondary)] bg-[var(--bg-card)]">
-                  朝刊コンテンツの準備中です。
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold text-[var(--accent-amber)]">🌆 夕刊</h3>
-              <a href="/category/evening-summary" className="text-xs text-[var(--accent-amber)] hover:underline">
-                一覧 →
-              </a>
-            </div>
-            <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
-              {eveningSummaryPosts.slice(0, 2).map((post) => (
-                <NewsCard key={post.slug} post={post} size="small" />
-              ))}
-              {eveningSummaryPosts.length === 0 && (
-                <div className="rounded-xl px-4 py-6 text-sm text-[var(--text-secondary)] bg-[var(--bg-card)]">
-                  夕刊コンテンツの準備中です。
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 統合ニュースセクション */}
       {allNewsPosts.length > 0 && (
