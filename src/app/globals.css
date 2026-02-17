@@ -391,18 +391,16 @@ article {
   }
 
   /* ===========================================
-     Default: Generic Table (label: value format)
+     Default: Generic Table (attractive card format)
      Applied to all tables without table-ranking class
      =========================================== */
   .article-content tr {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: block;
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1rem;
     background-color: var(--bg-card);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -411,17 +409,15 @@ article {
 
   .article-content tr:hover {
     background-color: var(--bg-card-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   }
 
   .article-content th,
   .article-content td {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    display: block;
     border: none;
-    padding: 0;
+    padding: 0.5rem 0;
     text-align: left;
     width: auto !important;
     white-space: normal !important;
@@ -430,36 +426,62 @@ article {
     overflow-wrap: break-word;
   }
 
-  /* Show label before value */
-  .article-content td[data-label]::before {
-    content: attr(data-label);
-    display: block;
-    font-weight: 600;
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* First cell (key/axis) - highlighted */
+  /* First cell - Card title with accent */
   .article-content td:first-child {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
-    font-size: 0.95rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 0.25rem;
+    font-size: 1rem;
+    padding: 0 0 0.75rem 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-violet);
+    background: none;
   }
 
   .article-content td:first-child::before {
     display: none;
   }
 
-  /* Value cells */
+  /* Value cells with labels */
   .article-content td:nth-child(n+2) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
     color: var(--text-secondary);
-    font-size: 0.875rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .article-content td:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .light .article-content td:nth-child(n+2) {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+  }
+
+  /* Label badge style */
+  .article-content td[data-label]::before {
+    content: attr(data-label);
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 4.5rem;
+    padding: 0.25rem 0.5rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--accent-violet);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .light .article-content td[data-label]::before {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(59, 130, 246, 0.08) 100%);
   }
 
   /* ===========================================
