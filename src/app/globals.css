@@ -289,6 +289,12 @@ article {
 
 /* ===========================================
    Responsive Table - Desktop, Tablet & Mobile
+   
+   ベストプラクティス:
+   - テーブル幅は100%だが、セル内容に応じて自然に調整
+   - 全ての列は auto で、コンテンツ量に応じた幅
+   - 長いテキストは折り返し、短い数値は縮小
+   - nth-child固定指定を避け、汎用的に対応
    =========================================== */
 
 /* テーブル基本スタイル */
@@ -296,57 +302,71 @@ article {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  font-size: 0.9rem;
-  table-layout: auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  table-layout: auto; /* コンテンツに応じて自動調整 */
 }
 
-/* 短い列（順位、NVA、Tier）は最小幅に縮める */
-.article-content th:first-child,
-.article-content td:first-child,
-.article-content th:nth-child(3),
-.article-content td:nth-child(3),
-.article-content th:nth-child(4),
-.article-content td:nth-child(4) {
-  width: 1%;
-  white-space: nowrap;
-  text-align: center;
-}
-
-/* ニュース列は残りのスペースを使用 */
-.article-content th:nth-child(2),
-.article-content td:nth-child(2) {
-  width: auto;
-  white-space: normal;
-}
-
+/* 全てのセル: 汎用スタイル */
 .article-content th,
 .article-content td {
   border: 1px solid var(--border-color);
-  padding: 0.75rem 1rem;
+  padding: 0.625rem 0.875rem;
   text-align: left;
   color: var(--text-secondary);
+  vertical-align: top;
 }
 
+/* ヘッダー: 視認性を高める */
 .article-content th {
-  background-color: rgba(59, 130, 246, 0.15);
+  background-color: rgba(59, 130, 246, 0.12);
   color: var(--text-primary);
   font-weight: 600;
+  font-size: 0.8125rem;
+  white-space: nowrap; /* ヘッダーは折り返さない */
 }
 
 .light .article-content th {
-  background-color: rgba(59, 130, 246, 0.1);
+  background-color: rgba(59, 130, 246, 0.08);
 }
 
-.article-content tr:nth-child(even) {
+/* データセル: コンテンツに応じて調整 */
+.article-content td {
+  /* 短い内容（数字、パーセント、ラベル）は縮む */
+  /* 長い内容（説明文）は自然に広がる */
+}
+
+/* 数値・短いテキストを含むセルは縮める（汎用的なヒント） */
+.article-content td:empty,
+.article-content td:has(> :only-child:is(code, strong)) {
+  white-space: nowrap;
+}
+
+/* 奇数行・偶数行の背景 */
+.article-content tbody tr:nth-child(even) {
   background-color: var(--bg-card);
 }
 
-.article-content tr:hover {
+.article-content tbody tr:hover {
   background-color: var(--bg-card-hover);
 }
 
 /* ===========================================
-   Tablet: Adjust table for medium screens
+   Desktop: 快適な読みやすさ
+   =========================================== */
+@media (min-width: 1025px) {
+  .article-content table {
+    font-size: 0.9rem;
+  }
+  
+  .article-content th,
+  .article-content td {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ===========================================
+   Tablet: 中間サイズの調整
    =========================================== */
 @media (min-width: 641px) and (max-width: 1024px) {
   .article-content table {
