@@ -361,6 +361,8 @@ article {
 
 /* ===========================================
    Mobile: Convert table to card layout
+   Default: Generic card format (label: value)
+   Override: table-ranking for numeric first column
    =========================================== */
 @media (max-width: 640px) {
   /* Base table styles for mobile */
@@ -382,19 +384,6 @@ article {
     width: 100%;
   }
 
-  .article-content th,
-  .article-content td {
-    display: block;
-    border: none;
-    padding: 0;
-    text-align: left;
-    width: auto !important;
-    white-space: normal !important;
-    word-wrap: break-word;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-
   /* リンクの折り返し */
   .article-content a {
     word-break: break-word;
@@ -402,9 +391,10 @@ article {
   }
 
   /* ===========================================
-     Generic Table (label: value format)
+     Default: Generic Table (label: value format)
+     Applied to all tables without table-ranking class
      =========================================== */
-  .article-content table.table-generic tr {
+  .article-content tr {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -419,20 +409,29 @@ article {
     transition: all 0.2s ease;
   }
 
-  .article-content table.table-generic tr:hover {
+  .article-content tr:hover {
     background-color: var(--bg-card-hover);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
-  .article-content table.table-generic td {
+  .article-content th,
+  .article-content td {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    border: none;
+    padding: 0;
+    text-align: left;
+    width: auto !important;
+    white-space: normal !important;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   /* Show label before value */
-  .article-content table.table-generic td[data-label]::before {
+  .article-content td[data-label]::before {
     content: attr(data-label);
     display: block;
     font-weight: 600;
@@ -443,7 +442,7 @@ article {
   }
 
   /* First cell (key/axis) - highlighted */
-  .article-content table.table-generic td:first-child {
+  .article-content td:first-child {
     font-weight: 600;
     color: var(--text-primary);
     font-size: 0.95rem;
@@ -452,12 +451,12 @@ article {
     margin-bottom: 0.25rem;
   }
 
-  .article-content table.table-generic td:first-child::before {
+  .article-content td:first-child::before {
     display: none;
   }
 
   /* Value cells */
-  .article-content table.table-generic td:nth-child(n+2) {
+  .article-content td:nth-child(n+2) {
     color: var(--text-secondary);
     font-size: 0.875rem;
     line-height: 1.5;
@@ -465,27 +464,14 @@ article {
 
   /* ===========================================
      Ranking Table (badge style for ranks)
+     Override styles when table-ranking class is present
      =========================================== */
   .article-content table.table-ranking tr {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     gap: 0.5rem 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
     padding: 0.875rem;
-    background-color: var(--bg-card);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    transition: all 0.2s ease;
-  }
-
-  .article-content table.table-ranking tr:hover {
-    background-color: var(--bg-card-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   /* ラベルを非表示（視覚的に不要） */
@@ -508,6 +494,9 @@ article {
     font-size: 1.1rem;
     border-radius: 10px;
     flex-shrink: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
   }
 
   /* Top 3 の順位バッジを特別なスタイルに */
@@ -533,6 +522,9 @@ article {
     font-size: 0.95rem;
     line-height: 1.4;
     align-self: center;
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
   }
 
   .article-content table.table-ranking td:nth-child(2) a {
@@ -548,6 +540,7 @@ article {
   .article-content table.table-ranking td:nth-child(n+3) {
     grid-row: 2;
     display: inline-flex;
+    flex-direction: row;
     align-items: center;
     gap: 0.25rem;
     width: auto !important;
