@@ -4,7 +4,18 @@ import { isValidEmail, isRateLimited, subscribe, getSubscriberByEmail } from '@/
 import { VerificationEmail } from '@/emails/verification';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ai.essential-navigator.com';
-const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Lazy initialization to avoid build-time errors when RESEND_API_KEY is not set
+let resend: Resend | null = null;
+function getResend(): Resend {
+  if (!resend) {
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY environment variable is not set');
+    }
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resend;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -52,7 +63,7 @@ export async function POST(request: NextRequest) {
         const confirmUrl = `${SITE_URL}/api/newsletter/confirm?token=${subscriber.verify_token}`;
 
         try {
-          await resend.emails.send({
+          await getResend().emails.send({
             from: 'AI Solo Builder <newsletter@ai.essential-navigator.com>',
             to: email.toLowerCase(),
             subject: '【AI Solo Builder】ニュースレター登録の確認',
