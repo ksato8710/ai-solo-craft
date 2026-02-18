@@ -9,6 +9,9 @@ image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=420&fi
 tags:
   - "ツール紹介"
 excerpt: "OpenAI Frontierがエンタープライズ市場に本格参戦。AIエージェントを「デジタル従業員」として既存システムと統合し、人間と同様の管理手法を適用。HP、Oracle、State Farm、Uberが導入済み。AI Solo Builderが押さえるべき企業AI導入の新標準。"
+relatedProducts:
+  - openai
+  - chatgpt
 ---
 
 # OpenAI Frontier完全解説 — エンタープライズAI革命の決定版プラットフォーム

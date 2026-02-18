@@ -9,6 +9,8 @@ image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=420&fi
 featured: 'false'
 tags:
   - case-study
+relatedProducts:
+  - sleek-design
 ---
 
 ## なぜSleek.designが爆速で$10k MRRを達成したのか

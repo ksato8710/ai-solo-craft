@@ -21,6 +21,10 @@ featured: 'false'
 arxivId: '2602.08234'
 source: arXiv
 sourceUrl: 'https://arxiv.org/abs/2602.08234'
+relatedProducts:
+  - autogpt
+  - crewai
+  - langchain
 ---
 
 ## 論文概要

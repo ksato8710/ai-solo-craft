@@ -10,6 +10,7 @@ contentType: "news"
 readTime: 5
 featured: false
 tags: ["dev-knowledge", "arXiv論文", "ファインチューニング", "コスト削減"]
+relatedProducts: []
 ---
 
 ## 📊 NVA評価

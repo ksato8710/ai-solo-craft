@@ -10,6 +10,9 @@ image: >-
 featured: 'false'
 tags:
   - dev-knowledge
+relatedProducts:
+  - n8n-ai-workflow-automation
+  - make-integromat
 ---
 
 ## 何が起きたか

@@ -8,6 +8,8 @@ description: "前GitHub CEOが記録的なシード調達でAIエージェント
 readTime: "8"
 image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=420&fit=crop&q=80"
 featured: "true"
+relatedProducts:
+  - github-copilot
 ---
 
 今朝のAI Solo Builder界隈は、GitHub創業者の動きから次世代画像生成AIまで、開発者の働き方を根本的に変える発表が相次いでいます。

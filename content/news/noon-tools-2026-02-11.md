@@ -9,6 +9,7 @@ tags:
   - "ツール紹介"
 image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=420&fit=crop"
 featured: "false"
+relatedProducts: []
 ---
 
 ## なぜRowboatがHacker Newsで117ポイントを獲得したのか

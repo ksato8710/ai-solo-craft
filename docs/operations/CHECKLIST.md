@@ -49,6 +49,7 @@
 |--------------|:--:|:--:|:--:|:--:|:--:|
 | `contentType` が `news \| product \| digest` のいずれか | ✅ | ✅ | ✅ | | |
 | Digestには `digestEdition: morning \| evening` あり | ✅ | ✅ | ✅ | | |
+| **`relatedProducts` が設定されている（news/digest必須）** | ✅ | ✅ | ✅ | | |
 | `relatedProducts` は配列形式 `["slug"]` | ✅ | ✅ | ✅ | | |
 | `tags` は配列形式 | ✅ | ✅ | ✅ | | |
 | **ニュース記事の `tags` 先頭に分類タグあり** | | | | | ✅ |
@@ -369,6 +370,7 @@ node scripts/fix-news-tags.mjs            # 実行
 
 | 日付 | 内容 |
 |------|------|
+| **2026-02-18** | **relatedProducts必須ルール追加（プロダクト↔ニュース連携強化）** |
 | **2026-02-16** | **分類タグルール追加（dev-knowledge/case-study/product-update/other）** |
 | **2026-02-16** | **コードブロック表示スタイル追加、リンク表示をnote/Zennライクに改善** |
 | **2026-02-16** | **モバイルテーブル表示チェック項目追加（はみ出し防止）** |

@@ -8,6 +8,7 @@ readTime: "12"
 tags:
   - "case-study"
 image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=420&fit=crop"
+relatedProducts: []
 ---
 
 AIソロビルダーを語るうえで、Pieter Levels（ピーター・レベルス）を避けて通ることはできない。オランダ出身のこの38歳のプログラマーは、従業員ゼロ、VC資金ゼロ、オフィスなしで**年間300万ドル（約4.5億円）**以上を稼ぎ出している。
