@@ -71,6 +71,7 @@ CLAUDE.md               ← 索引＋クイックリファレンス（全体の�
 | `ARCHITECTURE.md` | ディレクトリ構造、ページ構成、frontmatter仕様、デプロイ手順 |
 | `API.md` | Content API 仕様（Web/Flutter共通） |
 | `DATABASE.md` | Supabase設定・スキーマ・RLS |
+| `NEWSLETTER.md` | ニュースレター機能の技術仕様・アーキテクチャ |
 | `FLUTTER.md` | Flutter モバイルアプリ連携仕様 |
 | `ADMIN.md` | 管理画面・運用管理手順 |
 

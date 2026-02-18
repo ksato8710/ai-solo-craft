@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@react-email/components": "^1.0.8",
+    "@react-email/render": "^2.0.4",
     "@supabase/supabase-js": "^2.95.3",
     "gray-matter": "^4.0.3",
     "next": "16.1.6",

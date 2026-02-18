@@ -84,6 +84,7 @@ news-research → news-evaluation → digest-writer → content-optimizer → pu
 | `asb-morning-digest` | 毎日 07:30 JST | Digest 5 Phase | 朝刊作成 |
 | `asb-evening-digest` | 毎日 17:30 JST | Digest 5 Phase | 夕刊作成 |
 | `asb-midday-editorial` | 平日 12:30 JST | 個別記事 | 曜日別テーマで深掘り記事 |
+| `send-newsletter` | 毎日 08:15 JST | Vercel Cron | 朝刊 Digest をメール配信（`vercel.json`） |
 | 月次ソースメンテナンス | 毎月1日 03:00 JST | — | ソース品質管理・信頼度更新 |
 
 ### cron → ワークフロー → スキル の対応

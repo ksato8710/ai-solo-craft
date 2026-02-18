@@ -15,8 +15,9 @@ Applied migrations:
 - `supabase/migrations/20260211045200_seed_default_tags.sql`
 - `supabase/migrations/20260211045300_enable_content_rls.sql`
 - `supabase/migrations/20260211052753_add_featured_to_contents.sql`
-
-`supabase db push --linked --include-all` now reports: `Remote database is up to date.`
+- `supabase/migrations/20260213040000_add_source_credibility_system.sql`
+- `supabase/migrations/20260213040100_seed_source_credibility_data.sql`
+- `supabase/migrations/20260219000000_add_newsletter.sql`
 
 ## 2. Data Model Summary
 
@@ -34,6 +35,10 @@ Core tables:
 - `sources`, `content_sources`
 - `digest_rankings`, `digest_ranking_items`
 - `content_revisions`
+- `newsletter_subscribers` — ニュースレター購読者
+- `newsletter_send_logs` — 配信ログ
+
+Newsletter tables details: `docs/technical/NEWSLETTER.md`
 
 Details are specified in:
 - `specs/content-policy/spec.md`
@@ -45,6 +50,11 @@ For Next.js / mobile API access:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
 - `SUPABASE_SECRET_KEY` (server-side only)
+
+For newsletter:
+- `RESEND_API_KEY` (server-side only)
+- `CRON_SECRET` (server-side only)
+- `NEXT_PUBLIC_SITE_URL` (optional, defaults to `https://ai.essential-navigator.com`)
 
 Recommended local file:
 - `.env.local` (gitignored)

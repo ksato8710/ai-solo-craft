@@ -39,6 +39,7 @@
 | サイト構成 | ディレクトリ構造・デプロイ手順 | `docs/technical/ARCHITECTURE.md` |
 | API設計 | Content API仕様 | `docs/technical/API.md` |
 | データベース | Supabase設定・スキーマ | `docs/technical/DATABASE.md` |
+| ニュースレター | メール配信機能の技術仕様 | `docs/technical/NEWSLETTER.md` |
 | 管理ガイド | 運用管理手順 | `docs/technical/ADMIN.md` |
 
 ### specs/ — 正規仕様

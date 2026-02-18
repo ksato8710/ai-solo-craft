@@ -33,6 +33,15 @@
 3. `npm run sync:content:db`
 4. Web と Flutter は DB を参照する API/取得層から最新を取得
 
+## ニュースレター API
+
+ニュースレター専用のエンドポイント。詳細は `docs/technical/NEWSLETTER.md` を参照。
+
+- `POST /api/newsletter/subscribe` — メール登録（ハニーポット・レート制限付き）
+- `GET /api/newsletter/confirm?token=xxx` — 登録確認 → `/newsletter/confirmed` にリダイレクト
+- `GET /api/newsletter/unsubscribe?token=xxx` — 配信停止 → `/newsletter/unsubscribed` にリダイレクト
+- `POST /api/cron/send-newsletter` — 日次配信（`Authorization: Bearer {CRON_SECRET}` 認証）
+
 ## 将来拡張
 
 - 認証付き API（管理画面向け）を `/api/v1/admin/*` に分離

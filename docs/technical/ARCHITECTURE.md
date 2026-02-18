@@ -47,7 +47,12 @@ ai-navigator/
 │   ├── lib/
 │   │   ├── posts.ts          # Markdown読み取り・パース
 │   │   ├── digest.ts         # Digest内ランキング表の読み取り
+│   │   ├── newsletter.ts     # ニュースレター共有ライブラリ
 │   │   └── research.ts       # NVA中間資料（将来拡張/分析用）
+│   ├── emails/               # React Email テンプレート
+│   │   ├── verification.tsx
+│   │   ├── morning-digest.tsx
+│   │   └── components/       # 共有メールコンポーネント
 │   ├── data/
 │   │   └── tools.ts          # ツールディレクトリデータ（67件）
 ├── content/
@@ -80,6 +85,8 @@ ai-navigator/
 | `/products/[slug]` | プロダクト詳細 | プロダクトの恒久ページ（前提情報） |
 | `/category/[category]` | カテゴリ一覧 | カテゴリ別記事リスト |
 | `/news-value` | NVAランキング | 朝/夕Digestごとに更新されるTop 10ランキング |
+| `/newsletter/confirmed` | 登録確認 | ニュースレター登録確認ページ |
+| `/newsletter/unsubscribed` | 配信停止 | 配信停止ページ（フィードバック付き） |
 
 ## API構成（Web / Flutter共通）
 
@@ -88,6 +95,17 @@ ai-navigator/
 | `/api/v1/feed` | モバイル向けホーム集約レスポンス |
 | `/api/v1/contents` | フィルタ付き一覧取得 |
 | `/api/v1/contents/[slug]` | 詳細取得 |
+
+## API構成（ニュースレター）
+
+| パス | メソッド | 用途 |
+|------|---------|------|
+| `/api/newsletter/subscribe` | POST | メール登録 |
+| `/api/newsletter/confirm` | GET | 登録確認（リダイレクト） |
+| `/api/newsletter/unsubscribe` | GET | 配信停止（リダイレクト） |
+| `/api/cron/send-newsletter` | POST | 日次配信（Vercel Cron） |
+
+詳細: `docs/technical/NEWSLETTER.md`
 
 ---
 
@@ -159,7 +177,9 @@ image: "/images/xxx.jpg"
 | Google Analytics (GA4) | アクセス解析 | ⬜ 未設定 |
 | Search Console | 検索パフォーマンス | ⬜ 未設定 |
 | Route 53 | DNS（CNAME → Vercel） | ✅ 設定済み |
+| Resend | メール配信（ニュースレター） | ✅ APIキー設定済み / ⬜ ドメイン認証未設定 |
 
 ---
 
+*更新日: 2026-02-19（ニュースレター機能追加）*
 *このサイト構成はCLAUDE.mdの技術仕様と整合。変更時は両方を更新すること。*
