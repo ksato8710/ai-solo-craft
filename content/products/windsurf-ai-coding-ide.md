@@ -1,10 +1,10 @@
 ---
-title: "Windsurf — エージェンティックAI IDE"
+title: "Windsurf — エージェンティックAI IDE（Wave 13対応）"
 slug: windsurf-ai-coding-ide
-date: "2026-02-16"
+date: "2026-02-18"
 contentType: "product"
 type: product
-description: "Codeium社が開発したAIエージェント搭載IDE。独自の「Cascade」エージェントがプロジェクト全体を理解し、マルチファイル編集を自律実行。VS Code互換で移行コストゼロ。"
+description: "Codeium社が開発したAIエージェント搭載IDE。Wave 13でArena Mode（モデル比較）、Plan Mode（タスク計画）、並列マルチエージェント機能を追加。2026年2月AIツールランキング1位。"
 readTime: 12
 tags: ["ai-coding", "ai-ide"]
 image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=420&fit=crop"
@@ -12,19 +12,20 @@ relatedProducts:
   - "cursor"
   - "github-copilot"
   - "claude-code"
+  - "kimi-code"
   - "devin"
-  - "replit-ai"
 ---
 
-> 最終情報更新: 2026-02-16
+> 最終情報更新: 2026-02-18
 
 | 項目 | 詳細 |
 |------|------|
 | 種別 | AI統合IDE / エージェンティックIDE |
 | 開発元 | Codeium（現Windsurf）、2025年Cognition買収 |
 | 料金 | 無料版 / Pro $15/月 / Team $25/月 |
-| 評価 | ⭐4.6/5、ARR推定$82M |
+| 評価 | ⭐4.6/5、**2026年2月AIツールランキング1位** |
 | ベース | VS Code互換 |
+| 最新版 | **Wave 13**（2026年2月） |
 
 ## Windsurfとは？
 
@@ -49,6 +50,22 @@ Cursorが「開発者主導のAIアシスタント」なら、Windsurfは**「AI
 ### Cascade（AIエージェント）
 
 プロジェクト全体のコンテキストを理解し、複数ファイルにまたがるコード生成・編集を自律実行。「認証機能を追加して」と言えば、関連ファイルを自動で特定して修正。
+
+### 🆕 Arena Mode（Wave 13）
+
+**サイドバイサイドのモデル比較機能**。複数のAIモデルに同じタスクを実行させ、結果を比較。モデル名を隠した状態で出力を評価・投票でき、「どのモデルが自分のワークフローに最適か」を客観的に判断できる。
+
+### 🆕 Plan Mode（Wave 13）
+
+**コード生成前のタスク計画機能**。複雑なタスクを実行する前に、AIが計画を提示。計画を確認・修正してから実行することで、意図しない変更を防止。
+
+### 🆕 並列マルチエージェント（Wave 13）
+
+**Git worktreesを活用した並列開発**。複数のCascadeセッションをサイドバイサイドで実行し、異なるブランチで同時に作業。マージコンフリクトを最小化しながら、複数機能を並行開発。
+
+### 🆕 Claude Opus 4.6対応（Wave 13）
+
+最新のClaude Opus 4.6（fast mode）をプロモーション価格で利用可能。1Mコンテキスト（beta）により、超大規模プロジェクトでも全体を把握した提案が可能に。
 
 ### Flow Actions
 
