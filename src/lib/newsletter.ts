@@ -15,6 +15,129 @@ function getServiceClient() {
 
 const EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
+interface DigestRecord {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  body_markdown: string | null;
+}
+
+interface RankingItemRecord {
+  rank: number;
+  headline: string;
+  nva_total: number;
+  source_url: string | null;
+  news_content_id: string | null;
+}
+
+interface LinkedNewsRecord {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  body_markdown: string | null;
+}
+
+interface EnrichedLinkedArticle {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  keyPoints: string[];
+  whyItMatters: string | null;
+  primarySourceUrl: string | null;
+  japaneseSourceUrl: string | null;
+}
+
+interface EnrichedRankingItem extends RankingItemRecord {
+  article: EnrichedLinkedArticle | null;
+}
+
+function extractFirstUrl(text: string): string | null {
+  const matched = text.match(/https?:\/\/[^\s)>\]]+/i);
+  return matched ? matched[0] : null;
+}
+
+function extractSectionLines(bodyMarkdown: string, headingKeywords: string[]): string[] {
+  const lines = bodyMarkdown.split(/\r?\n/);
+  const lowerKeywords = headingKeywords.map((keyword) => keyword.toLowerCase());
+  const headingIndex = lines.findIndex((line) => {
+    const normalized = line.trim().toLowerCase();
+    return normalized.startsWith('##') && lowerKeywords.some((keyword) => normalized.includes(keyword));
+  });
+
+  if (headingIndex < 0) return [];
+
+  const sectionLines: string[] = [];
+  for (let i = headingIndex + 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line.startsWith('##')) break;
+    if (!line) continue;
+    sectionLines.push(line);
+  }
+  return sectionLines;
+}
+
+function sanitizeLine(line: string): string {
+  return line
+    .replace(/^[-*]\s+/, '')
+    .replace(/^\d+\.\s+/, '')
+    .replace(/^>\s*/, '')
+    .trim();
+}
+
+function extractKeyPoints(bodyMarkdown: string, limit = 3): string[] {
+  const preferredSections = [
+    ...extractSectionLines(bodyMarkdown, ['The details', '詳細', 'ポイント', '要点']),
+    ...extractSectionLines(bodyMarkdown, ['今日やること', 'アクション', 'Next actions']),
+    ...extractSectionLines(bodyMarkdown, ['Solo Builderへの影響', 'Why it matters']),
+  ];
+
+  const fromSections = preferredSections
+    .map((line) => sanitizeLine(line))
+    .filter((line) => line.length > 0 && !line.toLowerCase().startsWith('http'));
+
+  if (fromSections.length > 0) {
+    return [...new Set(fromSections)].slice(0, limit);
+  }
+
+  const fallback = bodyMarkdown
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => /^[-*]\s+/.test(line) || /^\d+\.\s+/.test(line))
+    .map((line) => sanitizeLine(line))
+    .filter((line) => line.length > 0 && !line.toLowerCase().startsWith('http'));
+
+  return [...new Set(fallback)].slice(0, limit);
+}
+
+function extractWhyItMatters(bodyMarkdown: string, description: string): string | null {
+  const section = extractSectionLines(bodyMarkdown, ['Why it matters', '重要', 'Solo Builderへの影響']);
+  const line = section.map((text) => sanitizeLine(text)).find((text) => text.length > 0) ?? null;
+  if (line) return line;
+  return description || null;
+}
+
+function extractLabeledLink(bodyMarkdown: string, labels: string[]): string | null {
+  const lowerLabels = labels.map((label) => label.toLowerCase());
+  const lines = bodyMarkdown.split(/\r?\n/);
+
+  for (const line of lines) {
+    const lower = line.toLowerCase();
+    if (!lowerLabels.some((label) => lower.includes(label))) continue;
+
+    const markdownLink = line.match(/\((https?:\/\/[^)]+)\)/i);
+    if (markdownLink) return markdownLink[1];
+
+    const plainUrl = extractFirstUrl(line);
+    if (plainUrl) return plainUrl;
+  }
+
+  return null;
+}
+
 export function isValidEmail(email: string): boolean {
   return EMAIL_REGEX.test(email) && email.length <= 254;
 }
@@ -207,6 +330,8 @@ export async function getLatestMorningDigest() {
 
   if (!digest) return null;
 
+  const digestRecord = digest as DigestRecord;
+
   // Get ranking items
   const { data: ranking } = await supabase
     .from('digest_rankings')
@@ -214,14 +339,64 @@ export async function getLatestMorningDigest() {
       id,
       digest_ranking_items(rank, headline, nva_total, source_url, news_content_id)
     `)
-    .eq('digest_content_id', digest.id)
+    .eq('digest_content_id', digestRecord.id)
     .single();
 
-  const rankingItems = ranking?.digest_ranking_items
-    ?.sort((a: { rank: number }, b: { rank: number }) => a.rank - b.rank) || [];
+  const rankingItemsRaw =
+    (((ranking?.digest_ranking_items ?? []) as RankingItemRecord[]) ?? []).sort(
+      (a, b) => a.rank - b.rank
+    );
+
+  const linkedNewsIds = [...new Set(
+    rankingItemsRaw
+      .map((item) => item.news_content_id)
+      .filter((value): value is string => typeof value === 'string' && value.length > 0)
+  )];
+
+  const linkedNewsMap = new Map<string, LinkedNewsRecord>();
+
+  if (linkedNewsIds.length > 0) {
+    const { data: linkedNewsRows } = await supabase
+      .from('contents')
+      .select('id, slug, title, description, body_markdown')
+      .in('id', linkedNewsIds);
+
+    for (const row of (linkedNewsRows ?? []) as LinkedNewsRecord[]) {
+      linkedNewsMap.set(row.id, row);
+    }
+  }
+
+  const rankingItems: EnrichedRankingItem[] = rankingItemsRaw.map((item) => {
+    const linked = item.news_content_id ? linkedNewsMap.get(item.news_content_id) : undefined;
+    if (!linked) {
+      return { ...item, article: null };
+    }
+
+    const body = linked.body_markdown ?? '';
+    const primarySourceUrl =
+      extractLabeledLink(body, ['EN一次情報', 'EN source', 'Primary source', 'Original']) ||
+      item.source_url;
+    const japaneseSourceUrl = extractLabeledLink(body, ['JPリンク', 'JP補足', '日本語', 'JA参考']);
+    const keyPoints = extractKeyPoints(body, 3);
+    const whyItMatters = extractWhyItMatters(body, linked.description);
+
+    return {
+      ...item,
+      article: {
+        id: linked.id,
+        slug: linked.slug,
+        title: linked.title,
+        description: linked.description,
+        keyPoints,
+        whyItMatters,
+        primarySourceUrl,
+        japaneseSourceUrl,
+      },
+    };
+  });
 
   return {
-    ...digest,
+    ...digestRecord,
     rankingItems,
   };
 }

@@ -28,7 +28,7 @@ export default function AdminPage() {
         setSkillContent('スキルファイルの読み込みに失敗しました。');
         setSelectedSkill(skillName);
       }
-    } catch (error) {
+    } catch {
       setSkillContent('スキルファイルの読み込み中にエラーが発生しました。');
       setSelectedSkill(skillName);
     }
@@ -88,10 +88,43 @@ function OverviewTab() {
               href="/admin/sources" 
               className="text-blue-400 hover:text-blue-300 transition-colors font-medium hover:underline"
             >
-              📊 情報源管理
+              📊 Legacy情報源管理
             </a>
             <span className="text-slate-400 text-sm">
-              - 5段階レーティング、カテゴリ管理、アクティブ制御
+              - 旧 `content_sources` テーブル用（互換運用）
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <a
+              href="/admin/source-intelligence"
+              className="text-violet-400 hover:text-violet-300 transition-colors font-medium hover:underline"
+            >
+              🧭 Source Intelligence
+            </a>
+            <span className="text-slate-400 text-sm">
+              - ニュースレター / 一次情報 / 日本メディアを統合管理
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <a
+              href="/admin/workflows"
+              className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium hover:underline"
+            >
+              🔗 記事作成ワークフロー管理
+            </a>
+            <span className="text-slate-400 text-sm">
+              - 記事種別 × ソースの役割（detect / verify / localize）を可視化
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <a
+              href="/admin/schedules"
+              className="text-amber-400 hover:text-amber-300 transition-colors font-medium hover:underline"
+            >
+              ⏱️ 配信スケジュール管理
+            </a>
+            <span className="text-slate-400 text-sm">
+              - 参照ニュースレターの配信時刻と統合遅延（fetch delay）を管理
             </span>
           </li>
         </ul>
@@ -116,8 +149,8 @@ function OverviewTab() {
               <span className="text-blue-400">5 Phase Pipeline</span>
             </div>
             <div className="flex justify-between">
-              <span>関連スキル:</span>
-              <span className="text-violet-400">4つのコアスキル</span>
+              <span>管理対象エンティティ:</span>
+              <span className="text-violet-400">source/workflow/schedule</span>
             </div>
           </div>
         </div>
@@ -381,6 +414,15 @@ function SkillsTab({ onSkillSelect }: { onSkillSelect: (skillName: string) => vo
       automation: '中程度',
       features: ['商品比較記事', '口コミ原文掲載', 'マルチソースリサーチ', 'WordPress投稿'],
       color: 'bg-emerald-500'
+    },
+    {
+      name: 'newsletter-curation-workflow',
+      category: 'Newsletter Operations',
+      description: '複数ニュースレター検知→一次情報検証→日本語ローカライズの運用スキル',
+      phase: 'Cross Workflow',
+      automation: '高い',
+      features: ['検知レイヤー運用', 'EN/JPリンク併記', '法務・配信ガードレール', '配信前チェック'],
+      color: 'bg-fuchsia-500'
     }
   ];
 
@@ -590,8 +632,8 @@ function SkillDetailTab({ skillName, content, onBack }: { skillName: string, con
           <h4 className="text-sm font-medium text-blue-300">スキルファイルについて</h4>
         </div>
         <p className="text-sm text-blue-200/80">
-          このスキルファイルは <code className="bg-slate-700 px-2 py-1 rounded">~/.clawdbot/skills/{skillName}/SKILL.md</code> から読み込まれています。
-          実際の実行手順、使用方法、設定例などが記載されています。
+          このスキルファイルは <code className="bg-slate-700 px-2 py-1 rounded">.claude/skills</code> / <code className="bg-slate-700 px-2 py-1 rounded">~/.claude/skills</code> / <code className="bg-slate-700 px-2 py-1 rounded">~/.clawdbot/skills</code> / <code className="bg-slate-700 px-2 py-1 rounded">~/.codex/skills</code> を順に探索して読み込まれます。
+          実際の実行手順、使用方法、設定例、運用ガードレールなどが記載されています。
         </p>
       </div>
     </div>

@@ -150,6 +150,7 @@
 | 処理 | 最新 morning digest 取得 → active 購読者にバッチ送信（50通/バッチ） |
 | ヘッダー | `List-Unsubscribe` / `List-Unsubscribe-Post` 付与 |
 | ログ | `newsletter_send_logs` に記録 |
+| テスト再送 | `?force=1` で同日送信済みチェックをバイパス（`CRON_SECRET` 必須） |
 
 **処理フロー:**
 1. CRON_SECRET 認証
@@ -159,6 +160,10 @@
 5. send_log 作成
 6. 50通ずつ `Promise.allSettled` でバッチ送信
 7. send_log 更新（成功/失敗数）
+
+**補足（検証運用）**
+- QA/検証時のみ `POST /api/cron/send-newsletter?force=1` を使用可能。
+- `force` は同日重複送信を許可するため、本番定時ジョブでは使用しない。
 
 ---
 

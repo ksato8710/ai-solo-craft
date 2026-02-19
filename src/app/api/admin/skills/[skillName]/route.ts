@@ -4,7 +4,7 @@ import path from 'path';
 import os from 'os';
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ skillName: string }> }
 ) {
   try {
@@ -15,12 +15,24 @@ export async function GET(
       return NextResponse.json({ error: 'Invalid skill name' }, { status: 400 });
     }
 
-    // Construct path to skill file
+    // Resolve known skill locations:
+    // - local project .claude/skills/*.md
+    // - local project .claude/skills/<name>/SKILL.md
+    // - user home .claude/.clawdbot/.codex skill folders
     const homeDir = os.homedir();
-    const skillPath = path.join(homeDir, '.clawdbot', 'skills', skillName, 'SKILL.md');
-    
-    // Check if file exists
-    if (!fs.existsSync(skillPath)) {
+    const workspaceDir = process.cwd();
+    const candidates = [
+      path.join(workspaceDir, '.claude', 'skills', `${skillName}.md`),
+      path.join(workspaceDir, '.claude', 'skills', skillName, 'SKILL.md'),
+      path.join(homeDir, '.claude', 'skills', `${skillName}.md`),
+      path.join(homeDir, '.claude', 'skills', skillName, 'SKILL.md'),
+      path.join(homeDir, '.clawdbot', 'skills', skillName, 'SKILL.md'),
+      path.join(homeDir, '.codex', 'skills', skillName, 'SKILL.md'),
+    ];
+
+    const skillPath = candidates.find((candidate) => fs.existsSync(candidate));
+
+    if (!skillPath) {
       return new NextResponse('スキルファイルが見つかりませんでした。', { 
         status: 404,
         headers: { 'Content-Type': 'text/plain; charset=utf-8' }

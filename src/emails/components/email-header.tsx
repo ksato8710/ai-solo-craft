@@ -6,25 +6,36 @@ import {
 export function EmailHeader() {
   return (
     <Section style={headerStyle}>
+      <Text style={kickerStyle}>
+        AI SOLO BUILDER
+      </Text>
       <Text style={logoStyle}>
-        AI Solo Builder
+        Morning Briefing Desk
       </Text>
     </Section>
   );
 }
 
 const headerStyle: React.CSSProperties = {
-  padding: '24px 0 16px',
-  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-  marginBottom: '24px',
+  backgroundColor: '#1d1a15',
+  border: '2px solid #372f24',
+  borderRadius: '10px',
+  padding: '12px 16px',
+  marginBottom: '14px',
+};
+
+const kickerStyle: React.CSSProperties = {
+  margin: '0 0 4px',
+  color: '#d2b48c',
+  fontSize: '10px',
+  letterSpacing: '0.08em',
+  fontWeight: 700,
 };
 
 const logoStyle: React.CSSProperties = {
-  fontSize: '20px',
-  fontWeight: 800,
-  background: 'linear-gradient(to right, #3B82F6, #8B5CF6, #10b981)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
+  fontFamily: "'Merriweather', 'Hiragino Mincho ProN', 'Yu Mincho', serif",
+  fontSize: '21px',
+  fontWeight: 700,
+  color: '#f6efe3',
   margin: '0',
-  textAlign: 'center' as const,
 };

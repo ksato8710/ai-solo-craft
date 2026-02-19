@@ -3,6 +3,11 @@
 ## 概要
 グローバルのAI情報ソースを効率的に巡回し、記事化すべきニュースを選定する手順。
 
+## 重要原則（ニュースレター運用時）
+- ニュースレターは検知レイヤーとして扱い、最終ソースにしない
+- 記事化前に必ず一次情報（公式）へ戻って事実確認する
+- 日本向け配信では EN一次 + JP補足リンクを併記する
+
 ## 巡回手順
 
 ### Step 1: 主要ソースのスキャン
@@ -44,6 +49,8 @@
 
 ## 参照ドキュメント
 - `docs/operations/RESEARCH-SOURCES.md` — 巡回先の詳細リスト
+- `docs/operations/NEWSLETTER-CURATION-WORKFLOW.md` — ニュースレター検知→検証→再編集フロー
+- `docs/operations/NEWSLETTER-GUARDRAILS.md` — 法務・配信ガードレール
 - `specs/content-policy/spec.md` — コンテンツ分類の正規定義
 - `docs/operations/WORKFLOW-DIGEST.md` — Digest ワークフロー（Phase 1-2 で本スキルを使用）
 - `docs/operations/CONTENT-STRATEGY.md` — SEO・内部リンク戦略

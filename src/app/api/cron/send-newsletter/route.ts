@@ -35,10 +35,13 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const force = ['1', 'true', 'yes'].includes(
+      (request.nextUrl.searchParams.get('force') || '').toLowerCase()
+    );
     const today = new Date().toISOString().split('T')[0];
 
     // Check if already sent today
-    if (await hasAlreadySentToday(today)) {
+    if (!force && (await hasAlreadySentToday(today))) {
       return NextResponse.json({ message: 'Already sent today', skipped: true });
     }
 
@@ -86,6 +89,8 @@ export async function POST(request: NextRequest) {
               date: digest.date,
               description: digest.description,
               digestUrl,
+              digestBody: digest.body_markdown,
+              siteUrl: SITE_URL,
               rankingItems: digest.rankingItems,
               unsubscribeUrl,
             }),
@@ -122,6 +127,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       message: 'Newsletter sent',
+      forced: force,
       total: subscribers.length,
       success: successCount,
       failed: failCount,
