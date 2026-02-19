@@ -80,9 +80,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, message: result.message });
   } catch (error) {
     console.error('[newsletter] Subscribe error:', error);
-    const errorDetail = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
-      { ok: false, message: '予期しないエラーが発生しました。', debug: errorDetail },
+      { ok: false, message: '予期しないエラーが発生しました。' },
       { status: 500 }
     );
   }
