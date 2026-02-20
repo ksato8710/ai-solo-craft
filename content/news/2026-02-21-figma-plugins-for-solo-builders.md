@@ -30,6 +30,9 @@ UIのイメージを素早く形にしたいとき、最も役立つカテゴリ
 
 **公式:** [blocks.pm](https://www.blocks.pm/) / [Figma Community](https://www.figma.com/community/plugin/1332372435133832847/blocks-wireframe)
 
+![Blocks — ドラッグ&ドロップでコンポーネントを配置](https://cdn.prod.website-files.com/6620c59ba96f73dbd38266cb/6620c59ba96f73dbd3826745_size_big_name_1.webp)
+*出典: [blocks.pm](https://www.blocks.pm/)*
+
 | 特徴 | 詳細 |
 |------|------|
 | コンポーネント数 | 約50種類 |
