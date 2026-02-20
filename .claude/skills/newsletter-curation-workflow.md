@@ -6,14 +6,15 @@ AI Solo Builder向けのニュースレターを作成するための運用ス�
 
 ## 使うタイミング
 - 「複数ニュースレターを統合して配信したい」
-- 「英語一次情報 + 日本語参照を併記したい」
+- 「公式発表（原文） + 日本語の解説記事を併記したい」
 - 「速報をソロビルダー向けに再編集したい」
 
 ## 基本原則
 1. ニュースレターは **検知レイヤー** として扱う（最終ソースにしない）。
 2. 重要トピックは必ず **一次情報（公式）** で事実確認する。
-3. 日本向け配信では **JP参照リンク** を併記する。
-4. 1トピックにつき最低2リンク（EN一次 + JP補足）。
+3. 日本向け配信では **日本語の解説記事リンク** を併記する。
+4. 1トピックにつき最低2リンク（公式発表（原文） + 日本語の解説記事）。
+5. 日本向け配信では、他媒体の固有見出し語を残さない。
 
 ## 実行手順
 
@@ -41,7 +42,7 @@ AI Solo Builder向けのニュースレターを作成するための運用ス�
 - なぜ重要か（2行）
 - Solo Builderへの影響（1行）
 - 今日やること（3ステップ）
-- EN一次リンク / JPリンク
+- 公式発表（原文）リンク / 日本語の解説記事リンク
 
 ### Step 6: 配信前チェック
 - `docs/operations/NEWSLETTER-GUARDRAILS.md` の必須項目を確認。
@@ -49,6 +50,7 @@ AI Solo Builder向けのニュースレターを作成するための運用ス�
 
 ## 連携先
 - ワークフロー定義: `docs/operations/NEWSLETTER-CURATION-WORKFLOW.md`
+- 朝刊統合仕様: `docs/operations/MORNING-DIGEST-INTEGRATION-SPEC.md`
 - 法務/配信: `docs/operations/NEWSLETTER-GUARDRAILS.md`
 - 日本メディア管理: `docs/operations/JAPANESE-MEDIA-SOURCES.md`
 - 全体フロー: `docs/operations/WORKFLOW-OVERVIEW.md`

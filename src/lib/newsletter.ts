@@ -374,9 +374,22 @@ export async function getLatestMorningDigest() {
 
     const body = linked.body_markdown ?? '';
     const primarySourceUrl =
-      extractLabeledLink(body, ['EN一次情報', 'EN source', 'Primary source', 'Original']) ||
-      item.source_url;
-    const japaneseSourceUrl = extractLabeledLink(body, ['JPリンク', 'JP補足', '日本語', 'JA参考']);
+      extractLabeledLink(body, [
+        '公式発表（原文）',
+        '公式発表',
+        '一次情報',
+        'EN一次情報',
+        'EN source',
+        'Primary source',
+        'Original',
+      ]) || item.source_url;
+    const japaneseSourceUrl = extractLabeledLink(body, [
+      '日本語の解説記事',
+      'JPリンク',
+      'JP補足',
+      '日本語',
+      'JA参考',
+    ]);
     const keyPoints = extractKeyPoints(body, 3);
     const whyItMatters = extractWhyItMatters(body, linked.description);
 

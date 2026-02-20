@@ -43,6 +43,54 @@ interface MorningDigestEmailProps {
   unsubscribeUrl: string;
 }
 
+const TOP_SUMMARY_MAX = 210;
+const TOP_WHY_MAX = 150;
+const TOP_POINT_MAX = 92;
+const QUICK_HIT_MIN_NVA = 75;
+
+function toPlainText(input: string): string {
+  return input
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '$1')
+    .replace(/https?:\/\/[^\s)]+/g, '')
+    .replace(/[*_`>#-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function clampSentence(input: string, max: number): string {
+  const text = toPlainText(input);
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).trim()}…`;
+}
+
+function buildTopSummary(description?: string | null, points: string[] = []): string | null {
+  const candidates = [description || '', ...points]
+    .map((line) => toPlainText(line))
+    .filter((line) => line.length > 0);
+  if (candidates.length === 0) return null;
+  const primary = candidates[0];
+  if (primary.length >= 100) return clampSentence(primary, TOP_SUMMARY_MAX);
+  const merged = candidates.slice(0, 2).join(' ');
+  return clampSentence(merged, TOP_SUMMARY_MAX);
+}
+
+function buildWhyText(why?: string | null, fallback?: string | null): string | null {
+  const candidate = why || fallback;
+  if (!candidate) return null;
+  return clampSentence(candidate, TOP_WHY_MAX);
+}
+
+function buildKeyPoints(points: string[], fallback?: string | null): string[] {
+  const normalized = points
+    .map((line) => clampSentence(line, TOP_POINT_MAX))
+    .filter((line) => line.length >= 20);
+
+  if (normalized.length > 0) return normalized.slice(0, 3);
+
+  if (!fallback) return [];
+  return [clampSentence(fallback, TOP_POINT_MAX)];
+}
+
 function formatDate(date: string): string {
   const parsed = new Date(`${date}T09:00:00+09:00`);
   if (Number.isNaN(parsed.getTime())) return date;
@@ -82,7 +130,9 @@ export function MorningDigestEmail({
   unsubscribeUrl,
 }: MorningDigestEmailProps) {
   const top3 = rankingItems.slice(0, 3);
-  const quickHits = rankingItems.slice(3, 10);
+  const quickHits = rankingItems
+    .slice(3, 10)
+    .filter((item) => item.nva_total >= QUICK_HIT_MIN_NVA && Boolean(item.source_url));
   const actionLines = extractActionLines(digestBody);
   const rundownLines = top3.map((item) => item.article?.title || item.headline);
 
@@ -95,24 +145,24 @@ export function MorningDigestEmail({
           <EmailHeader />
 
           <Section style={heroCardStyle}>
-            <Text style={eyebrowStyle}>SOLO BUILDER MORNING BRIEF</Text>
+            <Text style={eyebrowStyle}>AI SOLO BUILDER 朝刊</Text>
             <Text style={dateStyle}>{formatDate(date)}</Text>
             <Text style={titleStyle}>{title}</Text>
             <Text style={descriptionStyle}>{description}</Text>
             <Section style={heroLinkRowStyle}>
               <Link href={digestUrl} style={heroInlineLinkStyle}>
-                Read online
+                Web版で読む
               </Link>
               <Text style={heroDividerStyle}>|</Text>
               <Link href={`${siteUrl}/newsletter/confirmed`} style={heroInlineLinkStyle}>
-                Newsletter info
+                配信案内
               </Link>
             </Section>
           </Section>
 
           {rundownLines.length > 0 && (
             <Section style={summaryCardStyle}>
-              <Text style={sectionTitleStyle}>In today&apos;s rundown</Text>
+              <Text style={sectionTitleStyle}>本日の主要トピック</Text>
               {rundownLines.map((line, index) => (
                 <Text key={`rundown-${index}`} style={summaryLineStyle}>
                   • {line}
@@ -126,29 +176,32 @@ export function MorningDigestEmail({
             const primaryUrl = item.article?.primarySourceUrl || item.source_url;
             const japaneseUrl = item.article?.japaneseSourceUrl || null;
             const keyPoints = item.article?.keyPoints || [];
+            const summaryText = buildTopSummary(item.article?.description, keyPoints);
+            const whyText = buildWhyText(item.article?.whyItMatters, item.article?.description);
+            const renderedPoints = buildKeyPoints(keyPoints, summaryText);
 
             return (
               <Section key={`top-${item.rank}`} style={storyCardStyle}>
                 <Text style={storyKickerStyle}>
-                  TOP STORY #{item.rank} ・ NVA {item.nva_total}
+                  注目トピック #{item.rank} ・ NVA {item.nva_total}
                 </Text>
                 <Text style={storyHeadlineStyle}>{item.headline}</Text>
 
-                {item.article?.description && (
+                {summaryText && (
                   <Text style={storyParagraphStyle}>
-                    <strong>The Rundown:</strong> {item.article.description}
+                    <strong>概要:</strong> {summaryText}
                   </Text>
                 )}
 
-                {item.article?.whyItMatters && (
+                {whyText && (
                   <Text style={storyParagraphStyle}>
-                    <strong>Why it matters:</strong> {item.article.whyItMatters}
+                    <strong>なぜ重要か:</strong> {whyText}
                   </Text>
                 )}
 
-                {keyPoints.length > 0 && (
+                {renderedPoints.length > 0 && (
                   <Section style={pointsWrapStyle}>
-                    {keyPoints.map((point, idx) => (
+                    {renderedPoints.map((point, idx) => (
                       <Text key={`point-${item.rank}-${idx}`} style={pointLineStyle}>
                         • {point}
                       </Text>
@@ -159,17 +212,17 @@ export function MorningDigestEmail({
                 <Section style={linkRowStyle}>
                   {primaryUrl && (
                     <Link href={primaryUrl} style={tagLinkPrimaryStyle}>
-                      EN一次情報
+                      公式発表（原文）
                     </Link>
                   )}
                   {japaneseUrl && (
                     <Link href={japaneseUrl} style={tagLinkSecondaryStyle}>
-                      JP補足
+                      日本語の解説記事
                     </Link>
                   )}
                   {articleUrl && (
                     <Link href={articleUrl} style={tagLinkNeutralStyle}>
-                      自サイト解説
+                      本サイトの詳細解説
                     </Link>
                   )}
                 </Section>
@@ -179,7 +232,7 @@ export function MorningDigestEmail({
 
           {quickHits.length > 0 && (
             <Section style={quickHitsCardStyle}>
-              <Text style={sectionTitleStyle}>Quick hits</Text>
+              <Text style={sectionTitleStyle}>速報一覧</Text>
               {quickHits.map((item) => (
                 <Text key={`quick-${item.rank}`} style={quickHitLineStyle}>
                   <span style={quickRankStyle}>#{item.rank}</span> {item.headline}{' '}
@@ -244,7 +297,7 @@ const heroCardStyle: React.CSSProperties = {
 const eyebrowStyle: React.CSSProperties = {
   fontSize: '11px',
   letterSpacing: '0.08em',
-  color: '#8a1c11',
+  color: '#6a2018',
   margin: '0 0 6px',
   fontWeight: 700,
 };

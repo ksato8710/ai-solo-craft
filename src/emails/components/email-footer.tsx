@@ -12,7 +12,7 @@ export function EmailFooter({ unsubscribeUrl }: EmailFooterProps) {
   return (
     <Section style={footerStyle}>
       <Text style={footerTextStyle}>
-        AI Solo Builder — detector（複数ニュースレター）× verifier（一次情報）× localizer（日本語補足）
+        AI Solo Builder — 複数ニュースレターで検知し、公式発表で確認し、日本語で要点整理して配信
       </Text>
       {unsubscribeUrl && (
         <Text style={unsubscribeStyle}>
@@ -22,7 +22,7 @@ export function EmailFooter({ unsubscribeUrl }: EmailFooterProps) {
         </Text>
       )}
       <Text style={policyStyle}>
-        すべての主要トピックは EN一次情報リンクを優先し、JP補足リンクを併記します。
+        すべての主要トピックで「公式発表（原文）」と「日本語の解説記事」を併記します。
       </Text>
       <Text style={copyrightStyle}>
         &copy; {new Date().getFullYear()} AI Solo Builder Editorial Desk

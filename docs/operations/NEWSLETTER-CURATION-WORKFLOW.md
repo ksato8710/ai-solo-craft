@@ -44,11 +44,16 @@
   - `role`: `detect | verify | localize | benchmark`
   - `priority`, `is_required`
 
+## 2.4 朝刊統合の契約仕様
+
+- 朝刊の統合条件・情報量基準は以下に準拠する:
+  - `docs/operations/MORNING-DIGEST-INTEGRATION-SPEC.md`
+
 ## 3. 記事種別ごとのルール
 
 ### 3-1. Digest（morning / evening）
 - 目的: 速報統合
-- 必須: Top10 + Top3 + EN/JPリンク併記
+- 必須: Top10 + Top3 + 「公式発表（原文）」+「日本語の解説記事」の併記
 - 優先ロール:
   - `detect`: ニュースレター
   - `verify`: 一次情報

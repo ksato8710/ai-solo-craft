@@ -7,10 +7,10 @@ export function EmailHeader() {
   return (
     <Section style={headerStyle}>
       <Text style={kickerStyle}>
-        AI SOLO BUILDER
+        AI SOLO BUILDER 編集部
       </Text>
       <Text style={logoStyle}>
-        Morning Briefing Desk
+        朝刊ダイジェスト
       </Text>
     </Section>
   );
