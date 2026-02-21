@@ -21,6 +21,11 @@ const checkDb = process.argv.includes('--check-db');
 
 async function checkImageUrl(url) {
   try {
+    // Local paths (e.g. /thumbnails/xxx.png) → check public/ directory
+    if (url.startsWith('/')) {
+      const localPath = path.join(process.cwd(), 'public', url);
+      return fs.existsSync(localPath);
+    }
     const response = await fetch(url, { method: 'HEAD' });
     return response.ok;
   } catch (e) {
