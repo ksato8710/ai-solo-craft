@@ -23,7 +23,10 @@
     "x:discover:sample": "python3 scripts/discover-x-ai-signals.py --sample-file scripts/fixtures/x_recent_search_sample.json --output-dir research/x-discovery --no-state",
     "x:exaggeration:experiment": "python3 scripts/experiment-x-exaggeration-detection.py --output-dir research/x-exaggeration",
     "prepare": "husky",
-    "check:images:db": "node scripts/check-images.mjs --check-db"
+    "check:images:db": "node scripts/check-images.mjs --check-db",
+    "generate:thumbnail": "node scripts/generate-thumbnail.mjs",
+    "generate:thumbnails:missing": "node scripts/generate-thumbnail.mjs --missing",
+    "generate:thumbnails:all": "node scripts/generate-thumbnail.mjs --all"
   },
   "dependencies": {
     "@react-email/components": "^1.0.8",
@@ -37,7 +40,9 @@
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
-    "resend": "^6.9.2"
+    "openai": "^4.86.2",
+    "resend": "^6.9.2",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

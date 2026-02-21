@@ -14,6 +14,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | AI Solo Builder`,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      locale: 'ja_JP',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+    },
   };
 }
 

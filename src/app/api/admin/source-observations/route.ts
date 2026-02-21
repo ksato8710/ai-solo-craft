@@ -25,6 +25,8 @@ interface SourceDeliveryObservation {
   gmail_labels: string[];
   read_online_url: string | null;
   archive_url: string | null;
+  body_text: string | null;
+  body_html: string | null;
   notes: string | null;
   created_at: string;
   updated_at: string;
@@ -94,6 +96,8 @@ export async function GET(request: NextRequest) {
         gmail_labels,
         read_online_url,
         archive_url,
+        body_text,
+        body_html,
         notes,
         created_at,
         updated_at,
@@ -174,6 +178,8 @@ export async function POST(request: NextRequest) {
       gmail_labels: normalizeLabels(body.gmail_labels),
       read_online_url: body.read_online_url ?? null,
       archive_url: body.archive_url ?? null,
+      body_text: body.body_text ?? null,
+      body_html: body.body_html ?? null,
       notes: body.notes ?? null,
     };
 
@@ -226,6 +232,8 @@ export async function PUT(request: NextRequest) {
       ...(body.gmail_labels !== undefined ? { gmail_labels: normalizeLabels(body.gmail_labels) } : {}),
       ...(body.read_online_url !== undefined ? { read_online_url: body.read_online_url } : {}),
       ...(body.archive_url !== undefined ? { archive_url: body.archive_url } : {}),
+      ...(body.body_text !== undefined ? { body_text: body.body_text } : {}),
+      ...(body.body_html !== undefined ? { body_html: body.body_html } : {}),
       ...(body.notes !== undefined ? { notes: body.notes } : {}),
     };
 

@@ -1,17 +1,31 @@
 ---
-title: "2026年2月21日 朝刊AIダイジェスト"
-slug: "morning-news-2026-02-21"
-date: "2026-02-21"
-description: "Google Gemini 3.1 Proが推論性能を倍増、Cursor 2.5がプラグインマーケットプレイスで開発ワークフローを一元化、GitHub CopilotがZedエディタに正式対応。"
-publishedAt: "2026-02-21T08:00:00+09:00"
-summary: "Google Gemini 3.1 Proが推論性能を倍増、Cursor 2.5がプラグインマーケットプレイスで開発ワークフローを一元化、GitHub CopilotがZedエディタに正式対応。"
-image: "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=800&h=420&fit=crop"
-contentType: "digest"
-digestEdition: "morning"
+title: 2026年2月21日 朝刊AIダイジェスト
+slug: morning-news-2026-02-21
+date: '2026-02-21'
+description: >-
+  Google Gemini 3.1 Proが推論性能を倍増、Cursor 2.5がプラグインマーケットプレイスで開発ワークフローを一元化、GitHub
+  CopilotがZedエディタに正式対応。
+publishedAt: '2026-02-21T08:00:00+09:00'
+summary: >-
+  Google Gemini 3.1 Proが推論性能を倍増、Cursor 2.5がプラグインマーケットプレイスで開発ワークフローを一元化、GitHub
+  CopilotがZedエディタに正式対応。
+image: /thumbnails/morning-news-2026-02-21.png
+contentType: digest
+digestEdition: morning
 readTime: 8
 featured: true
-tags: ["AIニュース", "開発ツール", "Gemini", "Cursor", "GitHub Copilot"]
-relatedProducts: ["gemini", "cursor", "github-copilot", "zed", "claude"]
+tags:
+  - AIニュース
+  - 開発ツール
+  - Gemini
+  - Cursor
+  - GitHub Copilot
+relatedProducts:
+  - gemini
+  - cursor
+  - github-copilot
+  - zed
+  - claude
 ---
 
 おはようございます。今日のAIソロビルダー向けニュースをお届けします。
