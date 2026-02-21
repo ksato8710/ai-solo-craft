@@ -15,6 +15,9 @@ relatedProducts: ["github-copilot", "zed", "cursor"]
 
 ## 概要
 
+![GitHub Copilot in Zed — 設定画面](https://github.blog/wp-content/uploads/2026/02/552265254-118225e1-4eb3-4491-9e8f-c77601b9f31c.jpg)
+*出典: [GitHub Blog](https://github.blog/changelog/2026-02-19-github-copilot-support-in-zed-generally-available/)*
+
 GitHubが2月19日、Zedエディタへの公式Copilotサポートを発表しました。これにより、Copilot Pro、Pro+、Business、Enterpriseの全サブスクリプションで、追加ライセンスなしにZedからCopilotを利用できるようになりました。
 
 **出典:** [GitHub Blog](https://github.blog/changelog/2026-02-19-github-copilot-support-in-zed-generally-available/) — 2026-02-19

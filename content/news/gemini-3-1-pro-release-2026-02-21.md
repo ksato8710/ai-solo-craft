@@ -15,6 +15,9 @@ relatedProducts: ["gemini", "github-copilot", "claude"]
 
 ## 概要
 
+![Gemini 3.1 Pro — 複雑な問題解決のための、よりスマートなモデル](https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3.1_pro_keyword_header_da.width-1200.format-webp.webp)
+*出典: [Google Blog](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/)*
+
 Googleが2月19日、Gemini 3.1 Proをリリースしました。「複雑な問題解決のための、よりスマートなモデル」と位置づけられ、ARC-AGI-2ベンチマークで77.1%を達成。これは前バージョン（Gemini 3 Pro）の2倍以上の推論性能向上を意味します。
 
 **出典:** [Google Blog](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/) — 2026-02-19

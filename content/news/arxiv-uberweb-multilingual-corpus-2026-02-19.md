@@ -4,6 +4,7 @@ slug: "arxiv-uberweb-multilingual-corpus-2026-02-19"
 date: "2026-02-19"
 description: "DatologyAIが公開した20兆トークンの多言語データセット。英語品質向上が他言語も改善するという発見と、4〜10倍少ない計算量で同等性能を達成。"
 publishedAt: "2026-02-19T08:00:00+09:00"
+image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=630&fit=crop"
 tags:
   - arXiv論文
   - pretraining
@@ -12,6 +13,7 @@ tags:
 author: tifa
 readTime: 5
 featured: false
+contentType: news
 ---
 
 ## TL;DR

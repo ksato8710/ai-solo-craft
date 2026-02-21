@@ -15,6 +15,9 @@ relatedProducts: ["cursor", "claude-code"]
 
 ## 概要
 
+![Cursor — AI-powered code editor](https://cursor.com/public/opengraph-image.png)
+*出典: [Cursor](https://cursor.com/)*
+
 Cursor 2.5が2月17日にリリースされ、公式プラグインマーケットプレイスが導入されました。これにより、Figmaデザイン、Stripe決済、AWSインフラ、Vercelデプロイなどを、ツール切り替えなしにエディタ内で直接操作できるようになります。
 
 **出典:** [Cursor Blog](https://cursor.com/blog/marketplace) — 2026-02-17
