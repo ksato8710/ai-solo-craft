@@ -4,6 +4,7 @@
  * 1. All news/digest have `image` field set
  * 2. No duplicate image URLs across articles
  * 3. (optional) Verify image URLs return HTTP 200 (--verify-urls flag)
+ * 4. (optional) Check DB for missing hero_image_url (--check-db flag)
  */
 
 import fs from 'fs';
@@ -16,6 +17,7 @@ const contentDir = path.join(__dirname, '../content/news');
 
 // Parse command line args
 const verifyUrls = process.argv.includes('--verify-urls');
+const checkDb = process.argv.includes('--check-db');
 
 async function checkImageUrl(url) {
   try {
@@ -103,7 +105,47 @@ async function checkImages() {
     }
   }
 
-  // Output results
+  // Check 4: DB records have hero_image_url (if --check-db flag is set)
+  if (checkDb) {
+    console.log('\n🗄️ Checking DB for missing hero_image_url...');
+    
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseKey) {
+      console.log('⚠ Skipping DB check: SUPABASE env vars not set');
+    } else {
+      try {
+        const dbResponse = await fetch(
+          `${supabaseUrl}/rest/v1/contents?select=slug,title,content_type&hero_image_url=is.null&status=eq.published`,
+          {
+            headers: {
+              'apikey': supabaseKey,
+              'Authorization': `Bearer ${supabaseKey}`
+            }
+          }
+        );
+        
+        if (dbResponse.ok) {
+          const missingImages = await dbResponse.json();
+          if (missingImages.length > 0) {
+            console.log(`\n⚠ Found ${missingImages.length} published articles in DB without hero_image_url:`);
+            for (const article of missingImages) {
+              errors.push(`❌ DB: ${article.slug} (${article.content_type}): hero_image_urlがnull`);
+            }
+          } else {
+            console.log('✅ All published DB articles have hero_image_url');
+          }
+        } else {
+          console.log(`⚠ DB check failed: ${dbResponse.status}`);
+        }
+      } catch (e) {
+        console.log(`⚠ DB check error: ${e.message}`);
+      }
+    }
+  }
+
+  // Final output
   if (warnings.length > 0) {
     console.log('\n📋 Warnings:');
     warnings.forEach(w => console.log(w));
