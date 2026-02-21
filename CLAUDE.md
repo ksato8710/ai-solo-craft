@@ -70,6 +70,7 @@
 | site-config | 技術仕様・デプロイ手順 | ARCHITECTURE, CHECKLIST |
 | research-sources | 巡回先クイックリファレンス | RESEARCH-SOURCES |
 | ui-design-system | UIデザインパターン・CSS設計ルール | globals.css, BRAND-IDENTITY |
+| thumbnail-generation | サムネイル画像生成手順・ブランドカラー活用 | generate-thumbnail.mjs, types.ts |
 
 ## 記事作成ワークフロー
 
