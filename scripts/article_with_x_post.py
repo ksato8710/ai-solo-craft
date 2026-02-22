@@ -17,7 +17,7 @@ import subprocess
 from datetime import datetime
 
 # パス設定
-BASE_DIR = "/Users/satokeita/dev/ai-navigator"
+BASE_DIR = "/Users/satokeita/Dev/ai-solo-builder"
 SCRIPTS_DIR = os.path.join(BASE_DIR, "scripts")
 
 # x_post_manager.pyをインポートするためのパス追加

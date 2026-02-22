@@ -20,7 +20,7 @@ const createSvg = (size) => `
 `;
 
 const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
-const iconsDir = '/Users/satokeita/Dev/ai-navigator/public/icons';
+const iconsDir = '/Users/satokeita/Dev/ai-solo-builder/public/icons';
 
 // SVGファイルを作成
 for (const size of sizes) {

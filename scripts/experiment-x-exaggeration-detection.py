@@ -252,7 +252,7 @@ def json_request(endpoint: str, params: dict[str, Any], bearer_token: str, retry
             url,
             headers={
                 "Authorization": f"Bearer {bearer_token}",
-                "User-Agent": "ai-navigator-exaggeration-experiment/1.0",
+                "User-Agent": "ai-solo-builder-exaggeration-experiment/1.0",
             },
         )
         try:

@@ -76,7 +76,7 @@ UI部品:
 ## 6. 起動手順
 
 ```bash
-cd /Users/satokeita/Dev/ai-navigator/apps/ai_solo_builder_app
+cd /Users/satokeita/Dev/ai-solo-builder/apps/ai_solo_builder_app
 flutter pub get
 flutter run --dart-define=CONTENT_API_BASE_URL=https://ai.essential-navigator.com
 ```

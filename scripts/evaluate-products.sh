@@ -12,7 +12,7 @@
 # 9. 公式リンク
 # 10. 充実度（60行以上）
 
-cd /Users/satokeita/Dev/ai-navigator
+cd /Users/satokeita/Dev/ai-solo-builder
 
 echo "slug,score,lines,basic_table,overview,features,pricing,solo_use,limitations,user_voice,news,official_link,volume"
 

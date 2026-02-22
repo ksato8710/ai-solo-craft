@@ -22,7 +22,7 @@ from datetime import datetime
 import re
 
 # ファイルパス設定
-BASE_DIR = "/Users/satokeita/dev/ai-navigator"
+BASE_DIR = "/Users/satokeita/Dev/ai-solo-builder"
 PENDING_FILE = os.path.join(BASE_DIR, "X_PENDING_POSTS.md")
 COMPLETED_FILE = os.path.join(BASE_DIR, "X_COMPLETED_POSTS.md")
 FAILED_FILE = os.path.join(BASE_DIR, "X_FAILED_POSTS.md")

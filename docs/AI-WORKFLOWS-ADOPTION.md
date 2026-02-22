@@ -170,7 +170,7 @@ openclaw cron add competitor-research ...
 
 ```bash
 # 1. ui-consistency-audit スキル作成
-/Users/satokeita/Dev/ai-navigator/.claude/skills/ui-consistency-audit.md
+/Users/satokeita/Dev/ai-solo-builder/.claude/skills/ui-consistency-audit.md
 
 # 2. pre-commit hookに追加（軽量チェックのみ）
 
@@ -244,13 +244,58 @@ openclaw cron add competitor-research ...
 
 ---
 
-## 📅 登録済みcron
+## 📅 登録済みcron（日次化済み）
 
-| cron名 | スケジュール | 次回実行 |
-|--------|-------------|---------|
-| `competitor-research` | 毎週水曜 10:00 JST | 2026-02-26 |
-| `feedback-loop-analysis` | 毎週月曜 09:00 JST | 2026-02-24 |
-| `ui-consistency-audit` | 毎週金曜 15:00 JST | 2026-02-28 |
+| cron名 | スケジュール | 出力先 |
+|--------|-------------|--------|
+| `competitor-research` | 毎日 10:00 JST | Content Studio MCP |
+| `feedback-loop-analysis` | 毎日 09:00 JST | AI PM Service MCP |
+| `ui-consistency-audit` | 毎日 15:00 JST | AI PM Service MCP |
+
+## 🔌 MCPサーバー構成（実装完了 2026-02-22）
+
+| サーバー | プロジェクト | ストレージ | ステータス |
+|---------|-------------|-----------|:----------:|
+| `content-studio-mcp` | `/Users/satokeita/dev/content-studio/mcp/` | JSON（`~/.openclaw/content-studio-ideas.json`） | ✅ テスト済み |
+| `ai-pm-service-mcp` | `/Users/satokeita/Dev/ai-pm-service/mcp/` | Turso DB | ✅ テスト済み |
+
+### Content Studio MCP ツール
+
+| ツール | 説明 |
+|--------|------|
+| `idea_create` | 記事アイデア登録 |
+| `idea_list` | アイデア一覧取得（フィルタ対応） |
+| `idea_update` | アイデア更新（ステータス変更等） |
+
+### AI PM Service MCP ツール
+
+| ツール | 説明 |
+|--------|------|
+| `task_create` | タスク登録（検知→対応フロー用） |
+| `task_list` | タスク一覧取得（フィルタ対応） |
+| `task_update` | タスク更新（ステータス・優先度変更） |
+| `task_assign` | タスク割り当て（tifa/misato等） |
+
+### 起動コマンド
+
+```bash
+# Content Studio MCP
+/Users/satokeita/dev/content-studio/mcp/run.sh
+
+# AI PM Service MCP
+/Users/satokeita/Dev/ai-pm-service/mcp/run.sh
+```
+
+**検知→対応フロー:**
+```
+検知
+  │
+  ├─→ 📝 記事ネタ → Content Studio MCP (idea_create)
+  │
+  ├─→ 🔧 技術タスク → AI PM Service MCP (task_create)
+  │
+  └─→ ⚡ 低リスク自動修正 → 自動実行＋報告
+```
 
 ## 📅 レビュー予定
 

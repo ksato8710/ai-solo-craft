@@ -11,7 +11,7 @@ AI Solo Builder の技術仕様・デプロイ手順・運用ルール。
 | Vercel URL | https://ai-solo-builder.vercel.app |
 | GitHub | ksato8710/ai-solo-builder |
 | スタック | Next.js (App Router) + Tailwind CSS + TypeScript + SSG |
-| ローカル | /Users/satokeita/Dev/ai-navigator |
+| ローカル | /Users/satokeita/Dev/ai-solo-builder |
 
 ## コンテンツ管理
 

@@ -28,7 +28,7 @@
 ## ディレクトリ構成
 
 ```
-ai-navigator/
+ai-solo-builder/
 ├── src/
 │   ├── app/
 │   │   ├── page.tsx          # トップページ

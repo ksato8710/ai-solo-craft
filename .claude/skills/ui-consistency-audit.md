@@ -185,10 +185,34 @@ const CRITICAL_RULES = [
 - `globals.css` — 実装済みスタイル
 - `docs/business/BRAND-IDENTITY.md` — ブランドガイドライン
 
+## 検知後の振り分けフロー
+
+```
+検知（UI違反）
+    │
+    ├─→ Critical → 自動修正＋報告
+    │
+    └─→ Warning以上 → AI PM Service MCP
+                          │
+                          ├─→ task.create({
+                          │     title: "UI修正: [ファイル名]",
+                          │     type: "ui-fix",
+                          │     priority: "P2",
+                          │     violations: [...],
+                          │     suggested_fixes: [...]
+                          │   })
+                          │
+                          └─→ Slack報告
+```
+
+**MCP未実装時の暫定フロー:**
+1. `~/.openclaw/ai-pm-tasks.json` にJSON追記
+2. Slack報告に「AI PM登録待ち」と明記
+
 ## フィードバックループ
 
 監査結果は以下に反映:
 
 1. **pre-commit** — Critical違反をブロック
-2. **週次レポート** — 傾向分析・改善追跡
+2. **日次レポート** — 傾向分析・改善追跡
 3. **ui-design-system.md** — 新ルール追加時に監査ルールも更新

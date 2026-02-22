@@ -724,7 +724,7 @@ function ArchitectureTab() {
         <h2 className="text-xl font-semibold mb-4 text-slate-200">📂 プロジェクト構成</h2>
         <div className="bg-slate-900/50 p-4 rounded-lg">
           <pre className="text-sm text-slate-300 overflow-x-auto">
-{`/Users/satokeita/Dev/ai-navigator/
+{`/Users/satokeita/Dev/ai-solo-builder/
 ├── src/
 │   ├── app/                  # Next.js App Router
 │   │   ├── admin/           # 管理画面 (このページ)

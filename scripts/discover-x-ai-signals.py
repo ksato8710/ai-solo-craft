@@ -340,7 +340,7 @@ def json_request(
             url,
             headers={
                 "Authorization": f"Bearer {bearer_token}",
-                "User-Agent": "ai-navigator-x-discovery/1.0",
+                "User-Agent": "ai-solo-builder-x-discovery/1.0",
             },
         )
         try:

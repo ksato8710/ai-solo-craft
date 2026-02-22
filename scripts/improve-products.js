@@ -943,7 +943,7 @@ ${info.limitations.map(l => `- ${l}`).join('\n')}
 }
 
 // メイン処理
-const productsDir = '/Users/satokeita/Dev/ai-navigator/content/products';
+const productsDir = '/Users/satokeita/Dev/ai-solo-builder/content/products';
 const files = fs.readdirSync(productsDir).filter(f => f.endsWith('.md'));
 
 let improved = 0;
