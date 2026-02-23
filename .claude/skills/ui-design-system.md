@@ -1,7 +1,7 @@
 # UI Design System — 記事ページUIデザインスキル
 
 ## 概要
-AI Solo Builder の記事ページにおけるUIデザインパターン・CSS設計ルール。
+AI Solo Craft の記事ページにおけるUIデザインパターン・CSS設計ルール。
 2025-2026年のモダンUIトレンド（Linear/Vercel/Stripe系）に準拠。
 
 ## デザイン原則（5つの柱）

@@ -1,7 +1,7 @@
 # Supabase Setup and Migration Runbook
 
 Updated: 2026-02-11
-Target project ref: `jvmvaxobseoqeqjjpdcr` (`ai-solo-builder`)
+Target project ref: `jvmvaxobseoqeqjjpdcr` (`ai-solo-craft`)
 
 ## 1. Current Status
 

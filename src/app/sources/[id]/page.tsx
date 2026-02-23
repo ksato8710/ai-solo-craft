@@ -47,12 +47,12 @@ export async function generateMetadata({ params }: SourceDetailPageProps): Promi
 
   if (!source) {
     return {
-      title: 'ソースが見つかりません | AI Solo Builder',
+      title: 'ソースが見つかりません | AI Solo Craft',
     };
   }
 
   return {
-    title: `${source.name} | AI Solo Builder`,
+    title: `${source.name} | AI Solo Craft`,
     description: source.description || `${source.name}からの記事一覧と信頼性情報`,
   };
 }
@@ -197,7 +197,7 @@ export default async function SourceDetailPage({ params }: SourceDetailPageProps
               <span className="text-sm text-text-light">記事</span>
             </div>
             <p className="text-xs text-text-light mt-2">
-              AI Solo Builderに掲載
+              AI Solo Craftに掲載
             </p>
           </div>
 

@@ -3,7 +3,7 @@
 ## 手順1: Supabaseダッシュボードにアクセス
 
 1. [Supabase Dashboard](https://supabase.com/dashboard) にアクセス
-2. AI Solo Builder プロジェクトを選択
+2. AI Solo Craft プロジェクトを選択
 3. 左側メニューから「SQL Editor」をクリック
 
 ## 手順2: 以下のSQLをコピー＆ペーストして実行

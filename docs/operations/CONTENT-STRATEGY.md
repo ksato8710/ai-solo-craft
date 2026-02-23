@@ -1,4 +1,4 @@
-# AI Solo Builder — コンテンツ戦略
+# AI Solo Craft — コンテンツ戦略
 
 > **コンテンツ種別・frontmatter:** `specs/content-policy/spec.md`（正規定義）
 > **記事品質基準:** `docs/operations/CHECKLIST.md`

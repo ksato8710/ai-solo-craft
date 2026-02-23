@@ -100,10 +100,10 @@ Web と Flutter 共通の配信用 API を `src/app/api/v1` で提供してい�
 
 ## Flutter App
 
-シンプルなモバイルアプリは `apps/ai_solo_builder_app` にあります。
+シンプルなモバイルアプリは `apps/ai_solo_craft_app` にあります。
 
 ```bash
-cd apps/ai_solo_builder_app
+cd apps/ai_solo_craft_app
 flutter pub get
 flutter run --dart-define=CONTENT_API_BASE_URL=https://ai.essential-navigator.com
 ```

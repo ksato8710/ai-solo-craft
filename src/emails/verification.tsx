@@ -19,7 +19,7 @@ export function VerificationEmail({ confirmUrl }: VerificationEmailProps) {
   return (
     <Html>
       <Head />
-      <Preview>AI Solo Builder ニュースレターの登録確認</Preview>
+      <Preview>AI Solo Craft ニュースレターの登録確認</Preview>
       <Body style={bodyStyle}>
         <Container style={containerStyle}>
           <EmailHeader />
@@ -29,7 +29,7 @@ export function VerificationEmail({ confirmUrl }: VerificationEmailProps) {
               ニュースレター登録の確認
             </Text>
             <Text style={paragraphStyle}>
-              AI Solo Builder ニュースレターへのご登録ありがとうございます。
+              AI Solo Craft ニュースレターへのご登録ありがとうございます。
             </Text>
             <Text style={paragraphStyle}>
               以下のボタンをクリックして、メールアドレスを確認してください。

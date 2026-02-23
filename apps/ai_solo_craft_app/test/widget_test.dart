@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:ai_solo_builder_app/main.dart';
-import 'package:ai_solo_builder_app/src/services/content_api_client.dart';
+import 'package:ai_solo_craft_app/main.dart';
+import 'package:ai_solo_craft_app/src/services/content_api_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';

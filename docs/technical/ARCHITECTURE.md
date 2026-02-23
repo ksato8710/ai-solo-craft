@@ -1,4 +1,4 @@
-# AI Solo Builder — サイト構成
+# AI Solo Craft — サイト構成
 
 *作成日: 2026-02-03*
 *更新日: 2026-02-11（DBエンティティ設計追記）*
@@ -28,7 +28,7 @@
 ## ディレクトリ構成
 
 ```
-ai-solo-builder/
+ai-solo-craft/
 ├── src/
 │   ├── app/
 │   │   ├── page.tsx          # トップページ

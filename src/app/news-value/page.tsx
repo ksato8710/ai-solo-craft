@@ -2,7 +2,7 @@ import { getLatestDigestRanking } from '@/lib/digest';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'ニュースバリューランキング（NVA） | AI Solo Builder',
+  title: 'ニュースバリューランキング（NVA） | AI Solo Craft',
   description: '朝・夕のまとめごとに更新されるニュースバリューランキング（NVA）。重要ニュースを最大Top 10まで表示し、Top 3を深掘りして紹介します。',
 };
 

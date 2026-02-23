@@ -29,7 +29,7 @@ const STATUS_TRANSITIONS: Record<ContentStatus, ContentStatus[]> = {
 };
 
 const server = new McpServer({
-  name: 'ai-solo-builder-mcp',
+  name: 'ai-solo-craft-mcp',
   version: '1.0.0',
 });
 
@@ -674,10 +674,10 @@ server.registerTool(
 
 async function main() {
   await validateConnection();
-  console.error('ai-solo-builder MCP: Supabase connection validated');
+  console.error('ai-solo-craft MCP: Supabase connection validated');
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('ai-solo-builder MCP Server running on stdio');
+  console.error('ai-solo-craft MCP Server running on stdio');
 }
 
 main().catch((error) => {

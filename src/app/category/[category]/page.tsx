@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const cat = CATEGORIES[category];
   if (!cat) return { title: 'Not Found' };
   return {
-    title: `${cat.emoji} ${cat.label} | AI Solo Builder`,
+    title: `${cat.emoji} ${cat.label} | AI Solo Craft`,
     description: `${cat.label}の最新記事一覧`,
   };
 }

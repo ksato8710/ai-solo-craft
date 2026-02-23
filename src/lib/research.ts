@@ -59,7 +59,7 @@ function buildProductNameMap(): Record<string, { name: string; articleSlug: stri
 // Hardcoded readable names for research topics that don't directly map to articles
 const PRODUCT_NAMES: Record<string, string> = {
   '2026-02-02-adcreative-ai-ad-creative-generator': 'AdCreative.ai、Appierが$38.7Mで買収',
-  '2026-02-02-ai-solo-builder-era-2026': 'AIソロビルダーの時代が来た（オリジナル）',
+  '2026-02-02-ai-solo-craft-era-2026': 'AIソロビルダーの時代が来た（オリジナル）',
   '2026-02-02-bolt-new-ai-app-builder': 'Bolt.new、Series B $105.5Mで評価額$700M',
   '2026-02-02-claude-cowork-plugins-solo-team': 'Claude Coworkにプラグイン機能追加',
   '2026-02-02-elevenlabs-ai-voice-generation': 'ElevenLabs、評価額$6.6Bに急騰',

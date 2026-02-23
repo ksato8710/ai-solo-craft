@@ -1,4 +1,4 @@
-# EDITORIAL.md — AI Solo Builder 編集ガイドライン
+# EDITORIAL.md — AI Solo Craft 編集ガイドライン
 
 ## ニュースタイトルの原則（最重要）
 

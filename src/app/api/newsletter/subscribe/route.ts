@@ -64,9 +64,9 @@ export async function POST(request: NextRequest) {
 
         try {
           await getResend().emails.send({
-            from: 'AI Solo Builder <newsletter@ai.essential-navigator.com>',
+            from: 'AI Solo Craft <newsletter@ai.essential-navigator.com>',
             to: email.toLowerCase(),
-            subject: '【AI Solo Builder】ニュースレター登録の確認',
+            subject: '【AI Solo Craft】ニュースレター登録の確認',
             react: VerificationEmail({ confirmUrl }),
           });
         } catch (emailError) {

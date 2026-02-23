@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
   return {
-    title: `${post.title} | AI Solo Builder`,
+    title: `${post.title} | AI Solo Craft`,
     description: post.description,
     openGraph: {
       title: post.title,

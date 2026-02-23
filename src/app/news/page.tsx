@@ -2,7 +2,7 @@ import { getAllNewsPosts } from '@/lib/posts';
 import NewsFilterChips from '@/components/NewsFilterChips';
 
 export const metadata = {
-  title: '📰 ニュースセンター | AI Solo Builder',
+  title: '📰 ニュースセンター | AI Solo Craft',
   description: 'AI開発の最新ニュース・ナレッジ・事例をまとめてチェック',
 };
 

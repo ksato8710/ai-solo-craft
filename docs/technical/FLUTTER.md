@@ -1,7 +1,7 @@
-# Flutter App Handoff (AI Solo Builder)
+# Flutter App Handoff (AI Solo Craft)
 
 Updated: 2026-02-12
-Target app: `apps/ai_solo_builder_app`
+Target app: `apps/ai_solo_craft_app`
 
 ## 1. 目的と現状
 
@@ -55,28 +55,28 @@ Target app: `apps/ai_solo_builder_app`
 ## 5. Flutterコードマップ
 
 エントリ:
-- `apps/ai_solo_builder_app/lib/main.dart`
+- `apps/ai_solo_craft_app/lib/main.dart`
 
 画面:
-- `apps/ai_solo_builder_app/lib/src/screens/home_screen.dart`
-- `apps/ai_solo_builder_app/lib/src/screens/content_detail_screen.dart`
+- `apps/ai_solo_craft_app/lib/src/screens/home_screen.dart`
+- `apps/ai_solo_craft_app/lib/src/screens/content_detail_screen.dart`
 
 APIクライアント:
-- `apps/ai_solo_builder_app/lib/src/services/content_api_client.dart`
+- `apps/ai_solo_craft_app/lib/src/services/content_api_client.dart`
 
 モデル:
-- `apps/ai_solo_builder_app/lib/src/models/content_models.dart`
+- `apps/ai_solo_craft_app/lib/src/models/content_models.dart`
 
 UI部品:
-- `apps/ai_solo_builder_app/lib/src/widgets/content_card.dart`
+- `apps/ai_solo_craft_app/lib/src/widgets/content_card.dart`
 
 テスト:
-- `apps/ai_solo_builder_app/test/widget_test.dart`
+- `apps/ai_solo_craft_app/test/widget_test.dart`
 
 ## 6. 起動手順
 
 ```bash
-cd /Users/satokeita/Dev/ai-solo-builder/apps/ai_solo_builder_app
+cd /Users/satokeita/Dev/ai-solo-craft/apps/ai_solo_craft_app
 flutter pub get
 flutter run --dart-define=CONTENT_API_BASE_URL=https://ai.essential-navigator.com
 ```

@@ -36,7 +36,7 @@ export default function AdminPage() {
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold font-heading mb-6 text-text-deep">AI Solo Builder 管理画面</h1>
+      <h1 className="text-3xl font-bold font-heading mb-6 text-text-deep">AI Solo Craft 管理画面</h1>
 
       {/* Tab Navigation */}
       <div className="flex flex-wrap gap-2 mb-8 border-b border-border pb-4">
@@ -197,7 +197,7 @@ function OverviewTab() {
           <h4 className="text-sm font-medium text-accent-leaf">管理画面について</h4>
         </div>
         <p className="text-sm text-text-muted">
-          AI Solo Builderの運用を可視化・管理するためのダッシュボードです。ワークフロー、スキル、コンテンツ分類、システムアーキテクチャを一元的に確認できます。
+          AI Solo Craftの運用を可視化・管理するためのダッシュボードです。ワークフロー、スキル、コンテンツ分類、システムアーキテクチャを一元的に確認できます。
         </p>
       </div>
     </div>
@@ -724,7 +724,7 @@ function ArchitectureTab() {
         <h2 className="text-xl font-semibold font-heading mb-4 text-text-deep">📂 プロジェクト構成</h2>
         <div className="bg-bg-cream p-4 rounded-lg">
           <pre className="text-sm text-text-muted overflow-x-auto">
-{`/Users/satokeita/Dev/ai-solo-builder/
+{`/Users/satokeita/Dev/ai-solo-craft/
 ├── src/
 │   ├── app/                  # Next.js App Router
 │   │   ├── admin/           # 管理画面 (このページ)

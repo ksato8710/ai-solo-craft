@@ -1,4 +1,4 @@
-# AI Solo Builder Flutter App
+# AI Solo Craft Flutter App
 
 シンプルなモバイルアプリ実装です。`/api/v1/*` からコンテンツを取得して表示します。
 
@@ -11,7 +11,7 @@
 ## 起動
 
 ```bash
-cd apps/ai_solo_builder_app
+cd apps/ai_solo_craft_app
 flutter pub get
 flutter run \
   --dart-define=CONTENT_API_BASE_URL=https://ai.essential-navigator.com

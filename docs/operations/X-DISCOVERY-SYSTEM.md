@@ -1,4 +1,4 @@
-# X API Discovery System (AI Solo Builder)
+# X API Discovery System (AI Solo Craft)
 
 ## 目的
 

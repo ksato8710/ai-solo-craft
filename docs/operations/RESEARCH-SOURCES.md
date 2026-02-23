@@ -1,4 +1,4 @@
-# AI Solo Builder — リサーチソース一覧
+# AI Solo Craft — リサーチソース一覧
 
 *作成日: 2026-02-03*
 

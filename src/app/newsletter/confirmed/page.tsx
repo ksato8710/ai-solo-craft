@@ -24,7 +24,7 @@ export default async function NewsletterConfirmed({ searchParams }: PageProps) {
               登録が完了しました
             </h1>
             <p className="text-text-muted mb-2">
-              AI Solo Builder ニュースレターへようこそ!
+              AI Solo Craft ニュースレターへようこそ!
             </p>
             <p className="text-sm text-text-light mb-8">
               毎朝 8:15 にAIの最新ニュースをお届けします。

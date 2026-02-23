@@ -170,7 +170,7 @@ openclaw cron add competitor-research ...
 
 ```bash
 # 1. ui-consistency-audit スキル作成
-/Users/satokeita/Dev/ai-solo-builder/.claude/skills/ui-consistency-audit.md
+/Users/satokeita/Dev/ai-solo-craft/.claude/skills/ui-consistency-audit.md
 
 # 2. pre-commit hookに追加（軽量チェックのみ）
 

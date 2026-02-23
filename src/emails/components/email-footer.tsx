@@ -12,7 +12,7 @@ export function EmailFooter({ unsubscribeUrl }: EmailFooterProps) {
   return (
     <Section style={footerStyle}>
       <Text style={footerTextStyle}>
-        AI Solo Builder — 複数ニュースレターで検知し、公式発表で確認し、日本語で要点整理して配信
+        AI Solo Craft — 複数ニュースレターで検知し、公式発表で確認し、日本語で要点整理して配信
       </Text>
       {unsubscribeUrl && (
         <Text style={unsubscribeStyle}>
@@ -25,7 +25,7 @@ export function EmailFooter({ unsubscribeUrl }: EmailFooterProps) {
         すべての主要トピックで「公式発表（原文）」と「日本語の解説記事」を併記します。
       </Text>
       <Text style={copyrightStyle}>
-        &copy; {new Date().getFullYear()} AI Solo Builder Editorial Desk
+        &copy; {new Date().getFullYear()} AI Solo Craft Editorial Desk
       </Text>
     </Section>
   );

@@ -1,4 +1,4 @@
-# AI Solo Builder - TLDR.tech風 日本語AIキュレーションサイト
+# AI Solo Craft - TLDR.tech風 日本語AIキュレーションサイト
 
 ## プロジェクト概要
 - **目標:** TLDR.tech のUIをベースにした、日本語のAIソロビルダー向けニュースキュレーションサイト

@@ -1,6 +1,6 @@
 {
-  "name": "AI Solo Builder",
-  "short_name": "AI Solo",
+  "name": "AI Solo Craft",
+  "short_name": "AI Solo Craft",
   "description": "AIソロ開発者のための日本語ニュース",
   "start_url": "/",
   "display": "standalone",

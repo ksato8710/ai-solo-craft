@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
           const unsubscribeUrl = `${SITE_URL}/api/newsletter/unsubscribe?token=${subscriber.unsubscribe_token}`;
 
           await getResend().emails.send({
-            from: 'AI Solo Builder <newsletter@ai.essential-navigator.com>',
+            from: 'AI Solo Craft <newsletter@ai.essential-navigator.com>',
             to: subscriber.email,
             subject,
             react: MorningDigestEmail({

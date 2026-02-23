@@ -38,7 +38,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
             fontWeight: 800,
           }}
         >
-          AI Solo Builder
+          AI Solo Craft
         </div>
       ),
       { ...size }
@@ -101,7 +101,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
             display: 'flex',
           }}
         >
-          AI SOLO BUILDER
+          AI SOLO CRAFT
         </div>
 
         {/* Category badge */}

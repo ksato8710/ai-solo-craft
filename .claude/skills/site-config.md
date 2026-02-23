@@ -1,17 +1,17 @@
 # Site Config — サイト設定スキル
 
 ## 概要
-AI Solo Builder の技術仕様・デプロイ手順・運用ルール。
+AI Solo Craft の技術仕様・デプロイ手順・運用ルール。
 
 ## 基本情報
 
 | 項目 | 値 |
 |------|-----|
 | URL | https://ai.essential-navigator.com |
-| Vercel URL | https://ai-solo-builder.vercel.app |
-| GitHub | ksato8710/ai-solo-builder |
+| Vercel URL | https://ai-solo-craft.vercel.app |
+| GitHub | ksato8710/ai-solo-craft |
 | スタック | Next.js (App Router) + Tailwind CSS + TypeScript + SSG |
-| ローカル | /Users/satokeita/Dev/ai-solo-builder |
+| ローカル | /Users/satokeita/Dev/ai-solo-craft |
 
 ## コンテンツ管理
 

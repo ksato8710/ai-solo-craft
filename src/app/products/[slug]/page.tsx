@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const product = await getProductBySlug(slug);
   if (!product) return { title: 'Not Found' };
   return {
-    title: `${product.title} | AI Solo Builder`,
+    title: `${product.title} | AI Solo Craft`,
     description: product.description,
   };
 }

@@ -3,7 +3,7 @@ import SourceCredibilityFilter from '@/components/SourceCredibilityFilter';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '信頼性フィルター | AI Solo Builder',
+  title: '信頼性フィルター | AI Solo Craft',
   description: 'ソースの信頼性に基づいてニュース記事をフィルタリング',
 };
 

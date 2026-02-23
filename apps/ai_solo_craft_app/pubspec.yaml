@@ -1,5 +1,5 @@
-name: ai_solo_builder_app
-description: "AI Solo Builder mobile client powered by Content API."
+name: ai_solo_craft_app
+description: "AI Solo Craft mobile client powered by Content API."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev

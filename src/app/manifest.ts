@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'AI Solo Builder',
-    short_name: 'AI Solo Builder',
+    name: 'AI Solo Craft',
+    short_name: 'AI Solo Craft',
     description: 'AIソロ開発者のためのニュースキュレーション',
     start_url: '/',
     display: 'standalone',
