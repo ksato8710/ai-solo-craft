@@ -19,6 +19,7 @@
     "admin:setup": "node scripts/setup-admin-database.mjs",
     "admin:check": "node scripts/check-content-sources-table.mjs",
     "publish:gate": "bash scripts/publish-gate.sh",
+    "mcp:start": "tsx mcp/server.ts",
     "x:discover": "python3 scripts/discover-x-ai-signals.py --sort-order mixed --lookback-hours 24 --top-k 20 --with-usage --output-dir research/x-discovery",
     "x:discover:sample": "python3 scripts/discover-x-ai-signals.py --sample-file scripts/fixtures/x_recent_search_sample.json --output-dir research/x-discovery --no-state",
     "x:exaggeration:experiment": "python3 scripts/experiment-x-exaggeration-detection.py --output-dir research/x-exaggeration",
@@ -29,20 +30,22 @@
     "generate:thumbnails:all": "node scripts/generate-thumbnail.mjs --all"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
     "@react-email/components": "^1.0.8",
     "@react-email/render": "^2.0.4",
     "@supabase/supabase-js": "^2.95.3",
     "gray-matter": "^4.0.3",
     "next": "16.1.6",
     "next-themes": "^0.4.6",
+    "openai": "^4.86.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
-    "openai": "^4.86.2",
     "resend": "^6.9.2",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "zod": "3.25.76"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -53,6 +56,7 @@
     "eslint-config-next": "16.1.6",
     "husky": "^9.1.7",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
