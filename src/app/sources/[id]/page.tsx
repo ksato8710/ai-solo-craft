@@ -27,12 +27,12 @@ async function getSource(id: string): Promise<ApiSource | null> {
     const res = await fetch(`${baseUrl}/api/v1/sources/${id}`, {
       next: { revalidate: 600 } // Cache for 10 minutes
     });
-    
+
     if (!res.ok) {
       if (res.status === 404) return null;
       throw new Error(`Failed to fetch source: ${res.status}`);
     }
-    
+
     const data = await res.json();
     return data.source || null;
   } catch (error) {
@@ -44,7 +44,7 @@ async function getSource(id: string): Promise<ApiSource | null> {
 export async function generateMetadata({ params }: SourceDetailPageProps): Promise<Metadata> {
   const { id } = await params;
   const source = await getSource(id);
-  
+
   if (!source) {
     return {
       title: 'ソースが見つかりません | AI Solo Builder',
@@ -67,12 +67,12 @@ export default async function SourceDetailPage({ params }: SourceDetailPageProps
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'primary': return '#10b981';
-      case 'secondary': return '#f59e0b';
-      case 'tertiary': return '#6b7280';
-      case 'official': return '#10b981';
-      case 'media': return '#f59e0b';
-      default: return '#64748b';
+      case 'primary': return '#6B8F71';
+      case 'secondary': return '#C4926B';
+      case 'tertiary': return '#8A9E8C';
+      case 'official': return '#6B8F71';
+      case 'media': return '#C4926B';
+      default: return '#5C7260';
     }
   };
 
@@ -98,47 +98,47 @@ export default async function SourceDetailPage({ params }: SourceDetailPageProps
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-bg-cream">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
             <a
               href="/"
-              className="text-slate-400 hover:text-white transition-colors text-sm"
+              className="text-text-light hover:text-text-deep transition-colors text-sm"
             >
               ← ホームに戻る
             </a>
           </div>
-          
-          <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+
+          <div className="bg-bg-card rounded-[--radius-card] p-8 border border-border">
             <div className="flex items-start gap-6">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <h1 className="text-3xl font-bold text-white">{source.name}</h1>
+                  <h1 className="text-3xl font-bold font-heading text-text-deep">{source.name}</h1>
                   <span className="text-2xl">{source.badge.split(' ')[0]}</span>
                 </div>
-                
+
                 <div className="flex items-center gap-4 mb-4">
-                  <span 
+                  <span
                     className="px-3 py-1 rounded-full text-sm font-semibold"
-                    style={{ 
+                    style={{
                       backgroundColor: getTypeColor(source.source_type) + '22',
                       color: getTypeColor(source.source_type)
                     }}
                   >
                     {getTypeLabel(source.source_type)}
                   </span>
-                  
+
                   {source.domain && (
-                    <span className="text-sm text-slate-400 font-mono">
+                    <span className="text-sm text-text-light font-mono">
                       {source.domain}
                     </span>
                   )}
                 </div>
 
                 {source.description && (
-                  <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                  <p className="text-text-muted text-lg leading-relaxed mb-6">
                     {source.description}
                   </p>
                 )}
@@ -148,7 +148,7 @@ export default async function SourceDetailPage({ params }: SourceDetailPageProps
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+                    className="bg-accent-leaf hover:bg-accent-moss text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
                   >
                     🔗 ソースサイトを見る
                   </a>
@@ -161,26 +161,26 @@ export default async function SourceDetailPage({ params }: SourceDetailPageProps
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {/* Credibility Score */}
-          <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-            <h3 className="text-slate-400 text-sm font-semibold mb-2">信頼度スコア</h3>
+          <div className="bg-bg-card rounded-xl p-6 border border-border">
+            <h3 className="text-text-light text-sm font-semibold mb-2">信頼度スコア</h3>
             <div className="flex items-center gap-3">
-              <span className="text-3xl font-bold text-white">
+              <span className="text-3xl font-bold text-text-deep">
                 {source.credibility_score || '—'}
               </span>
-              <span className="text-sm text-slate-400">/ 10</span>
+              <span className="text-sm text-text-light">/ 10</span>
             </div>
             {source.credibility_score && (
               <div className="mt-3">
-                <div className="w-full bg-slate-700 rounded-full h-2">
-                  <div 
+                <div className="w-full bg-bg-warm rounded-full h-2">
+                  <div
                     className="h-2 rounded-full transition-all duration-500"
-                    style={{ 
+                    style={{
                       width: `${source.credibility_score * 10}%`,
                       backgroundColor: getTypeColor(source.source_type)
                     }}
                   />
                 </div>
-                <p className="text-xs text-slate-400 mt-2">
+                <p className="text-xs text-text-light mt-2">
                   {source.credibility_score ? getCredibilityLabel(source.credibility_score) : '未評価'}
                 </p>
               </div>
@@ -188,54 +188,54 @@ export default async function SourceDetailPage({ params }: SourceDetailPageProps
           </div>
 
           {/* Article Count */}
-          <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-            <h3 className="text-slate-400 text-sm font-semibold mb-2">記事数</h3>
+          <div className="bg-bg-card rounded-xl p-6 border border-border">
+            <h3 className="text-text-light text-sm font-semibold mb-2">記事数</h3>
             <div className="flex items-center gap-3">
-              <span className="text-3xl font-bold text-white">
+              <span className="text-3xl font-bold text-text-deep">
                 {source.article_count || 0}
               </span>
-              <span className="text-sm text-slate-400">記事</span>
+              <span className="text-sm text-text-light">記事</span>
             </div>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-text-light mt-2">
               AI Solo Builderに掲載
             </p>
           </div>
 
           {/* Verification Level */}
-          <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-            <h3 className="text-slate-400 text-sm font-semibold mb-2">検証レベル</h3>
+          <div className="bg-bg-card rounded-xl p-6 border border-border">
+            <h3 className="text-text-light text-sm font-semibold mb-2">検証レベル</h3>
             <div className="flex items-center gap-3">
-              <span className="text-lg font-bold text-white">
+              <span className="text-lg font-bold text-text-deep">
                 {source.verification_level ? getTypeLabel(source.verification_level) : '未分類'}
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-text-light mt-2">
               情報の検証方法
             </p>
           </div>
         </div>
 
         {/* Information Panel */}
-        <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-          <h2 className="text-xl font-bold text-white mb-4">信頼性について</h2>
-          
+        <div className="bg-bg-card rounded-xl p-6 border border-border">
+          <h2 className="text-xl font-bold font-heading text-text-deep mb-4">信頼性について</h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-sm font-semibold text-slate-300 mb-2">評価基準</h3>
-              <ul className="text-sm text-slate-400 space-y-1">
+              <h3 className="text-sm font-semibold text-text-muted mb-2">評価基準</h3>
+              <ul className="text-sm text-text-light space-y-1">
                 <li>• 透明性: 著者・組織の明示 (25%)</li>
                 <li>• 専門性: 分野での実績・専門知識 (25%)</li>
                 <li>• 検証性: 一次ソースへの言及・引用 (25%)</li>
                 <li>• 一貫性: 過去の記事品質・訂正履歴 (25%)</li>
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="text-sm font-semibold text-slate-300 mb-2">分類説明</h3>
-              <div className="text-sm text-slate-400 space-y-1">
-                <p><strong className="text-green-400">🥇 一次情報:</strong> 公式発表・原典</p>
-                <p><strong className="text-amber-400">🥈 二次情報:</strong> 専門編集部による分析</p>
-                <p><strong className="text-gray-400">🥉 三次情報:</strong> コミュニティ・個人の議論</p>
+              <h3 className="text-sm font-semibold text-text-muted mb-2">分類説明</h3>
+              <div className="text-sm text-text-light space-y-1">
+                <p><strong className="text-accent-leaf">🥇 一次情報:</strong> 公式発表・原典</p>
+                <p><strong className="text-accent-bloom">🥈 二次情報:</strong> 専門編集部による分析</p>
+                <p><strong className="text-text-light">🥉 三次情報:</strong> コミュニティ・個人の議論</p>
               </div>
             </div>
           </div>

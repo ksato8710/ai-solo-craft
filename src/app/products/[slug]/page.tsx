@@ -27,14 +27,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   const cat = CATEGORIES['products'];
   const relatedArticles = await getPostsByRelatedProduct(slug);
-  
+
   // 関連プロダクトを取得
   const allProducts = await getAllProducts();
   const relatedProductSlugs = product.relatedProducts || [];
   const relatedProducts = relatedProductSlugs
     .map(s => allProducts.find(p => p.slug === s))
     .filter((p): p is NonNullable<typeof p> => p !== undefined);
-  
+
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
     return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
@@ -43,8 +43,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   return (
     <article className="article-container">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-6">
-        <a href="/" className="hover:text-[var(--text-secondary)] transition-colors">ホーム</a>
+      <div className="flex items-center gap-2 text-xs text-text-light mb-6">
+        <a href="/" className="hover:text-text-muted transition-colors">ホーム</a>
         <span>/</span>
         <a href="/category/products" className="hover:opacity-80 transition-colors"
            style={{ color: cat.color }}>
@@ -59,19 +59,19 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 style={{ backgroundColor: cat.color + '22', color: cat.color }}>
             {cat.emoji} {cat.label}
           </span>
-          <span className="text-xs text-[var(--text-muted)]">情報更新: {formatDate(product.date)}</span>
-          <span className="text-xs text-[var(--text-muted)]">・{product.readTime}分で読める</span>
+          <span className="text-xs text-text-light">情報更新: {formatDate(product.date)}</span>
+          <span className="text-xs text-text-light">・{product.readTime}分で読める</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] leading-tight">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-text-deep leading-tight">
           {product.title}
         </h1>
-        <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
+        <p className="mt-4 text-lg text-text-muted leading-relaxed">
           {product.description}
         </p>
       </header>
 
       {/* Divider */}
-      <div className="border-t border-[var(--border-color)] my-8" />
+      <div className="border-t border-border my-8" />
 
       {/* Content */}
       <ArticleContent htmlContent={product.htmlContent || ''} />
@@ -97,8 +97,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       )}
 
       {/* Back link */}
-      <div className="mt-12 pt-8 border-t border-[var(--border-color)]">
-        <a href="/category/products" className="inline-flex items-center gap-2 text-sm text-[var(--accent-blue)] hover:opacity-80 transition-colors">
+      <div className="mt-12 pt-8 border-t border-border">
+        <a href="/category/products" className="inline-flex items-center gap-2 text-sm text-accent-leaf hover:opacity-80 transition-colors">
           ← プロダクトディレクトリに戻る
         </a>
       </div>

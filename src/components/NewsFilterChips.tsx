@@ -10,7 +10,7 @@ interface NewsFilterChipsProps {
 }
 
 const ALL_KEY = '__all__';
-const DEFAULT_TAG_COLOR = '#64748b';
+const DEFAULT_TAG_COLOR = '#8A9E8C';
 
 export default function NewsFilterChips({ posts }: NewsFilterChipsProps) {
   const [activeTag, setActiveTag] = useState(ALL_KEY);
@@ -45,9 +45,9 @@ export default function NewsFilterChips({ posts }: NewsFilterChipsProps) {
           <button
             onClick={() => setActiveTag(ALL_KEY)}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-              activeTag === ALL_KEY 
-                ? 'bg-[var(--accent-violet)]/20 text-[var(--text-primary)] border border-[var(--accent-violet)]/40'
-                : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border border-transparent'
+              activeTag === ALL_KEY
+                ? 'bg-accent-bark/20 text-text-deep border border-accent-bark/40'
+                : 'bg-bg-card text-text-muted border border-transparent'
             }`}
           >
             すべて
@@ -63,7 +63,7 @@ export default function NewsFilterChips({ posts }: NewsFilterChipsProps) {
                 key={tag}
                 onClick={() => setActiveTag(isActive ? ALL_KEY : tag)}
                 className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                  !isActive ? 'bg-[var(--bg-card)] text-[var(--text-secondary)] border border-transparent' : ''
+                  !isActive ? 'bg-bg-card text-text-muted border border-transparent' : ''
                 }`}
                 style={isActive ? {
                   backgroundColor: color + '33',
@@ -89,8 +89,8 @@ export default function NewsFilterChips({ posts }: NewsFilterChipsProps) {
       ) : (
         <div className="text-center py-20">
           <p className="text-6xl mb-4 opacity-20">📰</p>
-          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">記事がありません</h3>
-          <p className="text-[var(--text-secondary)] text-sm">このタグにはまだ記事がありません。</p>
+          <h3 className="font-heading text-xl font-bold text-text-deep mb-2">記事がありません</h3>
+          <p className="text-text-muted text-sm">このタグにはまだ記事がありません。</p>
         </div>
       )}
     </div>

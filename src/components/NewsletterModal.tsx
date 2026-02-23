@@ -34,7 +34,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm newsletter-modal-overlay"
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-text-deep/40 backdrop-blur-sm newsletter-modal-overlay"
       onClick={(e) => {
         if (e.target === overlayRef.current) onClose();
       }}
@@ -45,12 +45,12 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
         aria-modal="true"
         aria-label="ニュースレター登録"
         tabIndex={-1}
-        className="relative w-full max-w-md bg-[var(--bg-card)] rounded-2xl border border-[var(--border-color)] shadow-2xl newsletter-modal-content focus:outline-none"
+        className="relative w-full max-w-md bg-bg-card rounded-[--radius-card] border border-border shadow-2xl newsletter-modal-content focus:outline-none"
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors"
+          className="absolute top-3 right-3 p-1.5 rounded-lg text-text-light hover:text-text-deep hover:bg-bg-warm transition-colors"
           aria-label="閉じる"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -61,30 +61,30 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
         <div className="p-6 sm:p-8">
           {/* Icon */}
           <div className="flex justify-center mb-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 via-violet-500/15 to-emerald-500/10 flex items-center justify-center">
-              <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent-leaf/20 via-accent-bark/15 to-accent-moss/10 flex items-center justify-center">
+              <svg className="w-6 h-6 text-accent-leaf" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
             </div>
           </div>
 
           {/* Title */}
-          <h2 className="text-xl font-bold text-[var(--text-primary)] text-center mb-2">
+          <h2 className="font-heading text-xl font-bold text-text-deep text-center mb-2">
             AIニュースを毎朝お届け
           </h2>
-          <p className="text-sm text-[var(--text-secondary)] text-center mb-6">
+          <p className="text-sm text-text-muted text-center mb-6">
             グローバルのAI最新情報を、毎朝 8:15 にメールで。
           </p>
 
           {/* Badges */}
           <div className="flex flex-wrap justify-center gap-2 mb-6">
-            <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-400">
+            <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-accent-leaf/15 text-accent-leaf">
               無料
             </span>
-            <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/15 text-blue-400">
+            <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-accent-leaf/15 text-accent-leaf">
               毎朝 8:15 配信
             </span>
-            <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-violet-500/15 text-violet-400">
+            <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-accent-bark/15 text-accent-bark">
               解除はいつでも
             </span>
           </div>

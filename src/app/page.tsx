@@ -43,16 +43,16 @@ export default async function Home() {
       )}
 
       {/* Today's Stats Bar */}
-      <div className="rounded-xl px-6 py-4 mb-12 flex items-center justify-between flex-wrap gap-4 bg-[var(--bg-card)]">
+      <div className="rounded-xl px-6 py-4 mb-12 flex items-center justify-between flex-wrap gap-4 bg-bg-card">
         <div className="flex items-center gap-2">
-          <span className="text-[var(--accent-emerald)] text-sm font-semibold">📡 LIVE</span>
-          <span className="text-[var(--text-secondary)] text-sm">朝夕のまとめ 毎日配信中</span>
+          <span className="text-accent-moss text-sm font-semibold">📡 LIVE</span>
+          <span className="text-text-muted text-sm">朝夕のまとめ 毎日配信中</span>
         </div>
-        <div className="flex items-center gap-6 text-xs text-[var(--text-secondary)]">
+        <div className="flex items-center gap-6 text-xs text-text-muted">
           <span>🌅 朝刊 8:00</span>
           <span>🌆 夕刊 18:00</span>
         </div>
-        <div className="text-xs text-[var(--text-muted)]">
+        <div className="text-xs text-text-light">
           ニュース: {allPosts.length}本 / プロダクト: {allProducts.length}本
         </div>
       </div>
@@ -61,10 +61,10 @@ export default async function Home() {
       {allNewsPosts.length > 0 && (
         <section className="mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-6 rounded-full bg-[var(--accent-violet)]" />
-            <h2 className="text-lg font-bold text-[var(--text-primary)]">📰 最新ニュース</h2>
+            <div className="w-1 h-6 rounded-full bg-accent-bark" />
+            <h2 className="text-lg font-bold font-heading text-text-deep">📰 最新ニュース</h2>
             <a href="/news"
-               className="ml-auto text-xs font-medium hover:underline text-[var(--accent-violet)]">
+               className="ml-auto text-xs font-medium hover:underline text-accent-bark">
               すべて見る →
             </a>
           </div>
@@ -88,8 +88,8 @@ export default async function Home() {
       {allContent.length === 0 && (
         <div className="text-center py-20">
           <p className="text-4xl mb-4">🚀</p>
-          <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">準備中です</h2>
-          <p className="text-[var(--text-secondary)]">まもなくコンテンツが配信されます。</p>
+          <h2 className="text-xl font-bold font-heading text-text-deep mb-2">準備中です</h2>
+          <p className="text-text-muted">まもなくコンテンツが配信されます。</p>
         </div>
       )}
     </div>

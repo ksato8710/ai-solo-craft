@@ -222,40 +222,40 @@ export default function SourceSchedulesAdminPage() {
   }
 
   if (loading) {
-    return <div className="p-8 text-slate-300">Loading delivery schedules...</div>;
+    return <div className="p-8 text-text-muted">Loading delivery schedules...</div>;
   }
 
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-100">ニュースレター配信スケジュール管理</h1>
-          <p className="text-sm text-slate-400 mt-2">
+          <h1 className="text-3xl font-bold font-heading text-text-deep">ニュースレター配信スケジュール管理</h1>
+          <p className="text-sm text-text-light mt-2">
             参照ニュースレターの配信時刻と、統合ジョブの遅延許容（fetch delay）を管理します。
           </p>
         </div>
         <div className="flex gap-2">
           <a
             href="/admin/workflows"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             ワークフロー
           </a>
           <a
             href="/admin/source-intelligence"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             Source管理
           </a>
           <a
             href="/admin/collection"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             受信ログ
           </a>
           <a
             href="/admin"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             ← 管理トップ
           </a>
@@ -263,21 +263,21 @@ export default function SourceSchedulesAdminPage() {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        <Stat label="Schedules" value={stats.total} color="text-slate-100" />
-        <Stat label="Active" value={stats.active} color="text-emerald-200" />
-        <Stat label="Newsletters" value={stats.newsletters} color="text-violet-200" />
+        <Stat label="Schedules" value={stats.total} color="text-text-deep" />
+        <Stat label="Active" value={stats.active} color="text-accent-leaf" />
+        <Stat label="Newsletters" value={stats.newsletters} color="text-accent-bark" />
       </div>
 
       {error && (
-        <div className="rounded border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+        <div className="rounded border border-danger/40 bg-danger/10 px-3 py-2 text-sm text-danger">
           {error}
         </div>
       )}
 
-      <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
+      <div className="rounded-xl border border-border bg-bg-card p-4">
         <button
           onClick={() => setIsAdding((prev) => !prev)}
-          className="rounded bg-blue-600 hover:bg-blue-500 px-4 py-2 text-sm font-medium text-white"
+          className="rounded bg-accent-leaf hover:bg-accent-moss px-4 py-2 text-sm font-medium text-white"
         >
           {isAdding ? 'Close Form' : '＋ Add Schedule'}
         </button>
@@ -301,35 +301,35 @@ export default function SourceSchedulesAdminPage() {
           const sourceDomain = schedule.source?.domain || '—';
 
           return (
-            <div key={schedule.id} className="rounded-xl border border-slate-700 bg-slate-800/40 p-4">
+            <div key={schedule.id} className="rounded-[--radius-card] border border-border bg-bg-card p-4">
               {!isEditing ? (
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h2 className="text-lg font-semibold text-slate-100">{sourceName}</h2>
-                        <span className="rounded border border-slate-600 bg-slate-700 px-2 py-1 text-xs text-slate-200">
+                        <h2 className="text-lg font-semibold font-heading text-text-deep">{sourceName}</h2>
+                        <span className="rounded border border-border bg-bg-warm px-2 py-1 text-xs text-text-muted">
                           {schedule.schedule_name}
                         </span>
                         {!schedule.is_active && (
-                          <span className="rounded border border-red-400/40 bg-red-500/10 px-2 py-1 text-xs text-red-200">
+                          <span className="rounded border border-danger/40 bg-danger/10 px-2 py-1 text-xs text-danger">
                             Inactive
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-slate-400">{sourceDomain}</p>
+                      <p className="text-sm text-text-light">{sourceDomain}</p>
                     </div>
 
                     <div className="flex gap-2">
                       <button
                         onClick={() => startEdit(schedule)}
-                        className="rounded bg-slate-700 hover:bg-slate-600 px-3 py-1.5 text-xs text-slate-100"
+                        className="rounded bg-bg-warm hover:bg-bg-card px-3 py-1.5 text-xs text-text-deep"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => void deleteSchedule(schedule.id)}
-                        className="rounded bg-red-600/70 hover:bg-red-500 px-3 py-1.5 text-xs text-white"
+                        className="rounded bg-danger/70 hover:bg-danger px-3 py-1.5 text-xs text-white"
                       >
                         Delete
                       </button>
@@ -364,8 +364,8 @@ export default function SourceSchedulesAdminPage() {
 
 function Stat({ label, value, color }: { label: string; value: number; color: string }) {
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
-      <p className="text-xs uppercase tracking-wide text-slate-400">{label}</p>
+    <div className="rounded-xl border border-border bg-bg-card p-4">
+      <p className="text-xs uppercase tracking-wide text-text-light">{label}</p>
       <p className={`mt-2 text-2xl font-bold ${color}`}>{value}</p>
     </div>
   );
@@ -373,9 +373,9 @@ function Stat({ label, value, color }: { label: string; value: number; color: st
 
 function Meta({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded border border-slate-700 bg-slate-900/40 px-2 py-2">
-      <p className="text-[10px] uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="text-slate-200 mt-1 break-all">{value}</p>
+    <div className="rounded border border-border bg-bg-cream p-2">
+      <p className="text-[10px] uppercase tracking-wide text-text-light">{label}</p>
+      <p className="text-text-deep mt-1 break-all">{value}</p>
     </div>
   );
 }
@@ -398,14 +398,14 @@ function ScheduleFormPanel({
   onCancel?: () => void;
 }) {
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4 space-y-4">
-      <h2 className="text-sm font-semibold text-slate-100">{title}</h2>
+    <div className="rounded-xl border border-border bg-bg-card p-4 space-y-4">
+      <h2 className="text-sm font-semibold font-heading text-text-deep">{title}</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <select
           value={form.source_id}
           onChange={(event) => onChange((prev) => ({ ...prev, source_id: event.target.value }))}
-          className="rounded border border-slate-600 bg-slate-700 px-3 py-2 text-sm text-slate-100"
+          className="rounded border border-border bg-bg-warm px-3 py-2 text-sm text-text-deep"
         >
           <option value="">Select newsletter source</option>
           {sources.map((source) => (
@@ -419,14 +419,14 @@ function ScheduleFormPanel({
           value={form.schedule_name}
           onChange={(event) => onChange((prev) => ({ ...prev, schedule_name: event.target.value }))}
           placeholder="schedule name"
-          className="rounded border border-slate-600 bg-slate-700 px-3 py-2 text-sm text-slate-100"
+          className="rounded border border-border bg-bg-warm px-3 py-2 text-sm text-text-deep"
         />
 
         <input
           value={form.timezone}
           onChange={(event) => onChange((prev) => ({ ...prev, timezone: event.target.value }))}
           placeholder="Asia/Tokyo"
-          className="rounded border border-slate-600 bg-slate-700 px-3 py-2 text-sm text-slate-100"
+          className="rounded border border-border bg-bg-warm px-3 py-2 text-sm text-text-deep"
         />
       </div>
 
@@ -439,7 +439,7 @@ function ScheduleFormPanel({
           onChange={(event) =>
             onChange((prev) => ({ ...prev, delivery_hour: Number.parseInt(event.target.value, 10) || 0 }))
           }
-          className="rounded border border-slate-600 bg-slate-700 px-3 py-2 text-sm text-slate-100"
+          className="rounded border border-border bg-bg-warm px-3 py-2 text-sm text-text-deep"
         />
 
         <input
@@ -450,7 +450,7 @@ function ScheduleFormPanel({
           onChange={(event) =>
             onChange((prev) => ({ ...prev, delivery_minute: Number.parseInt(event.target.value, 10) || 0 }))
           }
-          className="rounded border border-slate-600 bg-slate-700 px-3 py-2 text-sm text-slate-100"
+          className="rounded border border-border bg-bg-warm px-3 py-2 text-sm text-text-deep"
         />
 
         <input
@@ -464,17 +464,17 @@ function ScheduleFormPanel({
               fetch_delay_minutes: Number.parseInt(event.target.value, 10) || 0,
             }))
           }
-          className="rounded border border-slate-600 bg-slate-700 px-3 py-2 text-sm text-slate-100"
+          className="rounded border border-border bg-bg-warm px-3 py-2 text-sm text-text-deep"
         />
       </div>
 
       <div className="space-y-2">
-        <p className="text-xs uppercase tracking-wide text-slate-400">Delivery Days</p>
+        <p className="text-xs uppercase tracking-wide text-text-light">Delivery Days</p>
         <div className="flex flex-wrap gap-2">
           {DAY_OPTIONS.map((day) => (
             <label
               key={day.value}
-              className="inline-flex items-center gap-2 rounded border border-slate-600 bg-slate-700/50 px-2 py-1 text-xs text-slate-200"
+              className="inline-flex items-center gap-2 rounded border border-border bg-bg-warm px-2 py-1 text-xs text-text-muted"
             >
               <input
                 type="checkbox"
@@ -492,7 +492,7 @@ function ScheduleFormPanel({
         </div>
       </div>
 
-      <label className="inline-flex items-center gap-2 text-sm text-slate-300">
+      <label className="inline-flex items-center gap-2 text-sm text-text-muted">
         <input
           type="checkbox"
           checked={form.is_active}
@@ -505,14 +505,14 @@ function ScheduleFormPanel({
         {onCancel && (
           <button
             onClick={onCancel}
-            className="rounded border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700"
+            className="rounded border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             Cancel
           </button>
         )}
         <button
           onClick={onSubmit}
-          className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500"
+          className="rounded bg-accent-leaf px-4 py-2 text-sm font-medium text-white hover:bg-accent-moss"
         >
           {submitLabel}
         </button>

@@ -45,20 +45,20 @@ export default function Carousel({ children, title, icon }: CarouselProps) {
   };
 
   return (
-    <section className="mt-12 pt-8 border-t border-[var(--border-color)]">
+    <section className="mt-12 pt-8 border-t border-border">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-[var(--text-primary)] flex items-center gap-2">
-          <span className="text-[var(--accent-blue)]">{icon}</span>
+        <h2 className="font-heading text-lg font-bold text-text-deep flex items-center gap-2">
+          <span className="text-accent-leaf">{icon}</span>
           {title}
         </h2>
         <div className="flex items-center gap-2">
           <button
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
-            className={`p-2 rounded-full border border-[var(--border-color)] transition-all ${
+            className={`p-2 rounded-full border border-border transition-all ${
               canScrollLeft
-                ? 'hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)]'
-                : 'opacity-30 cursor-not-allowed text-[var(--text-muted)]'
+                ? 'hover:bg-bg-warm text-text-deep'
+                : 'opacity-30 cursor-not-allowed text-text-light'
             }`}
             aria-label="前へ"
           >
@@ -69,10 +69,10 @@ export default function Carousel({ children, title, icon }: CarouselProps) {
           <button
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
-            className={`p-2 rounded-full border border-[var(--border-color)] transition-all ${
+            className={`p-2 rounded-full border border-border transition-all ${
               canScrollRight
-                ? 'hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)]'
-                : 'opacity-30 cursor-not-allowed text-[var(--text-muted)]'
+                ? 'hover:bg-bg-warm text-text-deep'
+                : 'opacity-30 cursor-not-allowed text-text-light'
             }`}
             aria-label="次へ"
           >

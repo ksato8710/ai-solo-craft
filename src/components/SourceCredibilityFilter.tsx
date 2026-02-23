@@ -95,8 +95,8 @@ export default function SourceCredibilityFilter({ posts, showGrid = true }: Sour
           color,
           border: `1px solid ${color}66`,
         } : {
-          backgroundColor: '#1e293b',
-          color: '#94a3b8',
+          backgroundColor: 'var(--color-bg-card)',
+          color: 'var(--color-text-muted)',
           border: '1px solid transparent',
         }}
       >
@@ -111,41 +111,41 @@ export default function SourceCredibilityFilter({ posts, showGrid = true }: Sour
     <div>
       {/* Source Type Filters */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-white mb-3">情報源の種別</h3>
+        <h3 className="font-heading text-sm font-semibold text-text-deep mb-3">情報源の種別</h3>
         <div className="flex flex-wrap gap-2">
-          {getFilterButton(ALL_SOURCES, 'すべて', '📰', sourceStats.all, '#6366F1')}
-          {getFilterButton(PRIMARY_SOURCES, '公式', '🥇', sourceStats.primary, '#10b981')}
-          {getFilterButton(SECONDARY_SOURCES, 'メディア', '🥈', sourceStats.secondary, '#f59e0b')}
-          {getFilterButton(TERTIARY_SOURCES, 'コミュニティ', '🥉', sourceStats.tertiary, '#6b7280')}
-          {sourceStats.no_source > 0 && getFilterButton(NO_SOURCE, 'ソース不明', '❓', sourceStats.no_source, '#64748b')}
+          {getFilterButton(ALL_SOURCES, 'すべて', '📰', sourceStats.all, '#6B8F71')}
+          {getFilterButton(PRIMARY_SOURCES, '公式', '🥇', sourceStats.primary, '#6B8F71')}
+          {getFilterButton(SECONDARY_SOURCES, 'メディア', '🥈', sourceStats.secondary, '#C4926B')}
+          {getFilterButton(TERTIARY_SOURCES, 'コミュニティ', '🥉', sourceStats.tertiary, '#8A9E8C')}
+          {sourceStats.no_source > 0 && getFilterButton(NO_SOURCE, 'ソース不明', '❓', sourceStats.no_source, '#8A9E8C')}
         </div>
       </div>
 
       {/* Credibility Slider */}
       {sourceStats.primary > 0 || sourceStats.secondary > 0 || sourceStats.tertiary > 0 ? (
         <div className="mb-6">
-          <h3 className="text-sm font-semibold text-white mb-3">
-            信頼度フィルター 
-            <span className="ml-2 text-xs font-normal text-slate-400">
+          <h3 className="font-heading text-sm font-semibold text-text-deep mb-3">
+            信頼度フィルター
+            <span className="ml-2 text-xs font-normal text-text-light">
               {minCredibility}点以上（{filteredPosts.length}件）
             </span>
           </h3>
           <div className="flex items-center gap-4">
-            <span className="text-xs text-slate-400">1</span>
+            <span className="text-xs text-text-light">1</span>
             <input
               type="range"
               min="1"
               max="10"
               value={minCredibility}
               onChange={(e) => setMinCredibility(parseInt(e.target.value))}
-              className="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
+              className="flex-1 h-2 bg-bg-warm rounded-lg appearance-none cursor-pointer slider"
               style={{
-                background: `linear-gradient(to right, #10b981 0%, #10b981 ${(minCredibility - 1) * 11.11}%, #374151 ${(minCredibility - 1) * 11.11}%, #374151 100%)`
+                background: `linear-gradient(to right, var(--color-accent-leaf) 0%, var(--color-accent-leaf) ${(minCredibility - 1) * 11.11}%, var(--color-bg-warm) ${(minCredibility - 1) * 11.11}%, var(--color-bg-warm) 100%)`
               }}
             />
-            <span className="text-xs text-slate-400">10</span>
+            <span className="text-xs text-text-light">10</span>
           </div>
-          <div className="flex justify-between text-xs text-slate-500 mt-1">
+          <div className="flex justify-between text-xs text-text-light mt-1">
             <span>低信頼度</span>
             <span>高信頼度</span>
           </div>
@@ -164,8 +164,8 @@ export default function SourceCredibilityFilter({ posts, showGrid = true }: Sour
           ) : (
             <div className="text-center py-20">
               <p className="text-6xl mb-4 opacity-20">🔍</p>
-              <h3 className="text-xl font-bold text-white mb-2">フィルター条件に一致する記事がありません</h3>
-              <p className="text-slate-400 text-sm">別の条件をお試しください。</p>
+              <h3 className="font-heading text-xl font-bold text-text-deep mb-2">フィルター条件に一致する記事がありません</h3>
+              <p className="text-text-light text-sm">別の条件をお試しください。</p>
             </div>
           )}
         </>

@@ -20,7 +20,7 @@ interface ContentSource {
 
 const CATEGORIES = [
   'tech-community',
-  'dev-tools', 
+  'dev-tools',
   'indie-business',
   'startup',
   'dev-knowledge',
@@ -178,7 +178,7 @@ export default function SourcesAdminPage() {
         <button
           key={star}
           onClick={() => onChange(star)}
-          className={`text-xl ${star <= rating ? 'text-yellow-400' : 'text-gray-300'}`}
+          className={`text-xl ${star <= rating ? 'text-accent-bloom' : 'text-text-light'}`}
         >
           ⭐
         </button>
@@ -186,19 +186,19 @@ export default function SourcesAdminPage() {
     </div>
   );
 
-  if (loading) return <div className="p-8 text-slate-300">Loading...</div>;
-  if (error) return <div className="p-8 text-red-400">Error: {error}</div>;
+  if (loading) return <div className="p-8 text-text-muted">Loading...</div>;
+  if (error) return <div className="p-8 text-danger">Error: {error}</div>;
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-slate-100">情報源管理</h1>
+      <h1 className="text-3xl font-bold font-heading mb-6 text-text-deep">情報源管理</h1>
 
       {/* コントロール */}
-      <div className="mb-6 flex flex-wrap gap-4 items-center p-4 bg-slate-800/50 rounded-lg border border-slate-600">
+      <div className="mb-6 flex flex-wrap gap-4 items-center p-4 bg-bg-card rounded-lg border border-border">
         <select
           value={filter.category}
           onChange={(e) => setFilter(prev => ({ ...prev, category: e.target.value }))}
-          className="border border-slate-600 bg-slate-700 text-slate-200 rounded px-3 py-2 focus:border-blue-400 focus:outline-none"
+          className="border border-border bg-bg-warm text-text-deep rounded px-3 py-2 focus:border-accent-leaf focus:outline-none"
         >
           <option value="">All Categories</option>
           {CATEGORIES.map(cat => (
@@ -209,7 +209,7 @@ export default function SourcesAdminPage() {
         <select
           value={filter.active}
           onChange={(e) => setFilter(prev => ({ ...prev, active: e.target.value }))}
-          className="border border-slate-600 bg-slate-700 text-slate-200 rounded px-3 py-2 focus:border-blue-400 focus:outline-none"
+          className="border border-border bg-bg-warm text-text-deep rounded px-3 py-2 focus:border-accent-leaf focus:outline-none"
         >
           <option value="">All Status</option>
           <option value="true">Active Only</option>
@@ -218,7 +218,7 @@ export default function SourcesAdminPage() {
 
         <button
           onClick={() => setIsAdding(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 transition-colors font-medium"
+          className="bg-accent-leaf text-white px-4 py-2 rounded hover:bg-accent-moss transition-colors font-medium"
         >
           ➕ 新規追加
         </button>
@@ -226,21 +226,21 @@ export default function SourcesAdminPage() {
         {sources.length === 0 && (
           <button
             onClick={initializeSources}
-            className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-500 transition-colors font-medium"
+            className="bg-accent-moss text-white px-4 py-2 rounded hover:bg-accent-leaf transition-colors font-medium"
           >
             🚀 初期データ投入
           </button>
         )}
 
-        <div className="text-sm text-slate-400 bg-slate-700/50 px-3 py-1 rounded">
+        <div className="text-sm text-text-light bg-bg-warm px-3 py-1 rounded">
           Total: {sources.length} sources
         </div>
       </div>
 
       {/* 新規追加フォーム */}
       {isAdding && (
-        <div className="mb-6 p-6 border border-slate-600 rounded-lg bg-slate-800/60 backdrop-blur-sm">
-          <h3 className="text-lg font-semibold mb-4 text-slate-200 flex items-center gap-2">
+        <div className="mb-6 p-6 border border-border rounded-lg bg-bg-card">
+          <h3 className="text-lg font-semibold font-heading mb-4 text-text-deep flex items-center gap-2">
             ➕ 新規情報源追加
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -249,19 +249,19 @@ export default function SourcesAdminPage() {
               placeholder="Name"
               value={newForm.name || ''}
               onChange={(e) => setNewForm(prev => ({ ...prev, name: e.target.value }))}
-              className="border border-slate-600 bg-slate-700 text-slate-200 placeholder-slate-400 rounded px-3 py-2 focus:border-blue-400 focus:outline-none"
+              className="border border-border bg-bg-warm text-text-deep placeholder-text-light rounded px-3 py-2 focus:border-accent-leaf focus:outline-none"
             />
             <input
               type="url"
               placeholder="URL"
               value={newForm.url || ''}
               onChange={(e) => setNewForm(prev => ({ ...prev, url: e.target.value }))}
-              className="border border-slate-600 bg-slate-700 text-slate-200 placeholder-slate-400 rounded px-3 py-2 focus:border-blue-400 focus:outline-none"
+              className="border border-border bg-bg-warm text-text-deep placeholder-text-light rounded px-3 py-2 focus:border-accent-leaf focus:outline-none"
             />
             <select
               value={newForm.category || ''}
               onChange={(e) => setNewForm(prev => ({ ...prev, category: e.target.value }))}
-              className="border border-slate-600 bg-slate-700 text-slate-200 rounded px-3 py-2 focus:border-blue-400 focus:outline-none"
+              className="border border-border bg-bg-warm text-text-deep rounded px-3 py-2 focus:border-accent-leaf focus:outline-none"
             >
               <option value="">Select Category</option>
               {CATEGORIES.map(cat => (
@@ -272,20 +272,20 @@ export default function SourcesAdminPage() {
               placeholder="Description"
               value={newForm.description || ''}
               onChange={(e) => setNewForm(prev => ({ ...prev, description: e.target.value }))}
-              className="border border-slate-600 bg-slate-700 text-slate-200 placeholder-slate-400 rounded px-3 py-2 focus:border-blue-400 focus:outline-none"
+              className="border border-border bg-bg-warm text-text-deep placeholder-text-light rounded px-3 py-2 focus:border-accent-leaf focus:outline-none"
             />
           </div>
           <div className="mt-4 flex gap-4 items-center">
             <label className="flex items-center gap-2">
               Quality Rating:
-              <RatingStars 
+              <RatingStars
                 rating={newForm.quality_rating || 3}
                 onChange={(rating) => setNewForm(prev => ({ ...prev, quality_rating: rating }))}
               />
             </label>
             <label className="flex items-center gap-2">
               Accessibility:
-              <RatingStars 
+              <RatingStars
                 rating={newForm.accessibility_rating || 3}
                 onChange={(rating) => setNewForm(prev => ({ ...prev, accessibility_rating: rating }))}
               />
@@ -310,13 +310,13 @@ export default function SourcesAdminPage() {
           <div className="mt-4 flex gap-2">
             <button
               onClick={addSource}
-              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+              className="bg-accent-leaf text-white px-4 py-2 rounded hover:bg-accent-moss"
             >
               追加
             </button>
             <button
               onClick={() => setIsAdding(false)}
-              className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+              className="bg-bg-warm text-text-muted px-4 py-2 rounded hover:bg-bg-card"
             >
               キャンセル
             </button>
@@ -327,7 +327,7 @@ export default function SourcesAdminPage() {
       {/* 情報源一覧 */}
       <div className="space-y-4">
         {sources.map(source => (
-          <div key={source.id} className="border border-slate-600 rounded-lg p-4 bg-slate-800/40 backdrop-blur-sm hover:bg-slate-800/60 transition-all">
+          <div key={source.id} className="border border-border rounded-lg p-4 bg-bg-card hover:bg-bg-warm transition-all">
             {isEditing === source.id ? (
               // 編集モード
               <div className="space-y-4">
@@ -336,18 +336,18 @@ export default function SourcesAdminPage() {
                     type="text"
                     value={editForm.name || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, name: e.target.value }))}
-                    className="border rounded px-3 py-2"
+                    className="border border-border bg-bg-warm text-text-deep rounded px-3 py-2"
                   />
                   <input
                     type="url"
                     value={editForm.url || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, url: e.target.value }))}
-                    className="border rounded px-3 py-2"
+                    className="border border-border bg-bg-warm text-text-deep rounded px-3 py-2"
                   />
                   <select
                     value={editForm.category || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, category: e.target.value }))}
-                    className="border rounded px-3 py-2"
+                    className="border border-border bg-bg-warm text-text-deep rounded px-3 py-2"
                   >
                     {CATEGORIES.map(cat => (
                       <option key={cat} value={cat}>{cat}</option>
@@ -356,20 +356,20 @@ export default function SourcesAdminPage() {
                   <textarea
                     value={editForm.description || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, description: e.target.value }))}
-                    className="border rounded px-3 py-2"
+                    className="border border-border bg-bg-warm text-text-deep rounded px-3 py-2"
                   />
                 </div>
                 <div className="flex flex-wrap gap-4 items-center">
                   <label className="flex items-center gap-2">
                     Quality:
-                    <RatingStars 
+                    <RatingStars
                       rating={editForm.quality_rating || 3}
                       onChange={(rating) => setEditForm(prev => ({ ...prev, quality_rating: rating }))}
                     />
                   </label>
                   <label className="flex items-center gap-2">
                     Accessibility:
-                    <RatingStars 
+                    <RatingStars
                       rating={editForm.accessibility_rating || 3}
                       onChange={(rating) => setEditForm(prev => ({ ...prev, accessibility_rating: rating }))}
                     />
@@ -394,13 +394,13 @@ export default function SourcesAdminPage() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => updateSource(source.id, editForm)}
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                    className="bg-accent-leaf text-white px-4 py-2 rounded hover:bg-accent-moss"
                   >
                     保存
                   </button>
                   <button
                     onClick={cancelEdit}
-                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                    className="bg-bg-warm text-text-muted px-4 py-2 rounded hover:bg-bg-card"
                   >
                     キャンセル
                   </button>
@@ -411,26 +411,26 @@ export default function SourcesAdminPage() {
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-2">
-                    <h3 className="text-lg font-semibold text-slate-200">{source.name}</h3>
-                    <span className="px-2 py-1 bg-blue-500/20 text-blue-300 text-sm rounded border border-blue-400/30">
+                    <h3 className="text-lg font-semibold font-heading text-text-deep">{source.name}</h3>
+                    <span className="px-2 py-1 bg-accent-leaf/20 text-accent-leaf text-sm rounded border border-accent-leaf/30">
                       {source.category}
                     </span>
-                    <span className={`px-2 py-1 text-sm rounded border ${source.is_active ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/30' : 'bg-slate-500/20 text-slate-400 border-slate-500/30'}`}>
+                    <span className={`px-2 py-1 text-sm rounded border ${source.is_active ? 'bg-accent-leaf/20 text-accent-moss border-accent-leaf/30' : 'bg-bg-warm text-text-light border-border'}`}>
                       {source.is_active ? '✅ Active' : '⭕ Inactive'}
                     </span>
                     {source.is_free && (
-                      <span className="px-2 py-1 bg-amber-500/20 text-amber-300 text-sm rounded border border-amber-400/30">
+                      <span className="px-2 py-1 bg-accent-bloom/20 text-accent-bloom text-sm rounded border border-accent-bloom/30">
                         💰 Free
                       </span>
                     )}
                   </div>
-                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline transition-colors">
+                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-accent-leaf hover:text-accent-moss hover:underline transition-colors">
                     {source.url}
                   </a>
                   {source.description && (
-                    <p className="text-slate-400 mt-2">{source.description}</p>
+                    <p className="text-text-light mt-2">{source.description}</p>
                   )}
-                  <div className="flex gap-4 mt-2 text-sm text-slate-300">
+                  <div className="flex gap-4 mt-2 text-sm text-text-muted">
                     <span>Quality: {source.quality_rating}/5 ⭐</span>
                     <span>Accessibility: {source.accessibility_rating}/5 ⭐</span>
                   </div>
@@ -438,13 +438,13 @@ export default function SourcesAdminPage() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => startEdit(source)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
+                    className="bg-accent-leaf text-white px-3 py-1 rounded text-sm hover:bg-accent-moss"
                   >
                     編集
                   </button>
                   <button
                     onClick={() => deleteSource(source.id, source.name)}
-                    className="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600"
+                    className="bg-danger text-white px-3 py-1 rounded text-sm hover:bg-danger/80"
                   >
                     削除
                   </button>
@@ -455,10 +455,10 @@ export default function SourcesAdminPage() {
         ))}
 
         {sources.length === 0 && (
-          <div className="text-center py-12 bg-slate-800/30 rounded-lg border border-slate-600/50">
-            <div className="text-slate-400 mb-4 text-lg">📄</div>
-            <p className="text-slate-400 mb-2">No sources found.</p>
-            <p className="text-slate-500 text-sm">Click "🚀 初期データ投入" to add initial sources.</p>
+          <div className="text-center py-12 bg-bg-card rounded-lg border border-border">
+            <div className="text-text-light mb-4 text-lg">📄</div>
+            <p className="text-text-light mb-2">No sources found.</p>
+            <p className="text-text-light text-sm">Click "🚀 初期データ投入" to add initial sources.</p>
           </div>
         )}
       </div>

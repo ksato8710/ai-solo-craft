@@ -65,15 +65,15 @@ function roleLabel(role: MappingRole): string {
 function roleColor(role: MappingRole): string {
   switch (role) {
     case 'detect':
-      return 'border-violet-400/40 bg-violet-500/10 text-violet-200';
+      return 'border-accent-bark/40 bg-accent-bark/10 text-accent-bark';
     case 'verify':
-      return 'border-emerald-400/40 bg-emerald-500/10 text-emerald-200';
+      return 'border-accent-leaf/40 bg-accent-leaf/10 text-accent-leaf';
     case 'localize':
-      return 'border-sky-400/40 bg-sky-500/10 text-sky-200';
+      return 'border-cat-tool/40 bg-cat-tool/10 text-cat-tool';
     case 'benchmark':
-      return 'border-amber-400/40 bg-amber-500/10 text-amber-200';
+      return 'border-accent-bloom/40 bg-accent-bloom/10 text-accent-bloom';
     default:
-      return 'border-slate-500/40 bg-slate-500/10 text-slate-200';
+      return 'border-border bg-bg-warm text-text-muted';
   }
 }
 
@@ -165,40 +165,40 @@ export default function WorkflowsAdminPage() {
   }
 
   if (loading) {
-    return <div className="p-8 text-slate-300">Loading workflow matrix...</div>;
+    return <div className="p-8 text-text-muted">Loading workflow matrix...</div>;
   }
 
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-100">記事作成ワークフロー管理</h1>
-          <p className="text-sm text-slate-400 mt-2">
+          <h1 className="text-3xl font-bold font-heading text-text-deep">記事作成ワークフロー管理</h1>
+          <p className="text-sm text-text-light mt-2">
             ニュースソースと記事種別の関係を、検知・検証・ローカライズ役割ごとに可視化します。
           </p>
         </div>
         <div className="flex gap-2">
           <a
             href="/admin/source-intelligence"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             Source管理
           </a>
           <a
             href="/admin/schedules"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             配信スケジュール
           </a>
           <a
             href="/admin/collection"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             受信ログ
           </a>
           <a
             href="/admin"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             ← 管理トップ
           </a>
@@ -206,21 +206,21 @@ export default function WorkflowsAdminPage() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <KpiCard label="Workflow" value={totals.workflows} color="text-slate-100" />
-        <KpiCard label="Mappings" value={totals.mappings} color="text-slate-100" />
-        <KpiCard label="Detect" value={totals.detect} color="text-violet-200" />
-        <KpiCard label="Verify" value={totals.verify} color="text-emerald-200" />
-        <KpiCard label="Localize" value={totals.localize} color="text-sky-200" />
+        <KpiCard label="Workflow" value={totals.workflows} color="text-text-deep" />
+        <KpiCard label="Mappings" value={totals.mappings} color="text-text-deep" />
+        <KpiCard label="Detect" value={totals.detect} color="text-accent-bark" />
+        <KpiCard label="Verify" value={totals.verify} color="text-accent-leaf" />
+        <KpiCard label="Localize" value={totals.localize} color="text-cat-tool" />
       </div>
 
       {note && (
-        <div className="rounded border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
+        <div className="rounded border border-accent-bloom/40 bg-accent-bloom/10 px-3 py-2 text-xs text-accent-bloom">
           {note}
         </div>
       )}
 
       {error && (
-        <div className="rounded border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+        <div className="rounded border border-danger/40 bg-danger/10 px-3 py-2 text-sm text-danger">
           {error}
         </div>
       )}
@@ -245,32 +245,32 @@ export default function WorkflowsAdminPage() {
           return (
             <article
               key={workflow.id}
-              className="rounded-xl border border-slate-700 bg-slate-800/40 p-5 space-y-4"
+              className="rounded-[--radius-card] border border-border bg-bg-card p-5 space-y-4"
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <h2 className="text-xl font-semibold text-slate-100">{workflow.workflow_name}</h2>
-                    <span className="rounded border border-slate-600 bg-slate-700 px-2 py-1 text-xs text-slate-200">
+                    <h2 className="text-xl font-semibold font-heading text-text-deep">{workflow.workflow_name}</h2>
+                    <span className="rounded border border-border bg-bg-warm px-2 py-1 text-xs text-text-muted">
                       {workflow.workflow_code}
                     </span>
-                    <span className="rounded border border-blue-400/40 bg-blue-500/10 px-2 py-1 text-xs text-blue-200">
+                    <span className="rounded border border-accent-leaf/40 bg-accent-leaf/10 px-2 py-1 text-xs text-accent-leaf">
                       {contentTypeLabel(workflow)}
                     </span>
                     {!workflow.is_active && (
-                      <span className="rounded border border-red-400/40 bg-red-500/10 px-2 py-1 text-xs text-red-200">
+                      <span className="rounded border border-danger/40 bg-danger/10 px-2 py-1 text-xs text-danger">
                         Inactive
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-slate-300 leading-relaxed">{workflow.objective}</p>
-                  <p className="text-xs text-slate-500 mt-2">Output: {workflow.output_contract}</p>
+                  <p className="text-sm text-text-muted leading-relaxed">{workflow.objective}</p>
+                  <p className="text-xs text-text-light mt-2">Output: {workflow.output_contract}</p>
                 </div>
 
                 <button
                   onClick={() => void toggleActive(workflow)}
                   disabled={savingId === workflow.id}
-                  className="rounded bg-slate-700 hover:bg-slate-600 px-3 py-2 text-xs text-slate-100 disabled:opacity-50"
+                  className="rounded bg-bg-warm hover:bg-bg-card px-3 py-2 text-xs text-text-deep disabled:opacity-50"
                 >
                   {workflow.is_active ? 'Disable' : 'Enable'}
                 </button>
@@ -293,8 +293,8 @@ export default function WorkflowsAdminPage() {
                         .slice()
                         .sort((a, b) => b.priority - a.priority)
                         .map((mapping) => (
-                          <div key={`${mapping.source_id}-${mapping.role}`} className="rounded bg-black/20 p-2">
-                            <p className="text-xs font-medium text-white/90">{mapping.source?.name || 'Unknown source'}</p>
+                          <div key={`${mapping.source_id}-${mapping.role}`} className="rounded bg-black/10 p-2">
+                            <p className="text-xs font-medium text-text-deep">{mapping.source?.name || 'Unknown source'}</p>
                             <p className="text-[11px] opacity-80 break-all">
                               {mapping.source?.domain || 'domain unavailable'}
                             </p>
@@ -318,8 +318,8 @@ export default function WorkflowsAdminPage() {
 
 function KpiCard({ label, value, color }: { label: string; value: number; color: string }) {
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
-      <p className="text-xs uppercase tracking-wide text-slate-400">{label}</p>
+    <div className="rounded-xl border border-border bg-bg-card p-4">
+      <p className="text-xs uppercase tracking-wide text-text-light">{label}</p>
       <p className={`mt-2 text-2xl font-bold ${color}`}>{value}</p>
     </div>
   );

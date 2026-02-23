@@ -42,8 +42,8 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
   return (
     <article className="article-container">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-6">
-        <a href="/" className="hover:text-[var(--text-secondary)] transition-colors">ホーム</a>
+      <div className="flex items-center gap-2 text-xs text-text-light mb-6">
+        <a href="/" className="hover:text-text-muted transition-colors">ホーム</a>
         <span>/</span>
         <a href={`/category/${post.category}`} className="hover:opacity-80 transition-colors"
            style={{ color: cat.color }}>
@@ -58,26 +58,26 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
                 style={{ backgroundColor: cat.color + '22', color: cat.color }}>
             {cat.emoji} {cat.label}
           </span>
-          <span className="text-xs text-[var(--text-muted)]">{formatDate(post.date)}</span>
-          <span className="text-xs text-[var(--text-muted)]">・{post.readTime}分で読める</span>
+          <span className="text-xs text-text-light">{formatDate(post.date)}</span>
+          <span className="text-xs text-text-light">・{post.readTime}分で読める</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] leading-tight">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-text-deep leading-tight">
           {post.title}
         </h1>
-        <p className="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">
+        <p className="mt-4 text-lg text-text-muted leading-relaxed">
           {post.description}
         </p>
       </header>
 
       {/* Divider */}
-      <div className="border-t border-[var(--border-color)] my-8" />
+      <div className="border-t border-border my-8" />
 
       {/* Content */}
       <ArticleContent htmlContent={post.htmlContent || ''} />
 
       {/* Back link */}
-      <div className="mt-12 pt-8 border-t border-[var(--border-color)]">
-        <a href="/" className="inline-flex items-center gap-2 text-sm text-[var(--accent-blue)] hover:opacity-80 transition-colors">
+      <div className="mt-12 pt-8 border-t border-border">
+        <a href="/" className="inline-flex items-center gap-2 text-sm text-accent-leaf hover:opacity-80 transition-colors">
           ← トップページに戻る
         </a>
       </div>

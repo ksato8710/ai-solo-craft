@@ -28,7 +28,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     <div>
       <div className="flex items-center gap-3 mb-8">
         <div className="w-1.5 h-8 rounded-full" style={{ backgroundColor: cat.color }} />
-        <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">{cat.emoji} {cat.label}</h1>
+        <h1 className="text-2xl font-extrabold font-heading text-text-deep">{cat.emoji} {cat.label}</h1>
       </div>
 
       {/* Products category uses filter chips */}
@@ -43,13 +43,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       ) : (
         <div className="text-center py-20">
           <p className="text-4xl mb-4">{cat.emoji}</p>
-          <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">まだ記事がありません</h2>
-          <p className="text-[var(--text-secondary)]">まもなく配信されます。</p>
+          <h2 className="text-xl font-bold font-heading text-text-deep mb-2">まだ記事がありません</h2>
+          <p className="text-text-muted">まもなく配信されます。</p>
         </div>
       )}
 
       <div className="mt-8">
-        <a href="/" className="inline-flex items-center gap-2 text-sm text-[var(--accent-blue)] hover:opacity-80 transition-colors">
+        <a href="/" className="inline-flex items-center gap-2 text-sm text-accent-leaf hover:opacity-80 transition-colors">
           ← トップページに戻る
         </a>
       </div>

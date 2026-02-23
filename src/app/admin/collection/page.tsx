@@ -254,15 +254,15 @@ export default function NewsletterCollectionAdminPage() {
   }
 
   if (loading) {
-    return <div className="p-8 text-slate-300">Loading collection dashboard...</div>;
+    return <div className="p-8 text-text-muted">Loading collection dashboard...</div>;
   }
 
   return (
     <div className="p-8 max-w-7xl mx-auto space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-100">競合ニュースレター受信管理</h1>
-          <p className="text-sm text-slate-400 mt-2">
+          <h1 className="text-3xl font-bold font-heading text-text-deep">競合ニュースレター受信管理</h1>
+          <p className="text-sm text-text-light mt-2">
             `ktlabworks@gmail.com` を受信口として、実際に届いた競合ニュースレターを記録・監視します。
           </p>
         </div>
@@ -270,19 +270,19 @@ export default function NewsletterCollectionAdminPage() {
         <div className="flex gap-2">
           <a
             href="/admin/schedules"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             配信スケジュール
           </a>
           <a
             href="/admin/source-intelligence"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             Source管理
           </a>
           <a
             href="/admin"
-            className="inline-flex items-center rounded-lg border border-slate-600 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/40"
+            className="inline-flex items-center rounded-lg border border-border px-3 py-2 text-sm text-text-muted hover:bg-bg-warm"
           >
             ← 管理トップ
           </a>
@@ -290,28 +290,28 @@ export default function NewsletterCollectionAdminPage() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <Metric label="Total Logs" value={stats.total} color="text-slate-100" />
-        <Metric label="24h Logs" value={stats.last24h} color="text-sky-200" />
-        <Metric label="Active Sources" value={stats.activeSchedules} color="text-violet-200" />
-        <Metric label="24h Covered" value={stats.coveredSourcesLast24h} color="text-emerald-200" />
-        <Metric label="Missing" value={stats.missingSources.length} color="text-amber-200" />
+        <Metric label="Total Logs" value={stats.total} color="text-text-deep" />
+        <Metric label="24h Logs" value={stats.last24h} color="text-cat-tool" />
+        <Metric label="Active Sources" value={stats.activeSchedules} color="text-accent-bark" />
+        <Metric label="24h Covered" value={stats.coveredSourcesLast24h} color="text-accent-leaf" />
+        <Metric label="Missing" value={stats.missingSources.length} color="text-accent-bloom" />
       </div>
 
       {error && (
-        <div className="rounded border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+        <div className="rounded border border-danger/40 bg-danger/10 px-3 py-2 text-sm text-danger">
           {error}
         </div>
       )}
 
-      <section className="rounded-xl border border-slate-700 bg-slate-800/40 p-5 space-y-4">
-        <h2 className="text-lg font-semibold text-slate-100">受信ログ追加（手動）</h2>
+      <section className="rounded-[--radius-card] border border-border bg-bg-card p-5 space-y-4">
+        <h2 className="text-lg font-semibold font-heading text-text-deep">受信ログ追加（手動）</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <Field label="ニュースレターソース">
             <select
               value={form.source_id}
               onChange={(event) => setForm((prev) => ({ ...prev, source_id: event.target.value }))}
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             >
               <option value="">Select source</option>
               {sources.map((source) => (
@@ -329,7 +329,7 @@ export default function NewsletterCollectionAdminPage() {
               onChange={(event) =>
                 setForm((prev) => ({ ...prev, observed_at_local: event.target.value }))
               }
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -338,7 +338,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.collector_inbox}
               onChange={(event) => setForm((prev) => ({ ...prev, collector_inbox: event.target.value }))}
               placeholder="ktlabworks@gmail.com"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -347,7 +347,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.from_email}
               onChange={(event) => setForm((prev) => ({ ...prev, from_email: event.target.value }))}
               placeholder="news@daily.therundown.ai"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -356,7 +356,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.subject}
               onChange={(event) => setForm((prev) => ({ ...prev, subject: event.target.value }))}
               placeholder="件名を入力"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -365,7 +365,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.read_online_url}
               onChange={(event) => setForm((prev) => ({ ...prev, read_online_url: event.target.value }))}
               placeholder="https://..."
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -374,7 +374,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.archive_url}
               onChange={(event) => setForm((prev) => ({ ...prev, archive_url: event.target.value }))}
               placeholder="https://mail.google.com/..."
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -383,7 +383,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.message_id_header}
               onChange={(event) => setForm((prev) => ({ ...prev, message_id_header: event.target.value }))}
               placeholder="<message-id@example.com>"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -392,7 +392,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.gmail_labels}
               onChange={(event) => setForm((prev) => ({ ...prev, gmail_labels: event.target.value }))}
               placeholder="newsletter, competitor, tier-a"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -401,7 +401,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.gmail_thread_id}
               onChange={(event) => setForm((prev) => ({ ...prev, gmail_thread_id: event.target.value }))}
               placeholder="thread-id"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -410,7 +410,7 @@ export default function NewsletterCollectionAdminPage() {
               value={form.gmail_message_id}
               onChange={(event) => setForm((prev) => ({ ...prev, gmail_message_id: event.target.value }))}
               placeholder="message-id"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
 
@@ -420,7 +420,7 @@ export default function NewsletterCollectionAdminPage() {
               onChange={(event) => setForm((prev) => ({ ...prev, notes: event.target.value }))}
               rows={3}
               placeholder="受信遅延や補足メモ"
-              className="w-full rounded border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-100"
+              className="w-full rounded border border-border bg-bg-cream px-3 py-2 text-sm text-text-deep"
             />
           </Field>
         </div>
@@ -428,16 +428,16 @@ export default function NewsletterCollectionAdminPage() {
         <button
           onClick={() => void submitObservation()}
           disabled={submitting}
-          className="rounded bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-4 py-2 text-sm font-medium text-white"
+          className="rounded bg-accent-leaf hover:bg-accent-moss disabled:opacity-50 px-4 py-2 text-sm font-medium text-white"
         >
           {submitting ? 'Saving...' : '＋ 受信ログを追加'}
         </button>
       </section>
 
-      <section className="rounded-xl border border-slate-700 bg-slate-800/40 p-5 space-y-3">
-        <h2 className="text-lg font-semibold text-slate-100">未受信アラート（過去24時間）</h2>
+      <section className="rounded-[--radius-card] border border-border bg-bg-card p-5 space-y-3">
+        <h2 className="text-lg font-semibold font-heading text-text-deep">未受信アラート（過去24時間）</h2>
         {stats.missingSources.length === 0 ? (
-          <p className="text-sm text-emerald-300">アクティブなニュースレターは24時間以内にすべて受信できています。</p>
+          <p className="text-sm text-accent-moss">アクティブなニュースレターは24時間以内にすべて受信できています。</p>
         ) : (
           <ul className="space-y-2">
             {stats.missingSources.map((sourceId) => {
@@ -445,7 +445,7 @@ export default function NewsletterCollectionAdminPage() {
               return (
                 <li
                   key={sourceId}
-                  className="rounded border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-200"
+                  className="rounded border border-accent-bloom/30 bg-accent-bloom/10 px-3 py-2 text-sm text-accent-bloom"
                 >
                   {source?.name || sourceId} の受信ログが過去24時間にありません。
                 </li>
@@ -455,33 +455,33 @@ export default function NewsletterCollectionAdminPage() {
         )}
       </section>
 
-      <section className="rounded-xl border border-slate-700 bg-slate-800/40 p-5 space-y-4">
-        <h2 className="text-lg font-semibold text-slate-100">最新の受信ログ</h2>
+      <section className="rounded-[--radius-card] border border-border bg-bg-card p-5 space-y-4">
+        <h2 className="text-lg font-semibold font-heading text-text-deep">最新の受信ログ</h2>
 
         <div className="space-y-3">
           {observations.map((obs) => {
             const labels = obs.gmail_labels || [];
             return (
-              <article key={obs.id} className="rounded border border-slate-700 bg-slate-900/40 p-4 space-y-2">
+              <article key={obs.id} className="rounded border border-border bg-bg-cream p-4 space-y-2">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <h3 className="text-sm font-semibold text-slate-100">
+                      <h3 className="text-sm font-semibold text-text-deep">
                         {obs.source?.name || 'Unknown source'}
                       </h3>
-                      <span className="rounded border border-slate-600 bg-slate-800 px-2 py-0.5 text-xs text-slate-300">
+                      <span className="rounded border border-border bg-bg-card px-2 py-0.5 text-xs text-text-muted">
                         {formatDateTime(obs.observed_at)}
                       </span>
                     </div>
-                    <p className="text-sm text-slate-200">{obs.subject}</p>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-sm text-text-muted">{obs.subject}</p>
+                    <p className="text-xs text-text-light">
                       from: {obs.from_email} / inbox: {obs.collector_inbox}
                     </p>
                   </div>
 
                   <button
                     onClick={() => void deleteObservation(obs.id)}
-                    className="rounded bg-slate-700 hover:bg-red-600 px-3 py-1 text-xs text-slate-100"
+                    className="rounded bg-bg-warm hover:bg-danger px-3 py-1 text-xs text-text-deep hover:text-white"
                   >
                     Delete
                   </button>
@@ -494,7 +494,7 @@ export default function NewsletterCollectionAdminPage() {
                         href={obs.read_online_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-300 hover:text-blue-200 underline"
+                        className="text-accent-leaf hover:text-accent-moss underline"
                       >
                         Read Online
                       </a>
@@ -504,7 +504,7 @@ export default function NewsletterCollectionAdminPage() {
                         href={obs.archive_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-300 hover:text-slate-100 underline"
+                        className="text-text-muted hover:text-text-deep underline"
                       >
                         Gmail Link
                       </a>
@@ -517,7 +517,7 @@ export default function NewsletterCollectionAdminPage() {
                     {labels.map((label) => (
                       <span
                         key={`${obs.id}-${label}`}
-                        className="rounded border border-violet-500/30 bg-violet-500/10 px-2 py-0.5 text-xs text-violet-200"
+                        className="rounded border border-accent-bark/30 bg-accent-bark/10 px-2 py-0.5 text-xs text-accent-bark"
                       >
                         {label}
                       </span>
@@ -525,13 +525,13 @@ export default function NewsletterCollectionAdminPage() {
                   </div>
                 )}
 
-                {obs.notes && <p className="text-xs text-slate-400">Note: {obs.notes}</p>}
+                {obs.notes && <p className="text-xs text-text-light">Note: {obs.notes}</p>}
               </article>
             );
           })}
 
           {observations.length === 0 && (
-            <p className="rounded border border-slate-700 bg-slate-900/30 px-3 py-4 text-sm text-slate-400">
+            <p className="rounded border border-border bg-bg-cream px-3 py-4 text-sm text-text-light">
               受信ログがまだありません。上のフォームから最初の記録を追加してください。
             </p>
           )}
@@ -543,8 +543,8 @@ export default function NewsletterCollectionAdminPage() {
 
 function Metric({ label, value, color }: { label: string; value: number; color: string }) {
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-800/40 p-3">
-      <p className="text-xs uppercase tracking-wide text-slate-400">{label}</p>
+    <div className="rounded-lg border border-border bg-bg-card p-3">
+      <p className="text-xs uppercase tracking-wide text-text-light">{label}</p>
       <p className={`text-2xl font-semibold mt-1 ${color}`}>{value}</p>
     </div>
   );
@@ -561,7 +561,7 @@ function Field({
 }) {
   return (
     <label className={className}>
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-text-light">{label}</span>
       {children}
     </label>
   );

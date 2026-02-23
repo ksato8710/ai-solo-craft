@@ -13,10 +13,10 @@ export default async function NewsPage() {
     <div>
       {/* Page Header */}
       <section className="mb-8">
-        <h1 className="text-3xl font-extrabold text-[var(--text-primary)] mb-2">
+        <h1 className="text-3xl font-extrabold font-heading text-text-deep mb-2">
           📰 ニュースセンター
         </h1>
-        <p className="text-[var(--text-secondary)]">
+        <p className="text-text-muted">
           AI開発の最新ニュース・ナレッジ・事例をまとめてチェック
         </p>
       </section>
@@ -27,7 +27,7 @@ export default async function NewsPage() {
       <div className="mt-8">
         <a
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-[var(--accent-blue)] hover:opacity-80 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-accent-leaf hover:opacity-80 transition-colors"
         >
           ← トップページに戻る
         </a>

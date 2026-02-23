@@ -27,10 +27,10 @@ export default function RelatedProductCard({ product }: RelatedProductCardProps)
   return (
     <a
       href={`/products/${product.slug}`}
-      className="group flex-shrink-0 w-[280px] snap-start rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 hover:border-[var(--accent-purple)]/30 overflow-hidden"
+      className="group flex-shrink-0 w-[280px] snap-start rounded-xl border border-border bg-bg-card hover:bg-bg-warm transition-all duration-200 hover:border-accent-bark/30 overflow-hidden"
     >
       {/* サムネイル */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--bg-secondary)]">
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-bg-warm">
         <Image
           src={product.image || defaultImage}
           alt={product.title}
@@ -40,17 +40,17 @@ export default function RelatedProductCard({ product }: RelatedProductCardProps)
         />
         {/* カテゴリバッジ */}
         <div className="absolute top-2 left-2">
-          <span className="text-[10px] font-semibold px-2 py-1 rounded-full bg-[var(--accent-purple)]/90 text-white backdrop-blur-sm">
+          <span className="text-[10px] font-semibold px-2 py-1 rounded-full bg-accent-bark/90 text-white backdrop-blur-sm">
             {getCategoryLabel()}
           </span>
         </div>
       </div>
       {/* テキスト */}
       <div className="p-4">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-purple)] transition-colors line-clamp-2 leading-snug">
+        <h3 className="font-heading text-sm font-semibold text-text-deep group-hover:text-accent-bark transition-colors line-clamp-2 leading-snug">
           {product.title}
         </h3>
-        <p className="mt-2 text-xs text-[var(--text-muted)] line-clamp-2">
+        <p className="mt-2 text-xs text-text-light line-clamp-2">
           {product.description}
         </p>
       </div>

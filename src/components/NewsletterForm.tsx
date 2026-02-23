@@ -49,14 +49,14 @@ export default function NewsletterForm({ variant = 'inline', onSuccess }: Newsle
   if (state === 'success') {
     return (
       <div className={`flex items-center gap-3 ${variant === 'footer' ? 'justify-center' : ''}`}>
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/20">
-          <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-accent-leaf/20">
+          <svg className="w-5 h-5 text-accent-leaf" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
         <div>
-          <p className="text-sm font-medium text-[var(--text-primary)]">{message}</p>
-          <p className="text-xs text-[var(--text-muted)] mt-0.5">受信箱をご確認ください</p>
+          <p className="text-sm font-medium text-text-deep">{message}</p>
+          <p className="text-xs text-text-light mt-0.5">受信箱をご確認ください</p>
         </div>
       </div>
     );
@@ -90,10 +90,10 @@ export default function NewsletterForm({ variant = 'inline', onSuccess }: Newsle
           required
           className={`
             flex-1 px-4 py-2.5 rounded-lg
-            bg-[var(--bg-primary)] border border-[var(--border-color)]
-            text-[var(--text-primary)] placeholder:text-[var(--text-muted)]
+            bg-bg-cream border border-border
+            text-text-deep placeholder:text-text-light
             text-sm
-            focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50
+            focus:outline-none focus:ring-2 focus:ring-accent-leaf/50 focus:border-accent-leaf/50
             transition-all
             ${isCompact ? 'py-2 text-xs' : ''}
           `}
@@ -103,9 +103,9 @@ export default function NewsletterForm({ variant = 'inline', onSuccess }: Newsle
           disabled={state === 'loading'}
           className={`
             px-5 py-2.5 rounded-lg font-semibold text-white text-sm
-            bg-gradient-to-r from-blue-500 to-violet-500
-            hover:from-blue-600 hover:to-violet-600
-            focus:outline-none focus:ring-2 focus:ring-blue-500/50
+            bg-gradient-to-r from-accent-leaf to-accent-moss
+            hover:from-accent-moss hover:to-accent-moss
+            focus:outline-none focus:ring-2 focus:ring-accent-leaf/50
             disabled:opacity-60 disabled:cursor-not-allowed
             transition-all whitespace-nowrap
             ${isCompact ? 'px-4 py-2 text-xs' : ''}
@@ -126,7 +126,7 @@ export default function NewsletterForm({ variant = 'inline', onSuccess }: Newsle
       </div>
 
       {state === 'error' && message && (
-        <p className="mt-2 text-xs text-red-400">{message}</p>
+        <p className="mt-2 text-xs text-danger">{message}</p>
       )}
     </form>
   );

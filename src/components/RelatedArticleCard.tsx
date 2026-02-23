@@ -14,12 +14,12 @@ export default function RelatedArticleCard({ post }: RelatedArticleCardProps) {
   const defaultImage = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=200&fit=crop';
 
   return (
-    <a 
+    <a
       href={`/news/${post.slug}`}
-      className="group block h-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 hover:border-[var(--accent-blue)]/30 overflow-hidden"
+      className="group block h-full rounded-xl border border-border bg-bg-card hover:bg-bg-warm transition-all duration-200 hover:border-accent-leaf/30 overflow-hidden"
     >
       {/* サムネイル */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--bg-secondary)]">
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-bg-warm">
         <Image
           src={post.image || defaultImage}
           alt={post.title}
@@ -30,10 +30,10 @@ export default function RelatedArticleCard({ post }: RelatedArticleCardProps) {
       </div>
       {/* テキスト */}
       <div className="p-4">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-blue)] transition-colors line-clamp-2 leading-snug">
+        <h3 className="font-heading text-sm font-semibold text-text-deep group-hover:text-accent-leaf transition-colors line-clamp-2 leading-snug">
           {post.title}
         </h3>
-        <div className="mt-2 flex items-center gap-2 text-xs text-[var(--text-muted)]">
+        <div className="mt-2 flex items-center gap-2 text-xs text-text-light">
           <span>{formatDate(post.date)}</span>
           {post.readTime && (
             <>
