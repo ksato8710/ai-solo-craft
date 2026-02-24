@@ -198,6 +198,152 @@ SCIM（System for Cross-domain Identity Management）APIは、IdP（Okta, Azure 
 
 ---
 
+## 🤖 MCP Server — AIエージェントとの連携
+
+**公式ドキュメント:** [developers.figma.com/docs/figma-mcp-server](https://developers.figma.com/docs/figma-mcp-server/)
+
+### 概要
+
+**MCP（Model Context Protocol）Server**は、Figmaのデザイン情報をAIコーディングツール（Cursor、VS Code Copilot、Claude Code、Windsurf等）に提供するサーバー。2025年10月にベータ版として発表され、現在も機能拡張が続いている。
+
+MCPはAnthropicが策定した標準プロトコルで、AIエージェントが外部データソースにアクセスするための共通インターフェース。Figma MCP Serverを使うことで、「デザインを見ながらコードを書く」のではなく、**AIがデザインを直接理解してコードを生成**できるようになる。
+
+### 従来の課題
+
+これまでAIにデザイン情報を伝えるには:
+- スクリーンショットを貼り付ける
+- REST APIレスポンスをコピペする
+
+という手作業が必要だった。MCP Serverはこれを自動化し、**デザイン意図をLLMに直接伝える**。
+
+### 2つの接続方式
+
+| 方式 | 説明 | 用途 |
+|------|------|------|
+| **Desktop Server** | Figmaデスクトップアプリ経由でローカル起動 | 選択中のフレームをそのまま使用 |
+| **Remote Server** | Figmaホスト（`https://mcp.figma.com/mcp`）に直接接続 | FigmaリンクベースでURL指定 |
+
+Desktop Serverは`http://127.0.0.1:3845/mcp`でローカル起動。Remote ServerはFigma OAuth認証後に利用可能。
+
+### 対応クライアント
+
+| クライアント | Desktop | Remote | Skills対応 |
+|-------------|---------|--------|-----------|
+| **Claude Code** | ✓ | ✓ | [Claude Skills](https://claude.com/connectors/figma) |
+| **Codex (OpenAI)** | ✓ | ✓ | [Codex Skills](https://github.com/openai/skills/blob/main/skills/.curated/figma-implement-design/SKILL.md) |
+| **Cursor** | ✓ | ✓ | — |
+| **VS Code** | ✓ | ✓ | — |
+| **Windsurf** | ✓ | ✓ | — |
+| **Gemini CLI** | ✓ | ✓ | — |
+| **Kiro** | ✓ | ✓ | [Kiro Powers](https://kiro.dev/powers/) |
+| **Android Studio** | ✓ | ✓ | — |
+
+最新の対応状況は[MCP Catalog](https://www.figma.com/mcp-catalog)で確認。
+
+### 主要ツール一覧
+
+MCP Serverは複数の「ツール」を提供し、LLMが目的に応じて使い分ける:
+
+| ツール | 用途 |
+|--------|------|
+| `get_design_context` | デザインをコード（React + Tailwind等）に変換 |
+| `get_screenshot` | フレームのスクリーンショットを取得 |
+| `get_variable_defs` | 使用中の変数・スタイル（色、スペーシング等）を取得 |
+| `get_code_connect_map` | Figmaノードとコードコンポーネントのマッピングを取得 |
+| `add_code_connect_map` | Code Connectマッピングを追加 |
+| `get_metadata` | レイヤー構造のXML表現を取得 |
+| `get_figjam` | FigJamダイアグラムをXMLで取得 |
+| `generate_diagram` | Mermaid構文からFigJamダイアグラムを生成 |
+| `create_design_system_rules` | デザインシステムルールファイルを生成 |
+| `generate_figma_design` | **Claude Code専用**: UIをFigmaに送信 |
+| `whoami` | 認証ユーザー情報を取得 |
+
+### Skills（スキル）とは
+
+Skillsは、MCPツールの使い方をAIエージェントに教える**ワークフロー定義**。単体ツールの組み合わせ方、実行順序、結果の解釈方法を指示する。
+
+例:
+- デザインシステムコンポーネントをCode Connectでマッピング
+- デザインを本番コードに変換するワークフロー
+
+Claude Code、Codex、Kiroが対応。
+
+### セットアップ（Claude Code）
+
+```bash
+# Remote Server を追加
+claude mcp add --transport http figma https://mcp.figma.com/mcp
+
+# 全プロジェクトで使う場合
+claude mcp add --scope user --transport http figma https://mcp.figma.com/mcp
+```
+
+起動後、`/mcp` コマンドでfigmaを選択 → Authenticateで認証。
+
+### セットアップ（VS Code）
+
+1. `Cmd + Shift + P` → `MCP: Open User Configuration`
+2. `mcp.json` に以下を追加:
+
+```json
+{
+  "servers": {
+    "figma": {
+      "url": "https://mcp.figma.com/mcp",
+      "type": "http"
+    }
+  }
+}
+```
+
+3. 「Start」をクリック → 「Allow Access」で認証
+
+### セットアップ（Cursor）
+
+1. [Figma MCP server deep link](cursor://anysphere.cursor-deeplink/mcp/install?name=Figma&config=eyJ1cmwiOiJodHRwczovL21jcC5maWdtYS5jb20vbWNwIn0%3D)をクリック
+2. 「Install」→「Connect」→「Allow Access」
+
+### 使い方の例
+
+**選択ベース（Desktop Server）:**
+1. Figmaでフレームを選択
+2. AIに「選択中のデザインを実装して」とプロンプト
+
+**リンクベース（Remote Server）:**
+1. Figmaでフレームリンクをコピー
+2. AIに「このデザインを実装して: [リンク]」とプロンプト
+
+### Claude Code to Figma（逆方向）
+
+`generate_figma_design`ツールを使うと、**実行中のUIをFigmaに送り返す**ことも可能（Claude Code + Remote Server限定）。
+
+```
+"ローカルサーバーを起動して、UIをFigmaファイルにキャプチャして"
+```
+
+ブラウザウィンドウが開き、画面全体または要素を選択してFigmaに送信できる。
+
+### Code Connectとの連携
+
+[Code Connect](https://www.figma.com/code-connect-docs/)を設定すると、FigmaコンポーネントとコードベースのReactコンポーネントをマッピングできる。MCP ServerはこのマッピングをLLMに伝え、「正しいコンポーネントを使ったコード生成」を実現する。
+
+### ソロビルダーへの価値
+
+| シナリオ | 従来 | MCP活用 |
+|----------|------|---------|
+| Figmaデザインをコードに | スクショ貼り付け→プロンプト | リンク貼るだけでAIが構造理解 |
+| デザイントークン取得 | 手動で値を転記 | `get_variable_defs`で自動取得 |
+| コンポーネント一貫性 | 手動でimport調整 | Code Connect + MCPで自動マッピング |
+| FigJamアーキテクチャ図 | 手書き or 別ツール | Mermaid → `generate_diagram`で自動生成 |
+
+### 始め方
+
+1. **Claude Codeユーザー**: 上記コマンドでMCP追加 → すぐ使える
+2. **Cursorユーザー**: Deep linkからワンクリック設定
+3. **Code Connect未設定**: [Code Connectドキュメント](https://www.figma.com/code-connect-docs/)でコンポーネントマッピングを追加すると出力品質が向上
+
+---
+
 ## 📦 Embed Kit — デザインの埋め込み
 
 Figmaデザインやプロトタイプを外部サイトに埋め込むためのキット。リアルタイムで更新されるデザインを、ドキュメントやポートフォリオに簡単に組み込める。
@@ -217,20 +363,27 @@ Figmaデザインやプロトタイプを外部サイトに埋め込むための
 | デザイントークン抽出 | REST API | ⭐⭐ |
 | CI/CDパイプライン連携 | REST API + Webhooks | ⭐⭐⭐ |
 | デザインシステム分析 | REST API (Library analytics) | ⭐⭐ |
+| **AIコーディングツール連携** | **MCP Server** | ⭐ |
+| **デザイン→コード自動変換** | **MCP Server + Code Connect** | ⭐⭐ |
 
 ### 今日やること
 
-1. **環境セットアップ**: [Plugin クイックスタート](https://developers.figma.com/docs/plugins/plugin-quickstart-guide/)でサンプルを動かす（30分）
+1. **MCP Server 接続**（AIコーディングツール利用者向け）: Claude Code / Cursor / VS Code でMCP Serverを設定（10分）
 
-2. **Discordに参加**: [Figma Developers Discord](https://discord.gg/xzQhe2Vcvx)で質問できる環境を確保
+2. **環境セットアップ**: [Plugin クイックスタート](https://developers.figma.com/docs/plugins/plugin-quickstart-guide/)でサンプルを動かす（30分）
 
-3. **REST API トークン取得**: [Personal access tokens](https://www.figma.com/developers/api#access-tokens)でAPIキーを発行
+3. **Discordに参加**: [Figma Developers Discord](https://discord.gg/xzQhe2Vcvx)で質問できる環境を確保
+
+4. **REST API トークン取得**: [Personal access tokens](https://www.figma.com/developers/api#access-tokens)でAPIキーを発行
 
 ### 参考リソース
 
 | リソース | URL |
 |----------|-----|
 | 公式ドキュメント | [developers.figma.com](https://developers.figma.com/) |
+| **MCP Server ドキュメント** | [developers.figma.com/docs/figma-mcp-server](https://developers.figma.com/docs/figma-mcp-server/) |
+| **MCP Catalog（対応クライアント一覧）** | [figma.com/mcp-catalog](https://www.figma.com/mcp-catalog) |
+| **Code Connect** | [figma.com/code-connect-docs](https://www.figma.com/code-connect-docs/) |
 | GitHub サンプル | [figma/widget-samples](https://github.com/figma/widget-samples) |
 | OpenAPI 仕様 | [figma/rest-api-spec](https://github.com/figma/rest-api-spec) |
 | コミュニティプラグイン | [figma.com/community/plugins](https://www.figma.com/community/plugins) |
@@ -241,16 +394,19 @@ Figmaデザインやプロトタイプを外部サイトに埋め込むための
 
 ## まとめ
 
-Figma Developer Docsは、**4つのAPI**で構成される:
+Figma Developer Docsは、**5つの主要インターフェース**で構成される:
 
-| API | 一言でいうと |
-|-----|------------|
+| API / Server | 一言でいうと |
+|--------------|------------|
 | **Plugin API** | ファイル内の自動化（個人向け） |
 | **Widget API** | キャンバス上のコラボツール（チーム向け） |
 | **REST API** | 外部ツール連携（サーバーサイド） |
+| **MCP Server** | AIコーディングツール連携（デザイン→コード） |
 | **SCIM API** | ユーザー管理自動化（エンタープライズ） |
 
-ソロビルダーがまず触るべきは**Plugin API**。自分のワークフローを自動化するプラグインを作ることで、Figma開発の基礎が身につく。その後、ニーズに応じてREST APIやWidget APIに拡張していくのが王道。
+**2025年〜2026年の注目は MCP Server**。Claude Code、Cursor、VS Code等のAIコーディングツールを使うなら、まずMCP Serverを設定してデザイン→コードワークフローを試すのがおすすめ。
+
+プラグイン開発に興味があるなら**Plugin API**から始めて、自分のワークフローを自動化。その後、ニーズに応じてREST APIやWidget APIに拡張していくのが王道。
 
 Figmaは「Make design accessible to everyone」をミッションに掲げている。その一環として、開発者にも門戸を開いているのがこのDeveloper Docs。今日からFigma拡張開発を始めよう。
 
@@ -264,3 +420,5 @@ Figmaは「Make design accessible to everyone」をミッションに掲げて�
 ## 🏷️ 関連プロダクト
 
 - [Claude Code](/products/claude-code)
+- [Cursor](/products/cursor)
+- [Model Context Protocol (MCP)](/products/mcp)
