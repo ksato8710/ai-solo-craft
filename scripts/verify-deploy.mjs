@@ -2,32 +2,24 @@
 /**
  * verify-deploy.mjs
  * 
- * デプロイ後のURL検証をローカルから実行するスクリプト
- * Supabase Edge Functionを呼び出すか、直接検証を行う
+ * デプロイ後のURL検証スクリプト
+ * 主要ページが正常にアクセスできるか確認する
  * 
  * Usage:
- *   node scripts/verify-deploy.mjs [--urls url1,url2,...] [--slack]
- *   node scripts/verify-deploy.mjs --latest  # 最新のDigest + Top3を検証
- * 
- * Options:
- *   --urls <urls>     カンマ区切りのURL一覧
- *   --latest          最新のDigestとTop3記事を自動検証
- *   --slack           結果をSlackに通知
- *   --timeout <ms>    各URLのタイムアウト（デフォルト: 10000ms）
+ *   node scripts/verify-deploy.mjs              # デフォルトURL検証
+ *   node scripts/verify-deploy.mjs --urls url1,url2  # カスタムURL
+ *   node scripts/verify-deploy.mjs --slack      # Slack通知付き
  */
 
-import { createClient } from '@supabase/supabase-js';
-
-// dotenvはローカル実行時のみ（CI環境ではsecretsから環境変数が設定される）
-try {
-  const dotenv = await import('dotenv');
-  dotenv.config();
-} catch {
-  // dotenvが無くても環境変数から読める場合はOK
-}
-
 const BASE_URL = 'https://ai.essential-navigator.com';
-const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || '';
+
+// 検証対象の主要URL
+const DEFAULT_URLS = [
+  BASE_URL,
+  `${BASE_URL}/news`,
+  `${BASE_URL}/category/morning-summary`,
+  `${BASE_URL}/category/news`,
+];
 
 const args = process.argv.slice(2);
 const getArg = (name) => {
@@ -38,11 +30,11 @@ const hasFlag = (name) => args.includes(name);
 
 const TIMEOUT = parseInt(getArg('--timeout') || '10000', 10);
 const shouldNotifySlack = hasFlag('--slack');
-const isLatestMode = hasFlag('--latest');
+const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || '';
 
-async function verifyUrl(url, timeout = TIMEOUT) {
+async function verifyUrl(url) {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeout);
+  const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
 
   try {
     const response = await fetch(url, {
@@ -66,64 +58,6 @@ async function verifyUrl(url, timeout = TIMEOUT) {
       error: error.name === 'AbortError' ? 'Timeout' : error.message,
     };
   }
-}
-
-async function getLatestUrls() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!supabaseUrl || !supabaseKey) {
-    console.log('⚠️  Supabase credentials not set, using fallback URLs');
-    // フォールバック: ホームページと主要ページのみ検証
-    return [
-      BASE_URL,
-      `${BASE_URL}/news`,
-      `${BASE_URL}/category/morning-summary`,
-    ];
-  }
-
-  const supabase = createClient(supabaseUrl, supabaseKey);
-
-  // 最新のDigest（morning/evening）を取得
-  const { data: digests, error: digestError } = await supabase
-    .from('contents')
-    .select('slug, title')
-    .eq('content_type', 'digest')
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-    .limit(1);
-
-  if (digestError) throw digestError;
-
-  // 最新のニュース記事（Top3相当）を取得
-  const { data: news, error: newsError } = await supabase
-    .from('contents')
-    .select('slug, title')
-    .eq('content_type', 'news')
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-    .limit(3);
-
-  if (newsError) throw newsError;
-
-  const urls = [];
-  
-  // Digest URL
-  if (digests && digests.length > 0) {
-    urls.push(`${BASE_URL}/news/${digests[0].slug}`);
-  }
-
-  // News URLs
-  if (news) {
-    news.forEach(n => {
-      urls.push(`${BASE_URL}/news/${n.slug}`);
-    });
-  }
-
-  // Home page
-  urls.push(BASE_URL);
-
-  return urls;
 }
 
 async function sendSlackNotification(results) {
@@ -174,27 +108,18 @@ async function sendSlackNotification(results) {
 async function main() {
   console.log('🔍 デプロイ検証を開始...\n');
 
-  let urls = [];
-
-  if (isLatestMode) {
-    console.log('📰 最新記事のURLを取得中...');
-    urls = await getLatestUrls();
-  } else {
-    const urlArg = getArg('--urls');
-    if (urlArg) {
-      urls = urlArg.split(',').map(u => u.trim());
-    } else {
-      // デフォルト: ホームページのみ
-      urls = [BASE_URL];
-    }
-  }
+  // URL決定
+  const urlArg = getArg('--urls');
+  const urls = urlArg 
+    ? urlArg.split(',').map(u => u.trim())
+    : DEFAULT_URLS;
 
   console.log(`検証対象: ${urls.length}件\n`);
   urls.forEach(u => console.log(`  • ${u}`));
   console.log('');
 
   // 並列で検証
-  const results = await Promise.all(urls.map(url => verifyUrl(url)));
+  const results = await Promise.all(urls.map(verifyUrl));
 
   // 結果を表示
   console.log('📋 検証結果:\n');
