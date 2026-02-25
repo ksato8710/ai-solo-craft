@@ -60,20 +60,26 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
       - name: Notify Slack on failure
-        if: failure() && secrets.SLACK_WEBHOOK_URL != ''
+        if: failure()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          curl -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
-            -H "Content-Type: application/json" \
-            -d '{
-              "text": "❌ デプロイ検証失敗",
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {"type": "plain_text", "text": "❌ AI Solo Craft デプロイ検証失敗"}
-                },
-                {
-                  "type": "section",
-                  "text": {"type": "mrkdwn", "text": "URLの検証に失敗しました。\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|ログを確認>"}
-                }
-              ]
-            }'
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            curl -X POST "$SLACK_WEBHOOK_URL" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "text": "❌ デプロイ検証失敗",
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {"type": "plain_text", "text": "❌ AI Solo Craft デプロイ検証失敗"}
+                  },
+                  {
+                    "type": "section",
+                    "text": {"type": "mrkdwn", "text": "URLの検証に失敗しました。\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|ログを確認>"}
+                  }
+                ]
+              }'
+          else
+            echo "⚠️ SLACK_WEBHOOK_URL not configured, skipping notification"
+          fi
