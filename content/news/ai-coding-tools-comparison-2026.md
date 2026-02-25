@@ -13,13 +13,13 @@ tags:
   - Windsurf
   - AI開発ツール
 description: 2026年のAIコーディングツール主要4製品を徹底比較。ソロ開発者向けに機能・料金・用途別の最適な選び方を解説。
+readTime: 20
 source: AI Solo Craft オリジナル
 sourceUrl: 'https://ai-solo-craft.craftyard.studio/news/ai-coding-tools-comparison-2026'
 image: /thumbnails/ai-coding-tools-comparison-2026.png
 relatedProducts:
   - cursor
-  - github-copilot
-  - claude
+  - claude-code
 ---
 
 # AIコーディングツール完全比較 2026 — Claude Code/Cursor/Copilot/Windsurfの選び方

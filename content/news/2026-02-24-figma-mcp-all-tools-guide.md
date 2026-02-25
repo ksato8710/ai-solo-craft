@@ -619,4 +619,3 @@ Figma MCP Serverの全13ツールを4カテゴリで整理:
 
 - [Claude Code](/products/claude-code)
 - [Cursor](/products/cursor)
-- [Model Context Protocol (MCP)](/products/mcp)

@@ -14,6 +14,7 @@ tags:
 description: >-
   Business
   Insiderが取材した2人のソロ創業者の事例を分析。$20/月のAIツールでウェブサイト構築、15体のAIエージェント「評議会」で週20時間を節約。あなたのビジネスにも適用できる具体的な教訓を解説。
+readTime: 15
 source: Business Insider
 sourceUrl: >-
   https://www.businessinsider.com/solo-business-owner-ai-subscription-no-employees-2026-2

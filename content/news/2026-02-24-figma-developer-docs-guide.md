@@ -429,4 +429,3 @@ Figmaは「Make design accessible to everyone」をミッションに掲げて�
 
 - [Claude Code](/products/claude-code)
 - [Cursor](/products/cursor)
-- [Model Context Protocol (MCP)](/products/mcp)
