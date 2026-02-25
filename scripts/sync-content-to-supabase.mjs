@@ -249,6 +249,75 @@ function dedupeRows(rows, keyFn) {
   return [...m.values()];
 }
 
+/**
+ * Parse ranking items from digest body_markdown
+ * Expected format:
+ *   ### 1. [タイトル](/news/slug)
+ *   **出典:** [ソース名](URL) — 日付
+ */
+function parseDigestRankingItems(bodyMarkdown) {
+  if (!bodyMarkdown) return [];
+
+  const items = [];
+  const lines = bodyMarkdown.split(/\r?\n/);
+
+  let currentRank = null;
+  let currentHeadline = null;
+  let currentSlug = null;
+  let currentSourceUrl = null;
+
+  for (const line of lines) {
+    // Match: ### 1. [タイトル](/news/slug) or ### 1. [タイトル](https://...)
+    const rankMatch = line.match(/^###\s*(\d+)\.\s*\[([^\]]+)\]\(([^)]+)\)/);
+    if (rankMatch) {
+      // Save previous item if exists
+      if (currentRank !== null && currentHeadline) {
+        items.push({
+          rank: currentRank,
+          headline: currentHeadline,
+          slug: currentSlug,
+          sourceUrl: currentSourceUrl,
+        });
+      }
+
+      currentRank = parseInt(rankMatch[1], 10);
+      currentHeadline = rankMatch[2].trim();
+
+      const linkTarget = rankMatch[3].trim();
+      // Check if it's internal link (/news/slug) or external
+      if (linkTarget.startsWith('/news/')) {
+        currentSlug = linkTarget.replace('/news/', '');
+        currentSourceUrl = null;
+      } else {
+        currentSlug = null;
+        currentSourceUrl = linkTarget.startsWith('http') ? linkTarget : null;
+      }
+      continue;
+    }
+
+    // Match: **出典:** [ソース名](URL)
+    const sourceMatch = line.match(/\*\*出典:\*\*\s*\[([^\]]*)\]\(([^)]+)\)/);
+    if (sourceMatch && currentRank !== null) {
+      const sourceUrl = sourceMatch[2].trim();
+      if (sourceUrl.startsWith('http') && !currentSourceUrl) {
+        currentSourceUrl = sourceUrl;
+      }
+    }
+  }
+
+  // Save last item
+  if (currentRank !== null && currentHeadline) {
+    items.push({
+      rank: currentRank,
+      headline: currentHeadline,
+      slug: currentSlug,
+      sourceUrl: currentSourceUrl,
+    });
+  }
+
+  return items;
+}
+
 function dedupeDigestSlots(records) {
   const kept = new Map();
   const notes = [];
@@ -518,6 +587,88 @@ async function main() {
     supabase
   );
 
+  // ── Sync digest_rankings and digest_ranking_items ──
+  const digestRecords = records.filter((r) => r.contentType === 'digest');
+  const digestContentIds = digestRecords
+    .map((r) => contentBySlug.get(r.slug)?.id)
+    .filter(Boolean);
+
+  // Delete existing rankings for these digests (to refresh)
+  if (digestContentIds.length > 0) {
+    // First get ranking IDs to delete items
+    const { data: existingRankings } = await supabase
+      .from('digest_rankings')
+      .select('id')
+      .in('digest_content_id', digestContentIds);
+
+    const existingRankingIds = (existingRankings || []).map((r) => r.id);
+    if (existingRankingIds.length > 0) {
+      await supabase.from('digest_ranking_items').delete().in('ranking_id', existingRankingIds);
+      await supabase.from('digest_rankings').delete().in('id', existingRankingIds);
+    }
+  }
+
+  // Build slug -> content_id map for news articles
+  const newsSlugToId = new Map(
+    savedContents
+      .filter((c) => c.content_type === 'news')
+      .map((c) => [c.slug, c.id])
+  );
+
+  let rankingsCreated = 0;
+  let rankingItemsCreated = 0;
+
+  for (const digestRecord of digestRecords) {
+    const digestContent = contentBySlug.get(digestRecord.slug);
+    if (!digestContent) continue;
+
+    const parsedItems = parseDigestRankingItems(digestRecord.content);
+    if (parsedItems.length === 0) continue;
+
+    // Create digest_rankings record
+    const digestDate = new Date(`${digestRecord.date}T00:00:00Z`);
+    const windowStart = new Date(digestDate);
+    windowStart.setDate(windowStart.getDate() - 1);
+
+    const { data: rankingData, error: rankingError } = await supabase
+      .from('digest_rankings')
+      .insert({
+        digest_content_id: digestContent.id,
+        window_start: windowStart.toISOString(),
+        window_end: digestDate.toISOString(),
+        top_n: Math.min(parsedItems.length, 10),
+      })
+      .select('id')
+      .single();
+
+    if (rankingError) {
+      console.warn(`⚠ Failed to create ranking for ${digestRecord.slug}: ${rankingError.message}`);
+      continue;
+    }
+
+    rankingsCreated++;
+
+    // Create ranking items
+    const itemRows = parsedItems.map((item) => ({
+      ranking_id: rankingData.id,
+      rank: item.rank,
+      headline: item.headline,
+      nva_total: 80, // Default score since not in body_markdown
+      source_url: item.sourceUrl,
+      news_content_id: item.slug ? newsSlugToId.get(item.slug) || null : null,
+    }));
+
+    const { error: itemsError } = await supabase
+      .from('digest_ranking_items')
+      .insert(itemRows);
+
+    if (itemsError) {
+      console.warn(`⚠ Failed to create ranking items for ${digestRecord.slug}: ${itemsError.message}`);
+    } else {
+      rankingItemsCreated += itemRows.length;
+    }
+  }
+
   console.log('✅ sync-content-to-supabase: completed');
   console.log(`- contents: ${contentRows.length}`);
   console.log(`- digest_details: ${digestRows.length}`);
@@ -525,6 +676,8 @@ async function main() {
   console.log(`- tags: ${tagRows.length}`);
   console.log(`- content_tags: ${contentTagRows.length}`);
   console.log(`- content_product_links: ${productLinkRows.length}`);
+  console.log(`- digest_rankings: ${rankingsCreated}`);
+  console.log(`- digest_ranking_items: ${rankingItemsCreated}`);
   if (duplicateNotes.length > 0) {
     console.warn('\\n⚠ Deduped duplicated slugs before sync:');
     for (const item of duplicateNotes) {

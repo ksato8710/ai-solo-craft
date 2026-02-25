@@ -119,6 +119,23 @@ function extractActionLines(digestBody?: string | null): string[] {
   return actionLines.slice(0, 3);
 }
 
+// craftGarden Design System Colors
+const colors = {
+  bgCream: '#FAFAF5',
+  bgWarm: '#F5F2EC',
+  bgCard: '#F0EDE6',
+  textDeep: '#2D3B2E',
+  textMuted: '#5C7260',
+  textLight: '#8A9E8C',
+  accentLeaf: '#6B8F71',
+  accentSage: '#9BB09E',
+  accentMoss: '#4A7051',
+  accentBark: '#8B7355',
+  accentBloom: '#C4926B',
+  border: 'rgba(107, 143, 113, 0.12)',
+  borderHover: 'rgba(107, 143, 113, 0.25)',
+};
+
 export function MorningDigestEmail({
   title,
   date,
@@ -144,33 +161,32 @@ export function MorningDigestEmail({
         <Container style={containerStyle}>
           <EmailHeader />
 
+          {/* Hero Card */}
           <Section style={heroCardStyle}>
-            <Text style={eyebrowStyle}>AI SOLO BUILDER 朝刊</Text>
+            <Text style={eyebrowStyle}>AI SOLO CRAFT 朝刊</Text>
             <Text style={dateStyle}>{formatDate(date)}</Text>
             <Text style={titleStyle}>{title}</Text>
             <Text style={descriptionStyle}>{description}</Text>
             <Section style={heroLinkRowStyle}>
               <Link href={digestUrl} style={heroInlineLinkStyle}>
-                Web版で読む
-              </Link>
-              <Text style={heroDividerStyle}>|</Text>
-              <Link href={`${siteUrl}/newsletter/confirmed`} style={heroInlineLinkStyle}>
-                配信案内
+                Web版で読む →
               </Link>
             </Section>
           </Section>
 
+          {/* Today's Topics */}
           {rundownLines.length > 0 && (
             <Section style={summaryCardStyle}>
-              <Text style={sectionTitleStyle}>本日の主要トピック</Text>
+              <Text style={sectionTitleStyle}>🌱 本日の主要トピック</Text>
               {rundownLines.map((line, index) => (
                 <Text key={`rundown-${index}`} style={summaryLineStyle}>
-                  • {line}
+                  {index + 1}. {line}
                 </Text>
               ))}
             </Section>
           )}
 
+          {/* Top 3 Stories */}
           {top3.map((item) => {
             const articleUrl = item.article?.slug ? `${siteUrl}/news/${item.article.slug}` : null;
             const primaryUrl = item.article?.primarySourceUrl || item.source_url;
@@ -183,20 +199,21 @@ export function MorningDigestEmail({
             return (
               <Section key={`top-${item.rank}`} style={storyCardStyle}>
                 <Text style={storyKickerStyle}>
-                  注目トピック #{item.rank} ・ NVA {item.nva_total}
+                  #{item.rank} 注目トピック
                 </Text>
                 <Text style={storyHeadlineStyle}>{item.headline}</Text>
 
                 {summaryText && (
                   <Text style={storyParagraphStyle}>
-                    <strong>概要:</strong> {summaryText}
+                    {summaryText}
                   </Text>
                 )}
 
                 {whyText && (
-                  <Text style={storyParagraphStyle}>
-                    <strong>なぜ重要か:</strong> {whyText}
-                  </Text>
+                  <Section style={whyBoxStyle}>
+                    <Text style={whyLabelStyle}>💡 なぜ重要か</Text>
+                    <Text style={whyTextStyle}>{whyText}</Text>
+                  </Section>
                 )}
 
                 {renderedPoints.length > 0 && (
@@ -212,17 +229,17 @@ export function MorningDigestEmail({
                 <Section style={linkRowStyle}>
                   {primaryUrl && (
                     <Link href={primaryUrl} style={tagLinkPrimaryStyle}>
-                      公式発表（原文）
+                      公式発表を見る
                     </Link>
                   )}
                   {japaneseUrl && (
                     <Link href={japaneseUrl} style={tagLinkSecondaryStyle}>
-                      日本語の解説記事
+                      日本語解説
                     </Link>
                   )}
                   {articleUrl && (
                     <Link href={articleUrl} style={tagLinkNeutralStyle}>
-                      本サイトの詳細解説
+                      詳細記事
                     </Link>
                   )}
                 </Section>
@@ -230,35 +247,37 @@ export function MorningDigestEmail({
             );
           })}
 
+          {/* Quick Hits */}
           {quickHits.length > 0 && (
             <Section style={quickHitsCardStyle}>
-              <Text style={sectionTitleStyle}>速報一覧</Text>
+              <Text style={sectionTitleStyle}>📋 その他のニュース</Text>
               {quickHits.map((item) => (
                 <Text key={`quick-${item.rank}`} style={quickHitLineStyle}>
-                  <span style={quickRankStyle}>#{item.rank}</span> {item.headline}{' '}
-                  <span style={quickNvaStyle}>({item.nva_total})</span>
+                  <span style={quickRankStyle}>#{item.rank}</span> {item.headline}
                 </Text>
               ))}
             </Section>
           )}
 
+          {/* Action Items */}
           {actionLines.length > 0 && (
             <Section style={actionsCardStyle}>
-              <Text style={sectionTitleStyle}>今日の実行アクション</Text>
+              <Text style={sectionTitleStyle}>✅ 今日の実行アクション</Text>
               {actionLines.map((line, idx) => (
-                <Text key={`action-${idx}`} style={summaryLineStyle}>
+                <Text key={`action-${idx}`} style={actionLineStyle}>
                   {idx + 1}. {line}
                 </Text>
               ))}
             </Section>
           )}
 
+          {/* CTA */}
           <Section style={ctaContainerStyle}>
             <Text style={ctaCopyStyle}>
-              全文では、各トピックを「今やる / 後でやる / 見送り」の判断軸まで分解しています。
+              各トピックを「今やる / 後でやる / 見送り」の判断軸まで分解しています
             </Text>
             <Button href={digestUrl} style={ctaButtonStyle}>
-              サイトで詳細分析を読む
+              サイトで詳細を読む
             </Button>
           </Section>
 
@@ -272,143 +291,163 @@ export function MorningDigestEmail({
 
 export default MorningDigestEmail;
 
+// ─────────────────────────────────────────────────────────────
+// craftGarden Design System Styles
+// ─────────────────────────────────────────────────────────────
+
 const bodyStyle: React.CSSProperties = {
-  backgroundColor: '#0f0f0f',
-  fontFamily:
-    "'IBM Plex Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Segoe UI', sans-serif",
+  backgroundColor: colors.bgCream,
+  fontFamily: "'DM Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif",
   margin: '0',
   padding: '0',
 };
 
 const containerStyle: React.CSSProperties = {
-  maxWidth: '640px',
+  maxWidth: '600px',
   margin: '0 auto',
-  padding: '18px',
+  padding: '24px 16px',
 };
 
 const heroCardStyle: React.CSSProperties = {
-  backgroundColor: '#f5f0e4',
-  border: '2px solid #1f1f1f',
-  borderRadius: '10px',
-  padding: '18px',
-  marginBottom: '14px',
+  backgroundColor: colors.bgCard,
+  border: `1px solid ${colors.border}`,
+  borderRadius: '16px',
+  padding: '24px',
+  marginBottom: '16px',
 };
 
 const eyebrowStyle: React.CSSProperties = {
   fontSize: '11px',
-  letterSpacing: '0.08em',
-  color: '#6a2018',
-  margin: '0 0 6px',
-  fontWeight: 700,
+  letterSpacing: '0.1em',
+  color: colors.accentLeaf,
+  margin: '0 0 8px',
+  fontWeight: 600,
+  textTransform: 'uppercase' as const,
 };
 
 const dateStyle: React.CSSProperties = {
-  fontSize: '12px',
-  color: '#3f3a34',
-  margin: '0 0 8px',
+  fontSize: '13px',
+  color: colors.textLight,
+  margin: '0 0 12px',
 };
 
 const titleStyle: React.CSSProperties = {
-  fontFamily: "'Merriweather', 'Hiragino Mincho ProN', 'Yu Mincho', serif",
-  fontSize: '26px',
+  fontFamily: "'Nunito', 'Hiragino Kaku Gothic ProN', sans-serif",
+  fontSize: '24px',
   lineHeight: '1.35',
-  color: '#151515',
-  margin: '0 0 10px',
+  color: colors.textDeep,
+  margin: '0 0 12px',
   fontWeight: 700,
 };
 
 const descriptionStyle: React.CSSProperties = {
   fontSize: '15px',
   lineHeight: '1.7',
-  color: '#2b2a28',
+  color: colors.textMuted,
   margin: '0',
 };
 
 const heroLinkRowStyle: React.CSSProperties = {
-  marginTop: '12px',
+  marginTop: '16px',
 };
 
 const heroInlineLinkStyle: React.CSSProperties = {
-  fontSize: '12px',
-  color: '#8a1c11',
-  textDecoration: 'underline',
-};
-
-const heroDividerStyle: React.CSSProperties = {
-  display: 'inline-block',
-  margin: '0 8px',
-  color: '#6d655b',
-  fontSize: '12px',
+  fontSize: '14px',
+  color: colors.accentLeaf,
+  textDecoration: 'none',
+  fontWeight: 600,
 };
 
 const sectionTitleStyle: React.CSSProperties = {
-  fontFamily: "'Merriweather', 'Hiragino Mincho ProN', 'Yu Mincho', serif",
-  color: '#f7f7f7',
-  fontSize: '18px',
-  margin: '0 0 10px',
+  fontFamily: "'Nunito', 'Hiragino Kaku Gothic ProN', sans-serif",
+  color: colors.textDeep,
+  fontSize: '16px',
+  margin: '0 0 12px',
   fontWeight: 700,
 };
 
 const summaryCardStyle: React.CSSProperties = {
-  backgroundColor: '#1c1b19',
-  borderRadius: '10px',
-  padding: '16px',
-  marginBottom: '14px',
+  backgroundColor: colors.bgWarm,
+  borderRadius: '16px',
+  padding: '20px',
+  marginBottom: '16px',
 };
 
 const summaryLineStyle: React.CSSProperties = {
-  color: '#efebe3',
+  color: colors.textMuted,
   fontSize: '14px',
   lineHeight: '1.6',
   margin: '0 0 8px',
 };
 
 const storyCardStyle: React.CSSProperties = {
-  backgroundColor: '#171717',
-  border: '1px solid #393630',
-  borderRadius: '10px',
-  padding: '16px',
+  backgroundColor: colors.bgCard,
+  border: `1px solid ${colors.border}`,
+  borderRadius: '16px',
+  padding: '20px',
   marginBottom: '12px',
 };
 
 const storyKickerStyle: React.CSSProperties = {
-  fontSize: '11px',
-  color: '#dca35d',
-  letterSpacing: '0.05em',
-  margin: '0 0 7px',
-  fontWeight: 700,
+  fontSize: '12px',
+  color: colors.accentBloom,
+  letterSpacing: '0.03em',
+  margin: '0 0 8px',
+  fontWeight: 600,
 };
 
 const storyHeadlineStyle: React.CSSProperties = {
-  fontFamily: "'Merriweather', 'Hiragino Mincho ProN', 'Yu Mincho', serif",
-  fontSize: '21px',
-  lineHeight: '1.35',
-  color: '#f6f2eb',
-  margin: '0 0 10px',
+  fontFamily: "'Nunito', 'Hiragino Kaku Gothic ProN', sans-serif",
+  fontSize: '18px',
+  lineHeight: '1.4',
+  color: colors.textDeep,
+  margin: '0 0 12px',
   fontWeight: 700,
 };
 
 const storyParagraphStyle: React.CSSProperties = {
   fontSize: '14px',
   lineHeight: '1.7',
-  color: '#d8d2c8',
-  margin: '0 0 10px',
+  color: colors.textMuted,
+  margin: '0 0 12px',
+};
+
+const whyBoxStyle: React.CSSProperties = {
+  backgroundColor: colors.bgWarm,
+  borderRadius: '12px',
+  padding: '14px',
+  marginBottom: '12px',
+  borderLeft: `3px solid ${colors.accentLeaf}`,
+};
+
+const whyLabelStyle: React.CSSProperties = {
+  fontSize: '12px',
+  color: colors.accentMoss,
+  fontWeight: 600,
+  margin: '0 0 6px',
+};
+
+const whyTextStyle: React.CSSProperties = {
+  fontSize: '13px',
+  lineHeight: '1.6',
+  color: colors.textMuted,
+  margin: '0',
 };
 
 const pointsWrapStyle: React.CSSProperties = {
-  marginBottom: '8px',
-  paddingLeft: '2px',
+  marginBottom: '12px',
+  paddingLeft: '4px',
 };
 
 const pointLineStyle: React.CSSProperties = {
-  color: '#eee6d8',
+  color: colors.textMuted,
   fontSize: '13px',
-  lineHeight: '1.55',
+  lineHeight: '1.6',
   margin: '0 0 6px',
 };
 
 const linkRowStyle: React.CSSProperties = {
-  marginTop: '10px',
+  marginTop: '12px',
 };
 
 const tagLinkBaseStyle: React.CSSProperties = {
@@ -417,93 +456,91 @@ const tagLinkBaseStyle: React.CSSProperties = {
   textDecoration: 'none',
   marginRight: '8px',
   marginBottom: '6px',
-  padding: '5px 8px',
+  padding: '6px 12px',
   borderRadius: '999px',
-  border: '1px solid',
 };
 
 const tagLinkPrimaryStyle: React.CSSProperties = {
   ...tagLinkBaseStyle,
-  color: '#172332',
-  backgroundColor: '#d3e8ff',
-  borderColor: '#9dc8f4',
+  color: '#fff',
+  backgroundColor: colors.accentLeaf,
 };
 
 const tagLinkSecondaryStyle: React.CSSProperties = {
   ...tagLinkBaseStyle,
-  color: '#243312',
-  backgroundColor: '#ddf4cf',
-  borderColor: '#9fd17c',
+  color: colors.accentMoss,
+  backgroundColor: 'rgba(107, 143, 113, 0.12)',
 };
 
 const tagLinkNeutralStyle: React.CSSProperties = {
   ...tagLinkBaseStyle,
-  color: '#f5ead8',
-  backgroundColor: '#5d4938',
-  borderColor: '#8b7056',
+  color: colors.textMuted,
+  backgroundColor: colors.bgWarm,
 };
 
 const quickHitsCardStyle: React.CSSProperties = {
-  backgroundColor: '#131313',
-  border: '1px solid #323232',
-  borderRadius: '10px',
-  padding: '14px 16px',
+  backgroundColor: colors.bgCard,
+  border: `1px solid ${colors.border}`,
+  borderRadius: '16px',
+  padding: '20px',
   marginBottom: '12px',
 };
 
 const quickHitLineStyle: React.CSSProperties = {
   fontSize: '13px',
-  color: '#ddd9d1',
-  lineHeight: '1.65',
+  color: colors.textMuted,
+  lineHeight: '1.7',
   margin: '0 0 8px',
 };
 
 const quickRankStyle: React.CSSProperties = {
-  color: '#e8b26c',
-  fontWeight: 700,
-};
-
-const quickNvaStyle: React.CSSProperties = {
-  color: '#9a9388',
-  fontSize: '12px',
+  color: colors.accentBloom,
+  fontWeight: 600,
 };
 
 const actionsCardStyle: React.CSSProperties = {
-  backgroundColor: '#112014',
-  border: '1px solid #36523b',
-  borderRadius: '10px',
-  padding: '14px 16px',
-  marginBottom: '12px',
+  backgroundColor: 'rgba(107, 143, 113, 0.08)',
+  border: `1px solid ${colors.border}`,
+  borderRadius: '16px',
+  padding: '20px',
+  marginBottom: '16px',
+};
+
+const actionLineStyle: React.CSSProperties = {
+  color: colors.textMuted,
+  fontSize: '14px',
+  lineHeight: '1.6',
+  margin: '0 0 8px',
 };
 
 const ctaContainerStyle: React.CSSProperties = {
   textAlign: 'center' as const,
-  backgroundColor: '#f5f0e4',
-  border: '2px solid #1f1f1f',
-  borderRadius: '10px',
-  padding: '18px 14px',
-  marginTop: '4px',
+  backgroundColor: colors.bgCard,
+  border: `1px solid ${colors.border}`,
+  borderRadius: '16px',
+  padding: '24px 20px',
+  marginTop: '8px',
 };
 
 const ctaCopyStyle: React.CSSProperties = {
-  color: '#2a2620',
+  color: colors.textMuted,
   fontSize: '14px',
   lineHeight: '1.6',
-  margin: '0 0 12px',
+  margin: '0 0 16px',
 };
 
 const ctaButtonStyle: React.CSSProperties = {
-  backgroundColor: '#8a1c11',
+  backgroundColor: colors.accentLeaf,
   color: '#ffffff',
   fontSize: '15px',
-  fontWeight: 700,
-  padding: '12px 24px',
-  borderRadius: '8px',
+  fontWeight: 600,
+  padding: '14px 28px',
+  borderRadius: '999px',
   textDecoration: 'none',
   display: 'inline-block',
 };
 
 const dividerStyle: React.CSSProperties = {
-  borderColor: '#393530',
-  margin: '18px 0 0',
+  borderColor: colors.border,
+  margin: '24px 0 0',
 };
