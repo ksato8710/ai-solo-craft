@@ -3,6 +3,10 @@ import { DM_Sans, Nunito } from "next/font/google";
 import "./globals.css";
 import ShareIcon from "@/components/ShareIcon";
 import NewsletterButton from "@/components/NewsletterButton";
+import NadeshikoDefs from "@/components/botanical/NadeshikoDefs";
+import NadeshikoBackground from "@/components/botanical/NadeshikoBackground";
+import NadeshikoMidground from "@/components/botanical/NadeshikoMidground";
+import NadeshikoForeground from "@/components/botanical/NadeshikoForeground";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -58,6 +62,12 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
       </head>
       <body className="bg-bg-cream text-text-deep">
+        {/* Botanical Scene -- Nadeshiko (撫子) L2 Path */}
+        <NadeshikoDefs />
+        <NadeshikoBackground />
+        <NadeshikoMidground />
+        <NadeshikoForeground />
+
         {/* Header */}
         <header className="sticky top-0 z-50 border-b border-border bg-bg-cream/95 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

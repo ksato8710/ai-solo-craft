@@ -4,7 +4,7 @@
    craftgarden.studio — Quiet Garden Design System
    ============================================
    Light cream theme with botanical green accents.
-   Japanese plant motifs: kaede, anzu, tsubaki.
+   Fixed flower: Nadeshiko (撫子) — AI Solo Craft 固有花.
    Built on Tailwind CSS 4 @theme directive.
    ============================================ */
 
@@ -30,6 +30,10 @@
   --color-cat-product: #6B8F71;
   --color-cat-tool: #7E9AAB;
   --color-cat-content: #B8956A;
+
+  /* Nadeshiko (撫子) — AI Solo Craft 固有花 */
+  --color-nadeshiko:     #D0858E;  /* 標準色 */
+  --color-nadeshiko-hot: #E0959E;  /* 強調色 */
 
   /* Semantic */
   --color-danger: #C45D5D;
