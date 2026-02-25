@@ -25,7 +25,16 @@ function getResend(): Resend {
 
 const BATCH_SIZE = 50;
 
+// Vercel Cron calls GET
+export async function GET(request: NextRequest) {
+  return handleSendNewsletter(request);
+}
+
 export async function POST(request: NextRequest) {
+  return handleSendNewsletter(request);
+}
+
+async function handleSendNewsletter(request: NextRequest) {
   // Verify cron secret
   const authHeader = request.headers.get('authorization');
   const cronSecret = process.env.CRON_SECRET;
