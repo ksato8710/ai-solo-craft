@@ -50,7 +50,7 @@ export default function NadeshikoForeground() {
           strokeWidth="2.5"
           strokeLinecap="round"
           fill="none"
-          opacity="0.17"
+          opacity="0.22"
         />
 
         {/* ── Side branch ── splits right from mid-stem */}
@@ -60,7 +60,7 @@ export default function NadeshikoForeground() {
           strokeWidth="1.8"
           strokeLinecap="round"
           fill="none"
-          opacity="0.16"
+          opacity="0.21"
         />
 
         {/* ── Short spur ── off main stem, upper left */}
@@ -70,14 +70,14 @@ export default function NadeshikoForeground() {
           strokeWidth="1.4"
           strokeLinecap="round"
           fill="none"
-          opacity="0.15"
+          opacity="0.20"
         />
 
         {/* ── Leaf 1: lower stem, angled left ── */}
         <use
           href="#ndf"
           fill="var(--color-accent-leaf)"
-          opacity="0.18"
+          opacity="0.22"
           transform="translate(22, 248) rotate(-50) scale(0.50)"
         />
 
@@ -85,7 +85,7 @@ export default function NadeshikoForeground() {
         <use
           href="#ndf"
           fill="var(--color-accent-sage)"
-          opacity="0.16"
+          opacity="0.20"
           transform="translate(55, 155) rotate(25) scale(0.45)"
         />
 
@@ -93,7 +93,7 @@ export default function NadeshikoForeground() {
         <use
           href="#ndf"
           fill="var(--color-accent-leaf)"
-          opacity="0.17"
+          opacity="0.21"
           transform="translate(108, 118) rotate(40) scale(0.42)"
         />
 
@@ -101,7 +101,7 @@ export default function NadeshikoForeground() {
         <use
           href="#ndf"
           fill="var(--color-accent-sage)"
-          opacity="0.15"
+          opacity="0.19"
           transform="translate(15, 65) rotate(-35) scale(0.35)"
         />
 
@@ -109,7 +109,7 @@ export default function NadeshikoForeground() {
         <use
           href="#nd"
           fill="var(--color-nadeshiko)"
-          opacity="0.24"
+          opacity="0.28"
           transform="translate(38, 220) scale(0.95)"
         />
 
@@ -117,7 +117,7 @@ export default function NadeshikoForeground() {
         <use
           href="#nd"
           fill="var(--color-nadeshiko-hot)"
-          opacity="0.22"
+          opacity="0.26"
           transform="translate(44, 150) scale(0.78)"
         />
 
@@ -125,7 +125,7 @@ export default function NadeshikoForeground() {
         <use
           href="#nd"
           fill="var(--color-nadeshiko)"
-          opacity="0.20"
+          opacity="0.24"
           transform="translate(100, 125) scale(0.70)"
         />
 
@@ -133,7 +133,7 @@ export default function NadeshikoForeground() {
         <use
           href="#nd"
           fill="var(--color-nadeshiko-hot)"
-          opacity="0.18"
+          opacity="0.22"
           transform="translate(138, 100) scale(0.52)"
         />
 
@@ -141,7 +141,7 @@ export default function NadeshikoForeground() {
         <use
           href="#nd"
           fill="var(--color-nadeshiko)"
-          opacity="0.20"
+          opacity="0.24"
           transform="translate(52, 80) scale(0.60)"
         />
 
@@ -149,7 +149,7 @@ export default function NadeshikoForeground() {
         <use
           href="#nd"
           fill="var(--color-nadeshiko-hot)"
-          opacity="0.16"
+          opacity="0.22"
           transform="translate(58, 25) scale(0.38)"
         />
       </svg>

@@ -53,7 +53,7 @@ export default function RootLayout({
     <html lang="ja" className={`${dmSans.variable} ${nunito.variable}`}>
       <head>
         {/* PWA & App Icons */}
-        <meta name="theme-color" content="#6B8F71" />
+        <meta name="theme-color" content="#FAFAF5" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -69,11 +69,20 @@ export default function RootLayout({
         <NadeshikoForeground />
 
         {/* Header */}
-        <header className="sticky top-0 z-50 border-b border-border bg-bg-cream/95 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 bg-bg-cream/95 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-14">
-              {/* Logo */}
+              {/* Logo with app icon */}
               <a href="/" className="flex items-center gap-2 flex-shrink-0">
+                <img
+                  src="/favicon-32x32.png"
+                  alt=""
+                  width={22}
+                  height={22}
+                  className="shrink-0"
+                  aria-hidden="true"
+                  draggable={false}
+                />
                 <span className="font-heading text-lg sm:text-xl font-extrabold text-accent-leaf">
                   AI Solo Craft
                 </span>
@@ -100,6 +109,15 @@ export default function RootLayout({
               <a href="/category/products" className="text-text-muted hover:text-accent-leaf transition-colors">🏷️ プロダクト</a>
             </nav>
           </div>
+
+          {/* Nadeshiko gradient accent line */}
+          <div
+            className="h-[2px] w-full"
+            style={{
+              background: "linear-gradient(90deg, var(--color-nadeshiko), var(--color-nadeshiko-hot), transparent 60%)",
+              opacity: 0.3,
+            }}
+          />
         </header>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

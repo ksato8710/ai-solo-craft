@@ -14,7 +14,7 @@ export default function NadeshikoBackground() {
   return (
     <div
       className="pointer-events-none fixed inset-0 z-0"
-      style={{ opacity: 0.15 }}
+      style={{ opacity: 0.16 }}
       aria-hidden="true"
     >
       {/* --- Nadeshiko petals and leaves scattered at edges --- */}

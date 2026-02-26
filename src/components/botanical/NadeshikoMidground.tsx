@@ -26,7 +26,7 @@ export default function NadeshikoMidground() {
             top: "12%",
             right: "6%",
             width: 24,
-            opacity: 0.12,
+            opacity: 0.16,
             "--drift-base": "rotate(25deg)",
           } as React.CSSProperties
         }
@@ -44,7 +44,7 @@ export default function NadeshikoMidground() {
             top: "35%",
             left: "4%",
             width: 20,
-            opacity: 0.09,
+            opacity: 0.14,
             "--drift-base": "rotate(-50deg)",
           } as React.CSSProperties
         }
@@ -62,7 +62,7 @@ export default function NadeshikoMidground() {
             top: "58%",
             right: "9%",
             width: 28,
-            opacity: 0.08,
+            opacity: 0.13,
             "--drift-base": "rotate(70deg)",
           } as React.CSSProperties
         }
@@ -80,7 +80,7 @@ export default function NadeshikoMidground() {
             bottom: "22%",
             left: "7%",
             width: 18,
-            opacity: 0.15,
+            opacity: 0.18,
             "--drift-base": "rotate(-20deg)",
           } as React.CSSProperties
         }
@@ -98,7 +98,7 @@ export default function NadeshikoMidground() {
             bottom: "12%",
             right: "5%",
             width: 22,
-            opacity: 0.10,
+            opacity: 0.15,
             "--drift-base": "rotate(110deg)",
           } as React.CSSProperties
         }
