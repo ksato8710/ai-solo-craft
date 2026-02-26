@@ -106,7 +106,7 @@ const c = {
   bgCream: '#FAFAF5',
   bgWarm: '#F5F2EC',
   bgCard: '#F0EDE6',
-  textDeep: '#2D3B2E',
+  textDeep: '#2A4A32',
   textMuted: '#5C7260',
   textLight: '#8A9E8C',
   accentLeaf: '#6B8F71',

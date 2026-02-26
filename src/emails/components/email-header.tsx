@@ -6,7 +6,7 @@ import {
 // craftGarden Design System Colors
 const colors = {
   bgWarm: '#F5F2EC',
-  textDeep: '#2D3B2E',
+  textDeep: '#2A4A32',
   textLight: '#8A9E8C',
   accentLeaf: '#6B8F71',
   border: 'rgba(107, 143, 113, 0.12)',
