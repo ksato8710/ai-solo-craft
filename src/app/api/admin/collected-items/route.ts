@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSupabaseClient } from '@/lib/admin-supabase';
-import { translateTitlesToJapanese } from '@/lib/title-translation';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,54 +22,6 @@ interface CollectedItemUpdate {
   score_reasoning?: string;
   digest_date?: string;
   content_id?: string;
-}
-
-type AdminSupabaseClient = NonNullable<ReturnType<typeof getAdminSupabaseClient>>;
-
-interface CollectedItemTitleFields {
-  id: string;
-  title: string;
-  title_ja: string | null;
-}
-
-function normalizeTitle(value: string | null | undefined): string {
-  return (value || '').trim();
-}
-
-async function enrichJapaneseTitles<T extends CollectedItemTitleFields>(
-  supabase: AdminSupabaseClient,
-  items: T[]
-): Promise<T[]> {
-  const missing = items.filter((item) => normalizeTitle(item.title_ja).length === 0);
-  if (missing.length === 0) {
-    return items;
-  }
-
-  const translated = await translateTitlesToJapanese(missing.map((item) => item.title));
-  const updates = missing.map((item, index) => ({
-    id: item.id,
-    title_ja: translated[index] || item.title,
-  }));
-
-  try {
-    await Promise.all(
-      updates.map((update) =>
-        supabase
-          .from('collected_items')
-          .update({ title_ja: update.title_ja })
-          .eq('id', update.id)
-      )
-    );
-  } catch (error) {
-    // Keep API resilient if migration is not yet applied.
-    console.error('[admin/collected-items] title_ja update failed:', error);
-  }
-
-  const titleMap = new Map(updates.map((update) => [update.id, update.title_ja]));
-  return items.map((item) => ({
-    ...item,
-    title_ja: normalizeTitle(item.title_ja) || titleMap.get(item.id) || item.title,
-  })) as T[];
 }
 
 // ---------------------------------------------------------------------------
@@ -153,23 +104,18 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    const normalizedItems = (
-      (data ?? []) as (CollectedItemTitleFields & { sources?: unknown } & Record<string, unknown>)[]
-    ).map((item) => {
-      const { sources, ...rest } = item;
-      return {
-        ...rest,
-        source: sources,
-      };
-    });
-
-    const itemsWithJaTitles = await enrichJapaneseTitles(
-      supabase,
-      normalizedItems
+    const items = ((data ?? []) as (Record<string, unknown> & { sources?: unknown })[]).map(
+      (item) => {
+        const { sources, ...rest } = item;
+        return {
+          ...rest,
+          source: sources,
+        };
+      }
     );
 
     return NextResponse.json({
-      items: itemsWithJaTitles,
+      items,
       total: count ?? 0,
       limit,
       offset,

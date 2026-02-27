@@ -94,6 +94,14 @@ function ToolCards() {
       badgeColor: 'bg-accent-bark/15 text-accent-bark',
     },
     {
+      href: '/admin/x-feeds',
+      title: 'X(Twitter) Feeds',
+      desc: 'RSSHub経由のXフィード管理・監視アカウント一覧・エンゲージメント分析',
+      accent: 'border-cat-content/40 hover:border-cat-content',
+      badge: 'x_feeds',
+      badgeColor: 'bg-cat-content/15 text-cat-content',
+    },
+    {
       href: '/admin/workflows',
       title: 'ワークフロー管理',
       desc: '記事種別 × ソースの役割（detect / verify / localize）を可視化',
