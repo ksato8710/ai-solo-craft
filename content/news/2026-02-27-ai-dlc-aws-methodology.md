@@ -12,11 +12,13 @@ tags:
   - 開発方法論
   - Agile
   - AIコーディング
-description: AWSが提唱するAI-DLC（AI-Driven Development Lifecycle）の歴史、背景、仕組みを解説。従来のAgileとの違い、3フェーズ構造、対応ツールまで網羅的に紹介。
+description: >-
+  AWSが提唱するAI-DLC（AI-Driven Development
+  Lifecycle）の歴史、背景、仕組みを解説。従来のAgileとの違い、3フェーズ構造、対応ツールまで網羅的に紹介。
 readTime: 12
 source: AWS DevOps Blog
 sourceUrl: 'https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/'
-image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=420&fit=crop'
+image: /thumbnails/ai-dlc-aws-methodology.png
 relatedProducts: []
 ---
 

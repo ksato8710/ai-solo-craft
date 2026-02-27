@@ -13,11 +13,13 @@ tags:
   - スタートアップ
   - ピボット
 description: >-
-  「朝起きたらClaudeがスタートアップを殺していた」— 広告管理ツールRyzeの創業者Ira Bodnarが語る衝撃の崩壊劇。2ヶ月で数百人の有料顧客を獲得、成約率70%だったスタートアップが、たった1つのAI機能で成約率20%に急落。SaaSpocalypse時代にソロ開発者が生き残るための教訓を分析。
+  「朝起きたらClaudeがスタートアップを殺していた」— 広告管理ツールRyzeの創業者Ira
+  Bodnarが語る衝撃の崩壊劇。2ヶ月で数百人の有料顧客を獲得、成約率70%だったスタートアップが、たった1つのAI機能で成約率20%に急落。SaaSpocalypse時代にソロ開発者が生き残るための教訓を分析。
 readTime: 15
 source: Republic World / TechCrunch
-sourceUrl: 'https://www.republicworld.com/tech/claude-ai-killed-my-business-startup-founder-warns-of-ruthless-ai-disruption'
-image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&h=420&fit=crop'
+sourceUrl: >-
+  https://www.republicworld.com/tech/claude-ai-killed-my-business-startup-founder-warns-of-ruthless-ai-disruption
+image: /thumbnails/claude-killed-startup-saaspocalypse-2026.png
 relatedProducts: []
 ---
 

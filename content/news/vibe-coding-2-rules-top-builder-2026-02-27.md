@@ -1,11 +1,13 @@
 ---
-title: "「Vibe Coding 2.0」18のルール — トップ1%のビルダーになるための実践ガイド"
-slug: "vibe-coding-2-rules-top-builder-2026-02-27"
-date: "2026-02-27"
-status: "published"
-contentType: "news"
-description: "海外で話題のX Article「Vibe Coding 2.0 : 18 Rules to be the Top 1% builder」を紹介。50以上のMVPを構築した著者が語る、週単位で成果を出すための18の実践ルール。"
-image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=420&fit=crop"
+title: 「Vibe Coding 2.0」18のルール — トップ1%のビルダーになるための実践ガイド
+slug: vibe-coding-2-rules-top-builder-2026-02-27
+date: '2026-02-27'
+status: published
+contentType: news
+description: >-
+  海外で話題のX Article「Vibe Coding 2.0 : 18 Rules to be the Top 1%
+  builder」を紹介。50以上のMVPを構築した著者が語る、週単位で成果を出すための18の実践ルール。
+image: /thumbnails/vibe-coding-2-rules-top-builder-2026-02-27.png
 tags:
   - dev-knowledge
   - vibe-coding
