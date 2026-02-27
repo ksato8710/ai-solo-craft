@@ -85,13 +85,24 @@ function OverviewTab() {
         <ul className="space-y-3">
           <li className="flex items-start gap-3">
             <a
-              href="/admin/sources"
-              className="text-accent-leaf hover:text-accent-moss transition-colors font-medium hover:underline"
+              href="/admin/collected-items"
+              className="text-accent-moss hover:text-accent-leaf transition-colors font-medium hover:underline"
             >
-              📊 Legacy情報源管理
+              📦 収集データ管理
             </a>
             <span className="text-text-light text-sm">
-              - 旧 `content_sources` テーブル用（互換運用）
+              - RSS/API/スクレイプで自動収集したニュースの一覧・フィルタ・手動編集
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <a
+              href="/admin/scoring"
+              className="text-accent-bloom hover:text-accent-bloom/80 transition-colors font-medium hover:underline"
+            >
+              📊 スコアリングダッシュボード
+            </a>
+            <span className="text-text-light text-sm">
+              - NVA 5軸スコアの統計・分布・重み設定
             </span>
           </li>
           <li className="flex items-start gap-3">
@@ -102,13 +113,13 @@ function OverviewTab() {
               🧭 Source Intelligence
             </a>
             <span className="text-text-light text-sm">
-              - ニュースレター / 一次情報 / 日本メディアを統合管理
+              - 3階層ソース（一次/二次/三次）の統合管理・Tier分析
             </span>
           </li>
           <li className="flex items-start gap-3">
             <a
               href="/admin/workflows"
-              className="text-accent-moss hover:text-accent-leaf transition-colors font-medium hover:underline"
+              className="text-accent-leaf hover:text-accent-moss transition-colors font-medium hover:underline"
             >
               🔗 記事作成ワークフロー管理
             </a>
@@ -118,24 +129,13 @@ function OverviewTab() {
           </li>
           <li className="flex items-start gap-3">
             <a
-              href="/admin/schedules"
-              className="text-accent-bloom hover:text-accent-bloom/80 transition-colors font-medium hover:underline"
+              href="/admin/sources"
+              className="text-text-muted hover:text-text-light transition-colors font-medium hover:underline"
             >
-              ⏱️ 配信スケジュール管理
+              📋 Legacy情報源管理
             </a>
             <span className="text-text-light text-sm">
-              - 参照ニュースレターの配信時刻と統合遅延（fetch delay）を管理
-            </span>
-          </li>
-          <li className="flex items-start gap-3">
-            <a
-              href="/admin/collection"
-              className="text-cat-tool hover:text-cat-tool/80 transition-colors font-medium hover:underline"
-            >
-              📬 競合ニュースレター受信管理
-            </a>
-            <span className="text-text-light text-sm">
-              - `ktlabworks@gmail.com` への受信実績を記録し、未受信を監視
+              - 旧 content_sources テーブル（互換運用）
             </span>
           </li>
         </ul>
@@ -153,15 +153,19 @@ function OverviewTab() {
             </div>
             <div className="flex justify-between">
               <span>Digestスケジュール:</span>
-              <span className="text-accent-bloom">朝刊08:00 / 夕刊18:00</span>
+              <span className="text-accent-bloom">朝刊（毎日）</span>
             </div>
             <div className="flex justify-between">
-              <span>ワークフロー段階:</span>
-              <span className="text-accent-leaf">5 Phase Pipeline</span>
+              <span>収集パイプライン:</span>
+              <span className="text-accent-leaf">自動収集 + NVAスコアリング</span>
             </div>
             <div className="flex justify-between">
-              <span>管理対象エンティティ:</span>
-              <span className="text-accent-bark">source/workflow/schedule/collection</span>
+              <span>ソース階層:</span>
+              <span className="text-accent-bark">一次 / 二次 / 三次（124ソース）</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Cron Jobs:</span>
+              <span className="text-text-muted">collect-sources 06:00 / newsletter 23:15</span>
             </div>
           </div>
         </div>
@@ -173,7 +177,7 @@ function OverviewTab() {
           <div className="text-sm space-y-2 text-text-muted">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-accent-moss rounded-full"></span>
-              <span>運用モード: <span className="text-accent-moss">完全自動化</span></span>
+              <span>収集パイプライン: <span className="text-accent-moss">稼働中</span></span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-accent-leaf rounded-full"></span>
@@ -181,11 +185,11 @@ function OverviewTab() {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-accent-leaf rounded-full"></span>
-              <span>夕刊配信: <span className="text-accent-leaf">アクティブ</span></span>
+              <span>NVAスコアリング: <span className="text-accent-leaf">自動（ルールベース）</span></span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-accent-bloom rounded-full"></span>
-              <span>編集枠: <span className="text-accent-bloom">平日のみ</span></span>
+              <span>データソース: <span className="text-accent-bloom">DB-first（Supabase）</span></span>
             </div>
           </div>
         </div>
@@ -211,11 +215,11 @@ function WorkflowTab() {
         <h2 className="text-xl font-semibold font-heading mb-4 text-text-deep">🔄 ワークフロー概要</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h3 className="font-semibold font-heading text-accent-moss mb-3">Digestワークフロー（朝刊・夕刊）</h3>
+            <h3 className="font-semibold font-heading text-accent-moss mb-3">Digestワークフロー（朝刊）</h3>
             <ul className="text-sm text-text-muted space-y-2">
               <li>• 目的: 速報性・全体像把握</li>
-              <li>• 頻度: 毎日2回（朝刊08:00、夕刊18:00）</li>
-              <li>• 自動化度: 高い（5 Phase自動化）</li>
+              <li>• 頻度: 毎日1回（朝刊）</li>
+              <li>• 自動化度: 高い（自動収集 + NVAスコアリング + 5 Phase）</li>
               <li>• 記事長: 3,000〜5,000字</li>
               <li>• 読了時間: 5〜8分</li>
             </ul>
@@ -355,13 +359,13 @@ function WorkflowTab() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold font-heading text-accent-leaf mb-3">🌆 夕刊 (17:30〜18:00)</h3>
+            <h3 className="font-semibold font-heading text-accent-leaf mb-3">🤖 収集パイプライン (自動)</h3>
             <div className="space-y-2 text-sm text-text-muted">
-              <div className="flex justify-between"><span>17:30</span><span>当日日中の調査開始</span></div>
-              <div className="flex justify-between"><span>17:40</span><span>朝刊重複回避でTop10選定</span></div>
-              <div className="flex justify-between"><span>17:48</span><span>Evening Summary作成</span></div>
-              <div className="flex justify-between"><span>17:55</span><span>プロダクト連動・公開チェック</span></div>
-              <div className="flex justify-between"><span>18:00</span><span className="text-accent-moss">🎯 公開目標</span></div>
+              <div className="flex justify-between"><span>06:00</span><span>Vercel Cron: collect-sources 起動</span></div>
+              <div className="flex justify-between"><span>06:00</span><span>一次/二次/三次ソースから自動収集</span></div>
+              <div className="flex justify-between"><span>06:01</span><span>NVA 5軸スコアリング（ルールベース）</span></div>
+              <div className="flex justify-between"><span>23:15</span><span>Vercel Cron: send-newsletter</span></div>
+              <div className="flex justify-between"><span>随時</span><span className="text-accent-moss">管理画面で手動トリガー可</span></div>
             </div>
           </div>
         </div>
@@ -512,9 +516,9 @@ function ContentTab() {
     },
     {
       type: 'digest',
-      description: 'まとめ記事（朝刊・夕刊）',
-      tags: ['morning-summary', 'evening-summary'],
-      frequency: '毎日2回',
+      description: 'まとめ記事（朝刊）',
+      tags: ['morning-summary'],
+      frequency: '毎日1回',
       length: '3,000-5,000字',
       automation: '高い'
     },
@@ -593,8 +597,8 @@ function ContentTab() {
             <ul className="text-sm text-text-muted space-y-1">
               <li>• Top10ランキング形式でニュース一覧</li>
               <li>• Top3は個別記事として詳細化</li>
-              <li>• スコアによる客観的評価</li>
-              <li>• 朝刊・夕刊で重複回避</li>
+              <li>• NVA 5軸スコアによる客観的評価（0-100）</li>
+              <li>• 自動収集データからスコア順に選定</li>
             </ul>
           </div>
 
@@ -679,22 +683,28 @@ function ArchitectureTab() {
               </div>
               <div className="flex justify-between">
                 <span className="text-text-light">自動化:</span>
-                <span className="text-text-muted">Clawdbot + スキルシステム</span>
+                <span className="text-text-muted">Vercel Cron + スキルシステム</span>
               </div>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-semibold font-heading text-accent-moss">配信エンドポイント</h3>
+            <h3 className="font-semibold font-heading text-accent-moss">主要エンドポイント</h3>
             <div className="space-y-2 text-sm font-mono">
-              <div className="bg-bg-cream p-2 rounded">
-                <span className="text-accent-moss">GET</span> /api/v1/feed
-              </div>
               <div className="bg-bg-cream p-2 rounded">
                 <span className="text-accent-moss">GET</span> /api/v1/contents
               </div>
               <div className="bg-bg-cream p-2 rounded">
                 <span className="text-accent-moss">GET</span> /api/v1/contents/[slug]
+              </div>
+              <div className="bg-bg-cream p-2 rounded">
+                <span className="text-accent-bloom">POST</span> /api/cron/collect-sources
+              </div>
+              <div className="bg-bg-cream p-2 rounded">
+                <span className="text-accent-leaf">GET</span> /api/admin/collected-items
+              </div>
+              <div className="bg-bg-cream p-2 rounded">
+                <span className="text-accent-leaf">GET</span> /api/admin/scoring-config
               </div>
             </div>
           </div>
@@ -705,16 +715,19 @@ function ArchitectureTab() {
         <h2 className="text-xl font-semibold font-heading mb-4 text-text-deep">🔄 データフロー</h2>
         <div className="bg-bg-cream p-4 rounded-lg font-mono text-sm">
           <div className="space-y-2 text-text-muted">
-            <div className="text-accent-leaf">1. コンテンツ生成</div>
-            <div className="ml-4">Clawdbotスキル → Markdownファイル → Git管理</div>
+            <div className="text-accent-leaf">1. ニュース自動収集</div>
+            <div className="ml-4">Vercel Cron → collect-sources API → RSS/API/Scrape → collected_items テーブル</div>
 
-            <div className="text-accent-moss mt-4">2. データベース同期</div>
-            <div className="ml-4">npm run sync:content:db → Supabase PostgreSQL</div>
+            <div className="text-accent-moss mt-4">2. NVAスコアリング</div>
+            <div className="ml-4">ルールベーススコアラー → 5軸評価（0-20各軸） → 加重平均で0-100</div>
 
-            <div className="text-accent-bloom mt-4">3. フロントエンド配信</div>
-            <div className="ml-4">Next.js → API Routes → Web/Flutter</div>
+            <div className="text-accent-bloom mt-4">3. 記事作成・DB保存</div>
+            <div className="ml-4">スコア上位を選定 → 記事作成 → Supabase contents テーブル</div>
 
-            <div className="text-accent-bark mt-4">4. デプロイメント</div>
+            <div className="text-accent-bark mt-4">4. フロントエンド配信</div>
+            <div className="ml-4">Next.js SSG → Supabase API → Web配信</div>
+
+            <div className="text-cat-content mt-4">5. デプロイメント</div>
             <div className="ml-4">git push → Vercel → 本番公開</div>
           </div>
         </div>
@@ -726,22 +739,25 @@ function ArchitectureTab() {
           <pre className="text-sm text-text-muted overflow-x-auto">
 {`/Users/satokeita/Dev/ai-solo-craft/
 ├── src/
-│   ├── app/                  # Next.js App Router
-│   │   ├── admin/           # 管理画面 (このページ)
-│   │   ├── api/             # API Routes
-│   │   └── ...              # その他ページ
-│   ├── components/          # Reactコンポーネント
-│   └── lib/                 # ユーティリティ
-├── content/                 # コンテンツファイル
-│   ├── news/               # ニュース記事 (Markdown)
-│   └── products/           # プロダクト辞書 (Markdown)
-├── docs/                   # ドキュメント
-│   ├── WORKFLOW-ARCHITECTURE.md
-│   ├── CHECKLIST.md
-│   └── ...
-├── scripts/                # 自動化スクリプト
-├── supabase/               # Database管理
-└── ...`}
+│   ├── app/
+│   │   ├── admin/              # 管理画面
+│   │   │   ├── collected-items/  # 収集データ管理
+│   │   │   ├── scoring/          # スコアリングダッシュボード
+│   │   │   ├── source-intelligence/  # ソース分析
+│   │   │   └── ...
+│   │   └── api/
+│   │       ├── cron/collect-sources/  # 自動収集 Cron
+│   │       ├── admin/collected-items/ # 収集データ API
+│   │       ├── admin/scoring-config/  # スコアリング設定 API
+│   │       └── v1/                    # 公開 API
+│   ├── components/             # Reactコンポーネント
+│   └── lib/
+│       ├── crawler.ts          # RSS/API/Scrapeクローラー
+│       └── scorer.ts           # NVA ルールベーススコアラー
+├── content/                    # Markdownコンテンツ
+├── supabase/
+│   └── migrations/             # DBマイグレーション
+└── vercel.json                 # Cron定義`}
           </pre>
         </div>
       </div>
@@ -754,19 +770,19 @@ function ArchitectureTab() {
             <div className="space-y-2 text-sm text-text-muted">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-accent-moss rounded-full"></span>
-                <span>cron: 定時実行 (朝刊/夕刊)</span>
+                <span>収集: Vercel Cron → RSS/API/Scrape</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-accent-leaf rounded-full"></span>
-                <span>スキル: 5 Phase Pipeline実行</span>
+                <span>評価: NVA 5軸ルールベーススコアリング</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-accent-bloom rounded-full"></span>
-                <span>チェック: 品質検証・整合性確認</span>
+                <span>記事作成: 5 Phase Pipeline</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-accent-bark rounded-full"></span>
-                <span>デプロイ: git push → Vercel</span>
+                <span>配信: Vercel デプロイ + ニュースレター</span>
               </div>
             </div>
           </div>
@@ -784,7 +800,7 @@ function ArchitectureTab() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-accent-bloom rounded-full"></span>
-                <span>データ同期: DB-Markdownファイル</span>
+                <span>データ管理: Supabase DB-first</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-cat-content rounded-full"></span>
