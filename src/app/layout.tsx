@@ -26,7 +26,6 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "AI Solo Craft — AIソロ開発者のための日本語ニュース",
   description: "グローバルのAI最新情報が、ここに集約されている。個人でAIエージェントとともにプロダクト開発する人のための、毎日見るサイト。",
-  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -67,8 +66,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="AI Solo Craft" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.svg" />
-        <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
       </head>
       <body className="bg-bg-cream text-text-deep">
         {/* Botanical Scene -- Nadeshiko (撫子) L2 Path */}
