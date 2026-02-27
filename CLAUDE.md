@@ -1,10 +1,11 @@
-# AI Solo Craft - TLDR.tech風 日本語AIキュレーションサイト
+# AI Solo Craft - 日本語AIキュレーションサイト
 
 ## プロジェクト概要
-- **目標:** TLDR.tech のUIをベースにした、日本語のAIソロビルダー向けニュースキュレーションサイト
-- **技術スタック:** Next.js (App Router) + Tailwind CSS + TypeScript
-- **ホスティング:** Vercel（無料枠）
-- **ドメイン:** ai.essential-navigator.com
+- **目標:** AIソロビルダー向け日本語ニュースキュレーションサイト
+- **技術スタック:** Next.js (App Router) + Tailwind CSS + TypeScript + Supabase
+- **ホスティング:** Vercel
+- **ドメイン:** ai-solo-craft.craftgarden.studio
+- **データ:** DB-first（Supabase PostgreSQL）、自動収集パイプライン稼働中
 
 ## ドキュメント体系（docs/）
 
@@ -25,7 +26,7 @@
 | ドキュメント | 内容 | パス |
 |------------|------|------|
 | ワークフロー全体像 | スキル体系・cron・スケジュール | `docs/operations/WORKFLOW-OVERVIEW.md` |
-| Digestワークフロー | 朝刊/夕刊の5Phase手順 | `docs/operations/WORKFLOW-DIGEST.md` |
+| Digestワークフロー | 朝刊の5Phase手順 | `docs/operations/WORKFLOW-DIGEST.md` |
 | 個別記事ワークフロー | 深掘り記事の5Phase手順 | `docs/operations/WORKFLOW-INDIVIDUAL.md` |
 | 品質チェックリスト | 公開前・コミット前チェック | `docs/operations/CHECKLIST.md` |
 | 編集ガイドライン | 文体・トーン・表記ルール | `docs/operations/EDITORIAL.md` |
@@ -74,13 +75,14 @@
 
 ## 記事作成ワークフロー
 
-### Digest（朝刊/夕刊 5 Phase）
+### Digest（朝刊 5 Phase）
 
 詳細は `docs/operations/WORKFLOW-DIGEST.md` を参照。
 
 ```
-1. [news-scout]     Phase 1: 調査 — X/Reddit/HN/PHを巡回、一次ソース確認、DB保存
-2. [news-scout]     Phase 2: 評価 — 期間フィルタ・NVAスコアリング・Top10/Top3選定
+0. [自動]           収集パイプライン — Vercel Cron 06:00 → RSS/API/Scrape → NVAスコアリング
+1. [news-scout]     Phase 1: 調査 — 収集データから候補選定、一次ソース確認
+2. [news-scout]     Phase 2: 評価 — 期間フィルタ・NVAスコア確認・Top10/Top3選定
 3. [article-writer] Phase 3: 記事作成 — Digest + Top3個別記事作成（テンプレート厳守）
 4. [article-writer] Phase 4: UI最適化 — テーブルレイアウト・ビジュアル階層・可読性向上
 5. [publisher]      Phase 5: 公開 — publish:gate → git push → Vercel確認
@@ -120,7 +122,6 @@
 ### カテゴリとカラー（canonical contentType + 表示用カテゴリ）
 各コンテンツ種別に固有のアクセントカラーを割り当て:
 - 🗞️ 朝刊Digest (contentType: digest, digestEdition: morning): #3B82F6 (blue)
-- 🗞️ 夕刊Digest (contentType: digest, digestEdition: evening): #F97316 (orange)
 - 📰 ニュース（個別） (contentType: news): #6366F1 (indigo)
 - 🏷️ プロダクト（辞書） (contentType: product): #8B5CF6 (violet)
 - 🧠 AI開発ナレッジ (contentType: news, tags: [dev-knowledge]): #10b981 (emerald)
@@ -170,11 +171,27 @@ image: "/images/default-morning.jpg"
 ```
 
 ## ページ構成
+
+### 公開ページ
 - `/` — トップページ（ヒーロー + カテゴリ別グリッド）
 - `/news/[slug]` — 記事詳細ページ
 - `/products/[slug]` — プロダクト詳細ページ
 - `/category/[category]` — カテゴリ一覧ページ
 - `/news-value` — ニュースバリュー評価一覧ページ
+
+### 管理画面
+- `/admin` — 管理ダッシュボード（ツール導線 + システムリファレンス）
+- `/admin/collected-items` — 収集データ管理（フィルタ・手動編集）
+- `/admin/scoring` — NVAスコアリングダッシュボード（統計・重み設定）
+- `/admin/source-intelligence` — 3階層ソース統合管理
+
+### API エンドポイント
+- `GET /api/v1/contents` — コンテンツ一覧
+- `GET /api/v1/contents/[slug]` — コンテンツ詳細
+- `POST /api/cron/collect-sources` — 自動収集 + スコアリング（Vercel Cron）
+- `POST /api/cron/send-newsletter` — ニュースレター配信（Vercel Cron）
+- `GET /api/admin/collected-items` — 収集データ管理 API
+- `GET/PUT /api/admin/scoring-config` — スコアリング設定 API
 
 ## 海外記事の紹介方針（2026-02-03 けいた様承認・確定）
 
@@ -188,9 +205,44 @@ image: "/images/default-morning.jpg"
 
 この形式であれば権利リスクなく、かつ読者にとって原文以上の価値を提供できる。
 
+## ニュース収集パイプライン
+
+### 概要
+124ソースから RSS / API / Scrape で自動収集し、ルールベースの NVA スコアリングを行う。
+
+### 3階層ソース分類
+| Tier | 種別 | 例 | 信頼度 |
+|------|------|-----|--------|
+| 一次（primary） | 公式ブログ・リリース | Anthropic, OpenAI, Google AI, Vercel, GitHub | 9-10 |
+| 二次（secondary） | メディア・ニュースレター | 日経xTECH, ITmedia, Publickey, The Rundown AI | 6-8 |
+| 三次（tertiary） | コミュニティ | Hacker News, Reddit, Product Hunt, GitHub Trending | 5-7 |
+
+### NVA 5軸スコアリング (0-100)
+各軸 0-20 → 加重平均 × 5 で 0-100 に正規化:
+- `social` (×1.0): SNS反応
+- `media` (×1.0): メディア報道量
+- `community` (×1.0): コミュニティ話題度
+- `technical` (×1.0): 技術的インパクト
+- `solo_relevance` (×1.5): ソロ開発者への関連度
+
+### 主要ファイル
+- `src/lib/crawler.ts` — RSS / API / Scrape クローラー
+- `src/lib/scorer.ts` — NVA ルールベーススコアラー
+- `src/app/api/cron/collect-sources/route.ts` — Cron エントリポイント
+
+### Cron スケジュール（vercel.json）
+- `06:00 UTC+9` — collect-sources（自動収集 + スコアリング）
+- `23:15 UTC+9` — send-newsletter
+
+### DB テーブル
+- `source_crawl_configs` — ソースごとのクロール設定
+- `collected_items` — 収集データ + NVAスコア
+- `scoring_config` — スコアリング重み・分類カテゴリ
+
 ## 重要な注意
-- ダークモードファースト（ライトモードは不要）
+- Quiet Garden デザインシステム（植物テーマ）
 - モバイルファースト（レスポンシブ必須）
 - 日本語コンテンツ（UIテキストも日本語）
 - 画像がない記事はカテゴリ別のデフォルト画像を使用
 - SSG（Static Site Generation）で最大パフォーマンス
+- DB-first: コンテンツは Supabase から配信（Markdown は補助）

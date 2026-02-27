@@ -1,124 +1,106 @@
-This is a [Next.js](https://nextjs.org) project for AI content curation.
+# AI Solo Craft
+
+AIソロビルダー向け日本語ニュースキュレーションサイト。
+124ソースから自動収集 → NVA 5軸スコアリング → 朝刊Digest配信。
+
+**本番:** https://ai-solo-craft.craftgarden.studio
+
+## 技術スタック
+
+- **フロントエンド:** Next.js (App Router) + Tailwind CSS + TypeScript
+- **データベース:** Supabase (PostgreSQL)
+- **ホスティング:** Vercel
+- **自動化:** Vercel Cron + スキルシステム
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+環境変数（`.env.local`）:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SECRET_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `CRON_SECRET`
 
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
+## ニュース収集パイプライン
 
-## Content Validation
+124ソースを3階層（一次/二次/三次）に分類し、自動収集・スコアリングを行う。
 
-```bash
-npm run validate:content
+```
+Vercel Cron (06:00)
+  → collect-sources API
+  → RSS / API / Scrape で収集
+  → NVA 5軸ルールベーススコアリング (0-100)
+  → collected_items テーブルに保存
 ```
 
-## X Discovery Experiment
+**NVA 5軸:** social, media, community, technical, solo_relevance（各0-20 → 加重平均×5 → 0-100）
 
-X API を使った「生成AI × ソロビルダー向け投稿の発見」実験CLIを追加しています。
+主要ファイル:
+- `src/lib/crawler.ts` — クローラー
+- `src/lib/scorer.ts` — スコアラー
+- `src/app/api/cron/collect-sources/route.ts` — Cron エントリポイント
 
-```bash
-# Offline sample
-python3 scripts/discover-x-ai-signals.py \
-  --sample-file scripts/fixtures/x_recent_search_sample.json \
-  --output-dir research/x-discovery
+## 管理画面
 
-# Live run (requires X_API_BEARER_TOKEN)
-python3 scripts/discover-x-ai-signals.py \
-  --sort-order mixed \
-  --lookback-hours 24 \
-  --top-k 20 \
-  --with-usage
-
-# Focus topic run (e.g. OpenClaw)
-python3 scripts/discover-x-ai-signals.py \
-  --focus OpenClaw \
-  --sort-order mixed \
-  --lookback-hours 24 \
-  --top-k 15
-```
-
-```bash
-# npm shortcuts
-npm run x:discover:sample
-npm run x:discover
-```
-
-詳細: `docs/operations/X-DISCOVERY-SYSTEM.md`
+| ページ | URL | 内容 |
+|--------|-----|------|
+| ダッシュボード | `/admin` | ツール導線 + システムリファレンス |
+| 収集データ管理 | `/admin/collected-items` | 収集ニュースの一覧・フィルタ・手動編集 |
+| スコアリング | `/admin/scoring` | NVA統計・分布・重み設定 |
+| Source Intelligence | `/admin/source-intelligence` | 3階層ソース分析 |
+| ワークフロー | `/admin/workflows` | 記事種別×ソースの役割 |
 
 ## Supabase (Database)
 
-Detailed setup: `docs/technical/DATABASE.md`
-
-Set environment variables:
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-- `SUPABASE_SECRET_KEY` (server-side only)
-
-`sync:content:db` は `.env.local` / `.env` を自動読込します（どちらかを配置）。
+詳細: `docs/technical/DATABASE.md`
 
 ```bash
-# Apply migrations to linked Supabase project
-npm run db:push
-
-# Check migration status
-npm run db:migrations:list
-
-# Lint linked schema
-npm run db:lint
-
-# Generate database TypeScript types
-npm run db:types
-
-# Sync markdown content into Supabase
-npm run sync:content:db
-
-# Publish gate (must pass before git push)
-npm run publish:gate
+npm run db:push              # マイグレーション適用
+npm run db:migrations:list   # ステータス確認
+npm run db:types             # 型生成
+npm run sync:content:db      # Markdownコンテンツ同期
+npm run publish:gate         # 公開前チェック（必須）
 ```
 
-## Content Delivery API
+主要テーブル:
+- `contents` — 公開コンテンツ
+- `sources` — 124ソース定義
+- `source_crawl_configs` — ソースごとのクロール設定
+- `collected_items` — 収集データ + NVAスコア
+- `scoring_config` — スコアリング重み設定
 
-Web と Flutter 共通の配信用 API を `src/app/api/v1` で提供しています。
+## API
 
-- `GET /api/v1/feed`
-- `GET /api/v1/contents`
-- `GET /api/v1/contents/[slug]`
+```
+GET  /api/v1/contents           # コンテンツ一覧
+GET  /api/v1/contents/[slug]    # コンテンツ詳細
+POST /api/cron/collect-sources  # 自動収集（Cron）
+POST /api/cron/send-newsletter  # ニュースレター配信（Cron）
+GET  /api/admin/collected-items # 収集データ管理
+GET  /api/admin/scoring-config  # スコアリング設定
+```
 
-詳細: `docs/technical/API.md`
+## Cron スケジュール (vercel.json)
 
-## Flutter App
+| 時刻 | パス | 内容 |
+|------|------|------|
+| 06:00 | `/api/cron/collect-sources` | 自動収集 + NVAスコアリング |
+| 23:15 | `/api/cron/send-newsletter` | ニュースレター配信 |
 
-シンプルなモバイルアプリは `apps/ai_solo_craft_app` にあります。
+## コンテンツ検証
 
 ```bash
-cd apps/ai_solo_craft_app
-flutter pub get
-flutter run --dart-define=CONTENT_API_BASE_URL=https://ai.essential-navigator.com
+npm run validate:content     # コンテンツ検証
+npm run publish:gate         # 公開ゲート（DB検証 + ビルド）
 ```
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git push origin main         # Vercel自動デプロイ
+```
