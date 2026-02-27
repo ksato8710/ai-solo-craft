@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,6 +22,10 @@ type EntityKind =
   | 'community'
   | 'social'
   | 'tool_directory';
+
+type TierFilter = 'all' | 'primary' | 'secondary' | 'tertiary';
+type ViewMode = 'card' | 'table';
+type UsageFilter = 'all' | 'using' | 'not_using';
 
 interface SourceEntity {
   id: string;
@@ -83,6 +87,13 @@ const SOURCE_TYPE_OPTIONS: SourceType[] = [
   'community',
   'social',
   'other',
+];
+
+const TIER_FILTER_OPTIONS: { value: TierFilter; label: string }[] = [
+  { value: 'all', label: 'All Tiers' },
+  { value: 'primary', label: '一次情報' },
+  { value: 'secondary', label: '二次情報' },
+  { value: 'tertiary', label: '三次情報' },
 ];
 
 const LOCALE_OPTIONS: SourceForm['locale'][] = ['ja', 'en', 'multilingual', 'other'];
@@ -172,7 +183,9 @@ export default function SourceIntelligenceAdminPage() {
 
   const [filterKind, setFilterKind] = useState<string>('all');
   const [filterLocale, setFilterLocale] = useState<string>('all');
-  const [filterActive, setFilterActive] = useState<string>('all');
+  const [filterUsage, setFilterUsage] = useState<UsageFilter>('all');
+  const [filterTier, setFilterTier] = useState<TierFilter>('all');
+  const [viewMode, setViewMode] = useState<ViewMode>('card');
 
   const [isAdding, setIsAdding] = useState(false);
   const [newForm, setNewForm] = useState<SourceForm>(createEmptyForm);
@@ -200,8 +213,9 @@ export default function SourceIntelligenceAdminPage() {
       const params = new URLSearchParams();
       if (filterKind !== 'all') params.set('entity_kind', filterKind);
       if (filterLocale !== 'all') params.set('locale', filterLocale);
-      if (filterActive === 'active') params.set('active', 'true');
-      if (filterActive === 'inactive') params.set('active', 'false');
+      if (filterUsage === 'using') params.set('active', 'true');
+      if (filterUsage === 'not_using') params.set('active', 'false');
+      if (filterTier !== 'all') params.set('source_type', filterTier);
 
       const response = await fetch(`/api/admin/source-intelligence?${params.toString()}`);
       const data = await response.json();
@@ -217,7 +231,7 @@ export default function SourceIntelligenceAdminPage() {
     } finally {
       setLoading(false);
     }
-  }, [filterActive, filterKind, filterLocale]);
+  }, [filterKind, filterLocale, filterTier, filterUsage]);
 
   useEffect(() => {
     void fetchSources();
@@ -296,6 +310,22 @@ export default function SourceIntelligenceAdminPage() {
     const data = await response.json();
     if (!response.ok) {
       alert(data.error || 'Failed to delete source.');
+      return;
+    }
+
+    await fetchSources();
+  }
+
+  async function updateUsage(id: string, useSource: boolean) {
+    const response = await fetch('/api/admin/source-intelligence', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, is_active: useSource }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      alert(data.error || 'Failed to update source usage.');
       return;
     }
 
@@ -397,14 +427,49 @@ export default function SourceIntelligenceAdminPage() {
           </select>
 
           <select
-            value={filterActive}
-            onChange={(event) => setFilterActive(event.target.value)}
+            value={filterUsage}
+            onChange={(event) => setFilterUsage(event.target.value as UsageFilter)}
             className="bg-bg-warm border border-border text-text-deep rounded px-3 py-2 text-sm"
           >
-            <option value="all">All Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
+            <option value="all">すべての使用状態</option>
+            <option value="using">使う</option>
+            <option value="not_using">使わない</option>
           </select>
+
+          <select
+            value={filterTier}
+            onChange={(event) => setFilterTier(event.target.value as TierFilter)}
+            className="bg-bg-warm border border-border text-text-deep rounded px-3 py-2 text-sm"
+          >
+            {TIER_FILTER_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+
+          <div className="inline-flex overflow-hidden rounded border border-border">
+            <button
+              onClick={() => setViewMode('card')}
+              className={`px-3 py-2 text-sm ${
+                viewMode === 'card'
+                  ? 'bg-accent-leaf text-white'
+                  : 'bg-bg-warm text-text-muted hover:bg-bg-cream'
+              }`}
+            >
+              カード
+            </button>
+            <button
+              onClick={() => setViewMode('table')}
+              className={`px-3 py-2 text-sm ${
+                viewMode === 'table'
+                  ? 'bg-accent-leaf text-white'
+                  : 'bg-bg-warm text-text-muted hover:bg-bg-cream'
+              }`}
+            >
+              テーブル
+            </button>
+          </div>
 
           <button
             onClick={() => setIsAdding((prev) => !prev)}
@@ -438,96 +503,260 @@ export default function SourceIntelligenceAdminPage() {
         />
       )}
 
-      <div className="space-y-3">
-        {sources.map((source) => {
-          const isEditing = source.id === editingId;
+      {sources.length === 0 ? (
+        <div className="rounded-[var(--radius-card)] border border-border bg-bg-card px-4 py-6 text-sm text-text-muted">
+          条件に一致するニュースソースがありません。
+        </div>
+      ) : viewMode === 'card' ? (
+        <div className="space-y-3">
+          {sources.map((source) => {
+            const isEditing = source.id === editingId;
 
-          return (
-            <div key={source.id} className="rounded-[var(--radius-card)] border border-border bg-bg-card p-4">
-              {!isEditing ? (
-                <div className="space-y-3">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h3 className="text-lg font-semibold font-heading text-text-deep">{source.name}</h3>
-                        <span className={`px-2 py-1 text-xs rounded border ${kindColor(source.entity_kind)}`}>
-                          {entityKindLabel(source.entity_kind)}
-                        </span>
-                        {(() => {
-                          const tier = tierBadge(source.source_type);
-                          return tier ? (
-                            <span className={`px-2 py-1 text-xs font-semibold rounded border ${tier.className}`}>
-                              {tier.label}
+            return (
+              <div key={source.id} className="rounded-[var(--radius-card)] border border-border bg-bg-card p-4">
+                {!isEditing ? (
+                  <div className="space-y-3">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="mb-2 flex flex-wrap items-center gap-2">
+                          <h3 className="text-lg font-semibold font-heading text-text-deep">{source.name}</h3>
+                          <span className={`px-2 py-1 text-xs rounded border ${kindColor(source.entity_kind)}`}>
+                            {entityKindLabel(source.entity_kind)}
+                          </span>
+                          {(() => {
+                            const tier = tierBadge(source.source_type);
+                            return tier ? (
+                              <span className={`px-2 py-1 text-xs font-semibold rounded border ${tier.className}`}>
+                                {tier.label}
+                              </span>
+                            ) : null;
+                          })()}
+                          {source.is_newsletter && (
+                            <span className="px-2 py-1 text-xs rounded border border-accent-bark/40 bg-accent-bark/20 text-accent-bark">
+                              Newsletter
                             </span>
-                          ) : null;
-                        })()}
-                        {source.is_newsletter && (
-                          <span className="px-2 py-1 text-xs rounded border border-accent-bark/40 bg-accent-bark/20 text-accent-bark">
-                            Newsletter
-                          </span>
-                        )}
-                        {source.is_japanese_media && (
-                          <span className="px-2 py-1 text-xs rounded border border-cat-tool/40 bg-cat-tool/20 text-cat-tool">
-                            JP
-                          </span>
-                        )}
-                        {!source.is_active && (
-                          <span className="px-2 py-1 text-xs rounded border border-danger/30 bg-danger/20 text-danger">
-                            Inactive
-                          </span>
-                        )}
+                          )}
+                          {source.is_japanese_media && (
+                            <span className="px-2 py-1 text-xs rounded border border-cat-tool/40 bg-cat-tool/20 text-cat-tool">
+                              JP
+                            </span>
+                          )}
+                          {!source.is_active ? (
+                            <span className="px-2 py-1 text-xs rounded border border-danger/30 bg-danger/20 text-danger">
+                              使わない
+                            </span>
+                          ) : (
+                            <span className="px-2 py-1 text-xs rounded border border-accent-moss/30 bg-accent-moss/20 text-accent-moss">
+                              使う
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-sm text-text-light break-all">{source.url}</p>
+                        <p className="text-xs text-text-light mt-1">
+                          domain: {source.domain || '—'} / locale: {source.locale} / region: {source.region}
+                        </p>
                       </div>
-                      <p className="text-sm text-text-light break-all">{source.url}</p>
-                      <p className="text-xs text-text-light mt-1">
-                        domain: {source.domain || '—'} / locale: {source.locale} / region: {source.region}
-                      </p>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => void updateUsage(source.id, !source.is_active)}
+                          className={`rounded px-3 py-1.5 text-xs ${
+                            source.is_active
+                              ? 'bg-bg-warm hover:bg-bg-cream text-text-muted'
+                              : 'bg-accent-moss hover:bg-accent-leaf text-white'
+                          }`}
+                        >
+                          {source.is_active ? '使わない' : '使う'}
+                        </button>
+                        <button
+                          onClick={() => startEdit(source)}
+                          className="rounded bg-bg-warm hover:bg-bg-card px-3 py-1.5 text-xs text-text-deep"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => void deleteSource(source.id, source.name)}
+                          className="rounded bg-danger/70 hover:bg-danger px-3 py-1.5 text-xs text-white"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => startEdit(source)}
-                        className="rounded bg-bg-warm hover:bg-bg-card px-3 py-1.5 text-xs text-text-deep"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => void deleteSource(source.id, source.name)}
-                        className="rounded bg-danger/70 hover:bg-danger px-3 py-1.5 text-xs text-white"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-xs">
-                    <MetaChip label="Type" value={source.source_type} />
-                    <MetaChip label="Credibility" value={String(source.credibility_score ?? '—')} />
-                    <MetaChip label="Verification" value={source.verification_level ?? '—'} />
-                    <MetaChip label="From" value={source.newsletter_from_email || '—'} />
-                    <MetaChip label="Archive" value={source.newsletter_archive_url || '—'} />
-                  </div>
-
-                  {(source.description || source.notes) && (
-                    <div className="space-y-1 text-sm text-text-muted">
-                      {source.description && <p>{source.description}</p>}
-                      {source.notes && <p className="text-xs text-text-light">Note: {source.notes}</p>}
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-xs">
+                      <MetaChip label="Type" value={source.source_type} />
+                      <MetaChip label="Credibility" value={String(source.credibility_score ?? '—')} />
+                      <MetaChip label="Verification" value={source.verification_level ?? '—'} />
+                      <MetaChip label="From" value={source.newsletter_from_email || '—'} />
+                      <MetaChip label="Archive" value={source.newsletter_archive_url || '—'} />
                     </div>
-                  )}
-                </div>
-              ) : (
-                <FormPanel
-                  title={`編集: ${source.name}`}
-                  form={editForm}
-                  onChange={setEditForm}
-                  onAutoDomain={() => setEditForm((prev) => ({ ...prev, domain: extractDomain(prev.url) }))}
-                  onSubmit={() => void saveEdit(source.id)}
-                  submitLabel="Save Changes"
-                  onCancel={cancelEdit}
-                />
-              )}
-            </div>
-          );
-        })}
-      </div>
+
+                    {(source.description || source.notes) && (
+                      <div className="space-y-1 text-sm text-text-muted">
+                        {source.description && <p>{source.description}</p>}
+                        {source.notes && <p className="text-xs text-text-light">Note: {source.notes}</p>}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <FormPanel
+                    title={`編集: ${source.name}`}
+                    form={editForm}
+                    onChange={setEditForm}
+                    onAutoDomain={() => setEditForm((prev) => ({ ...prev, domain: extractDomain(prev.url) }))}
+                    onSubmit={() => void saveEdit(source.id)}
+                    submitLabel="Save Changes"
+                    onCancel={cancelEdit}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="rounded-[var(--radius-card)] border border-border bg-bg-card">
+          <div className="overflow-x-auto">
+            <table className="min-w-[980px] w-full text-sm">
+              <thead className="bg-bg-cream/60 text-text-light">
+                <tr>
+                  <th className="px-3 py-3 text-left font-semibold">Source</th>
+                  <th className="px-3 py-3 text-left font-semibold">分類</th>
+                  <th className="px-3 py-3 text-left font-semibold">Locale</th>
+                  <th className="px-3 py-3 text-left font-semibold">Credibility</th>
+                  <th className="px-3 py-3 text-left font-semibold">Newsletter</th>
+                  <th className="px-3 py-3 text-left font-semibold">Description</th>
+                  <th className="px-3 py-3 text-right font-semibold">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {sources.map((source) => {
+                  const isEditing = source.id === editingId;
+                  const tier = tierBadge(source.source_type);
+
+                  return (
+                    <Fragment key={source.id}>
+                      <tr className="align-top">
+                        <td className="px-3 py-3">
+                          <p className="font-semibold text-text-deep">{source.name}</p>
+                          <a
+                            href={source.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-1 block text-xs text-accent-moss break-all hover:underline"
+                          >
+                            {source.url}
+                          </a>
+                          <p className="mt-1 text-xs text-text-light">domain: {source.domain || '—'}</p>
+                        </td>
+                        <td className="px-3 py-3">
+                          <div className="flex flex-wrap gap-1.5">
+                            <span className={`px-2 py-1 text-xs rounded border ${kindColor(source.entity_kind)}`}>
+                              {entityKindLabel(source.entity_kind)}
+                            </span>
+                            {tier && (
+                              <span className={`px-2 py-1 text-xs font-semibold rounded border ${tier.className}`}>
+                                {tier.label}
+                              </span>
+                            )}
+                            {!source.is_active ? (
+                              <span className="px-2 py-1 text-xs rounded border border-danger/30 bg-danger/20 text-danger">
+                                使わない
+                              </span>
+                            ) : (
+                              <span className="px-2 py-1 text-xs rounded border border-accent-moss/30 bg-accent-moss/20 text-accent-moss">
+                                使う
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="px-3 py-3 text-xs text-text-muted">
+                          <p>locale: {source.locale}</p>
+                          <p>region: {source.region}</p>
+                          <div className="mt-1 flex gap-1.5">
+                            {source.is_japanese_media && (
+                              <span className="px-2 py-0.5 text-[11px] rounded border border-cat-tool/40 bg-cat-tool/20 text-cat-tool">
+                                JP
+                              </span>
+                            )}
+                            {source.is_newsletter && (
+                              <span className="px-2 py-0.5 text-[11px] rounded border border-accent-bark/40 bg-accent-bark/20 text-accent-bark">
+                                NL
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="px-3 py-3 text-xs text-text-muted">
+                          <p className="font-semibold text-text-deep">{source.credibility_score ?? '—'}</p>
+                          <p>{source.verification_level ?? '—'}</p>
+                        </td>
+                        <td className="px-3 py-3 text-xs text-text-muted">
+                          <p className="break-all">{source.newsletter_from_email || '—'}</p>
+                          {source.newsletter_archive_url && (
+                            <a
+                              href={source.newsletter_archive_url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="mt-1 block break-all text-accent-moss hover:underline"
+                            >
+                              archive
+                            </a>
+                          )}
+                        </td>
+                        <td className="px-3 py-3 text-xs text-text-muted">
+                          <p>{source.description || '—'}</p>
+                          {source.notes && <p className="mt-1 text-text-light">Note: {source.notes}</p>}
+                        </td>
+                        <td className="px-3 py-3">
+                          <div className="flex flex-wrap justify-end gap-2">
+                            <button
+                              onClick={() => void updateUsage(source.id, !source.is_active)}
+                              className={`rounded px-3 py-1.5 text-xs ${
+                                source.is_active
+                                  ? 'bg-bg-warm hover:bg-bg-cream text-text-muted'
+                                  : 'bg-accent-moss hover:bg-accent-leaf text-white'
+                              }`}
+                            >
+                              {source.is_active ? '使わない' : '使う'}
+                            </button>
+                            <button
+                              onClick={() => startEdit(source)}
+                              className="rounded bg-bg-warm hover:bg-bg-card px-3 py-1.5 text-xs text-text-deep"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => void deleteSource(source.id, source.name)}
+                              className="rounded bg-danger/70 hover:bg-danger px-3 py-1.5 text-xs text-white"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      {isEditing && (
+                        <tr>
+                          <td colSpan={7} className="bg-bg-cream/30 px-3 py-3">
+                            <FormPanel
+                              title={`編集: ${source.name}`}
+                              form={editForm}
+                              onChange={setEditForm}
+                              onAutoDomain={() =>
+                                setEditForm((prev) => ({ ...prev, domain: extractDomain(prev.url) }))
+                              }
+                              onSubmit={() => void saveEdit(source.id)}
+                              submitLabel="Save Changes"
+                              onCancel={cancelEdit}
+                            />
+                          </td>
+                        </tr>
+                      )}
+                    </Fragment>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -706,7 +935,7 @@ function FormPanel({
             checked={form.is_active}
             onChange={(event) => onChange((prev) => ({ ...prev, is_active: event.target.checked }))}
           />
-          Active
+          使用する
         </label>
         <label className="inline-flex items-center gap-2">
           <input

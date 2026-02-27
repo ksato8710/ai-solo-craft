@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSupabaseClient } from '@/lib/admin-supabase';
+import { translateTitlesToJapanese } from '@/lib/title-translation';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,6 +11,7 @@ export const dynamic = 'force-dynamic';
 interface CollectedItemUpdate {
   id: string;
   status?: 'new' | 'scored' | 'selected' | 'dismissed' | 'published';
+  title_ja?: string | null;
   nva_social?: number;
   nva_media?: number;
   nva_community?: number;
@@ -21,6 +23,54 @@ interface CollectedItemUpdate {
   score_reasoning?: string;
   digest_date?: string;
   content_id?: string;
+}
+
+type AdminSupabaseClient = NonNullable<ReturnType<typeof getAdminSupabaseClient>>;
+
+interface CollectedItemTitleFields {
+  id: string;
+  title: string;
+  title_ja: string | null;
+}
+
+function normalizeTitle(value: string | null | undefined): string {
+  return (value || '').trim();
+}
+
+async function enrichJapaneseTitles<T extends CollectedItemTitleFields>(
+  supabase: AdminSupabaseClient,
+  items: T[]
+): Promise<T[]> {
+  const missing = items.filter((item) => normalizeTitle(item.title_ja).length === 0);
+  if (missing.length === 0) {
+    return items;
+  }
+
+  const translated = await translateTitlesToJapanese(missing.map((item) => item.title));
+  const updates = missing.map((item, index) => ({
+    id: item.id,
+    title_ja: translated[index] || item.title,
+  }));
+
+  try {
+    await Promise.all(
+      updates.map((update) =>
+        supabase
+          .from('collected_items')
+          .update({ title_ja: update.title_ja })
+          .eq('id', update.id)
+      )
+    );
+  } catch (error) {
+    // Keep API resilient if migration is not yet applied.
+    console.error('[admin/collected-items] title_ja update failed:', error);
+  }
+
+  const titleMap = new Map(updates.map((update) => [update.id, update.title_ja]));
+  return items.map((item) => ({
+    ...item,
+    title_ja: normalizeTitle(item.title_ja) || titleMap.get(item.id) || item.title,
+  })) as T[];
 }
 
 // ---------------------------------------------------------------------------
@@ -88,6 +138,7 @@ export async function GET(request: NextRequest) {
       'scored_at',
       'published_at',
       'title',
+      'title_ja',
     ];
     const sortColumn = validSortColumns.includes(sortBy) ? sortBy : 'collected_at';
 
@@ -102,8 +153,23 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    const normalizedItems = (
+      (data ?? []) as (CollectedItemTitleFields & { sources?: unknown } & Record<string, unknown>)[]
+    ).map((item) => {
+      const { sources, ...rest } = item;
+      return {
+        ...rest,
+        source: sources,
+      };
+    });
+
+    const itemsWithJaTitles = await enrichJapaneseTitles(
+      supabase,
+      normalizedItems
+    );
+
     return NextResponse.json({
-      items: data ?? [],
+      items: itemsWithJaTitles,
       total: count ?? 0,
       limit,
       offset,
@@ -135,6 +201,7 @@ export async function PUT(request: NextRequest) {
     const updates: Record<string, unknown> = {};
 
     if (body.status !== undefined) updates.status = body.status;
+    if (body.title_ja !== undefined) updates.title_ja = body.title_ja;
     if (body.nva_social !== undefined) updates.nva_social = body.nva_social;
     if (body.nva_media !== undefined) updates.nva_media = body.nva_media;
     if (body.nva_community !== undefined) updates.nva_community = body.nva_community;

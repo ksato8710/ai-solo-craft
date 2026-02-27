@@ -121,12 +121,14 @@ function filterFallback(sources: SourceEntity[], request: NextRequest) {
   const params = request.nextUrl.searchParams;
   const entityKind = params.get('entity_kind');
   const locale = params.get('locale');
+  const sourceType = params.get('source_type');
   const active = toBoolean(params.get('active'));
   const newsletterOnly = toBoolean(params.get('newsletter_only'));
 
   return sources.filter((source) => {
     if (entityKind && source.entity_kind !== entityKind) return false;
     if (locale && source.locale !== locale) return false;
+    if (sourceType && source.source_type !== sourceType) return false;
     if (active !== undefined && source.is_active !== active) return false;
     if (newsletterOnly === true && !source.is_newsletter) return false;
     return true;
@@ -146,6 +148,7 @@ export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   const entityKind = params.get('entity_kind');
   const locale = params.get('locale');
+  const sourceType = params.get('source_type');
   const active = toBoolean(params.get('active'));
   const newsletterOnly = toBoolean(params.get('newsletter_only'));
 
@@ -159,6 +162,7 @@ export async function GET(request: NextRequest) {
 
     if (entityKind) query = query.eq('entity_kind', entityKind);
     if (locale) query = query.eq('locale', locale);
+    if (sourceType) query = query.eq('source_type', sourceType);
     if (active !== undefined) query = query.eq('is_active', active);
     if (newsletterOnly === true) query = query.eq('is_newsletter', true);
 

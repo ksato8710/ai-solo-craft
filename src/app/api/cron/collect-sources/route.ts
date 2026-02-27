@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSupabaseClient } from '@/lib/admin-supabase';
 import { collectFromSource, urlHash } from '@/lib/crawler';
+import { translateTitlesToJapanese } from '@/lib/title-translation';
 
 export const dynamic = 'force-dynamic';
 
@@ -36,6 +37,26 @@ interface SourceResult {
   error?: string;
 }
 
+function fallbackTitleFromUrl(url: string): string {
+  try {
+    const parsed = new URL(url);
+    const segments = parsed.pathname.split('/').filter(Boolean);
+    const slug = decodeURIComponent(segments[segments.length - 1] || '');
+    const humanized = slug
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    return humanized || parsed.hostname;
+  } catch {
+    return 'untitled item';
+  }
+}
+
+function normalizeCollectedTitle(title: string, url: string): string {
+  const normalized = title.replace(/\s+/g, ' ').trim();
+  return normalized.length > 0 ? normalized : fallbackTitleFromUrl(url);
+}
+
 // ---------------------------------------------------------------------------
 // Auth helper
 // ---------------------------------------------------------------------------
@@ -65,6 +86,10 @@ async function handleCollectSources(request: NextRequest): Promise<NextResponse>
   const { searchParams } = request.nextUrl;
   const tierFilter = searchParams.get('tier'); // primary | secondary | tertiary
   const forceAll = searchParams.get('force') === 'true'; // skip interval check
+  const lookbackDaysParam = parseInt(searchParams.get('lookback_days') || '0', 10);
+  const lookbackDays = Number.isNaN(lookbackDaysParam)
+    ? 0
+    : Math.max(0, lookbackDaysParam);
 
   try {
     // 1. Fetch active crawl configs with source info
@@ -106,12 +131,17 @@ async function handleCollectSources(request: NextRequest): Promise<NextResponse>
       return NextResponse.json({
         message: 'No active crawl configs found',
         tier_filter: tierFilter,
+        lookback_days: lookbackDays,
         results: [],
       });
     }
 
     // 2. Filter by crawl interval (skip sources crawled too recently)
     const now = new Date();
+    const lookbackThreshold =
+      lookbackDays > 0
+        ? new Date(now.getTime() - lookbackDays * 24 * 60 * 60 * 1000)
+        : null;
     const eligibleConfigs = (configs as unknown as CrawlConfig[]).filter((cfg) => {
       if (forceAll) return true;
       if (!cfg.last_crawled_at) return true; // Never crawled
@@ -126,6 +156,7 @@ async function handleCollectSources(request: NextRequest): Promise<NextResponse>
         message: 'No sources due for crawling',
         total_configs: configs.length,
         tier_filter: tierFilter,
+        lookback_days: lookbackDays,
         results: [],
       });
     }
@@ -205,17 +236,36 @@ async function handleCollectSources(request: NextRequest): Promise<NextResponse>
         const sourceTier = mapSourceType(source.source_type);
 
         // 5. Insert new items
-        const newItems = crawlResult.items.filter(
-          (item) => !existingHashes.has(urlHash(item.url))
-        );
+        const newItems = crawlResult.items.filter((item) => {
+          if (existingHashes.has(urlHash(item.url))) {
+            return false;
+          }
+
+          if (lookbackThreshold && item.published_at) {
+            const publishedAt = new Date(item.published_at);
+            if (!Number.isNaN(publishedAt.getTime()) && publishedAt < lookbackThreshold) {
+              return false;
+            }
+          }
+
+          return true;
+        });
 
         result.duplicates = crawlResult.items.length - newItems.length;
 
         if (newItems.length > 0) {
-          const rows = newItems.map((item) => ({
+          const normalizedTitles = newItems.map((item) =>
+            normalizeCollectedTitle(item.title, item.url)
+          );
+          const translatedTitles = await translateTitlesToJapanese(
+            normalizedTitles
+          );
+
+          const rows = newItems.map((item, index) => ({
             source_id: cfg.source_id,
             source_tier: sourceTier,
-            title: item.title,
+            title: normalizedTitles[index],
+            title_ja: translatedTitles[index] || normalizedTitles[index],
             url: item.url,
             url_hash: urlHash(item.url),
             author: item.author || null,
@@ -225,11 +275,40 @@ async function handleCollectSources(request: NextRequest): Promise<NextResponse>
             collected_at: now.toISOString(),
             status: 'new',
             relevance_tags: [],
+            engagement_likes: item.engagement?.likes ?? null,
+            engagement_retweets: item.engagement?.retweets ?? null,
+            engagement_replies: item.engagement?.replies ?? null,
+            engagement_quotes: item.engagement?.quotes ?? null,
+            engagement_bookmarks: item.engagement?.bookmarks ?? null,
+            engagement_views: item.engagement?.views ?? null,
+            engagement_fetched_at: item.engagement ? now.toISOString() : null,
           }));
 
-          const { error: insertError } = await supabase
+          let { error: insertError } = await supabase
             .from('collected_items')
             .insert(rows);
+
+          // Backward compatibility: if migration isn't applied yet, retry without title_ja.
+          if (insertError?.message?.includes('title_ja')) {
+            const rowsWithoutTitleJa = rows.map((row) => ({
+              source_id: row.source_id,
+              source_tier: row.source_tier,
+              title: row.title,
+              url: row.url,
+              url_hash: row.url_hash,
+              author: row.author,
+              content_summary: row.content_summary,
+              raw_content: row.raw_content,
+              published_at: row.published_at,
+              collected_at: row.collected_at,
+              status: row.status,
+              relevance_tags: row.relevance_tags,
+            }));
+            const retry = await supabase
+              .from('collected_items')
+              .insert(rowsWithoutTitleJa);
+            insertError = retry.error;
+          }
 
           if (insertError) {
             console.error(
@@ -290,6 +369,7 @@ async function handleCollectSources(request: NextRequest): Promise<NextResponse>
     return NextResponse.json({
       message: 'Collection complete',
       tier_filter: tierFilter,
+      lookback_days: lookbackDays,
       sources_processed: results.length,
       total_collected: totalCollected,
       total_duplicates: totalDuplicates,

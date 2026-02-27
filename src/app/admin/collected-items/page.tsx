@@ -17,6 +17,7 @@ interface CollectedItem {
   source_id: string;
   source_tier: 'primary' | 'secondary' | 'tertiary';
   title: string;
+  title_ja: string | null;
   url: string;
   url_hash: string;
   author: string | null;
@@ -38,6 +39,13 @@ interface CollectedItem {
   status: 'new' | 'scored' | 'selected' | 'dismissed' | 'published';
   content_id: string | null;
   digest_date: string | null;
+  engagement_likes: number | null;
+  engagement_retweets: number | null;
+  engagement_replies: number | null;
+  engagement_quotes: number | null;
+  engagement_bookmarks: number | null;
+  engagement_views: number | null;
+  engagement_fetched_at: string | null;
   created_at: string;
   updated_at: string;
   source?: { id: string; name: string; domain: string | null; source_type: string; entity_kind: string | null };
@@ -45,6 +53,7 @@ interface CollectedItem {
 
 type ItemStatus = 'new' | 'scored' | 'selected' | 'dismissed' | 'published';
 type SourceTier = 'primary' | 'secondary' | 'tertiary';
+type ViewMode = 'card' | 'table';
 
 function formatDateTime(value: string): string {
   const date = new Date(value);
@@ -101,6 +110,10 @@ function statusAccent(status: ItemStatus): string {
   }
 }
 
+function displayTitle(item: CollectedItem): string {
+  return item.title_ja?.trim() || item.title;
+}
+
 const LIMIT = 50;
 
 export default function CollectedItemsAdminPage() {
@@ -117,6 +130,7 @@ export default function CollectedItemsAdminPage() {
   const [filterDateFrom, setFilterDateFrom] = useState<string>('');
   const [filterDateTo, setFilterDateTo] = useState<string>('');
   const [offset, setOffset] = useState(0);
+  const [viewMode, setViewMode] = useState<ViewMode>('card');
 
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -363,6 +377,31 @@ export default function CollectedItemsAdminPage() {
               className="w-full rounded border border-border bg-bg-warm px-3 py-2 text-sm text-text-deep"
             />
           </Field>
+
+          <Field label="表示形式">
+            <div className="inline-flex overflow-hidden rounded border border-border">
+              <button
+                onClick={() => setViewMode('card')}
+                className={`px-3 py-2 text-sm ${
+                  viewMode === 'card'
+                    ? 'bg-accent-leaf text-white'
+                    : 'bg-bg-warm text-text-muted hover:bg-bg-cream'
+                }`}
+              >
+                カード
+              </button>
+              <button
+                onClick={() => setViewMode('table')}
+                className={`px-3 py-2 text-sm ${
+                  viewMode === 'table'
+                    ? 'bg-accent-leaf text-white'
+                    : 'bg-bg-warm text-text-muted hover:bg-bg-cream'
+                }`}
+              >
+                テーブル
+              </button>
+            </div>
+          </Field>
         </div>
 
         {/* Pagination */}
@@ -390,150 +429,276 @@ export default function CollectedItemsAdminPage() {
       </div>
 
       {/* Item List */}
-      <div className="space-y-3">
-        {items.map((item) => {
-          const isExpanded = expandedId === item.id;
+      {viewMode === 'card' ? (
+        <div className="space-y-3">
+          {items.map((item) => {
+            const isExpanded = expandedId === item.id;
+            const titleForDisplay = displayTitle(item);
 
-          return (
-            <div key={item.id} className="rounded-[var(--radius-card)] border border-border bg-bg-card p-4">
-              <div className="space-y-3">
-                {/* Badges */}
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className={`px-2 py-1 text-xs rounded border ${tierColor(item.source_tier)}`}>
-                    {item.source_tier}
-                  </span>
-                  <span className={`px-2 py-1 text-xs rounded border ${statusColor(item.status)}`}>
-                    {item.status}
-                  </span>
-                  {item.classification && (
-                    <span className="px-2 py-1 text-xs rounded border border-border bg-bg-cream text-text-muted">
-                      {item.classification}
+            return (
+              <div key={item.id} className="rounded-[var(--radius-card)] border border-border bg-bg-card p-4">
+                <div className="space-y-3">
+                  {/* Badges */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className={`px-2 py-1 text-xs rounded border ${tierColor(item.source_tier)}`}>
+                      {item.source_tier}
                     </span>
-                  )}
-                </div>
-
-                {/* Title */}
-                <div
-                  className="cursor-pointer"
-                  onClick={() => setExpandedId(isExpanded ? null : item.id)}
-                >
-                  <h3 className="text-lg font-semibold font-heading text-text-deep inline">
-                    {item.title}
-                  </h3>
-                  {item.url && (
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(event) => event.stopPropagation()}
-                      className="ml-2 text-accent-leaf hover:text-accent-moss text-sm"
-                    >
-                      &#x2197;
-                    </a>
-                  )}
-                </div>
-
-                {/* Source / Date info */}
-                <p className="text-xs text-text-light">
-                  {item.source?.name || 'Unknown source'}
-                  {' / '}
-                  収集: {formatDateTime(item.collected_at)}
-                  {item.published_at && ` / 公開: ${formatDateTime(item.published_at)}`}
-                  {item.author && ` / ${item.author}`}
-                </p>
-
-                {/* Summary */}
-                {item.content_summary && (
-                  <p className="text-sm text-text-muted line-clamp-2">{item.content_summary}</p>
-                )}
-
-                {/* NVA MetaChips */}
-                <div className="grid grid-cols-2 md:grid-cols-7 gap-3 text-xs">
-                  <MetaChip label="NVA Total" value={item.nva_total != null ? String(item.nva_total) : '--'} />
-                  <MetaChip label="Social" value={item.nva_social != null ? String(item.nva_social) : '--'} />
-                  <MetaChip label="Media" value={item.nva_media != null ? String(item.nva_media) : '--'} />
-                  <MetaChip label="Community" value={item.nva_community != null ? String(item.nva_community) : '--'} />
-                  <MetaChip label="Technical" value={item.nva_technical != null ? String(item.nva_technical) : '--'} />
-                  <MetaChip label="Solo Rel." value={item.nva_solo_relevance != null ? String(item.nva_solo_relevance) : '--'} />
-                  <MetaChip label="Confidence" value={item.classification_confidence != null ? `${(item.classification_confidence * 100).toFixed(0)}%` : '--'} />
-                </div>
-
-                {/* Relevance Tags */}
-                {item.relevance_tags && item.relevance_tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {item.relevance_tags.map((tag) => (
-                      <span
-                        key={`${item.id}-${tag}`}
-                        className="rounded border border-accent-bark/30 bg-accent-bark/10 px-2 py-0.5 text-xs text-accent-bark"
-                      >
-                        {tag}
+                    <span className={`px-2 py-1 text-xs rounded border ${statusColor(item.status)}`}>
+                      {item.status}
+                    </span>
+                    {item.classification && (
+                      <span className="px-2 py-1 text-xs rounded border border-border bg-bg-cream text-text-muted">
+                        {item.classification}
                       </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* Expanded Detail */}
-                {isExpanded && (
-                  <div className="space-y-3 border-t border-border pt-3 mt-3">
-                    {item.score_reasoning && (
-                      <div>
-                        <p className="text-xs uppercase tracking-wide text-text-light mb-1">Score Reasoning</p>
-                        <p className="text-sm text-text-muted whitespace-pre-wrap">{item.score_reasoning}</p>
-                      </div>
                     )}
-                    {item.raw_content && (
-                      <div>
-                        <p className="text-xs uppercase tracking-wide text-text-light mb-1">Raw Content</p>
-                        <pre className="text-xs text-text-muted bg-bg-cream rounded border border-border p-3 overflow-auto max-h-64 whitespace-pre-wrap">
-                          {item.raw_content}
-                        </pre>
-                      </div>
-                    )}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                      <MetaChip label="URL Hash" value={item.url_hash || '--'} />
-                      <MetaChip label="Scored At" value={item.scored_at ? formatDateTime(item.scored_at) : '--'} />
-                      <MetaChip label="Content ID" value={item.content_id || '--'} />
-                      <MetaChip label="Digest Date" value={item.digest_date || '--'} />
-                    </div>
                   </div>
-                )}
 
-                {/* Actions */}
-                <div className="flex gap-2 pt-1">
-                  {item.status !== 'selected' && item.status !== 'published' && (
-                    <button
-                      onClick={() => void updateStatus(item.id, 'selected')}
-                      className="rounded bg-accent-leaf hover:bg-accent-moss px-3 py-1.5 text-xs font-medium text-white"
-                    >
-                      Select
-                    </button>
-                  )}
-                  {item.status !== 'dismissed' && item.status !== 'published' && (
-                    <button
-                      onClick={() => void updateStatus(item.id, 'dismissed')}
-                      className="rounded bg-bg-warm hover:bg-bg-card px-3 py-1.5 text-xs text-text-deep"
-                    >
-                      Dismiss
-                    </button>
-                  )}
-                  <button
-                    onClick={() => void deleteItem(item.id, item.title)}
-                    className="rounded bg-danger/70 hover:bg-danger px-3 py-1.5 text-xs text-white"
+                  {/* Title */}
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setExpandedId(isExpanded ? null : item.id)}
                   >
-                    Delete
-                  </button>
+                    <h3 className="text-lg font-semibold font-heading text-text-deep inline">
+                      {titleForDisplay}
+                    </h3>
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(event) => event.stopPropagation()}
+                        className="ml-2 text-accent-leaf hover:text-accent-moss text-sm"
+                      >
+                        &#x2197;
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Source / Date info */}
+                  <p className="text-xs text-text-light">
+                    {item.source?.name || 'Unknown source'}
+                    {' / '}
+                    収集: {formatDateTime(item.collected_at)}
+                    {item.published_at && ` / 公開: ${formatDateTime(item.published_at)}`}
+                    {item.author && ` / ${item.author}`}
+                  </p>
+
+                  {/* Summary */}
+                  {item.content_summary && (
+                    <p className="text-sm text-text-muted line-clamp-2">{item.content_summary}</p>
+                  )}
+
+                  {/* NVA MetaChips */}
+                  <div className="grid grid-cols-2 md:grid-cols-7 gap-3 text-xs">
+                    <MetaChip label="NVA Total" value={item.nva_total != null ? String(item.nva_total) : '--'} />
+                    <MetaChip label="Social" value={item.nva_social != null ? String(item.nva_social) : '--'} />
+                    <MetaChip label="Media" value={item.nva_media != null ? String(item.nva_media) : '--'} />
+                    <MetaChip label="Community" value={item.nva_community != null ? String(item.nva_community) : '--'} />
+                    <MetaChip label="Technical" value={item.nva_technical != null ? String(item.nva_technical) : '--'} />
+                    <MetaChip label="Solo Rel." value={item.nva_solo_relevance != null ? String(item.nva_solo_relevance) : '--'} />
+                    <MetaChip label="Confidence" value={item.classification_confidence != null ? `${(item.classification_confidence * 100).toFixed(0)}%` : '--'} />
+                  </div>
+
+                  {/* Engagement (X sources only) */}
+                  {(item.engagement_likes != null || item.engagement_views != null) && (
+                    <div className="grid grid-cols-3 md:grid-cols-6 gap-3 text-xs">
+                      <MetaChip label="Likes" value={item.engagement_likes != null ? String(item.engagement_likes) : '--'} />
+                      <MetaChip label="RT" value={item.engagement_retweets != null ? String(item.engagement_retweets) : '--'} />
+                      <MetaChip label="Replies" value={item.engagement_replies != null ? String(item.engagement_replies) : '--'} />
+                      <MetaChip label="Quotes" value={item.engagement_quotes != null ? String(item.engagement_quotes) : '--'} />
+                      <MetaChip label="Bookmarks" value={item.engagement_bookmarks != null ? String(item.engagement_bookmarks) : '--'} />
+                      <MetaChip label="Views" value={item.engagement_views != null ? String(item.engagement_views) : '--'} />
+                    </div>
+                  )}
+
+                  {/* Relevance Tags */}
+                  {item.relevance_tags && item.relevance_tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {item.relevance_tags.map((tag) => (
+                        <span
+                          key={`${item.id}-${tag}`}
+                          className="rounded border border-accent-bark/30 bg-accent-bark/10 px-2 py-0.5 text-xs text-accent-bark"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Expanded Detail */}
+                  {isExpanded && (
+                    <div className="space-y-3 border-t border-border pt-3 mt-3">
+                      {item.title_ja && item.title_ja !== item.title && (
+                        <div>
+                          <p className="text-xs uppercase tracking-wide text-text-light mb-1">Original Title</p>
+                          <p className="text-sm text-text-muted whitespace-pre-wrap">{item.title}</p>
+                        </div>
+                      )}
+                      {item.score_reasoning && (
+                        <div>
+                          <p className="text-xs uppercase tracking-wide text-text-light mb-1">Score Reasoning</p>
+                          <p className="text-sm text-text-muted whitespace-pre-wrap">{item.score_reasoning}</p>
+                        </div>
+                      )}
+                      {item.raw_content && (
+                        <div>
+                          <p className="text-xs uppercase tracking-wide text-text-light mb-1">Raw Content</p>
+                          <pre className="text-xs text-text-muted bg-bg-cream rounded border border-border p-3 overflow-auto max-h-64 whitespace-pre-wrap">
+                            {item.raw_content}
+                          </pre>
+                        </div>
+                      )}
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                        <MetaChip label="URL Hash" value={item.url_hash || '--'} />
+                        <MetaChip label="Scored At" value={item.scored_at ? formatDateTime(item.scored_at) : '--'} />
+                        <MetaChip label="Content ID" value={item.content_id || '--'} />
+                        <MetaChip label="Digest Date" value={item.digest_date || '--'} />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Actions */}
+                  <div className="flex gap-2 pt-1">
+                    {item.status !== 'selected' && item.status !== 'published' && (
+                      <button
+                        onClick={() => void updateStatus(item.id, 'selected')}
+                        className="rounded bg-accent-leaf hover:bg-accent-moss px-3 py-1.5 text-xs font-medium text-white"
+                      >
+                        Select
+                      </button>
+                    )}
+                    {item.status !== 'dismissed' && item.status !== 'published' && (
+                      <button
+                        onClick={() => void updateStatus(item.id, 'dismissed')}
+                        className="rounded bg-bg-warm hover:bg-bg-card px-3 py-1.5 text-xs text-text-deep"
+                      >
+                        Dismiss
+                      </button>
+                    )}
+                    <button
+                      onClick={() => void deleteItem(item.id, titleForDisplay)}
+                      className="rounded bg-danger/70 hover:bg-danger px-3 py-1.5 text-xs text-white"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-
-        {items.length === 0 && !loading && (
-          <div className="rounded border border-border bg-bg-cream px-3 py-4 text-sm text-text-light">
-            条件に一致する収集データがありません。フィルターを変更してください。
+            );
+          })}
+        </div>
+      ) : (
+        <div className="rounded-[var(--radius-card)] border border-border bg-bg-card">
+          <div className="overflow-x-auto">
+            <table className="min-w-[1180px] w-full text-sm">
+              <thead className="bg-bg-cream/60 text-text-light">
+                <tr>
+                  <th className="px-3 py-3 text-left font-semibold">日本語タイトル</th>
+                  <th className="px-3 py-3 text-left font-semibold">原文タイトル</th>
+                  <th className="px-3 py-3 text-left font-semibold">ソース</th>
+                  <th className="px-3 py-3 text-left font-semibold">Tier</th>
+                  <th className="px-3 py-3 text-left font-semibold">Status</th>
+                  <th className="px-3 py-3 text-left font-semibold">NVA</th>
+                  <th className="px-3 py-3 text-left font-semibold">Engagement</th>
+                  <th className="px-3 py-3 text-left font-semibold">収集日時</th>
+                  <th className="px-3 py-3 text-right font-semibold">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {items.map((item) => {
+                  const titleForDisplay = displayTitle(item);
+                  return (
+                    <tr key={item.id} className="align-top">
+                      <td className="px-3 py-3">
+                        <p className="font-semibold text-text-deep">{titleForDisplay}</p>
+                        {item.url && (
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-1 inline-block text-xs text-accent-leaf hover:text-accent-moss"
+                          >
+                            記事リンク &#x2197;
+                          </a>
+                        )}
+                      </td>
+                      <td className="px-3 py-3 text-xs text-text-light max-w-sm">
+                        <p className="line-clamp-2">{item.title}</p>
+                      </td>
+                      <td className="px-3 py-3 text-xs text-text-muted">
+                        <p>{item.source?.name || 'Unknown source'}</p>
+                        {item.classification && <p className="mt-1">{item.classification}</p>}
+                      </td>
+                      <td className="px-3 py-3">
+                        <span className={`px-2 py-1 text-xs rounded border ${tierColor(item.source_tier)}`}>
+                          {item.source_tier}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3">
+                        <span className={`px-2 py-1 text-xs rounded border ${statusColor(item.status)}`}>
+                          {item.status}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3 text-xs text-text-muted">
+                        <p>Total: {item.nva_total ?? '--'}</p>
+                        <p>Tech: {item.nva_technical ?? '--'}</p>
+                        <p>Solo: {item.nva_solo_relevance ?? '--'}</p>
+                      </td>
+                      <td className="px-3 py-3 text-xs text-text-muted">
+                        {item.engagement_likes != null ? (
+                          <>
+                            <p>Likes: {item.engagement_likes}</p>
+                            <p>RT: {item.engagement_retweets ?? 0}</p>
+                            <p>Views: {item.engagement_views ?? '--'}</p>
+                          </>
+                        ) : (
+                          <p>--</p>
+                        )}
+                      </td>
+                      <td className="px-3 py-3 text-xs text-text-muted">
+                        <p>収集: {formatDateTime(item.collected_at)}</p>
+                        {item.published_at && <p>公開: {formatDateTime(item.published_at)}</p>}
+                      </td>
+                      <td className="px-3 py-3">
+                        <div className="flex flex-wrap justify-end gap-2">
+                          {item.status !== 'selected' && item.status !== 'published' && (
+                            <button
+                              onClick={() => void updateStatus(item.id, 'selected')}
+                              className="rounded bg-accent-leaf hover:bg-accent-moss px-3 py-1.5 text-xs font-medium text-white"
+                            >
+                              Select
+                            </button>
+                          )}
+                          {item.status !== 'dismissed' && item.status !== 'published' && (
+                            <button
+                              onClick={() => void updateStatus(item.id, 'dismissed')}
+                              className="rounded bg-bg-warm hover:bg-bg-card px-3 py-1.5 text-xs text-text-deep"
+                            >
+                              Dismiss
+                            </button>
+                          )}
+                          <button
+                            onClick={() => void deleteItem(item.id, titleForDisplay)}
+                            className="rounded bg-danger/70 hover:bg-danger px-3 py-1.5 text-xs text-white"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {items.length === 0 && !loading && (
+        <div className="rounded border border-border bg-bg-cream px-3 py-4 text-sm text-text-light">
+          条件に一致する収集データがありません。フィルターを変更してください。
+        </div>
+      )}
 
       {/* Bottom Pagination */}
       {total > LIMIT && (

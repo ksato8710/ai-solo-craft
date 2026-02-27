@@ -14,6 +14,10 @@ interface CollectedItemRow {
   source_tier: 'primary' | 'secondary' | 'tertiary';
   title: string;
   content_summary: string | null;
+  engagement_likes: number | null;
+  engagement_retweets: number | null;
+  engagement_replies: number | null;
+  engagement_views: number | null;
   sources: {
     credibility_score: number | null;
     entity_kind: string | null;
@@ -79,6 +83,10 @@ async function handleScoreItems(request: NextRequest): Promise<NextResponse> {
         source_tier,
         title,
         content_summary,
+        engagement_likes,
+        engagement_retweets,
+        engagement_replies,
+        engagement_views,
         sources!inner (
           credibility_score,
           entity_kind
@@ -110,12 +118,22 @@ async function handleScoreItems(request: NextRequest): Promise<NextResponse> {
       try {
         const credibility = item.sources?.credibility_score ?? 5;
 
+        const engagement = item.engagement_likes != null
+          ? {
+              likes: item.engagement_likes,
+              retweets: item.engagement_retweets,
+              replies: item.engagement_replies,
+              views: item.engagement_views,
+            }
+          : undefined;
+
         const scores = computeNvaScores(
           item.title,
           item.content_summary,
           item.source_tier,
           credibility,
-          weights
+          weights,
+          engagement
         );
 
         const { error: updateError } = await supabase

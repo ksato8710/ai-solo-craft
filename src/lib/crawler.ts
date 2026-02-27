@@ -11,6 +11,15 @@ import { createHash } from 'crypto';
 // Types
 // ---------------------------------------------------------------------------
 
+export interface EngagementData {
+  likes?: number;
+  retweets?: number;
+  replies?: number;
+  quotes?: number;
+  bookmarks?: number;
+  views?: number | null;
+}
+
 export interface RawCollectedItem {
   title: string;
   url: string;
@@ -18,6 +27,7 @@ export interface RawCollectedItem {
   content_summary?: string;
   raw_content?: string;
   published_at?: string;
+  engagement?: EngagementData;
 }
 
 export interface CrawlResult {
@@ -400,6 +410,86 @@ async function crawlProductHunt(config: Record<string, unknown>): Promise<CrawlR
 }
 
 // ---------------------------------------------------------------------------
+// JSON Feed (RSSHub ?format=json)
+// ---------------------------------------------------------------------------
+
+interface JsonFeedItem {
+  id?: string;
+  url?: string;
+  title?: string;
+  content_text?: string;
+  content_html?: string;
+  date_published?: string;
+  authors?: { name?: string; url?: string }[];
+  _extra?: {
+    engagement?: {
+      likes?: number;
+      retweets?: number;
+      replies?: number;
+      quotes?: number;
+      bookmarks?: number;
+      views?: number | null;
+    };
+    links?: { url: string; type: string }[];
+  };
+}
+
+interface JsonFeed {
+  version?: string;
+  title?: string;
+  items?: JsonFeedItem[];
+}
+
+export async function crawlJsonFeed(feedUrl: string): Promise<CrawlResult> {
+  try {
+    const res = await safeFetch(feedUrl, {
+      headers: { Accept: 'application/json' },
+    });
+    if (!res.ok) {
+      return { items: [], error: `JSON Feed fetch failed: HTTP ${res.status}` };
+    }
+
+    const feed = (await res.json()) as JsonFeed;
+    const items: RawCollectedItem[] = [];
+
+    for (const entry of feed.items ?? []) {
+      const url = entry.url || entry.id;
+      if (!url) continue;
+
+      const title = entry.title || '';
+      const contentRaw = entry.content_text || entry.content_html || '';
+      const summary = contentRaw ? truncate(stripHtml(contentRaw), 500) : undefined;
+      const author = entry.authors?.[0]?.name;
+
+      const engagement = entry._extra?.engagement;
+
+      items.push({
+        title: title ? stripHtml(title) : url,
+        url,
+        author: author || undefined,
+        content_summary: summary,
+        published_at: entry.date_published || undefined,
+        engagement: engagement
+          ? {
+              likes: engagement.likes,
+              retweets: engagement.retweets,
+              replies: engagement.replies,
+              quotes: engagement.quotes,
+              bookmarks: engagement.bookmarks,
+              views: engagement.views,
+            }
+          : undefined,
+      });
+    }
+
+    return { items };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return { items: [], error: `JSON Feed crawl error: ${message}` };
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Main dispatcher
 // ---------------------------------------------------------------------------
 
@@ -433,6 +523,9 @@ export async function collectFromSource(
 
       return { items: [], error: `Unknown api_type: ${apiType}` };
     }
+
+    case 'json_feed':
+      return crawlJsonFeed(crawlUrl);
 
     case 'scrape':
       return crawlScrape(crawlUrl, crawlConfig);

@@ -145,8 +145,21 @@ const RELEVANCE_TAG_RULES: [RegExp, string][] = [
 /** Score nva_social based on source tier and optional social signals */
 function scoreSocial(
   sourceTier: 'primary' | 'secondary' | 'tertiary',
-  contentSummary: string | null
+  contentSummary: string | null,
+  engagement?: { likes?: number | null; retweets?: number | null; replies?: number | null; views?: number | null }
 ): number {
+  // X engagement data takes priority when available
+  if (engagement?.likes != null) {
+    const composite = (engagement.likes ?? 0) + (engagement.retweets ?? 0) * 2 + (engagement.replies ?? 0);
+    if (composite >= 5000) return 20;
+    if (composite >= 1000) return 18;
+    if (composite >= 500) return 16;
+    if (composite >= 200) return 14;
+    if (composite >= 100) return 12;
+    if (composite >= 50) return 10;
+    return 8;
+  }
+
   // For HN/Reddit items, try to extract points/upvotes from summary
   if (sourceTier === 'tertiary' && contentSummary) {
     const pointsMatch = contentSummary.match(/(\d+)\s*(points|upvotes)/i);
@@ -327,13 +340,14 @@ export function computeNvaScores(
   contentSummary: string | null,
   sourceTier: 'primary' | 'secondary' | 'tertiary',
   sourceCredibility: number,
-  weights: ScoringWeights
+  weights: ScoringWeights,
+  engagement?: { likes?: number | null; retweets?: number | null; replies?: number | null; views?: number | null }
 ): NvaScores {
   // Combine title and summary for analysis
   const combinedText = [title, contentSummary || ''].join(' ');
 
   // Compute individual axis scores
-  const social = scoreSocial(sourceTier, contentSummary);
+  const social = scoreSocial(sourceTier, contentSummary, engagement);
   const media = scoreMedia(sourceTier, sourceCredibility);
   const community = scoreCommunity(sourceTier);
   const { score: technical, matchedKeywords: techKeywords } = scoreTechnical(combinedText);
