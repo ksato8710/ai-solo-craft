@@ -63,7 +63,7 @@ WHERE NOT EXISTS (
 -- 3. Insert crawl_configs for EXISTING primary sources (Anthropic, OpenAI, Figma)
 -- ---------------------------------------------------------------------------
 INSERT INTO source_crawl_configs (source_id, crawl_method, crawl_url, crawl_config, crawl_interval_minutes, is_active)
-SELECT s.id, 'rss', 'https://www.anthropic.com/rss.xml', '{"max_items": 20}', 120, true
+SELECT s.id, 'rss', 'https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml', '{"max_items": 20}', 120, true
 FROM public.sources s WHERE s.domain = 'www.anthropic.com'
 ON CONFLICT (source_id) DO NOTHING;
 
@@ -73,7 +73,7 @@ FROM public.sources s WHERE s.domain = 'openai.com'
 ON CONFLICT (source_id) DO NOTHING;
 
 INSERT INTO source_crawl_configs (source_id, crawl_method, crawl_url, crawl_config, crawl_interval_minutes, is_active)
-SELECT s.id, 'rss', 'https://www.figma.com/blog/feed/', '{"max_items": 20}', 240, true
+SELECT s.id, 'rss', 'https://www.figma.com/blog/feed/atom.xml', '{"max_items": 20}', 240, true
 FROM public.sources s WHERE s.domain = 'www.figma.com'
 ON CONFLICT (source_id) DO NOTHING;
 
@@ -91,7 +91,7 @@ FROM public.sources s WHERE s.domain = 'github.blog'
 ON CONFLICT (source_id) DO NOTHING;
 
 INSERT INTO source_crawl_configs (source_id, crawl_method, crawl_url, crawl_config, crawl_interval_minutes, is_active)
-SELECT s.id, 'rss', 'https://ai.meta.com/blog/rss/', '{"max_items": 20}', 120, true
+SELECT s.id, 'rss', 'https://engineering.fb.com/category/ml-applications/feed/', '{"max_items": 20}', 120, true
 FROM public.sources s WHERE s.domain = 'ai.meta.com'
 ON CONFLICT (source_id) DO NOTHING;
 
@@ -111,7 +111,7 @@ FROM public.sources s WHERE s.domain = 'cursor.com'
 ON CONFLICT (source_id) DO NOTHING;
 
 INSERT INTO source_crawl_configs (source_id, crawl_method, crawl_url, crawl_config, crawl_interval_minutes, is_active)
-SELECT s.id, 'rss', 'https://mistral.ai/feed/rss.xml', '{"max_items": 20}', 180, true
+SELECT s.id, 'scrape', 'https://mistral.ai/news/', '{"selector": "article", "max_items": 15}', 180, true
 FROM public.sources s WHERE s.domain = 'mistral.ai'
 ON CONFLICT (source_id) DO NOTHING;
 
