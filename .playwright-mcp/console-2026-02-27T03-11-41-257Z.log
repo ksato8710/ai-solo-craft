@@ -1,0 +1,11 @@
+[     667ms] SyntaxError: Failed to execute 'appendChild' on 'Node': Invalid or unexpected token
+    at p (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/53f79fbbc182d013.js:17:3285)
+    at https://ai-solo-craft.craftgarden.studio/_next/static/chunks/53f79fbbc182d013.js:17:4099
+    at ih (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:101216)
+    at uf (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:125066)
+    at uc (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:124728)
+    at uf (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:125046)
+    at uc (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:124728)
+    at uf (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:125111)
+    at uc (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:124728)
+    at uf (https://ai-solo-craft.craftgarden.studio/_next/static/chunks/9ef2a296b02b1cb6.js:1:125111)
