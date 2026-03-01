@@ -35,7 +35,9 @@
     "check:images:db": "node scripts/check-images.mjs --check-db",
     "generate:thumbnail": "node scripts/generate-thumbnail.mjs",
     "generate:thumbnails:missing": "node scripts/generate-thumbnail.mjs --missing",
-    "generate:thumbnails:all": "node scripts/generate-thumbnail.mjs --all"
+    "generate:thumbnails:all": "node scripts/generate-thumbnail.mjs --all",
+    "skills:validate": "cd $HOME/Dev/product-hub && pnpm skills:validate",
+    "skills:validate:categories": "cd $HOME/Dev/product-hub && pnpm skills:validate:categories"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",

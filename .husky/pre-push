@@ -1,3 +1,5 @@
 #!/bin/sh
+pnpm skills:validate
+pnpm skills:validate:categories
 # Full validation before push (DB-first)
 npm run publish:gate
