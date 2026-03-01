@@ -2,6 +2,7 @@
 title: "OpenGoat：AIエージェントの「階層組織」を構築するオープンソースツール登場"
 slug: "opengoat-ai-autonomous-organization-launch"
 description: "OpenClawエージェントを階層的に組織化し、CEO、マネージャー、スペシャリストとして協働させるOpenGoatが登場。Claude Code、Codex、Cursorなど複数ツールを横断してタスクを委譲・実行できる。"
+date: "2026-03-01"
 publishedAt: "2026-03-01"
 updatedAt: "2026-03-01"
 contentType: "news"
