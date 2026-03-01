@@ -1,0 +1,58 @@
+X Article 取得結果
+==================
+取得日時: 2026-03-01
+ソース: RSSHub (localhost:1200)
+元URL: https://x.com/kgsi/status/2027282423982231958
+
+--- 投稿情報 ---
+投稿者: こぎそ (@kgsi)
+プロフィール: デジタルプロダクトデザイナー / デザインとAI、ウェブ技術の情報発信多め / 採用・PR・広報 / コミュニティオーナー @crossrel_commu / 📻️ @yowaradi / #KNOTS2026 主催 / ex: スタートアップ ← SmartHR
+アバター: https://pbs.twimg.com/profile_images/1783287678013943808/a1YcQIop.jpg
+投稿日時: 2026-02-27T07:19:29.000Z
+
+--- コンテンツ ---
+タイトル/本文: http://x.com/i/article/2027278183872286721
+※ X Article（長文記事）へのリンク投稿。本文はX Article内に格納。
+
+X Article URL: https://x.com/i/article/2027278183872286721
+
+--- エンゲージメント ---
+いいね:     189
+リポスト:   13
+リプライ:   0
+引用:       4
+ブックマーク: 350
+表示回数:   44,356
+
+--- 生データ (JSON) ---
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Twitter @こぎそ",
+  "home_page_url": "https://x.com/kgsi/status/2027282423982231958",
+  "items": [
+    {
+      "id": "https://twitter.com/kgsi/status/2027282423982231958",
+      "url": "https://x.com/kgsi/status/2027282423982231958",
+      "title": "http://x.com/i/article/2027278183872286721",
+      "content_html": "http://x.com/i/article/2027278183872286721",
+      "date_published": "2026-02-27T07:19:29.000Z",
+      "authors": [
+        {
+          "name": "こぎそ",
+          "url": "https://x.com/kgsi",
+          "avatar": "https://pbs.twimg.com/profile_images/1783287678013943808/a1YcQIop_normal.jpg"
+        }
+      ],
+      "_extra": {
+        "engagement": {
+          "likes": 189,
+          "retweets": 13,
+          "replies": 0,
+          "quotes": 4,
+          "bookmarks": 350,
+          "views": 44356
+        }
+      }
+    }
+  ]
+}

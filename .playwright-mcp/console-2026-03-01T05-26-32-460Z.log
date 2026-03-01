@@ -1,0 +1,9 @@
+[    1797ms] [ERROR] Not signed in with the identity provider. @ https://x.com/i/article/2027278183872286721:0
+[    1866ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.x.com/graphql/zrSRXJmE1vj37AUmkh2oGg/ArticleRedirectScreenQuery?variables=%7B%22articleEntityId%22%3A%222027278183872286721%22%7D:0
+[    2124ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.x.com/1.1/graphql/error_log.json:0
+[    2521ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://accounts.google.com/gsi/client:81
+[   44478ms] NotAllowedError: Failed to execute 'prompt' on 'BeforeInstallPromptEvent': The prompt() method must be called with a user gesture
+    at window.__SCRIPTS_LOADED__.vendor.push.203847.s.constructor.displayPromptIfWaiting (https://abs.twimg.com/responsive-web/client-web/main.0aef2cca.js:31:1228066)
+    at Object.bindHandlers (https://abs.twimg.com/responsive-web/client-web/main.0aef2cca.js:31:1228312)
+    at https://abs.twimg.com/responsive-web/client-web/main.0aef2cca.js:31:945042
+    at https://abs.twimg.com/responsive-web/client-web/main.0aef2cca.js:31:945303
