@@ -1,15 +1,17 @@
 ---
 title: "PostHog"
 slug: "posthog"
+date: "2026-02-27"
+contentType: product
 description: "オールインワンのプロダクト分析プラットフォーム。アナリティクス、セッションリプレイ、A/Bテスト、Feature Flagsを統合。Usage-based pricing で90%以上が無料で利用。"
-category: "analytics"
-tags: ["product-analytics", "session-replay", "feature-flags", "ab-testing", "data-warehouse"]
-url: "https://posthog.com"
-pricing: "freemium"
-pricingDetails: "無料: 1Mイベント/月、5Kリプレイ/月。超過分は従量課金。"
-platforms: ["web", "mobile", "backend"]
-lastUpdated: "2026-02-27"
-featured: true
+tags:
+  - product-analytics
+  - session-replay
+  - feature-flags
+  - ab-testing
+  - data-warehouse
+websiteUrl: "https://posthog.com"
+pricingSummary: "Freemium（1Mイベント/月無料）"
 ---
 
 ## 概要

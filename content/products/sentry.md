@@ -1,15 +1,17 @@
 ---
 title: "Sentry"
 slug: "sentry"
+date: "2026-02-27"
+contentType: product
 description: "エラー監視・パフォーマンス分析プラットフォーム。リアルタイムでアプリケーションの問題を検出・診断し、開発者の生産性を向上させる。"
-category: "monitoring"
-tags: ["error-tracking", "performance", "monitoring", "debugging", "observability"]
-url: "https://sentry.io"
-pricing: "freemium"
-pricingDetails: "無料: 5,000エラー/月、Team: $26/月〜、Business: $80/月〜"
-platforms: ["web", "mobile", "backend", "desktop"]
-lastUpdated: "2026-02-27"
-featured: true
+tags:
+  - error-tracking
+  - performance
+  - monitoring
+  - debugging
+  - observability
+websiteUrl: "https://sentry.io"
+pricingSummary: "Freemium（5,000エラー/月無料）"
 ---
 
 ## 概要
