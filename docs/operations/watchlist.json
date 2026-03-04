@@ -20,7 +20,9 @@
       { "handle": "swyx", "category": "influencer", "priority": "medium" },
       { "handle": "levelsio", "category": "indie-hacker", "priority": "medium" },
       { "handle": "skiaborning", "category": "indie-hacker", "priority": "medium" },
-      { "handle": "TheRundownAI", "category": "ai-newsletter", "priority": "medium" }
+      { "handle": "TheRundownAI", "category": "ai-newsletter", "priority": "medium" },
+      { "handle": "melvynxdev", "category": "ai-creator", "priority": "medium" },
+      { "handle": "alifcoder", "category": "ai-creator", "priority": "medium" }
     ],
     "tier3_japanese": [
       { "handle": "kgsi", "category": "japanese-influencer", "priority": "medium" },
