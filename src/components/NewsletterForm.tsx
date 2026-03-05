@@ -78,7 +78,7 @@ export default function NewsletterForm({ variant = 'inline', onSuccess }: Newsle
         />
       </div>
 
-      <div className={`flex ${isCompact ? 'gap-2' : 'gap-3'} ${variant === 'modal' ? 'flex-col sm:flex-row' : ''}`}>
+      <div className={`flex ${isCompact ? 'gap-2' : 'gap-3'} ${variant === 'footer' ? '' : 'flex-col sm:flex-row'}`}>
         <input
           type="email"
           value={email}
