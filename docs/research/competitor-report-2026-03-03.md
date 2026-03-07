@@ -23,26 +23,26 @@
   - https://intuitionlabs.ai/articles/ai-api-pricing-comparison-grok-gemini-openai-claude
   - https://exploreaitogether.com/llm-usage-limits-comparison/
 - **NVA予想:** 8
-- **ソロビルダー視点:** コスト効率でモデルを選ぶ実践ガイド。Grok 4.20がコスパトップ、タスク別の使い分け戦略を解説
+- **個人開発者視点:** コスト効率でモデルを選ぶ実践ガイド。Grok 4.20がコスパトップ、タスク別の使い分け戦略を解説
 
 ### 2. Perplexity 19-model AI Computer深掘り
 - **カテゴリ:** product-update
 - **ソース:**
   - https://www.therundown.ai/p/perplexitys-19-model-ai-computer
 - **NVA予想:** 7
-- **ソロビルダー視点:** 複数AIモデルを切り替え可能なデスクトップ製品。開発ワークフローへの統合可能性を検証
+- **個人開発者視点:** 複数AIモデルを切り替え可能なデスクトップ製品。開発ワークフローへの統合可能性を検証
 
 ### 3. Claude Opus 4.6 Beta — 100万トークンコンテキストの実用検証
 - **カテゴリ:** dev-knowledge
 - **ソース:**
   - https://intuitionlabs.ai/articles/claude-vs-chatgpt-vs-copilot-vs-gemini-enterprise-comparison
 - **NVA予想:** 8
-- **ソロビルダー視点:** コードベース全体を一度に読み込める100万トークン。実際のプロジェクトでの活用法と制限
+- **個人開発者視点:** コードベース全体を一度に読み込める100万トークン。実際のプロジェクトでの活用法と制限
 
 ## 📊 メタ分析
 
 ### 我々の差別化ポイント
-- **ソロビルダー視点の一貫性:** 競合は幅広い読者向け、我々は「一人で作る」人に特化
+- **個人開発者視点の一貫性:** 競合は幅広い読者向け、我々は「一人で作る」人に特化
 - **日本語での深掘り:** 海外メディアの情報を日本語で実践的に解説
 - **即実践可能なガイド:** ニュース報告より「どう使うか」重視
 

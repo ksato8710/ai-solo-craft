@@ -1,7 +1,7 @@
 # AI Solo Craft - 日本語AIキュレーションサイト
 
 ## プロジェクト概要
-- **目標:** AIソロビルダー向け日本語ニュースキュレーションサイト
+- **目標:** AI個人開発者向け日本語ニュースキュレーションサイト
 - **技術スタック:** Next.js (App Router) + Tailwind CSS + TypeScript + Supabase
 - **ホスティング:** Vercel
 - **ドメイン:** ai-solo-craft.craftgarden.studio
@@ -125,7 +125,7 @@
 - 📰 ニュース（個別） (contentType: news): #6366F1 (indigo)
 - 🏷️ プロダクト（辞書） (contentType: product): #8B5CF6 (violet)
 - 🧠 AI開発ナレッジ (contentType: news, tags: [dev-knowledge]): #10b981 (emerald)
-- 📊 ソロビルダー事例紹介 (contentType: news, tags: [case-study]): #f59e0b (amber)
+- 📊 個人開発者事例紹介 (contentType: news, tags: [case-study]): #f59e0b (amber)
 
 ### レイアウト（TLDR.tech準拠）
 1. **ヘッダー:** ロゴ + ナビ（カテゴリリンク）+ 「ニュースレター登録」ボタン（将来用）
@@ -216,7 +216,7 @@ image: "/images/default-morning.jpg"
 - **形式:** 「原文の要点紹介＋日本市場への独自分析」
 - **禁止:** 全文翻訳の転載（著作権侵害リスク）
 - **必須:** 出典リンクの明記、原文への敬意を示す構成
-- **付加価値:** 日本のソロビルダー視点での実現可能性・注意点の独自分析を必ず追加
+- **付加価値:** 日本の個人開発者視点での実現可能性・注意点の独自分析を必ず追加
 - **表記例:** 「本記事は翻訳ではなく、原文の紹介・解説記事です。詳細は原文（英語）をご覧ください。」
 
 この形式であれば権利リスクなく、かつ読者にとって原文以上の価値を提供できる。

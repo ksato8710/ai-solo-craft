@@ -1,6 +1,6 @@
 # AI Solo Craft
 
-**AI ソロビルダー向け日本語ニュースキュレーションサイト（124+ ソース自動収集・NVA 5 軸評価）**
+**AI 個人開発者向け日本語ニュースキュレーションサイト（124+ ソース自動収集・NVA 5 軸評価）**
 
 [![Deploy](https://img.shields.io/badge/deploy-Vercel-black?logo=vercel)](https://ai-solo-craft.craftgarden.studio)
 [![Next.js](https://img.shields.io/badge/Next.js-15%2F16-black?logo=next.js)](https://nextjs.org/)
@@ -14,7 +14,7 @@
 
 ## Why / Background
 
-AI ツールを活用してひとりでプロダクト開発を行う「AI ソロビルダー」が増えている。しかし、必要な情報は英語圏のブログ、X ポスト、ニュースレター、技術コミュニティなど 100 以上のソースに散在し、毎日追いかけるのは現実的でない。AI Solo Craft は **124 以上のソースから自動収集**し、**NVA 5 軸スコアリング**で関連度を評価、**毎朝の Digest 配信**で効率的な情報収集を実現する。
+AI ツールを活用してひとりでプロダクト開発を行う「AI 個人開発者」が増えている。しかし、必要な情報は英語圏のブログ、X ポスト、ニュースレター、技術コミュニティなど 100 以上のソースに散在し、毎日追いかけるのは現実的でない。AI Solo Craft は **124 以上のソースから自動収集**し、**NVA 5 軸スコアリング**で関連度を評価、**毎朝の Digest 配信**で効率的な情報収集を実現する。
 
 ## Features
 

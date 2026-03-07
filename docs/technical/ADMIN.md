@@ -71,7 +71,7 @@ https://ai.essential-navigator.com/admin/sources
 
 1. **Hacker News** - 最もアクセスしやすく質も高い
 2. **GitHub Trending** - 開発ツール情報の一次ソース  
-3. **Indie Hackers** - ソロビルダー向けコンテンツに最適
+3. **Indie Hackers** - 個人開発者向けコンテンツに最適
 4. **Y Combinator News** - 起業関連の質の高いコンテンツ
 5. **TechCrunch** - 資金調達・企業動向の速報
 6. **Stack Overflow Blog** - 開発動向・調査レポート

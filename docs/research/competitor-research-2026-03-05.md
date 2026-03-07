@@ -33,7 +33,7 @@
   - https://technode.com/2026/03/02/deepseek-plans-v4-multimodal-model-release-this-week-sources-say/
   - https://evolink.ai/blog/deepseek-v4-release-window-prep
   - https://www.reddit.com/r/DeepSeek/comments/1ridmnm/deepseek_v4_all_leaks_and_infos_for_the_release/
-- **ソロビルダー視点**: 1Mトークン・マルチモーダル・Huawei Ascend最適化。クローズドLLM依存からの脱却選択肢。
+- **個人開発者視点**: 1Mトークン・マルチモーダル・Huawei Ascend最適化。クローズドLLM依存からの脱却選択肢。
 - **推奨公開**: V4リリース直後（今週中予定）
 
 ### 2. Pragmatic Engineer 2026年AIツーリング調査
@@ -42,7 +42,7 @@
 - **NVA予想**: 9/10
 - **ソース参照**:
   - https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-- **ソロビルダー視点**: Cursor台頭、Codex/Antigravity新勢力、Anthropicモデルが圧倒的人気。ツール選定の決め手になるデータ満載。
+- **個人開発者視点**: Cursor台頭、Codex/Antigravity新勢力、Anthropicモデルが圧倒的人気。ツール選定の決め手になるデータ満載。
 - **推奨公開**: 今週中
 
 ### 3. Claude Import Memory: AIアシスタント乗り換えの新常識
@@ -51,7 +51,7 @@
 - **NVA予想**: 7/10
 - **ソース参照**:
   - https://radicaldatascience.wordpress.com/2026/03/04/ai-news-briefs-bulletin-board-for-march-2026/
-- **ソロビルダー視点**: ChatGPT/Geminiからのワークフロー移行がワンステップに。プロジェクトコンテキストの引き継ぎ問題を解決。
+- **個人開発者視点**: ChatGPT/Geminiからのワークフロー移行がワンステップに。プロジェクトコンテキストの引き継ぎ問題を解決。
 - **推奨公開**: 来週でもOK
 
 ## 📊 メタ分析
@@ -59,7 +59,7 @@
 ### AI Solo Craftの差別化ポイント
 
 - 海外メディアはニュース羅列型
-- AI Solo Craftは「ソロビルダーにとっての意味」を解説
+- AI Solo Craftは「個人開発者にとっての意味」を解説
 - コーディングエージェント関連は既に十分カバー
 
 ### 今後注視すべきトピック

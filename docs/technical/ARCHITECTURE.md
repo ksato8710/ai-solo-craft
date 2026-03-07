@@ -138,7 +138,7 @@ image: "/images/xxx.jpg"
 | digest | digestEdition: morning | 🗞️ 朝刊Digest | #3B82F6 |
 | news | — | 📰 ニュース（個別） | #6366F1 |
 | news | tags: [dev-knowledge] | 🧠 AI開発ナレッジ | #10b981 |
-| news | tags: [case-study] | 📊 ソロビルダー事例紹介 | #f59e0b |
+| news | tags: [case-study] | 📊 個人開発者事例紹介 | #f59e0b |
 | product | — | 🏷️ プロダクト（辞書） | #8B5CF6 |
 
 レガシーカテゴリからの移行マップは `docs/operations/CONTENT-STRATEGY.md` を参照。
